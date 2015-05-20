@@ -1,0 +1,47 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.73.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 251efa678f8a84675eac8d0584e757b472ed35d8 Build.PL
+SHA1 5ba036a7d7e871ca8903bd8806f0c7c69b513b34 Changes
+SHA1 771edd8859e502c500ae883cd9ebb7105c1b453d INSTALL
+SHA1 3435fed6ff44a424d628bb95c7f69b2f536cd892 LICENSE
+SHA1 78bde2759290c5e4b12079578f187a024e11dd16 MANIFEST
+SHA1 aaa3716276ccd7841e2d5511aa6af878250fe4b3 META.yml
+SHA1 d159030591912fb61ee6bacb857aaacc94202080 Makefile.PL
+SHA1 914f9acd84676f28eabb708c68f31235675aa6e6 README
+SHA1 767e92b9cc035fc40c62a7deda816efddd4c14f2 README.pod
+SHA1 18788b0ba358db9fe04c981452039f3bd62bcdb2 cpanfile
+SHA1 b59d7dbc33a1ea679b47ac462be15558c5b788a0 dist.ini
+SHA1 e1c966a8eef1892574ca3f4e49d82bbb55ef7b1b lib/Path/Class.pm
+SHA1 0a47d807085c39b384a75ac6701168bac070b051 lib/Path/Class/Dir.pm
+SHA1 e3d51c703ac215b25409b75424e1e550cbabc061 lib/Path/Class/Entity.pm
+SHA1 6710252344b164ad91f2834832ee5c1d2dcab5e8 lib/Path/Class/File.pm
+SHA1 1984dc68cf6d60e09510af962e56f63c42c0b706 t/01-basic.t
+SHA1 2dc6abce3b4c4601fe22bce9b0d58cb9484bcd0f t/02-foreign.t
+SHA1 adc77bc8513166b9ee1ceca92497ec80de56670a t/03-filesystem.t
+SHA1 d18a55c06da766987268ad541578a03a17ecee41 t/04-subclass.t
+SHA1 a154070d2cb1369f6cebf4228742edea39c43c63 t/05-traverse.t
+SHA1 c71c41e78012d9577c47aa71b6d962e2c70d0e0e t/06-traverse_filt.t
+SHA1 108772f2ba8c196345adf814a39a03401031651c t/07-recurseprune.t
+SHA1 fa45d6e6ab1cd421349dea4ef527bfd5cdc8a09e t/author-critic.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: GPGTools - http://gpgtools.org
+
+iEYEARECAAYFAlQWT6QACgkQgrvMBLfvlHYujgCfc5Uujo7Qqrkp0WF9rJJF68/D
+v7IAoOVeREvngdENutm3UbM/7LsHiYPC
+=ebAU
+-----END PGP SIGNATURE-----

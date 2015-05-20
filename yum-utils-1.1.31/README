@@ -1,0 +1,69 @@
+-- Introduction --
+
+Yum-utils is a collection of utilities, plugins and examples related to
+the yum package manager.  See http://wiki.linux.duke.edu/YumUtils for more
+details.
+
+If you encounter any problems using these utilities feel free to send 
+an e-mail to the yum mailing list: 
+http://lists.baseurl.org/mailman/listinfo/yum
+
+If you have created an utility related to yum and you'd like to look
+into getting it included into this set please e-mail the yum-devel 
+mailing list:
+http://lists.baseurl.org/mailman/listinfo/yum-devel
+
+
+-- Description of the utilities --
+
+package-cleanup: 
+Check for unneeded packages and dependency problems in the system.
+
+repoclosure:
+Check for dependency problems in repositories.
+
+repomanage:
+Look up oldest or newest packages in a directory. Can be used for cleaning
+up repositories for example.
+
+repoquery:
+Query packages and groups in repositories similarly to rpmquery.
+
+repo-rss:
+Generate RSS feed from repositories.
+
+yum-builddep:
+Install build dependencies of source RPMS.
+
+yumdownloader:
+Download packages (and optionally their dependencies) to arbitrary 
+directories without installing them.
+
+reposync:
+poor-man's rsync for yum repositories. Uses the yum download mechanisms to
+synchronize a remote repository to a local directory
+
+repotrack:
+allows you to track only certain packages and their dependencies from a
+remote repository. Useful if you only want a few things out of another
+repository.
+
+-- Authors --
+
+Various people have made a contribution to this collection:
+
+- Gijs Hollestelle
+Author of yumdownloader and package-cleanup 
+
+- Seth Vidal
+Maintainer of yum, author of repoclosure, repomanage and repo-rss
+
+- Panu Matilainen 
+Author of repoquery, yum-builddep
+
+- Sean Dilda
+Author of the update on boot init scripts
+
+- Tim Lauridsen
+Maintainer of yum-utils - fixer of a lot of misc utils.
+

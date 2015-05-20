@@ -1,0 +1,14 @@
+[Unit]
+Description=Generate locale-archive
+DefaultDependencies=no
+ConditionPathExists=!/var/cache/locale/locale-archive
+ConditionPathExists=/usr/bin/localedef
+
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/localedef -i en_US -c -f UTF-8 en_US.UTF-8
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,167 @@
+CHANGES
+=======
+
+1.5.0
+-----
+
+* Updated from global requirements
+
+1.4.0
+-----
+
+* Add test fixture to prefix lazily translated messages
+
+1.3.1
+-----
+
+* Clear global cache in test_get_available_languages
+* Make setup.cfg packages include oslo.i18n
+
+1.3.0
+-----
+
+* Add a fixture to let tests manage the lazy flag
+* Fix the link to the bug tracker in the README
+
+1.2.0
+-----
+
+* Correct the translation domain for loading messages
+* Move out of the oslo namespace package
+* Workflow documentation is now in infra-manual
+* Force code sample to be treated as python
+
+1.1.0
+-----
+
+* Imported Translations from Transifex
+* Add note for integration modules in libraries
+* Activate pep8 check that _ is imported
+* Add pbr to installation requirements
+* Updated from global requirements
+* Updated from global requirements
+* Remove extraneous vim editor configuration comments
+* Make clear in docs to use _LE() when using LOG.exception()
+* Support building wheels (PEP-427)
+* Imported Translations from Transifex
+* Fix coverage testing
+* Imported Translations from Transifex
+* Use same indentation in doc/source/usage
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Updated from global requirements
+* Remove unused/mutable default args
+* Fixes a small syntax error in the doc examples
+
+1.0.0
+-----
+
+* Add missing six dependency
+
+0.3.0
+-----
+
+* Imported Translations from Transifex
+* Work toward Python 3.4 support and testing
+* Updated from global requirements
+* Imported Translations from Transifex
+* Document how to add import exceptions
+
+0.2.0
+-----
+
+* Add a test fixture for translatable strings
+* Imported Translations from Transifex
+* Remove mention of Message objects from public docs
+* Add Changelog to the documentation
+
+0.1.0
+-----
+
+* Shift public API to top level package
+* Add links to policy discussions
+* Improve initial documentation
+* Update sphinx and hacking requirements
+* Fix import grouping in tests
+* Build locale dir env var name consistently
+* Updated from global requirements
+* Remove Babel version workaround code
+* Trivial refactors for gettextutils
+* Setup for translation
+* Update the public API of the library
+* Check the lazy flag at runtime
+* Handle . and - in translation domains
+* Split up monolithic test file
+* Updated from global requirements
+* Fix up usage instructions
+* fix docstring for fakes module
+* Update default tox settings
+* update .gitreview
+* update tests for python 3
+* sync cross-test script from incubator
+* pep8 fixes from import
+* update .gitignore with new lib name
+* Make unit tests pass
+* initial export with graduate.sh
+* Add API for creating translation functions
+* Use oslotest instead of common test module
+* Fix test_gettextutils on Python 3
+* Fix gettextutil.Message handling of deep copy failures
+* Change lazy translation to retain complete dict
+* Remove requirements.txt from .gitignore
+* Add etc/openstack.conf.sample to .gitignore
+* Add support for translating log levels separately
+* Fix E501 in individual openstack projects
+* Fix test method use
+* Make Message keep string interpolation args
+* Add support for locales missing from babel
+* Allow the Message class to have non-English default locales
+* Implementation of translation log handler
+* Use hacking import_exceptions for gettextutils._
+* Translation Message improvements
+* Fix violations of H302:import only modules
+* Fixed misspellings of common words
+* Trivial: Make vertical white space after license header consistent
+* Remove vim header
+* Use six.text_type instead of unicode function in tests
+* Fix typos in oslo
+* Adjust import order according to PEP8 imports rule
+* Replace assertEquals with assertEqual
+* When translating if no locale is given use default locale
+* Type check for Message param to avoid AttributeError
+* gettextutils: port to Python 3
+* Translate all substitution elements of a Message object
+* python3: Fix UserString import
+* Replace using tests.utils part2
+* Enable multiple translation domains for gettextutils
+* Bump hacking to 0.7.0
+* Allow mapping _ to lazy gettext path
+* Fix Message format-string parsing
+* Add common methods required to allow translation of REST API responses
+* Add eclipse project files to .gitignore
+* Add more robust gettext interpolation handling
+* Add .testrepository to .gitignore
+* python3: Add basic python3 compatibility
+* Enable hacking H404 test
+* Add basic lazy gettext implementation
+* Ignore backup files in .gitignore
+* Support overriding oslo localedir too
+* Add a gettextutils.install() helper function
+* gettextutils: fix translation domain
+* Fix Copyright Headers - Rename LLC to Foundation
+* Add join_consumer_pool() to RPC connections
+* Replace direct use of testtools BaseTestCase
+* Use testtools as test base class
+* Fixes import order errors
+* Add common base weigher/weigher handler for filter scheduler
+* updating sphinx documentation
+* Correcting openstack-common mv to oslo-incubator
+* Update .gitreview for oslo
+* .gitignore updates for generated files
+* Add gettext support
+* Updated tox config for multi-python testing
+* Added .gitreview file
+* ignore cover's html directory
+* Rajaram/Vinkesh|increased tests for Request and Response serializers
+* Rajaram/Vinkesh|Added nova's serializaiton classes into common
+* Initial skeleton project

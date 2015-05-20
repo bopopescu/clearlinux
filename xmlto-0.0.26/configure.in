@@ -1,0 +1,162 @@
+AC_INIT(xmlto, 0.0.26)
+AC_CONFIG_SRCDIR(xmlto.spec.in)
+AM_INIT_AUTOMAKE([dist-bzip2 subdir-objects 1.6])
+AC_CONFIG_HEADERS(config.h)
+
+AC_PROG_CC
+AM_PROG_CC_C_O
+AM_PROG_LEX
+
+
+dnl
+dnl tools
+dnl
+
+AC_ARG_VAR([MKTEMP], [Name of the `mktemp' program.])
+AC_CHECK_PROG([MKTEMP], [mktemp],, [mktemp])
+
+AC_ARG_VAR([FIND], [Name of the GNU `find' program.])
+AC_CHECK_PROG([FIND], [find],, [find] )
+
+AC_ARG_VAR([BASH], [Name and path of the GNU `bash' shell.])
+AC_PATH_PROG([BASH], [bash], [/bin/bash])
+
+AC_ARG_VAR([GETOPT], [Name of the `getopt' program (requires longopt support).])
+AC_CHECK_PROG([GETOPT], [getopt],, [getopt])
+
+AC_MSG_CHECKING([for long options support in $GETOPT])
+opts=`$GETOPT --longoptions=help x -x`
+if test x"$opts" != x" -x --"; then
+       AC_MSG_RESULT([no])
+       AC_MSG_ERROR([
+You need getopt from <http://software.frodo.looijaard.name/getopt/>, or
+else some other implementation that supports --longoptions.
+])
+fi
+AC_MSG_RESULT([yes])
+
+AC_ARG_VAR([PAPER_CONF], [Name and path of the `paperconf' (libpaper) program.])
+AC_PATH_PROG([PAPER_CONF], [paperconf], [paperconf])
+
+AC_ARG_VAR([LOCALE], [Name and path of the `locale' program.])
+AC_PATH_PROG([LOCALE], [locale], [locale])
+
+AC_ARG_VAR([XMLLINT], [Name and path of the `xmllint' program.])
+AC_PATH_PROG([XMLLINT], [xmllint], [xmllint])
+
+AC_ARG_VAR([XSLTPROC], [Name and path of the `xsltproc' program.])
+AC_PATH_PROG([XSLTPROC], [xsltproc], [xsltproc])
+
+dnl
+dnl toolchains
+dnl
+
+AC_ARG_VAR([DBLATEX], [Name and path of the `dblatex' utility.])
+AC_PATH_PROG([DBLATEX], [dblatex], [dblatex])
+
+AC_ARG_VAR([FOP], [Name and path of the `fop' utility.])
+AC_PATH_PROG([FOP], [fop], [fop])
+
+AC_ARG_VAR([XMLTEX], [Name and path of the `xmltex' utility.])
+AC_PATH_PROG([XMLTEX], [xmltex], [xmltex])
+
+AC_ARG_VAR([PDFXMLTEX], [Name and path of the `pdfxmltex' utility.])
+AC_PATH_PROG([PDFXMLTEX], [pdfxmltex], [pdfxmltex])
+
+dnl
+dnl default backend
+dnl
+
+AC_ARG_WITH(
+        [backend],
+        AC_HELP_STRING(
+                [--with-backend=@<:@passivetex|fop|dblatex@:>@],
+                [The default processing backend @<:@default=DEFAULT@:>@]
+        ),
+        [
+         case "x$withval" in
+                xfop)
+                        BACKEND="FOP"
+                ;;
+                xdblatex)
+                        BACKEND="DBLATEX"
+                ;;
+                *)
+                        BACKEND="DEFAULT"
+                ;;
+         esac
+        ],
+        [BACKEND="DEFAULT"]
+)
+
+AC_MSG_CHECKING([for default backend])
+AC_MSG_RESULT([$BACKEND])
+AC_SUBST([BACKEND])
+
+dnl
+dnl web browsers
+dnl
+
+AC_ARG_VAR([LYNX], [Name and path of the `lynx' browser.])
+AC_PATH_PROG([LYNX], [lynx], [lynx])
+
+AC_ARG_VAR([LINKS], [Name and path of the `links' browser.])
+AC_PATH_PROG([LINKS], [links], [links])
+
+AC_ARG_VAR([W3M], [Name and path of the `w3m' browser.])
+AC_PATH_PROG([W3M], [w3m], [w3m])
+
+AC_ARG_VAR([TAIL], [Name and path of a tail binary that supports -n.])
+AC_PATH_PROG([TAIL], [tail], [tail])
+
+AC_ARG_VAR([GREP], [Name and path of a GNU grep binary.])
+AC_PATH_PROG([GREP], [grep], [grep])
+
+AC_ARG_VAR([SED], [Name and path of a GNU sed binary.])
+AC_PATH_PROG([SED], [sed], [sed])
+
+AC_ARG_VAR([GCP], [Name and path of a GNU cp binary (need at least -P)])
+AC_PATH_PROG([GCP], [cp], [cp])
+
+AC_ARG_VAR([ZIP], [Name and path of a zip binary (compatible with PKZIP)])
+AC_PATH_PROG([ZIP], [zip], [zip])
+
+dnl
+dnl default webrowser
+dnl
+
+AC_ARG_WITH(
+        [webbrowser],
+        AC_HELP_STRING(
+                [--with-webbrowser=@<:@w3m|lynx|links|any@:>@],
+                [The default processing backend @<:@default=w3m@:>@]
+        ),
+        [
+         case "x$withval" in
+                xlinks)
+                        WEBBROWSER="links"
+                ;;
+                xlynx)
+                        WEBBROWSER="lynx"
+                ;;
+                xany)
+                        WEBBROWSER="text-www-browser"
+                ;;
+                *)
+                        WEBBROWSER="w3m"
+                ;;
+         esac
+        ],
+        [WEBBROWSER="w3m"]
+)
+
+AC_MSG_CHECKING([for default web browser])
+AC_MSG_RESULT([$WEBBROWSER])
+AC_SUBST([WEBBROWSER])
+
+dnl
+dnl done
+dnl
+
+AC_CONFIG_FILES([Makefile xmlto xmlto.spec])
+AC_OUTPUT

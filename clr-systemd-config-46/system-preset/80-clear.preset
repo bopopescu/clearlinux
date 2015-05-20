@@ -1,0 +1,4 @@
+# presets are not used by clear
+# see transient presets instead, which are enabled on each boot
+
+disable *

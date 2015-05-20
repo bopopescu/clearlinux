@@ -1,0 +1,219 @@
+2014-10-26  Colin Watson  <cjwatson@debian.org>
+
+	Version: 1.4.0.
+
+	* lib/Makefile.am (libpipeline_la_LDFLAGS): Bump -version-info to
+	5:0:4.
+
+2014-10-26  Colin Watson  <cjwatson@debian.org>
+
+	Remove generated gnulib/lib/fcntl.h, added by accident
+
+	* gnulib/lib/fcntl.h: Remove.
+	* .gitignore: Add gnulib/lib/fcntl.h.
+
+2014-10-24  Colin Watson  <cjwatson@debian.org>
+
+	Add pipecmd_fchdir function
+
+	* lib/pipeline-private.h (struct pipecmd): Add cwd_fd.
+	* lib/pipeline.c (pipecmd_new, pipecmd_new_function,
+	pipecmd_new_sequencev): Initialise cmd->cwd_fd.
+	(pipecmd_dup): Copy cmd->cwd_fd if necessary.
+	(pipecmd_fchdir): New function.
+	(pipecmd_dump, pipecmd_tostring): Serialise cmd->cwd_fd as "(cd <fd
+	%d> && ...)" if necessary.
+	(pipecmd_exec): If cmd->cwd_fd is set, fchdir to it.
+	* lib/pipeline.h (pipecmd_fchdir): Add prototype.
+	* man/Makefile.am (FUNCTIONS): Add pipecmd_fchdir.
+	* man/libpipeline.3 (Functions to build individual commands):
+	Document pipecmd_fchdir.
+	* tests/basic.c (test_basic_fchdir): Test pipecmd_fchdir.
+	* NEWS: Document this.
+
+2014-10-23  Colin Watson  <cjwatson@debian.org>
+
+	NEWS: Document recent Solaris portability changes
+
+2014-10-23  Colin Watson  <cjwatson@debian.org>
+
+	Add a cleaner way to suppress "Terminated" errors in tests
+
+	* lib/pipeline.c (pipecmd_exec, pipeline_wait_all): If
+	PIPELINE_QUIET is set, don't emit an error message when a subprocess
+	is terminated by a signal.
+	* man/libpipeline.3 (ENVIRONMENT): Document this.
+	* tests/inspect.c (test_inspect_pid): Use this rather than assigning
+	to stderr, which is not portable to Solaris.  Reported by Peter
+	Bray.
+
+2014-10-22  Colin Watson  <cjwatson@debian.org>
+
+	autogen.sh: Avoid "export VARIABLE=value" syntax
+
+	Older Solaris shells do not support this.  Patch by Peter Bray.
+
+2014-10-22  Colin Watson  <cjwatson@debian.org>
+
+	gnulib: Import mkdtemp module.
+
+	Suggested by Peter Bray.
+
+2014-09-22  Colin Watson  <cjwatson@debian.org>
+
+	Version: 1.3.1.
+
+	* lib/Makefile.am (libpipeline_la_LDFLAGS): Bump -version-info to
+	4:1:3.
+
+2014-09-22  Colin Watson  <cjwatson@debian.org>
+
+	Fix build on systems with neither setenv nor clearenv
+
+	Fixes Savannah bug #43265.
+
+	* lib/pipeline.c (clearenv): Don't define if defined(HAVE_SETENV),
+	as in that case gnulib will provide this symbol.
+	* lib/pipeline-private.h (clearenv): Likewise.
+	* NEWS: Document this.
+
+2014-09-17  Colin Watson  <cjwatson@debian.org>
+
+	Make sure that the generated shared library has no undefined symbols
+
+	Based on a change found in
+	https://github.com/Alexpux/MSYS2-packages/tree/master/libpipeline.
+
+	* lib/Makefile.am (libpipeline_la_LDFLAGS): Add -no-undefined.
+
+2014-09-15  Colin Watson  <cjwatson@debian.org>
+
+	Various autotools upgrades
+
+	* aclocal.m4: Upgrade to pkg-config 0.28 and Gettext 0.19.2.
+	* build-aux/config.sub: Upgrade to 2014-09-11.
+	* build-aux/ltmain.sh: Upgrade to Libtool 2.4.2-1.10 (from Debian).
+
+2014-08-03  Colin Watson  <cjwatson@debian.org>
+
+	Update to config.guess 2014-03-23 and config.sub 2014-05-01.
+
+2014-04-24  Colin Watson  <cjwatson@debian.org>
+
+	Fix test failures on Cygwin.
+
+	Reported by Chris J. Breisch.
+
+	* configure.ac: Define SHELL as a C preprocessor symbol.
+	* tests/basic.c (test_basic_wait_all, test_basic_setenv,
+	test_basic_unsetenv, test_basic_clearenv): Execute SHELL rather than
+	"sh".
+	* tests/exec.c (test_exec_process): Likewise.
+
+	* tests/basic.c (test_basic_args, test_basic_pipeline,
+	test_basic_unsetenv, test_basic_clearenv, test_basic_chdir,
+	test_basic_sequence): Check for pipeline_readline returning NULL.
+	* tests/inspect.c (test_inspect_pid): Likewise.
+	* tests/redirect.c (test_redirect_files): Likewise.
+
+	* NEWS: Document this.
+
+2014-03-26  Colin Watson  <cjwatson@debian.org>
+
+	Version: 1.3.0.
+
+	* lib/Makefile.am (libpipeline_la_LDFLAGS): Bump -version-info to
+	4:0:3.
+
+2014-03-26  Colin Watson  <cjwatson@debian.org>
+
+	* NEWS: Set next version to 1.3.0, due to new API.
+
+	* lib/pipeline.c (pipecmd_dump): Simplify one fprintf to fputs.
+
+	Upgrade to Automake 1:1.14.1-3 (from Debian).
+
+2014-03-26  Colin Watson  <cjwatson@debian.org>
+
+	Add pipecmd_chdir function
+
+	* lib/pipeline-private.h (struct pipecmd): Add cwd.
+	* lib/pipeline.c (pipecmd_new, pipecmd_new_function,
+	pipecmd_new_sequencev): Initialise cmd->cwd.
+	(pipecmd_dup): Copy cmd->cwd if necessary.
+	(pipecmd_chdir): New function.
+	(pipecmd_dump, pipecmd_tostring): Serialise cmd->cwd as "(cd %s &&
+	...)" if necessary.
+	(pipecmd_exec): If cmd->cwd is set, chdir to it.
+	(pipecmd_free): Free cmd->cwd.
+	* lib/pipeline.h (pipecmd_chdir): Add prototype.
+	* man/Makefile.am (FUNCTIONS): Add pipecmd_chdir.
+	* man/libpipeline.3 (Functions to build individual commands):
+	Document pipecmd_chdir.
+	* tests/basic.c (test_basic_chdir): Test pipecmd_chdir.
+	* NEWS: Document this.
+
+2014-02-20  Colin Watson  <cjwatson@debian.org>
+
+	Move Autotools auxiliary build files from tools to build-aux.
+
+	"build-aux" is a more conventional location for the Autotools files.
+
+2014-02-18  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to Gnulib 20140202 and Libtool 2.4.2-1.7 (from Debian).
+
+2014-02-06  Colin Watson  <cjwatson@debian.org>
+
+	Upgrade to Automake 1.14.1 and Libtool 2.4.2-1.6 (from Debian).
+
+2013-12-18  Colin Watson  <cjwatson@debian.org>
+
+	Version: 1.2.6.
+
+	* lib/Makefile.am (libpipeline_la_LDFLAGS): Bump -version-info to
+	  3:6:2.
+
+2013-12-18  Colin Watson  <cjwatson@debian.org>
+
+	Fix occasional failure in test_pump_tee
+
+	* tests/pump.c (test_pump_tee): Wait for child processes before
+	testing output.
+	* NEWS: Document this.
+
+2013-12-18  Colin Watson  <cjwatson@debian.org>
+
+	Clarify pipeline_wait's return value
+
+	* man/libpipeline.3 (pipeline_wait): Synchronise description of
+	return value with pipeline.h.
+
+2013-12-03  Colin Watson  <cjwatson@debian.org>
+
+	Version: 1.2.5.
+
+	* lib/Makefile.am (libpipeline_la_LDFLAGS): Bump -version-info to
+	  3:5:2.
+
+2013-12-03  Colin Watson  <cjwatson@debian.org>
+
+	gnulib: Import gnupload module.
+
+2013-12-03  Colin Watson  <cjwatson@debian.org>
+
+	Build with large file support where available
+
+	* gnulib: Import largefile module.
+	* NEWS: Document this.
+
+2013-12-03  Colin Watson  <cjwatson@debian.org>
+
+	Automatically generate ChangeLog from git
+
+	* ChangeLog: Move to ...
+	* ChangeLog-2013: ... here.
+	* Makefile.am (EXTRA_DIST): Add ChangeLog-2013.
+	  (dist-hook): Add gen-ChangeLog.
+	  (gen-ChangeLog): New rule, based on that in coreutils.
+	* gnulib: Import gitlog-to-changelog module.

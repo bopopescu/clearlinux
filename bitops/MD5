@@ -1,0 +1,14 @@
+3136ef1c07a6e494c151ad0ff73fc47f *ChangeLog
+262f3111f66f1c8b363a8a5d3f17e8bb *DESCRIPTION
+17a0ec2e92452496167bc97715b4e70d *INDEX
+7a49848cd6d0d82f0d7d665185891eea *NAMESPACE
+f1556b4833aa34668d26844d761d5464 *R/bitops.R
+d41d8cd98f00b204e9800998ecf8427e *README.md
+e3e9f7ba02483fa14ddf6fdb7c307b81 *man/bitAnd.Rd
+6eedc37753c40f7ac37a73143a69310b *man/bitFlip.Rd
+a46e3326ae4ee0d4e067edc8ff7d9011 *man/bitShiftL.Rd
+e5518fc477d17b13e4492d6a8db401b6 *man/cksum.Rd
+653ce0c3e2a1d4e0731b7b65b594c356 *src/bit-ops.c
+107e7b3886382d8c5c2e620c2af5d850 *src/bit-ops.h
+7fcce4120e44544f7c1ae64092dc4e73 *src/cksum.c
+7a70ea3f5f8b5a8991b8cffbe7345c8d *tests/consistency.R

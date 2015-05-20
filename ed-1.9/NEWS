@@ -1,0 +1,5 @@
+Changes in version 1.9:
+
+Testsuite no more feeds shell scripts to ed.
+
+"configure" now accepts options with a separate argument.

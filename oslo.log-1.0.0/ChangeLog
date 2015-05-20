@@ -1,0 +1,226 @@
+CHANGES
+=======
+
+1.0.0
+-----
+
+* Updated from global requirements
+
+0.4.0
+-----
+
+* Pickup instance from log format record
+* Make use_syslog=True log to syslog via /dev/log
+
+0.3.0
+-----
+
+* Updated from global requirements
+* update urllib3.util.retry log level to WARN
+
+0.2.0
+-----
+
+* Expose fixtures through oslo_log.fixture
+* Add fixture to let tests change log levels
+* Rename logging fixture module
+* Update comment to match implementation
+* fix link to bug tracker in readme
+* Updated from global requirements
+* Update Oslo imports to remove namespace package
+
+0.1.0
+-----
+
+* Updated from global requirements
+* Add API documentation
+* Implement resource to logging extra keywords
+* Use RequestContext store in oslo_context
+* Correct the translation domain for loading messages
+* Correct the position of the syslog handler
+* Enhance the README a bit
+* Switch to oslo.context
+* Move files out of the namespace package
+* Updated from global requirements
+* Workflow documentation is now in infra-manual
+* Added helper decorator to log method arguments
+* Updated from global requirements
+* Add oslo.config.opts entry_points in setup.cfg
+* Updated from global requirements
+* Updated from global requirements
+* Activate pep8 check that _ is imported
+* Add pbr to installation requirements
+* Updated from global requirements
+* Updated from global requirements
+* Remove audit log level
+* Switch from ContextAdapter to ContextFormatter
+* Move adapter properties to base class
+* Add KeywordArgumentAdapter
+* Remove extraneous vim editor configuration comments
+* Support building wheels (PEP-427)
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Use oslo.utils and oslo.serialization
+* Fix test env order for testrepository db format
+* log: add missing space in error message
+* fix typo and formatting in contributing docs
+* Updated from global requirements
+* Remove duplicate test and cleanup unnecessary files
+* Use fixtures from oslo.i18n and oslo.cfg
+* Extract WritableLogger from log module
+* Move handlers and formatters out
+* Remove dependency on global CONF
+* switch test from info to error
+* Test formatting errors with log level being emitted
+* Imported Translations from Transifex
+* Simple doc cleanup
+* Work toward Python 3.4 support and testing
+* warn against sorting requirements
+* Make the local module private
+* Move the option definitions into a private file
+* Initial translation setup
+* Fix testr failure under python2.6
+* Get py27 amd pep8 to work
+* exported from oslo-incubator by graduate.sh
+* Set stevedore log level to WARN by default
+* Add unicode coercion of logged messages to ContextFormatter
+* Correct coercion of logged message to unicode
+* Except socket.error if syslog isn't running
+* Fix E126 pep8 errors
+* log: make tests portable
+* Set keystonemiddleware and routes.middleware to log on WARN level
+* Adjust oslo logging to provide adapter is enabled for
+* Make logging_context_format_string optional in log.set_defaults
+* log: make set_defaults() tests clean up properly
+* Add default log level for websocket
+* Ability to customize default_log_levels for each project
+* Python 3: enable tests/unit/test_log.py
+* Move `mask_password` to strutils
+* update new requests logger to default WARN
+* Remove extra whitespace
+* Use oslo.messaging to publish log errors
+* pep8: fixed multiple violations
+* Add a RequestContext.from_dict method
+* Fix common.log.ContextFormatter for Python 3
+* Mask passwords included without quotes at the ends of commands
+* Use moxstubout and mockpatch from oslotest
+* Fixes a simple spelling mistake
+* always log a traceback in the sys.excepthook
+* Remove redundant default=None for config options
+* Fix logging setup for Python 3.4
+* Mask passwords that are included in commands
+* Improve help strings
+* Remove str() from LOG.* and exceptions
+* Fix python26 compatibility for RFCSysLogHandler
+* Use oslotest instead of common test module
+* Revert setting oslo-incubator logs to INFO
+* Set default log levels for oslo.messaging and oslo-incubator
+* Python 3: enable tests/unit/middleware/test_request_id.py
+* Add default user_identity to logging record
+* Add model_query() to db.sqlalchemy.utils module
+* Remove None for dict.get()
+* Rename Openstack to OpenStack
+* Fixture to reraise exceptions raised during logging
+* Emit message which merged user-supplied argument in log_handler
+* Log unit test improvements
+* Use ContextFormatter for imparting context info
+* Fix deprecated messages sent multiple times
+* default connectionpool to WARN log level
+* Backport 'ident' from python 3.3 for Oslo's SysLogHandler
+* remove extra newlines that eventlet seems to add
+* Small edits on help strings
+* Add error type to unhandled exception log message
+* Logging excepthook: print exception info if debug=True
+* Utilizes assertIsNone and assertIsNotNone
+* Fix spelling errors in comments
+* Use hacking import_exceptions for gettextutils._
+* Correct invalid docstrings
+* Translation Message improvements
+* Remove keystone from default_log_levels default
+* Adding domain to context and log
+* Unify different names between Python2/3 with six.moves
+* Remove vim header
+* Don't log to stdout when log_dir is set
+* Remove uuidutils imports in oslo modules
+* Adds admin_password as key to be sanitized when logging
+* Revert "Removes generate_uuid from uuidutils"
+* Do not name variables as builtins
+* Removes generate_uuid from uuidutils
+* Default iso8601 logging to WARN
+* Use six.text_type instead of unicode function in tests
+* Add mask password impl from other projects
+* Use fileutils.write_to_tempfile in LogConfigTestCase
+* allow keeping of existing loggers with fileConfig
+* Add amqp=WARN,qpid=WARN to default_log_levels
+* Replace assert_ with assertTrue
+* Don't override default value for eventlet.wsgi.server logging
+* _get_log_file_path explictly return, when logfile/logdire unset
+* Make openstack.common.log Python 3 compatible
+* Make Messages unicode before hitting logging
+* Adding instance_uuid to context and log
+* Replace using tests.utils part2
+* Make a cStringIO usage in test_log py3 compatible
+* Bump hacking to 0.7.0
+* Replace using tests.utils with openstack.common.test
+* Modify local.py to not be dependent on Eventlet
+* python3: handle module moves in log
+* Enable H302 hacking check
+* Add missing license header
+* Fix bad default for show_deleted
+* Highlighting the deprecated nature of 'log-format'
+* Enable hacking H404 test
+* Enable hacking H402 test
+* python3: python3 binary/text data compatbility
+* Enable hacking H403 test
+* Remove the notifier and its dependencies from log.py
+* Deprecate log_format and change default to None
+* oslo logging tries to run chmod on file
+* Improve Python 3.x compatibility
+* Support for lazily instantiated loggers
+* Incorrect logging setup - duplicating root handlers
+* Replaces the standard uuid with common in the context module
+* Gracefully handle errors in logging config files
+* clarify --log-file comments
+* Include PID in default logging_context_format_string
+* Initialize root logger in _setup_logging_from_conf()
+* Fix Copyright Headers - Rename LLC to Foundation
+* Unignore log_format option
+* Fix inconsistency with auth_tok/auth_token
+* Setup exception handler after configuring logging
+* Use oslo-config-2013.1b3
+* Don't use subprocess for testing excepthook
+* Emit a warning if RPC calls made with lock
+* Replace direct use of testtools BaseTestCase
+* Use testtools as test base class
+* Move logging config options into the log module
+* Fixes import order errors
+* Verbose should not enable debug level logging
+* Fix pep8 E125 errors
+* Improve millisecond logging
+* Enable millisecond logging by default
+* Allow nova and others to override some logging defaults
+* update deprecated stanza
+* Adjust the logging_context_format_string
+* Fix the log test so it uses the available context fields
+* Restore proper LoggerTestCase
+* move nova.common.deprecated to openstack-common
+* Use pep8 v1.3.3
+* Improve logging of process id
+* Fix meaningless test case
+* Add multiple-driver support to the notifier api
+* Install a qualified except hook
+* Remove code to clear basicConfig root log handlers
+* don't throw exceptions if %(color)s tag is used
+* fix bug lp:1019348,update openstack-common to support pep8 1.3
+* Fix missing gettextutils in several modules
+* Move get_context_from_function_and_args() to context.py
+* Switch common files to using jsonutils
+* Pass in stream as positional argument to StreamHandler
+* Add common logging and notification
+* Added dictify() and uuids to the common request context
+* Add greenthread local storage model from nova
+* add context 'tests'
+* make the skeleton project a template
+* reog from import merge
+* Add some more generic middleware, request context, utils, and versioning. Add basic template for server binary
+* Initial skeleton project

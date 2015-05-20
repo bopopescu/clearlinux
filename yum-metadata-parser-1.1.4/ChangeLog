@@ -1,0 +1,98 @@
+2010-01-07  Seth Vidal <skvidal@fedoraproject.org>
+
+	* setup.py, yum-metadata-parser.spec: mark as 1.1.3
+
+2009-11-02  James Antill <james@and.org>
+
+	* db.c: Add an index on files.pkgKey ... needed for .simpleFiles()
+	to not suck
+
+2009-08-18  Mike Bonnet <mikeb@redhat.com>
+
+	* sqlitecachec.py: configure sqlite to return utf-8-encoded strs
+	instead of unicode objects  sqlite by default returns all text as
+	unicode objects, and this causes a number of problems when merging
+	repos which contain utf-8 characters in Provides or Requires (as the
+	current F11/F12 repos do).  For a testcase, try merging 2 F12 repos,
+	and you should see it fail with a UnicodeDecodeError in
+	packages.py:_dump_pco().  This patch instructs sqlite to return all
+	text as utf-8-encoded strs, which avoids these encoding issues.
+
+2008-10-14  James Antill <james@and.org>
+
+	* db.c: Turn off .sqlite updating from new .xml data, bug 465898
+
+2008-09-10  Seth Vidal <skvidal@fedoraproject.org>
+
+	* db.c, db.h, sqlitecache.c: commit patches from Ville Skyttä to
+	make indexes after the data has been inserted. Closed rh bug 461403
+
+
+2008-09-10  Seth Vidal <skvidal@fedoraproject.org>
+
+	* sqlitecache.c: apply patch to improve error messages from Ville
+	Skyttä from rh bug 461405
+
+2008-01-25  Seth Vidal <skvidal@fedoraproject.org>
+
+	* sqlitecachec.py: apply patch from Panu Matilainen to setup the db
+	for exclusive lock write access.  closes rh bug 353171
+
+2007-11-27  Paul Nasrat <pauln@truemesh.com>
+
+	* sqlitecache.c: Fix segmentation fault experienced with a malformed
+	primary.xml
+
+2007-08-29  Seth Vidal <skvidal@fedoraproject.org>
+
+	* yum-metadata-parser.spec: remove %dist which doesn't really belong
+	anyway
+
+2007-08-24  Seth Vidal <skvidal@fedoraproject.org>
+
+	* ChangeLog: changelog merge
+
+2007-08-24  Seth Vidal <skvidal@fedoraproject.org>
+
+	* setup.py, yum-metadata-parser.spec: bump version number
+
+2007-08-24  Seth Vidal <skvidal@fedoraproject.org>
+
+	* db.c: commit Florian's patches to create more indexes in the
+	sqlite files made by yum-metadata-parser
+
+2007-07-03  James Bowes <jbowes@redhat.com>
+
+	* xml-parser.c: Fix segfault in the xml parser
+
+2007-06-03  James Bowes <jbowes@redhat.com>
+
+	* xml-parser.c: Use a common sax_error function
+
+2007-06-03  James Bowes <jbowes@redhat.com>
+
+	* xml-parser.c: Use a common sax_characters function
+
+2007-06-03  James Bowes <jbowes@redhat.com>
+
+	* xml-parser.c: Use SAXContext for other
+
+2007-06-03  James Bowes <jbowes@redhat.com>
+
+	* xml-parser.c: Use SAXContext for filelists
+
+2007-06-03  James Bowes <jbowes@redhat.com>
+
+	* xml-parser.c: Extract out a common set of SAXContext members for
+	the three file types, and  use them with primary.
+
+2007-06-03  James Bowes <jbowes@redhat.com>
+
+	* xml-parser.c: Use a common sax warning callback for the three file
+	types.
+
+2007-05-30  James Bowes <jbowes@redhat.com>
+
+	* Get SAX error callbacks for filelists and other to use the right
+	context type.
+

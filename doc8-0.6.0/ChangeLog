@@ -1,0 +1,158 @@
+CHANGES
+=======
+
+0.6.0
+-----
+
+* Lowercase the help messages
+* Allow ignore specific error codes in files
+* Handle the linter returning anonyomous line numbers
+* Fix Python 3 support
+* Workflow documentation is now in infra-manual
+
+0.5.0
+-----
+
+* Fix the 'ignore-path' config option
+* Allow overriding file encoding
+* Add check D005 - no newline at end of file
+
+0.4.3
+-----
+
+* Remove commented configuration of the intersphinx module
+* Allow a default_extension to be provided
+* Warn against sorting requirements
+* Ensure reading is done in one place only
+* Just use get() instead of pop()
+* Split the main function into pieces
+* Ignore long-lines with urls when in text searching mode
+* Improve help options
+* Cache the lines that are read instead of re-reading
+* Use list of FILE_PATTERNS as default for --extension
+* Rewrite method contains_url in utils
+* Use a documented constant for the docutils levels
+* Document the exceptions are for RST format only
+
+0.4.2
+-----
+
+* Just remove the features sub-section
+
+0.4.1
+-----
+
+* Log that the check does not understand the extension when verbose
+* Adjust the description to denote we can parse more than rst
+
+0.4.0
+-----
+
+* Add version argument and output
+* Allow checks to provide a extension matcher
+* Add ignore_paths to ini file and document ini with example
+* Use print when in verbose mode
+* Correctly ignore parent directories when requested
+* Add basic check test cases
+
+0.3.8
+-----
+
+* Detect the encoding using chardet
+* Fix partially ignored checks
+* Improve logging/printed output
+* Use regex instead of prefix matches
+
+0.3.7
+-----
+
+* Fix destination
+
+0.3.6
+-----
+
+* Add a sphinx specific mode
+* Released 0.3.5
+
+0.3.5
+-----
+
+* Add Pylint testenv environment
+* Check documents for doc8 issues and fix one doc8 issue
+* Enable checks for H302 and F401
+* Update the README.rst with the ignore-path option
+* Add parameter --ignore-path to ignore files/directories
+* Prepare release of 0.3.5
+* Removed unused imports
+* Remove unneeded definitions of Python Source Code Encoding
+* Make build environment workable
+* Use restructuredtext-lint instead of duplication
+* Add the new D000 to the rst file
+* Update the git url to point to its new home
+* Add .gitreview file
+* Add error linting to ensure that rst format is not invalid
+* Make running main.py directly work better
+* Bump for 0.3.4
+* Adjust usage doc for new extension argument
+* Allow extensions to be provided
+* Add a few files from the openstack cookiecutter template
+* Add subtitle and section to title skipping
+* Bump for 0.3.3
+* Use a deque to avoid keeping all the scanned files alive
+* Use stevedore for dynamic check inclusion
+* Bump for 0.3.2
+* Bump for 0.3.1
+* Add the max-line-length to the usage help
+* Document dump settings (and default to off)
+* Delay assigning self._doc until after parsing succeeds
+* Use the non-raw contents to ensure 3.3+ compat
+* Add newline at end of main.py
+* Bump for 0.3.0
+* Fix some flake8 warnings
+* Move over the rest of the checks
+* Add config as constructor param
+* Show the default max line length
+* Add a checks module
+* Gather files before running
+* Add a parser module
+* Add a utility helper module
+* Add a main file and use it as a standard entrypoint
+* Update usage docs to match adjusted docstring
+* Bump for 0.2.1
+* Put the max on the same line (since it fits)
+* Add comment as to why we are using the rst parser
+* Make the system message node type finding more generic
+* A bunch of new fixups
+* Re-add the directive finding for when system_message types occur
+* Fix parents that are system_messages
+* Update with new help
+* Rename find_nodes and fix issue with line < first_line
+* Rename split_uniq_string -> split_string
+* Bump to 0.2.0
+* A multitude of adjustments
+* Use the default config filenames
+* Update usage help
+* Allow config file specification
+* Fixed a typo
+* Added trove classifiers for some versions
+* Mark doc8 as a universal wheel
+* Bump for 0.1.7
+* Update with usage documentation
+* Ensure raw directives are found
+* Bump for 0.1.6
+* Use the script doc as the base argparse help
+* Note the errors that occur for each check in the docstring
+* Bump for 0.1.5
+* Fix the 'Tabulation used for indentation' breakage
+* Handle binary -> utf8 correctly
+* Bump for 0.1.4
+* Add carriage return check
+* Bump for 0.1.3
+* Use max-line-length to match flake8/pep8
+* Rename whitespace -> starting_whitespace
+* Use argparse to find paths to scan
+* Make this work on python3
+* Add myself as the author
+* Do better directive checking
+* Add doc8 files
+* Initial commit

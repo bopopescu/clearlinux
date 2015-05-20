@@ -1,0 +1,226 @@
+CHANGES
+=======
+
+0.4.0
+-----
+
+* Add release notes for 0.4.0
+* Fix intermittent failure in test_vmware_store
+* Deprecate the gridfs store
+* Remove incubative openstack.common.context module
+* Update help text with sample conf
+* Use oslo_config.cfg.ConfigOpts in glance_store
+* Make dependency on boto entirely conditional
+* Move from oslo.utils to oslo_utils (supplement)
+* Fix timeout during upload from slow resource
+
+0.3.0
+-----
+
+* Throw NotFound exception when template is gone
+* Deprecate VMware store single datastore options
+* Use oslo_utils.units where appropriate
+* VMware: Support Multiple Datastores
+
+0.2.0
+-----
+
+* Correct such logic in store.get() when chunk_size param provided
+* Support for deleting images stored as SLO in Swift
+* Enable DRIVER_REUSABLE for vmware store
+
+0.1.12
+------
+
+* Show fully qualified store name in update_capabilities() logging
+* Move to hacking 0.10
+* Fix sorting query string keys for arbitrary url schemes
+* Unify using six.moves.range rename everywhere
+
+0.1.11
+------
+
+* Remove duplicate key
+* Add coverage report to run_test.sh
+* Use a named enum for capability values
+* Check VMware session before uploading image
+* Add capabilities to storage driver
+* Fixing PEP8 E712 and E265
+* Convert httpretty tests to requests-mock
+* Replace snet config with endpoint config
+* Rename oslo.concurrency to oslo_concurrency
+* Remove retry on failed uploads to VMware datastore
+* Remove old dependencies
+* Validate metadata JSON file
+* Use default datacenter_path from oslo.vmware
+* Remove unused exception StorageQuotaFull
+* Move from oslo.config to oslo_config
+* Move from oslo.utils to oslo_utils
+* Add needed extra space to error message
+* Define a new parameter to pass CA cert file
+* Use testr directly from tox
+* Raise appropriate exception if socket error occurs
+* Swift Store to use Multiple Containers
+* Use testr directly from tox
+* Remove deprecated options
+* Correct GlanceStoreException to provide valid message - glance_store
+* Catch NotFound exception in http.Store get_size
+* VMware store: Re-use api session token
+
+0.1.10
+------
+
+
+0.1.9
+-----
+
+* Test swift multi-tenant store get context
+* Test swift multi-tenant store add context
+* Use oslo.concurrency
+* Move cinder store to use auth_token
+* Swift Multi-tenant store: Fix image upload
+* Use statvfs instead of df to get available space
+* Fix public image ACL in multi-tenant Swift mode
+* Updated run_tests.sh to run tests in debug mode
+* Remove validate_location
+* Imported Translations from Transifex
+* Add coverage to test-requirements.txt
+* Imported Translations from Transifex
+* Switch to using oslo.utils
+* Remove network_utils
+* Recover from errors while deleting image segments
+* VMware store: Use the Content-Length if available
+* Backporting S3 multi-part upload functionality to glace_store
+* Make rbd store's pool handling more universal
+* s3_store_host parameter with port number
+* Enhance configuration handling
+* Enable F841 check
+* Portback part change of adding status field to image location
+* Mark glance_store as being a universal wheel
+* Imported Translations from Transifex
+* Use oslo.serialization
+* Fix H402
+* Portback part change of enabling F821 check
+* Adding common.utils.exception_to_str() to avoid encoding issue
+* Replace stubout with oslotest.moxstubout
+* Fix RBD store to use READ_CHUNKSIZE and correct return of get()
+* Add a run_tests.sh
+* Run tests parallel by default
+* Add ordereddict to reqs for py2.6 compatibility
+* rbd: fix chunk size units
+* Imported Translations from Transifex
+* Stop using intersphinx
+* Cleanup shebang in non-executable module
+* Correct Sheepdog store configuration
+* Correct base class of no_conf driver
+* Handle session timeout in the VMware store
+* Add entry-point for oslo.config options and update registering logic
+* Configure the stores explicitly
+* Imported Translations from Transifex
+* Return the right filesize when chunk_size != None
+* Allowing operator to configure a permission for image file in fs store
+* Align swift's store API
+
+0.1.7
+-----
+
+* Add `OPTIONS` attribute to swift.Store function
+
+0.1.5
+-----
+
+* Add missing stores to setup.cfg
+* Set group for DeprecatedOpts
+* Complete random_access for the filesystem store
+* Work toward Python 3.4 support and testing
+
+0.1.3
+-----
+
+* Register store's configs w/o creating instances
+
+0.1.2
+-----
+
+* Add deprecated options support for storage drivers
+* Rename locale files for glance_store rename
+* Update .gitreview for project rename
+
+0.1.1
+-----
+
+* Rename glance.store to glance_store
+* Port of 97882f796c0e8969c606ae723d14b6b443e2e2f9
+* Port of 502be24afa122eef08186001e54c1e1180114ccf
+* Fix collection order issues and unit test failures
+
+0.1.0
+-----
+
+
+0.0.1a2
+-------
+
+* Fix development classifier
+* Imported Translations from Transifex
+* Package glance's package entirely
+
+0.0.1a1
+-------
+
+* Split CHUNKSIZE into WRITE/READ_CHUNKSIZE
+* Port swift store
+* Add validate_location
+* Fix some Exceptions incompatibilities
+* Imported Translations from Transifex
+* Setup for glance.store for translation
+* Set the right classifiers in setup.cfg
+* Remove version string from setup.cfg
+* Add .gitreview to the repo
+* Fix flake8 errors
+* Adopt oslo.i18n
+* Pull multipath support from glance/master
+* Update from oslo-incubator
+* Pass offset and chunk_size to the `get` method
+* Migrate vmware store
+* Move FakeHTTPResponse to a common utils module
+* Removed commented code
+* Remove deprecated _schedule_delayed_delete_from_backend function
+* BugFix: Point to the exceptions module
+* BugFix: define scheme outside the `try` block
+* Add a way to register store options
+* Update functions signatures w/ optional context
+* Remove old scrubber options
+* Move exceptions out of common and add backends.py
+* Use exception
+* Remove dependency on oslo-log
+* Add offset and chunk_size to the get method
+* Migrate the rbd store
+* Use register_store_schemes everywhere
+* Add missing context keyword to the s3 store
+* Migrate cinder store
+* Remove location_strategy, it belongs to Glance
+* S3 store ported
+* Move options registration to __init__
+* GridFS Store
+* Port sheepdog and its test suite
+* Update from oslo-inc and added processutils
+* Fix http store tests
+* Added fake driver, restored base tests, fixed load driver issue
+* Use context when needed
+* Add context=None to http store methods
+* Remove old exceptions
+* HTTP migrated
+* Accept a message keyword in exceptions
+* Filesystem driver restored
+* Move drivers under _driver
+* Added testr
+* Config & Import fixes
+* Move base test to glance/store
+* Deprecate old options, make the list shorter
+* Add glance.store common
+* Add tests w/ some fixes, although they don't run yet
+* Update gitignore
+* Add requirements and testr
+* Add oslo-inc modules
+* Copying from glance

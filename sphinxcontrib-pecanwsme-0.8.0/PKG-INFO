@@ -1,0 +1,26 @@
+Metadata-Version: 1.1
+Name: sphinxcontrib-pecanwsme
+Version: 0.8.0
+Summary: Extension to Sphinx for documenting APIs built with Pecan and WSME
+Home-page: https://github.com/dreamhost/sphinxcontrib-pecanwsme
+Author: Doug Hellmann
+Author-email: doug.hellmann@dreamhost.com
+License: Apache-2
+Description: sphinxcontrib-pecanwsme
+        =======================
+        
+        Extension to Sphinx for documenting APIs built with Pecan and WSME
+        
+        
+Keywords: documentation
+sphinx
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Software Development :: Documentation

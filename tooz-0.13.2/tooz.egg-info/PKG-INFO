@@ -1,0 +1,38 @@
+Metadata-Version: 1.1
+Name: tooz
+Version: 0.13.2
+Summary: Coordination library for distributed systems.
+Home-page: https://launchpad.net/python-tooz
+Author: Tooz developers
+Author-email: tooz-dev@lists.launchpad.net
+License: Apache-2
+Description: Tooz
+        ====
+        
+        The Tooz project aims at centralizing the most common distributed primitives
+        like group membership protocol, lock service and leader election by providing
+        a coordination API helping developers to build distributed applications.
+        
+        * Free software: Apache license
+        * Documentation: http://docs.openstack.org/developer/tooz
+        * Source: http://git.openstack.org/cgit/openstack/tooz
+        * Bugs: http://bugs.launchpad.net/python-tooz/
+        
+        Join us
+        -------
+        
+        - http://launchpad.net/python-tooz
+        
+        
+Platform: UNKNOWN
+Classifier: Environment :: OpenStack
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: System :: Distributed Computing

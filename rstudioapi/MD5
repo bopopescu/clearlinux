@@ -1,0 +1,14 @@
+ba00d2b82f27eea2b1c14e31fb20242d *DESCRIPTION
+2491c4039e00be047cce99c452d3fd00 *LICENSE
+6634cf9c6f12dc1af60036036810fb55 *NAMESPACE
+31c47b6a8f44409c3e27094fc0110ef3 *NEWS
+40d7e575519c656e3b0dc640f5670103 *R/code.R
+af0320edeee91bb42c76073571e8c415 *R/stubs.R
+b75bffcb5a00f293484f252810ea890b *man/callFun.Rd
+84eba15263b88e410b53bb3895f18f4f *man/getVersion.Rd
+2dc1ced9677bac1d5301846988b6355d *man/hasFun.Rd
+68bf2a95a9e90817cf8a6ff19187e5dd *man/isAvailable.Rd
+11afff28da5a838ddfcd210abfc8e144 *man/previewRd.Rd
+f8f0384aa2d0a35ee3a8876a757c3058 *man/sourceMarkers.Rd
+e33d6eba33fd932e51d44b08900ecf36 *man/versionInfo.Rd
+fa95f7320d8ad6fe71738858217a2bcc *man/viewer.Rd

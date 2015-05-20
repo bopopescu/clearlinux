@@ -1,0 +1,4 @@
+py>=1.4.22
+pytest>=2.6.0
+coverage>=3.7.1,<4.0a1
+cov-core>=1.14.0

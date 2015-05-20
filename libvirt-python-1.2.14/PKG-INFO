@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: libvirt-python
+Version: 1.2.14
+Summary: The libvirt virtualization API
+Home-page: http://www.libvirt.org
+Author: Libvirt Maintainers
+Author-email: libvir-list@redhat.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN

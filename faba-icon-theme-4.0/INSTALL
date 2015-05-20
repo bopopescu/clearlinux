@@ -1,0 +1,5 @@
+--------------------------------------------------------------------------------
+Install Faba Icon theme
+--------------------------------------------------------------------------------
+For personal use, copying the 'Faba' folder to '$HOME/.local/share/icons' will do
+or copy 'Faba' into '/usr/share/icons' to make it available system-wide

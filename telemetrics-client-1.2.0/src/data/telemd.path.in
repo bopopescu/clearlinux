@@ -1,0 +1,8 @@
+[Unit]
+Description=Telemetry Daemon Spool
+
+[Path]
+DirectoryNotEmpty=@localstatedir@/spool/telemetry
+
+[Install]
+WantedBy=multi-user.target

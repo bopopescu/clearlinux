@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=@libdir@
+includedir=${prefix}/include
+
+Name: libtelemetry
+Description: Telemetrics library
+Version: @SO_CUR@.@SO_REV@.@SO_AGE@
+Libs: -L${libdir} -ltelemetry
+Cflags: -I${includedir}

@@ -1,0 +1,34 @@
+And the code lives again for the cloud.  Something like Starpeak but minus
+the Android bits and plus some cloud bits.
+
+-- Tim Pepper     December 17, 2014
+
+=============================================================================
+
+StarPeak carries on for Android in the tradition of Nitra.
+
+-- Tim Pepper     November 22, 2013
+
+=============================================================================
+
+In good tradition, I'm forking the forked fork of the forked bsdiff.
+
+Specifically, I started out with
+
+svn - Revision 122769: /trunk/src/chrome/installer/mac/third_party/bsdiff
+
+from the Chromium project, as one of the most promising starting points.
+
+I have to fork the file format to add file permission information,
+so that I can maske the resulting file have the right permissions and owner/group.
+Because of this format change, the header magic is changed to "BSDIFF4T"
+
+I'm also going to clean up some of the creative uses of the C language to
+make the error handling a bit more robust (rather than just exit, a library
+shouldn't exit the main app), and to use mmap() and co to reduce data copies... 
+starting with a Lindent run as well
+
+As part of this, I'll also turn the code into a library so that I
+don't have to exec() to call into it.
+
+-- Arjan van de Ven    February 20, 2012

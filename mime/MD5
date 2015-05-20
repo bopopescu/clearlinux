@@ -1,0 +1,12 @@
+27b4d6d01743e36a105152d43c45ddf5 *DESCRIPTION
+65dfed19b5252c29600f636c90f5b653 *NAMESPACE
+991d4108381952ed76b280e4039c99c2 *NEWS
+80d49b054d0b0d2672a61cad67252f42 *R/mime.R
+18dbc1f4605b5ad0f1eb7230f52d433c *R/mimemap.R
+e95580e965bfeee6cb05466960eeb5ad *R/parse.R
+45a4d8fec11689135a11b5e3c19e4c1d *README.md
+9174f8cf9a0a6660a76cf2da170cfa33 *man/guess_type.Rd
+53d99ccd434ae6c33903b00c9b457451 *man/mimemap.Rd
+a0a87cf23f0cdea3a237b7c33c23ea59 *man/parse_multipart.Rd
+29b4222298101062679c7723a12f6f2d *src/rawmatch.c
+7fe5cdfaa00ec7d6af8c44921cecb3ac *tests/mime.R

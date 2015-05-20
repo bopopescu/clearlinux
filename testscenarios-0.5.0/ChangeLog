@@ -1,0 +1,39 @@
+CHANGES
+=======
+
+0.5
+---
+
+* Release 0.5
+* Migrate to git
+* CHANGES -------
+* 0.4 ~~~
+* Release 0.3 (and fixup NEWS)
+* * ``TestWithScenarios`` is now backed by a mixin - WithScenarios - which can be mixed into different unittest implementations more cleanly (e.g. unittest2). (James Polley, Robert Collins)
+* * New function ``per_module_scenarios`` for tests that should be applied across multiple modules providing the same interface, some of which may not be available at run time. (Martin Pool, Robert Collins)
+* Rename TestWithScenarios as MixableTestWithScenarios
+* Add per_module_scenarios
+* Add multiply_scenarios
+* Support both python2.7 and bzr load_tests argument lists
+* Add load_tests_apply_scenarios
+* Improve setup.py to setup pypi web pages better
+* Append scenario name to test case short description
+* TestApplyScenarios: Use separate tests for distinct assertions
+* Switch license to BSD / Apache-2.0 and do a 0.1 release
+* Dist everything via sdist
+* Start running tests using testtools
+* make check now runs doctests and they pass; documentation is therefore more correct
+* Turn title into a ReST title
+* Add a brief advice section
+* ReST corrections
+* NEWS update
+* Support debug() on TestWithScenarios
+* Support countTestCases in TestWithScenarios
+* Factor out all the individual components of generate_tests
+* Write generate_scenarios
+* TestWithScenarios.run now sets attributes too, and includes some docstring docs
+* TestWithScenarios now honours the scenarios list as far as cloning and renaming tests goes
+* Really test that TestWithScenarios succeeds with no scenarios
+* Start on TestWithScenarios
+* Add a HACKING file
+* Write some fiction

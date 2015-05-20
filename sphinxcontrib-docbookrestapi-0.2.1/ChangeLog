@@ -1,0 +1,50 @@
+CHANGES
+=======
+
+0.2.1
+-----
+
+* Bump to 0.2.1
+* add venv to tox.ini
+
+0.2
+---
+
+* Bump to 0.2
+* Add the Python 3 classifiers in setup.cfg
+* Declare sphinxcontrib.docbookrestapi package
+* Properly declare namespace package
+* Properly document the enumeration type
+* Allow foo_name as well as foo_id in paths
+* Remove 'xmlns' attribute of 'param' elements
+* Use 'para' elements instead of 'p' ones
+* Add the top-level comment that is now mandatory in WADL files
+* Add an XML declaration in the output
+* Use 'wadl:doc' instead of 'doc' and fix its attributes
+* Add a mandatory 'id' attribute to 'resource' elements
+* Removes whitespaces at the end of self-closing tags
+* Sync with global requirements
+* Add tests
+* Python 3 compatibility
+* Fix the code to work with Python2.6
+* tox.ini: clean the pep8 target
+
+0.1
+---
+
+* Allow complex types for parameters
+* Fix the generate_id function with PUT methods
+* Add .gitreview file
+* Wrap lines in the generated WADL file
+* Generated human-readable method ids and titles
+* Use '<para role="shortdoc">...</para>'
+* Make the 'wadl:doc' element appear first
+* Fix PEP8-related warnings
+* Remove the version hack in setup.py
+* Indent the generated WADL file
+* Only parse the intended files
+* Move code to sphinxcontrib/docbookrestapi
+* MyNodeVisitor: call SparseNodeVisitor.__init__()
+* sphinxcontrib/setup.py: Add license header
+* Add missing shebangs
+* Initial commit

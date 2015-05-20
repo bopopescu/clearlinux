@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Generating SQL Scripts (a.k.a. “Offline Mode”) &mdash; Alembic 0.7.6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature_override.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/changelog.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx_paramlinks.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.7.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Alembic 0.7.6 documentation" href="index.html" />
+    <link rel="next" title="The Importance of Naming Constraints" href="naming.html" />
+    <link rel="prev" title="Auto Generating Migrations" href="autogenerate.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="naming.html" title="The Importance of Naming Constraints"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="autogenerate.html" title="Auto Generating Migrations"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Alembic 0.7.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="generating-sql-scripts-a-k-a-offline-mode">
+<h1>Generating SQL Scripts (a.k.a. &#8220;Offline Mode&#8221;)<a class="headerlink" href="#generating-sql-scripts-a-k-a-offline-mode" title="Permalink to this headline">¶</a></h1>
+<p>A major capability of Alembic is to generate migrations as SQL scripts, instead of running
+them against the database - this is also referred to as <em>offline mode</em>.
+This is a critical feature when working in large organizations
+where access to DDL is restricted, and SQL scripts must be handed off to DBAs.   Alembic makes
+this easy via the <tt class="docutils literal"><span class="pre">--sql</span></tt> option passed to any <tt class="docutils literal"><span class="pre">upgrade</span></tt> or <tt class="docutils literal"><span class="pre">downgrade</span></tt> command.   We
+can, for example, generate a script that revises up to rev <tt class="docutils literal"><span class="pre">ae1027a6acf</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ alembic upgrade ae1027a6acf --sql
+INFO  [alembic.context] Context class PostgresqlContext.
+INFO  [alembic.context] Will assume transactional DDL.
+BEGIN;
+
+CREATE TABLE alembic_version (
+    version_num VARCHAR(32) NOT NULL
+);
+
+INFO  [alembic.context] Running upgrade None -&gt; 1975ea83b712
+CREATE TABLE account (
+    id SERIAL NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    description VARCHAR(200),
+    PRIMARY KEY (id)
+);
+
+INFO  [alembic.context] Running upgrade 1975ea83b712 -&gt; ae1027a6acf
+ALTER TABLE account ADD COLUMN last_transaction_date TIMESTAMP WITHOUT TIME ZONE;
+
+INSERT INTO alembic_version (version_num) VALUES (&#39;ae1027a6acf&#39;);
+
+COMMIT;
+</pre></div>
+</div>
+<p>While the logging configuration dumped to standard error, the actual script was dumped to standard output -
+so in the absence of further configuration (described later in this section), we&#8217;d at first be using output
+redirection to generate a script:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ alembic upgrade ae1027a6acf --sql &gt; migration.sql
+</pre></div>
+</div>
+<div class="section" id="getting-the-start-version">
+<h2>Getting the Start Version<a class="headerlink" href="#getting-the-start-version" title="Permalink to this headline">¶</a></h2>
+<p>Notice that our migration script started at the base - this is the default when using offline
+mode, as no database connection is present and there&#8217;s no <tt class="docutils literal"><span class="pre">alembic_version</span></tt> table to read from.</p>
+<p>One way to provide a starting version in offline mode is to provide a range to the command line.
+This is accomplished by providing the &#8220;version&#8221; in <tt class="docutils literal"><span class="pre">start:end</span></tt> syntax:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ alembic upgrade 1975ea83b712:ae1027a6acf --sql &gt; migration.sql
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">start:end</span></tt> syntax is only allowed in offline mode; in &#8220;online&#8221; mode, the <tt class="docutils literal"><span class="pre">alembic_version</span></tt>
+table is always used to get at the current version.</p>
+<p>It&#8217;s also possible to have the <tt class="docutils literal"><span class="pre">env.py</span></tt> script retrieve the &#8220;last&#8221; version from
+the local environment, such as from a local file.   A scheme like this would basically
+treat a local file in the same way <tt class="docutils literal"><span class="pre">alembic_version</span></tt> works:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">is_offline_mode</span><span class="p">():</span>
+    <span class="n">version_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">config_file_name</span><span class="p">),</span> <span class="s">&quot;version.txt&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">version_file</span><span class="p">):</span>
+        <span class="n">current_version</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">version_file</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">current_version</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">dialect_name</span><span class="o">=</span><span class="n">engine</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">starting_rev</span><span class="o">=</span><span class="n">current_version</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">run_migrations</span><span class="p">()</span>
+    <span class="n">end_version</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">get_revision_argument</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">end_version</span> <span class="ow">and</span> <span class="n">end_version</span> <span class="o">!=</span> <span class="n">current_version</span><span class="p">:</span>
+        <span class="nb">open</span><span class="p">(</span><span class="n">version_file</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">end_version</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="writing-migration-scripts-to-support-script-generation">
+<h2>Writing Migration Scripts to Support Script Generation<a class="headerlink" href="#writing-migration-scripts-to-support-script-generation" title="Permalink to this headline">¶</a></h2>
+<p>The challenge of SQL script generation is that the scripts we generate can&#8217;t rely upon
+any client/server database access.  This means a migration script that pulls some rows
+into memory via a <tt class="docutils literal"><span class="pre">SELECT</span></tt> statement will not work in <tt class="docutils literal"><span class="pre">--sql</span></tt> mode.   It&#8217;s also
+important that the Alembic directives, all of which are designed specifically to work
+in both &#8220;live execution&#8221; as well as &#8220;offline SQL generation&#8221; mode, are used.</p>
+</div>
+<div class="section" id="customizing-the-environment">
+<h2>Customizing the Environment<a class="headerlink" href="#customizing-the-environment" title="Permalink to this headline">¶</a></h2>
+<p>Users of the <tt class="docutils literal"><span class="pre">--sql</span></tt> option are encouraged to hack their <tt class="docutils literal"><span class="pre">env.py</span></tt> files to suit their
+needs.  The <tt class="docutils literal"><span class="pre">env.py</span></tt> script as provided is broken into two sections: <tt class="docutils literal"><span class="pre">run_migrations_online()</span></tt>
+and <tt class="docutils literal"><span class="pre">run_migrations_offline()</span></tt>.  Which function is run is determined at the bottom of the
+script by reading <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.is_offline_mode" title="alembic.environment.EnvironmentContext.is_offline_mode"><tt class="xref py py-meth docutils literal"><span class="pre">EnvironmentContext.is_offline_mode()</span></tt></a>, which basically determines if the
+<tt class="docutils literal"><span class="pre">--sql</span></tt> flag was enabled.</p>
+<p>For example, a multiple database configuration may want to run through each
+database and set the output of the migrations to different named files - the <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-meth docutils literal"><span class="pre">EnvironmentContext.configure()</span></tt></a>
+function accepts a parameter <tt class="docutils literal"><span class="pre">output_buffer</span></tt> for this purpose.  Below we illustrate
+this within the <tt class="docutils literal"><span class="pre">run_migrations_offline()</span></tt> function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">alembic</span> <span class="kn">import</span> <span class="n">context</span>
+<span class="kn">import</span> <span class="nn">myapp</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">db_1</span> <span class="o">=</span> <span class="n">myapp</span><span class="o">.</span><span class="n">db_1</span>
+<span class="n">db_2</span> <span class="o">=</span> <span class="n">myapp</span><span class="o">.</span><span class="n">db_2</span>
+
+<span class="k">def</span> <span class="nf">run_migrations_offline</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Run migrations *without* a SQL connection.&quot;&quot;&quot;</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">file_</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s">&quot;db1&quot;</span><span class="p">,</span> <span class="n">db_1</span><span class="p">,</span> <span class="s">&quot;db1.sql&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&quot;db2&quot;</span><span class="p">,</span> <span class="n">db_2</span><span class="p">,</span> <span class="s">&quot;db2.sql&quot;</span><span class="p">),</span>
+    <span class="p">]:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+                    <span class="n">url</span><span class="o">=</span><span class="n">engine</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                    <span class="n">transactional_ddl</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                    <span class="n">output_buffer</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">file_</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">))</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;-- running migrations for &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">run_migrations</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Wrote file &#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">file_</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">run_migrations_online</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Run migrations *with* a SQL connection.&quot;&quot;&quot;</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">engine</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s">&quot;db1&quot;</span><span class="p">,</span> <span class="n">db_1</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&quot;db2&quot;</span><span class="p">,</span> <span class="n">db_2</span><span class="p">),</span>
+    <span class="p">]:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">connection</span><span class="o">=</span><span class="n">connection</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">run_migrations</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+            <span class="k">raise</span>
+
+<span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">is_offline_mode</span><span class="p">():</span>
+    <span class="n">run_migrations_offline</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">run_migrations_online</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Generating SQL Scripts (a.k.a. &#8220;Offline Mode&#8221;)</a><ul>
+<li><a class="reference internal" href="#getting-the-start-version">Getting the Start Version</a></li>
+<li><a class="reference internal" href="#writing-migration-scripts-to-support-script-generation">Writing Migration Scripts to Support Script Generation</a></li>
+<li><a class="reference internal" href="#customizing-the-environment">Customizing the Environment</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="autogenerate.html"
+                        title="previous chapter">Auto Generating Migrations</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="naming.html"
+                        title="next chapter">The Importance of Naming Constraints</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/offline.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="naming.html" title="The Importance of Naming Constraints"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="autogenerate.html" title="Auto Generating Migrations"
+             >previous</a> |</li>
+        <li><a href="index.html">Alembic 0.7.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010-2015, Mike Bayer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

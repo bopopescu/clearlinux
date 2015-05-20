@@ -1,0 +1,55 @@
+\name{gtable_matrix}
+\alias{gtable_matrix}
+\title{Create a gtable from a matrix of grobs.}
+\usage{
+  gtable_matrix(name, grobs, widths = NULL, heights = NULL,
+    z = NULL, respect = FALSE, clip = "on", vp = NULL)
+}
+\arguments{
+  \item{z}{a numeric matrix of the same dimensions as
+  \code{grobs}, specifying the order that the grobs are
+  drawn.}
+
+  \item{vp}{a grid viewport object (or NULL).}
+
+  \item{name}{a string giving the name of the table. This
+  is used to name the layout viewport}
+
+  \item{widths}{a unit vector giving the width of each
+  column}
+
+  \item{heights}{a unit vector giving the height of each
+  row}
+
+  \item{respect}{a logical vector of length 1: should the
+  aspect ratio of height and width specified in null units
+  be respected.  See \code{\link{grid.layout}} for more
+  details}
+
+  \item{grobs}{a single grob or a list of grobs}
+
+  \item{clip}{should drawing be clipped to the specified
+  cells (\code{"on"}), the entire table (\code{"inherit"}),
+  or not at all (\code{"off"})}
+}
+\description{
+  Create a gtable from a matrix of grobs.
+}
+\examples{
+a <- rectGrob(gp = gpar(fill = "red"))
+b <- circleGrob()
+c <- linesGrob()
+
+row <- matrix(list(a, b, c), nrow = 1)
+col <- matrix(list(a, b, c), ncol = 1)
+mat <- matrix(list(a, b, c, nullGrob()), nrow = 2)
+
+gtable_matrix("demo", row, unit(c(1, 1, 1), "null"), unit(1, "null"))
+gtable_matrix("demo", col, unit(1, "null"), unit(c(1, 1, 1), "null"))
+gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"))
+
+# Can specify z ordering
+z <- matrix(c(3, 1, 2, 4), nrow = 2)
+gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"), z = z)
+}
+

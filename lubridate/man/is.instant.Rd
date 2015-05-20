@@ -1,0 +1,33 @@
+\name{is.instant}
+\alias{instant}
+\alias{instants}
+\alias{is.instant}
+\alias{is.timepoint}
+\alias{timepoint}
+\title{Is x a date-time object?}
+\usage{
+  is.instant(x)
+}
+\arguments{
+  \item{x}{an R object}
+}
+\value{
+  TRUE if x is a POSIXct, POSIXlt, or Date object, FALSE
+  otherwise.
+}
+\description{
+  An instant is a specific moment in time. Most common
+  date-time objects (e.g, POSIXct, POSIXlt, and Date
+  objects) are instants.
+}
+\examples{
+is.instant(as.Date("2009-08-03")) # TRUE
+is.timepoint(5) # FALSE
+}
+\seealso{
+  \code{\link{is.timespan}}, \code{\link{is.POSIXt}},
+  \code{\link{is.Date}}
+}
+\keyword{chron}
+\keyword{logic}
+

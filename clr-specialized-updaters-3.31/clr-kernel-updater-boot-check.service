@@ -1,0 +1,9 @@
+[Unit]
+Description=Clear Linux service tracking kernel boot success
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/report_kernel_booted.sh
+
+[Install]
+WantedBy=multi-user.target

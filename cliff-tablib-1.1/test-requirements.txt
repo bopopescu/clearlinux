@@ -1,0 +1,7 @@
+nose
+mock
+coverage
+pep8
+cliff
+distribute
+tablib

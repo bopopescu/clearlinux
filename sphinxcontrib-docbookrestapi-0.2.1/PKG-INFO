@@ -1,0 +1,29 @@
+Metadata-Version: 1.1
+Name: sphinxcontrib-docbookrestapi
+Version: 0.2.1
+Summary: Extension to Sphinx for generating REST API documentation for http://api.openstack.org/
+Home-page: UNKNOWN
+Author: Cyril Roelandt
+Author-email: cyril.roelandt@enovance.com
+License: Apache-2
+Description: sphinxcontrib-docbookrestapi
+        =======================
+        
+        Extension to Sphinx for generating REST API documentation for http://api.openstack.org/
+        
+        
+Keywords: documentation
+docbook
+sphinx
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Topic :: Software Development :: Documentation

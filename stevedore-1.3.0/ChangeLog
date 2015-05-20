@@ -1,0 +1,258 @@
+CHANGES
+=======
+
+1.3.0
+-----
+
+* Updated from global requirements
+* Fix test for finding multiple drivers
+* ignore .testrepository directory created by testr
+* clean up default environments run by tox
+
+1.2.0
+-----
+
+* Use pkg_resources resolve(
+* Fix the README.rst file format for pypi
+* Workflow documentation is now in infra-manual
+* Implement a __contains__ override for extension manager
+* Update link to docs in README
+* Bring doc build up to standard
+
+1.1.0
+-----
+
+* Add pbr to dependency list
+* Updated from global requirements
+* Add more detail to the README
+* Migrate tox to use testr
+* Update repository location in docs
+
+1.0.0
+-----
+
+* Build universal wheels
+* Work toward Python 3.4 support and testing
+* warn against sorting requirements
+
+1.0.0.0a1
+---------
+
+* Updated from global requirements
+* Fix incorrect image reference in documentation
+* Fix requirement handling in tox
+* Updated from global requirements
+* use six.add_metaclass
+* Updated from global requirements
+* driver: raise by default on import failure
+* Add doc requirements to venv environ
+* Import run_cross_tests.sh from oslo-incubator
+* fix link to entry point docs
+
+0.15
+----
+
+* Only log error when no load handler is set
+* Update readme with links to bug tracker and source
+* Update .gitreview after moving the repository
+
+0.14.1
+------
+
+* Fix the test manager implementation
+
+0.14
+----
+
+* prep history for 0.14 release
+* Make requirements checking optional
+* Update docstrings
+* Remove requirements checking for dependencies
+* fix typo in contrib docs
+* Add contributing instructions for github mirrors
+* Allow a on_load_failure_callback to be provided
+* Add venv environment to tox
+* driver: remove useless arg propagate_map_exceptions
+* Move to stackforge
+* update release announcement file
+* update release number in history
+
+0.13
+----
+
+* update history file before release
+* deprecate TestExtensionManager
+* clean up docs for DriverManager
+* simplify test instance factory contract
+* driver extension manager test instance factory
+* enabled extension manager test instance factory
+* make Extension responsible for formatting its target name
+* add test instance factory for the base, named, and hook managers
+* use item access instead of temporary dict when ordering extensions
+* DOC: Updated index.rst: distribute -> setuptools
+* a work-around to avoid cpython bug (15881)
+* add pypy to travis config
+* add pypy to default test env list
+* Fix pip call in tox config
+* fix version number in blog announcement file
+
+0.12
+----
+
+* update history and announce file for release
+* remove version from setup.cfg and rely on git tag
+* Switch to pbr
+* Fix flake8 failures from pull/27
+* Add map_method function to managers
+* Fixes reporting the error when drivers have the same name
+
+0.11
+----
+
+* prep for release 0.11
+* Update null log handling for py26
+
+0.10
+----
+
+* prep for 0.10 release
+* fixed a bug in the test for propagating map exceptions
+* Fix doc build with Python 2.6.x
+* Update docstrings for map exception propagation
+* Formatting fix
+* Adds ability to propogate exceptions within map
+
+0.9.1
+-----
+
+* prep for 0.9.1 release
+* Include all images from docs in sdist
+
+0.9
+---
+
+* prep for 0.9 release
+* add docs to default tox suite
+* Remove reliance on distribute
+* doc cleanup
+* add reference to test class
+* finish tutorial section on loading plugins
+* remove line number references
+* Add example of loading as a driver
+* Add tutorial section on creating plugins
+* add docs about names and namespaces
+* touch up ceilometer design diagram
+* add tox env for building docs
+* Add structure for tutorial
+* Add PyCon 2013 essay
+* Update docs for NameDispatchExtensionManager
+* Clean up autodoc for manager classes
+* Add ExtensionManager.__getitem__
+* Change sort for NamedExtensionManager
+* Ignore missing extensions in named dispatch
+* Set up extlinks extension
+* document new name_order param in history
+* Correct argument types in name sort tests
+* fix type definition of names parameter
+* optionally sort named extensions
+* flake8 fixes
+* Add travis-ci configuration file
+* add python 3.3 support tag
+* add python 3.3 setup to tox
+* link to docs from README
+
+0.8
+---
+
+* update settings for 0.8 release
+* Check the names of plugins before importing them
+* fix typo in docstring
+* Let AssertionErrors bubble up
+
+0.7.2
+-----
+
+* prep for release 0.7.2
+* fix logging support under python 2.6
+* Run tests under python 2.6
+
+0.7.1
+-----
+
+* Fix logging configuration
+
+0.7
+---
+
+* prepare release 0.7
+* Cache the entry points discovered within a namespace
+
+0.6
+---
+
+* Bump version to 0.6
+* Load extensions before checking enabled status
+* Fix line lengths for pep8
+
+0.5
+---
+
+* Prepare for 0.5 release
+* Add TestExtensionManager
+
+0.4
+---
+
+* Add driver property to DriverManager
+* Prepare release 0.4
+* Remove the name argument to extension constructors
+* fix inheritence hierarchy of DriverManager
+* Set up logging in enabled module
+* Log the full exception when plugin load fails
+* Optimize implementation of NameDispatchExtensionManager
+* Add response callback to _invoke_one_plugin()
+* Refactor code for invoking plugins from map()
+* clean up formatting
+
+0.3
+---
+
+* make DriverManager callable
+* add download link
+* clean up announcement text
+* add installation instructions
+* update history for 0.3 release
+* add dispatch managers
+* documentation touch-up
+
+0.2
+---
+
+* release 0.2 with docs
+* finish first draft of documentation
+* add API documentation
+* rename loading; add enabling patterns
+* add diagrams to illustrate the loading patterns
+* Add descriptions of loading patterns
+* add script for running sphinx as I edit
+* add history file
+
+0.1
+---
+
+* get the version from setup.py and always use today's date
+* doc files created by sphinx-quickstart
+* logging tweak
+* add DriverManager
+* add hook manager
+* break up monolithic module
+* add EnabledExtensionManager and NamedExtensionManager
+* add docstring gs
+* make ExtensionManager iterable
+* error when no extensions to map()
+* add map method
+* basic ExtensionManager implementation
+* add license
+* set up tox and fix packaging
+* create setup.py
+* Initial commit

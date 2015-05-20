@@ -1,0 +1,1042 @@
+2013-02-07  Werner LEMBERG  <wl@gnu.org>
+
+Version 1.22.2 released
+=======================
+
+	* NEWS, REVISION, doc/groff.texinfo, doc/webpage.ms: Updated.
+
+	* configure: Regenerated.
+
+	* doc/texinfo.tex: Updated from `texinfo' repository.
+
+	* src/roff/groff/groff.cpp (main) <'v'>: Update copyright year.
+
+2013-02-07  Werner LEMBERG  <wl@gnu.org>
+
+	* src/libs/gnulib/*: Update `gnulib' files.
+
+2013-02-02  Gilles Espinasse  <g.esp@free.fr>
+
+	[grohtml] Don't ignore return value of `dup'.
+
+	* src/preproc/html/pushback.cpp (pushBackBuffer::pushBackBuffer,
+	pushBackBuffer::~pushBackBuffer): Abort if `dup' fails.
+
+2013-01-30  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* tmac/groff_man.man: Fix wrong connection for tbl(1).
+
+2013-01-29  Werner LEMBERG  <wl@gnu.org>
+
+	* doc/groff.texinfo: Fix documentation of .LP macro in ms.
+	Problem reported by Omari Norman <omari@smileystation.com>.
+
+2013-01-29  Werner LEMBERG  <wl@gnu.org>
+
+	* doc/Makefile.sub (uninstall_sub): Handle `gnu.eps'.
+
+2013-01-29  Werner LEMBERG  <wl@gnu.org>
+
+	Building clean-ups.
+
+	* Makefile.in: Use $(top_srcdir) where appropriate.
+	* Makefile.sub (M4MACROS): Add `fcntl-o.m4' and `localcharset.m4'.
+
+	* font/devpdf/Makefile.sub (UTILFILES): Removed, unused.
+	(MOSTLYCLEANADD): Add `BuildFoundries'.
+	* src/devices/gropdf/Makefile.sub (MOSTLYCLEANADD): Add `pdfmom'.
+
+2013-01-24  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* Add a shell command to 'MANIFEST' that displays all man source
+	files and their section.
+
+2013-01-22  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* Add email address in all files having the name.
+
+2013-01-14  Deri James  <deri@chuzzlewit.myzen.co.uk>
+
+	* src/devices/gropdf/gropdf.pl (do_x, do_p, do_s, Set_LWidth): The
+	grops driver defaults to round linecaps and linejoins, gropdf
+	incorrectly used butt caps and miter joins.
+
+	(Since the MOM package expects to use butt caps and miter joins
+	(emitting the necessary postscript code to change the caps and
+	joins), gropdf now parses the same postscript commands.)
+
+	* src/devices/gropdf/gropdf.man: Document the handling of linecaps
+	and linejoins.
+	  
+	* tmac/pdf.tmac (pdfbookmark): Fix bug where the current
+	PDFOUTLINE.FOLDLEVEL may not be honoured if warnings of the type
+
+	  macro warning: adjusted level n bookmark; should be <= n
+
+	Added copyright and mention debt owed to Keith Marshall for original
+	`pdfmark.tmac', upon which `pdf.tmac' is largely based.
+
+	* font/devpdf/Foundry.in, font/devpdf/util/BuildFoundries.pl
+	(LocateFile): The font for EURO had the wrong entry in the
+	`download' file (it pointed to The font in the build directory,
+	which is wrong).  It has always been permissable to include a path
+	along with the font name in the Foundry file, but until now the font
+	had to exist to be valid.  It is now permitted to start the path
+	with an asterisk which tells BuildFoundry to use the path/filename
+	in the download file without checking if the font exists.  This
+	allows the font to be found in `../devps' even though it is not
+	there during the build (if source and build are different), but will
+	be there after the install.
+
+2013-01-13  Werner LEMBERG  <wl@gnu.org>
+
+	[eqn] Fix display of matrices in nroff output.
+
+	Problem reported by Andy Spencer <andy753421@gmail.com>.
+
+	* src/preproc/eqn/pile.cpp (pile_box::compute_metrics,
+	matrix_box::compute_metrics): Fix rounding.
+
+2013-01-07  Deri James  <deri@chuzzlewit.myzen.co.uk>
+
+	* tmac/europs.tmac: Protect against missing fonts.
+
+2013-01-07  Deri James  <deri@chuzzlewit.myzen.co.uk>
+
+	* font/devpdf/util/BuildFoundries.pl (LoadFoundry): Improve warning.
+
+2013-01-07  Werner LEMBERG  <wl@gnu.org>
+
+	[tbl] Allow characters #, `, and ' as eqn delimiters.
+
+	While problems ` and ' have been unintentionally introduced rather
+	recently, the limitation regarding # was there from the beginning. 
+
+	At the same time, fix a small bug causing `.lf' requests not
+	starting a line.
+
+	* src/preproc/tbl/table.cpp (table::init_output,
+	table::compute_expand_width, table::compute_separation_factor,
+	table::define_bottom_macro, table::do_bottom): Temporarily switch
+	off eqn delimiters, wrapping the code into a `.ig' block.  This uses
+	the new functionality just added to eqn.
+
+	* src/preproc/eqn/eqn.man, src/preproc/tbl/tbl.man: Updated.
+
+2013-01-06  Werner LEMBERG  <wl@gnu.org>
+
+	[eqn] Add `delim on'.
+
+	* src/preproc/eqn/lex.cpp (start_delim_saved, end_delim_saved): New
+	global variables.
+	(do_delim): Handle `delim on' to restore previous start and end
+	delimiters.
+
+	* src/preproc/eqn/eqn.man, NEWS: Document it.
+
+2013-01-02  Deri James  <deri@chuzzlewit.myzen.co.uk>
+
+	[gropdf] Various minor fixes.
+
+	* src/devices/gropdf/gropdf (do_x) <'X'> <'pdfpic'>: Using
+
+	  \X'pdf: pdfpic'
+
+	with a zero width now works correctly.
+
+	(LoadPDF): Scale width in proportion to given height.
+
+	(do_s): In some circumstances a font size change is emitted before
+	current font is established.  Fix handles this situation.
+
+2012-12-30  Werner LEMBERG  <wl@gnu.org>
+
+Version 1.22.1 released
+=======================
+
+	Due to CVE-2012-3386, ftp.gnu.org rejected uploading of version 1.22
+	-- in other words, 1.22 has never been released.
+
+	* NEWS, REVISION, doc/groff.texinfo, doc/webpage.ms: Updated.
+
+	* Makefile.in (NOMAKEDIRS): Updated.
+
+2012-12-30  Werner LEMBERG  <wl@gnu.org>
+
+	* src/libs/gnulib/*: Update `gnulib' files.
+
+	Because we currently don't support `gnulib-tool' directly but add
+	everything to the CVS repository, and many internal details of the
+	gnulib setup has changed, it is necessary to do redo the import.
+
+	. Temporarily rename `src/libs/gnulib' to `src/libs/gnulib.old'.
+
+	. Call
+
+	    gnulib-tool --create-testdir \
+	                --dir=src/libs/gnulib \
+	                wcwidth
+
+	. Manually move directories `src/libs/gnulib/gl{lib,m4}' to
+	  `src/libs/gnulib/{lib,m4}', and do `s/gllib/lib/' and `s/glm4/m4/'
+	  in all files to `convert' the gnulib testbed to a standard gnulib
+	  configuration as maintained by gnulib-tool.  Additionally, remove
+	  the directory `src/libs/gnulib/gltests' and the references to
+	  `gltests' in all files.
+
+	  (All of this could be done with a script, but I hope that this is
+	  eventually replaced with migrating groff as a whole to gnulib and
+	  its setup).
+
+	. Call
+
+	    gnulib-tool --add-import \
+	                --dir=src/libs/gnulib \
+	                wcwidth
+
+	  to update everything.
+
+	. Merge the changed, new, and deleted files into `gnulib.old',
+	  delete `gnulib', rename `gnulib.old' to `gnulib', then commit.
+
+2012-12-28  Werner LEMBERG  <wl@gnu.org>
+
+	[doc] More documentation generation rules.
+
+	* doc/Makefile.in (.texinfo.txt): New rule.
+	(.texinfo.html): Use `LANG='.
+	(split-html): New target.
+
+2012-12-28  Werner LEMBERG  <wl@gnu.org>
+
+	* doc/fixinfo.sh: Make it work with makinfo 4.13 also.
+
+2012-12-28  Werner LEMBERG  <wl@gnu.org>
+
+	Split ChangeLog.
+
+	* ChangeLog: Split off older entries into...
+	* ChangeLog.121: this new file.
+
+2012-12-28  Werner LEMBERG  <wl@gnu.org>
+
+Version 1.22 released
+=====================
+
+	* NEWS, VERSION, doc/groff.texinfo, doc/webpage.ms: Updated.
+
+	* config.guess, config.sub: Updated from `config' repository.
+
+	* INSTALL.gen: Updated from `gnulib' repository (file `INSTALL').
+
+	* aclocal.m4, configure: Regenerated.
+
+	* doc/texinfo.tex: Updated from `texinfo' repository.
+
+	* src/roff/groff/groff.cpp (main) <'v'>: Update copyright year.
+
+2012-12-27  Bjarni Ingi Gislason  <bjarniig@rhi.hi.is>
+
+	* man/groff_font.man: Typographical improvements and typos.
+
+2012-12-27  Bjarni Ingi Gislason  <bjarniig@rhi.hi.is>
+
+	* man/ditroff.man: Typographical improvements and typos.
+
+2012-12-18  Bjarni Ingi Gislason  <bjarniig@rhi.hi.is>
+
+	* man/groff_diff.man: Typographical improvements and typos.
+
+2012-12-16  Bjarni Ingi Gislason  <bjarniig@rhi.hi.is>
+
+	* man/groff.man: Typographical improvements (and one typo).
+	* man/groff_char.man: Typographical improvements.
+
+2012-10-17  Deri James  <deri@chuzzlewit.myzen.co.uk>
+
+	* src/devices/gropdf/gropdf.pl (do_D): The command \D't N' moves
+	horizontal position by 'N'.  gropdf now obeys this rule.
+	(do_t): Fixed kerning issue where width of non-kerned text could be
+	wrongly calculated using previous kern factor.
+
+2012-09-21  Werner LEMBERG  <wl@gnu.org>
+
+	* doc/groff.texinfo: Improve documentation of `.ad'.
+
+2012-09-20  Werner LEMBERG  <wl@gnu.org>
+
+	* doc/Makefile.sub (uninstall_sub): Fix removal of info files.
+
+2012-09-20  Werner LEMBERG  <wl@gnu.org>
+
+	Simplify environment handling.
+
+	Suggested by Ivan Shmakov <oneingray@gmail.com>.
+
+	* doc/Makefile.in, doc/Makefile.sub (GROFF): Don't use export.
+
+2012-09-20  Deri James  <deri@chuzzlewit.myzen.co.uk>
+
+	[gropdf] Various minor fixes.
+
+	* font/devpdf/Foundry.in: Add font path to debian `gsfonts' package.
+
+	* font/devpdf/util/BuildFoundries.pl: Handle missing fonts in a more
+	sane way, do NOT abort the complete make run!
+
+	* src/devices/gropdf/gropdf: Accept papersize names (i.e. A4) as
+	either upper or lower case.
+	The -p (papersize) option should be length,width (currently reversed
+	- width,length)
+
+	* src/devices/gropdf/pdfmom.pl: Support use of GROFF_BIN_PATH.
+
+2012-09-11  Ralph Corderoy <ralph@inputplus.co.uk>
+	    Werner LEMBERG  <wl@gnu.org>
+
+	* src/preproc/tbl/tbl.man: Better document `d' column specifier.
+
+2012-08-31  Deri James  <deri@chuzzlewit.myzen.co.uk>
+
+	Add `pdfmom' to handle mom documents with gropdf.
+
+	* Makefile.in (OTHERDIRS): Move contrib/mom to be run after
+	devices/gropdf.
+
+	* src/devices/gropdf/gropdf.pl: Various fixes:
+
+	  . Correct image scaling issue.
+	  . Handle relative horizontal movement 'h' followed by absolute
+	    vertical movement 'V'.
+	  . Correct handling of track kerning.
+
+	* src/devices/gropdf/pdfmom.pl: New wrapper for mom (pdfmom)
+	using gropdf or grops driver.
+	* src/devices/gropdf/pdfmom.man: New man page.
+	* src/devices/gropdf/Makefile.sub: Updated to handle new files.
+
+2012-08-31  Deri James  <deri@chuzzlewit.myzen.co.uk>
+
+	* Makefile.in (OTHERDIRS): Move contrib/mom to be run after
+	devices/gropdf.
+
+	* src/devices/gropdf/gropdf.pl: Various fixes:
+
+	  . Correct image scaling issue.
+	  . Handle relative horizontal movement 'h' followed by absolute
+	    vertical movement 'V'.
+	  . Correct handling of track kerning.
+
+	* src/devices/gropdf/pdfmom.pl: New wrapper for mom (pdfmom)
+	using gropdf or grops driver.
+	* src/devices/gropdf/pdfmom.man: New man page.
+	* src/devices/gropdf/Makefile.sub: Updated to handle new files.
+
+2012-08-31  Julien Moutinho  <julm+groff@autogeree.net>
+
+	* tmac/www.tmac (www-push-li): Fix indentation.
+
+	See
+
+	  http://lists.gnu.org/archive/html/bug-groff/2012-08/msg00009.html
+
+	for the full report.
+
+2012-08-08  Eric S. Raymond  <esr@thyrsus.com>
+
+	TBLization, as discussed on the list.  There's a rewrite of
+	this file in panning, but this gets the content clean for now.
+
+	* tmac/groff_mdoc.man: In this file.
+
+2012-08-09  Werner LEMBERG  <wl@gnu.org>
+
+	Provide proper Unicode mapping from and to dotless j.
+
+	* src/libs/libgroff/glyphuni.cpp (glyph_to_unicode_list),
+	src/libs/libgroff/uniglyph.cpp (unicode_to_glyph_list): Add it.
+
+2012-08-08  Eric S. Raymond  <esr@thyrsus.com>
+
+	Added Unicode code point for dotless j.
+
+	* man/groff_char.man: In this file.
+
+2012-08-08  Werner LEMBERG  <wl@gnu.org>
+
+	* man/groff_char.man: Clean-ups.
+
+2012-08-08  Eric S. Raymond  <esr@thyrsus.com>
+
+	Elimination of nasty presentation-level macro tangles makes
+	structural translation to XML possible.
+
+	* man/groff_char.man: Clean up the mess, use real TBL tables.
+
+2012-07-23  Eric S. Raymond  <esr@thyrsus.com>
+
+	More elimination of low-level troff hackery in the documentation
+	so it can be lifted to structural markup.
+
+	* tmac/groff_me.man: Use TBL rather than wacky diversions and .ti
+	requests.
+
+2012-07-24  Werner LEMBERG  <wl@gnu.org>
+
+	Fix appearance of groff.texinfo's HTML output.
+
+	Cartouches within an `example' environment don't work.
+
+	* doc/groff.texinfo (CartoucheExample, endCartoucheExample): New
+	macros.  Use them where appropriate.
+
+2012-07-17  Ingo Schwarze  <schwarze@usta.de>
+
+	[mdoc] Make `Fl' correctly restore fonts.
+
+	* tmac/doc.tmac (doc-flag-recursion): Do it.
+
+2012-07-07  Eric S. Raymond  <esr@thyrsus.com>
+
+	* src/preproc/eqn/eqn.man, src/preproc/grn/grnn.man,
+	src/devices/grodvi/grodvi.man, src/devices/grolj4/grolj4.man,
+	src/devices/grops/grops.man, src/utils/lkbib/lkbib.man,
+	src/utils/indxbib/indxbib.man, src/utils/tfmtodit/tfmtodit.man,
+	src/utils/xtotroff/xtotroff.man:
+	Remove running text in the synopses of various manual pages,
+	as it badly screws up attempts to mechanically parse them.
+
+	* contrib/mom/groff_mom.man: Use .URL rather than .UR/.UE, as this is
+	now preferred for manual pages.
+
+2012-07-03  Werner LEMBERG  <wl@gnu.org>
+
+	Fix Unicode mapping of Greek stroked and curly phi.
+
+	Problem reported by Alkis Georgopoulos <alkisg@gmail.com>;
+	see
+
+	  https://bugs.launchpad.net/ubuntu/+source/groff/+bug/1008115
+
+	* src/libs/libgroff/uniglyph.cpp (unicode_to_glyph_list): Flip
+	values of U+03C6 and U+03D5.
+
+2012-06-13  Deri James  <deri@chuzzlewit.demon.co.uk>
+
+	* src/devices/gropdf/gropdf.pl: When using variable page
+	sizes (with \X'papersize ...') ensure final page is correct
+	size.
+
+2012-05-24  Werner LEMBERG  <wl@gnu.org>
+
+	* src/roff/grog/grog.pl (process): Fix .so handling.
+
+	This does the same as the previous commit.
+
+2012-05-24  Denis M. Wilson  <dmw@oxytropis.plus.com>
+
+	* src/roff/grog/grog.sh: Fix .so handling.
+
+	See
+
+	  http://lists.gnu.org/archive/html/bug-groff/2012-05/msg00000.html
+
+	for the report and the bug fix.
+
+2012-05-24  Ivan Shmakov  <oneingray@gmail.com>
+
+	Add some generic fallback characters.
+
+	* tmac/fallbacks.tmac: New file.
+	* tmac/troffrc: Include it.
+	* tmac/Makefile.sub (NORMALFILES): Include it.
+
+2012-05-20  Deri James  <deri@chuzzlewit.demon.co.uk>
+
+	* doc/groff.texinfo: Add extra info about `.asciify'.
+	Document new gropdf options -u and -s.
+
+	* src/devices/gropdf/gropdf.man: Remove references to Type 42 fonts,
+	they do not work in PDFs.
+	Document new option -s which adds `statistics' line to end of PDF
+	file showing number of pages in document.  This has always been the
+	default behaviour (to add this line), all other software seems to
+	ignore it as intended, but `gs' sometimes complains, so the default
+	is now to omit the statistics.
+	Document new option -u[cmapfilename] to allow a user ToUnicode CMap
+	instead of gropdf's default.  If no `cmapfilename' given then do not
+	include any ToUnicode CMap.
+
+	* src/devices/gropdf/gropdf.pl <top>: Allow `bundled' flags on
+	command line (i.e. -de = -d -e).
+	Use $RT_SEP as multi path separator, not hard coded `:'.  Update all
+	users.
+	New flags -u and -s.
+	Once a custom papersize has been set as \X'papersize x,y' make it
+	sticky so all following pages use custom size.
+	When importing pdf with \X'pdf: pdfpic ...' do not compress objects
+	which are already compressed!  This caused problems with PDFs
+	created with ImageMagick, now fixed.
+	(IsText, PutLine, do_t): The troff `u' command can contain a kerning
+	adjustment number, this was not being handled, now fixed.
+	(do_c): The troff `c' command was not being handled correctly, now
+	fixed.
+	(FindChar, RemapChr, do_N): Handle fonts with more than 255 glyphs.
+	($ucmap): Define CMap ToUnicode to convert ligatures
+	(fl,fi,ff,ffl,ffi) back to individual characters, useful for
+	cut'n'paste and text searching.
+	(LoadFont): Handle it.
+	(ToPoints, GetPoints): Handle `z' unit.
+	(do_x, FixPDFColour, PutHotSpot): Allow Annotation colour to be
+	groff colour, i.e. 0-65535 *3, or #rrggbb, or #rrrrbbbbgggg.
+	(do_p):The papersize width/length in switch -p were reversed,
+	corrected.
+
+	* src/devices/gropdf/Makefile.sub (gropdf): Use $RT_SEP.
+	Use $fontpath rather than $fontdir (this ensures site-font is
+	included in searches).
+
+	* tmac/pdf.tmac (PDFBOOKMARK.VIEW, PDFHREF.VIEW, PDFPAGE.Y): Fix
+	strings.
+	(pdfbookmark): Correct handling of bookmark levels.
+	Convert \[em] to hyphen in bookmarks
+	Rather use -N than -T for "named" bookmarks (-T already used for "tag"
+	in pdfmark.tmac)
+	(.pdfclean): New macro which attempts to asciify bookmark text.
+	(.pdfpagename): New wrapper macro for \X'pdf: pagename'.
+	(.pdfswitchtopage): New wrapper macro for \X'pdf: switchtopage'.
+
+2012-03-10  Werner LEMBERG  <wl@gnu.org>
+
+	Fix compiler warnings.
+
+	* src/preproc/html/pre-html.cpp (alterDeviceTo): Avoid ambiguous
+	if-else clause.
+
+	* src/preproc/grn/main.cpp (sccsid): Comment out.
+
+	* src/roff/troff/number.cpp (parse_expr) <case '*'>: Add cast.
+
+	* src/devices/xditview/Makefile.sub (EXTRA_CFLAGS): Add `-Dlint' so
+	that unused static ID arrays don't cause a warning.
+
+	(Some) problems reported by Bjarni Ingi Gislason
+	<bjarniig@rhi.hi.is>.
+
+2012-03-05  Werner LEMBERG  <wl@gnu.org>
+
+	* tmac/an-ext.tmac (SY): Handle argument with spaces correctly.
+
+	Problem reported by Bjarni Ingi Gislason <bjarniig@rhi.hi.is>.
+
+2012-03-01  Bjarni Ingi Gislason  <bjarniig@rhi.hi.is>
+
+	[an-old] Fix warnings.
+
+	* tmac/an-old.tmac (an-init): Insert missing braces.
+
+2012-02-26  Werner LEMBERG  <wl@gnu.org>
+
+	Update configuration files from `gnulib' and `config' repositories.
+
+	This also fixes a problem with `iconv' on Solaris 10, as reported in
+
+	  http://lists.gnu.org/archive/html/bug-groff/2012-02/msg00007.html
+
+	* configure.ac: Call `gl_LOCALCHARSET.
+	Call `AM_ICONV' as C++.
+
+	* config.guess, config.rpath, config.sub, install-sh, mkinstalldirs:
+	Updated.
+
+	* m4/codeset.m4, m4/glib21.m4, m4/iconv.m4, m4/lib-ld.m4,
+	m4/lib-link.m4, m4/lib-prefix.m4: Updated.
+	* m4/fcntl-o.m4, m4/localcharset.m4: New files.
+
+	* Makefile.in: Updated.
+
+	* src/include/localcharset.h, src/libs/libgroff/config.charset,
+	src/libs/libgroff/localcharset.c: Updated.
+
+	* aclocal.m4, configure, src/include/config.hin: Regenerated.
+
+2012-02-20  Werner LEMBERG  <wl@gnu.org>
+
+	Update `gnulib' files.
+
+	The invocation was
+
+	  gnulib-tool --add-import \
+	              --dir=src/libs/gnulib \
+	              wcwidth
+
+	Additionally, src/libs/gnulib/configure.ac was adjusted from a
+	`test' run as described in the change from 2010-12-13.
+
+	* src/libs/gnulib/*: Updated.
+
+2012-02-15  Deri James  <deri@chuzzlewit.demon.co.uk>
+
+	[gropdf] Fixes and omissions.
+
+	* src/devices/gropdf/gropdf.pl (<top>, do_u): Add facility to handle
+	track kerning (.tkf).
+	(do_x, do_p, do_t): If pages are reordered using `pagename' and
+	`switchtopage' keep track of outline bookmarks.
+	(do_x): Handle multiple files on gropdf command line, stitch
+	multiple groff_out files together.  In the main read loop any argc
+	values not consumed by options are taken as input files and
+	processed in order.  What prevented it working properly before is
+	the way an `x i' (initialize) record has been handled.  It now
+	processes the initialization code only in the first file.
+	(PutHotSpot): Allow user to control size of hotspot bounding box on
+	clickable links by setting PDFHREF.LEADING
+
+	* tmac/pdf.tmac (PDFHREF.LEADING): Adjust value.
+	(pdf*href): Pass value of PDFHREF.LEADING to gropdf.
+
+2012-02-10  Deri James  <deri@chuzzlewit.demon.co.uk>
+
+	[gropdf] Fix compatibility issues with pdfmark.
+
+	* tmac/pdf.tmac (PDFHREF.VIEW.LEADING): Fix value.
+	(pdf:href.opt-X): Add check for -X option for .pdfhref.
+
+2012-02-08  Werner LEMBERG  <wl@gnu.org>
+
+	* src/preproc/pic/main.cpp (do_file): Check for invalid characters.
+
+	Problem reported by Doug McIlroy <doug@cs.dartmouth.edu>.
+
+2012-01-25  Ingo Schwarze  <schwarze@usta.de>
+
+	[mdoc] * tmac/doc-syms: Fix meaning of XBD acronym.
+
+2012-01-25  Tadziu Hoffmann  <hoffmann@usm.uni-muenchen.de>
+
+	* tmac/e.tmac (bl): Make it work inside blocks.
+
+	See threads starting with
+
+	  http://lists.gnu.org/archive/html/groff/2011-12/msg00055.html
+	  http://lists.gnu.org/archive/html/groff/2012-01/msg00000.html
+
+2012-01-10  Bruno Haible  <bruno@clisp.org>
+
+	Fix handling of MAKEFLAGS variable.
+
+	* Makefile.in (MAKE_K_FLAGS): Improved definition,
+	as explained and discussed in
+
+	  http://lists.gnu.org/archive/html/groff/2012-01/msg00039.html
+
+2012-01-03  Ingo Schwarze  <schwarze@usta.de>
+
+	Improve parallel builds.
+
+	Some hdtbl and mom examples want PostScript formatting which
+	requires the `DESC' file to be ready; however, the top-level
+	`Makefile.in' doesn't currently enforce the proper order of building
+	of `font/dev' before `contrib/hdtbl', `contrib/mom', and so on.
+
+	Given that `font/dev' and the contrib examples are in different
+	child processes of the recursive make system, it doesn't seem
+	possible to solve this using clean Makefile dependencies.  We now
+	enforce the order by splitting the shell command invoking recursive
+	make in the top level `Makefile.in'.
+
+	* Makefile.in (ALLDIRS): Remove `OTHERDIRS'.
+	(dodirs): Updated.
+	(`$(TARGETS)'): Handle `OTHERDIRS' separately.
+
+2012-01-03  Kristaps Dzonsons  <kristaps@bsd.lv>
+
+	[mdoc] Add `-isoC-2011'.
+
+	* tmac/doc-syms (doc-str-St--isoC-2011): Add it.
+	* tmac/groff_mdoc.man: Document it.
+
+2011-12-26  Deri James  <deri@chuzzlewit.demon.co.uk>
+
+	* font/devpdf/Makefile.sub: Only build fonts on first `make'.
+
+2011-12-08  Werner LEMBERG  <wl@gnu.org>
+
+	* doc/groff.texinfo (.tl): Improve documentation.
+	Wording suggested by Keith Marshall
+	<keithmarshall@users.sourceforge.net>.
+
+2011-12-01  Werner LEMBERG  <wl@gnu.org>
+
+	[me] Fix behaviour of centered block.
+	Problem and possible fix reported in thread starting at
+
+	  http://lists.gnu.org/archive/html/groff/2011-11/msg00002.html
+
+	* tmac/e.tmac (`(c'): Always start with a new line.
+
+2011-12-01  Ingo Schwarze  <schwarze@usta.de>
+
+	[man] Print volume headers like mdoc.
+
+	* tmac/an-old.tmac (an-init): Add default volume name if fifth
+	argument to `.TH' is missing.
+
+2011-11-22  Werner LEMBERG  <wl@gnu.org>
+
+	* tmac/groff_man.man: Minor documentation improvements.
+	Suggested by Jeff Conrad <jeff_conrad@msn.com>.
+
+2011-11-14  Werner LEMBERG  <wl@gnu.org>
+
+	* doc/groff.texinfo: Improve doc for calling undefined identifiers.
+
+2011-11-14  Werner LEMBERG  <wl@gnu.org>
+
+	* src/preproc/tbl/tbl.man: Improve documentation of `_' and friends.
+
+2011-10-31  Werner LEMBERG  <wl@gnu.org>
+
+	Fix compiler warnings.
+
+	* src/preproc/eqn/main.cpp (do_file), src/roff/troff/env.cpp
+	(environment::print_env), src/roff/troff/mtsm.cpp
+	(statem::display_state): Add syntactical sugar.
+
+	* src/utils/tfmtodit/tfmtodit.cpp (char_info_word): Use `unsigned
+	char' for all members.
+
+	* src/devices/grohtml/html-text.cpp (html_text::remove_def): Remove
+	unused variable `q'.
+	* src/devices/grohtml/post-html.cpp
+	(html_printer::lookahead_for_tables): Remove unused variable `left'
+	and `seen_text'.
+
+2011-10-23  Ingo Schwarze  <schwarze@openbsd.org>
+
+	[mdoc] Synchronize string tables with the mandoc(1) utility.
+
+	* tmac/doc-common: Add many architecture names used in NetBSD and
+	OpenBSD (and "arm" from FreeBSD) and remove the duplicate OS version
+	entry for Darwin-10.6.0.
+
+	* tmac/doc-syms: Add many library names used in NetBSD and FreeBSD.
+
+	* tmac/groff_mdoc.man: Document all supported architecture names, OS
+	versions, and library names.
+
+2011-09-11  Joseph Koshy  <jkoshy@users.sourceforge.net>
+
+	[mdoc] Add some library strings.
+
+	* tmac/doc-syms: Add `libdwarf' and `libelf'.
+	* tmac/groff_mdoc.man: Document them.
+
+2011-08-14  Deri James  <deri@chuzzlewit.demon.co.uk>
+
+	[gropdf] More minor fixes.
+
+	* font/devpdf/Makefile.sub (MOSTLYCLEANADD): Don't attempt to
+	install 'util/BuildFoundries', only used in 'make'.
+
+	* src/devices/gropdf/gropdf.pl (<top>, GetType1): Make STDOUT and
+	any font files read to be accessed in binary rather than text mode.
+	Prevents errors when running on systems set up for UTF-8.
+
+2011-08-10  Deri James  <deri@chuzzlewit.demon.co.uk>
+
+	[gropdf] Minor updates and fixes.
+
+	* src/devices/gropdf/gropdf.pl: Change command line option `-fy' to
+	`-y' for consistency.
+	Better support for Windows platform.
+	(do_x): Handle keywords `pagename' and `switchtopage'.
+
+	* doc/groff.texinfo, src/devices/gropdf/gropdf.man: Updated.
+
+	* font/devpdf/Foundry: Renamed to...
+	* font/devpdf/Foundry.in: This.
+	Add default alias font names.
+
+	* font/devpdf/util/BuildFoundries.pl: This is now an installation
+	helper script and gets not longer installed.
+	Support alternative font file names (separated with `!').
+
+	* font/devpdf/Makefile.sub: Fixes to work with a separate build
+	directory.
+	Font files are now build at `make' time; this makes `test-groff'
+	work with -Tpdf.
+
+	* font/devpdf/util/Makefile.sub: Removed.
+
+	* Makefile.in (DEVDIRS, OTHERDIRS, EXTRADIRS): Handle devpdf
+	specially.
+
+2011-07-29  Daiki Ueno  <ueno@unixuser.org>
+
+	Fix cross building.
+	Problem reported by Christophe Jarry <christophe.jarry@ouvaton.org>.
+
+	* Makefile.in ($GNULIBDIRS): Pass original config arguments to
+	src/libs/gnulib/configure.
+
+2011-06-25  Deri James  <deri@chuzzlewit.demon.co.uk>
+
+	Add new output device `gropdf'.
+
+	* font/devpdf/*: New device files for gropdf.
+	* src/devices/gropdf/*: New device.
+
+	* Makefile.comm (install_dev, uninstall_dev): Handle more
+	subdirectories.
+	* Makefile.in (DEVDIRS, OTHERDIRS, EXTRADIRS): Add directories
+	related to gropdf.
+	* MANIFEST: Updated.
+	* test-groff.in (GROFF_BIN_PATH): Updated.
+
+	* tmac/Makefile.sub (NORMALFILES): Updated.
+	* tmac/pdf.tmac: New file.
+	* tmac/troffrc: Updated.
+
+	* doc/groff.texinfo: Document it.
+	* doc/Makefile.in, doc/Makefile.sub (groff_bin_dirs): Udpated.
+	* doc/pic.ms: Updated.
+
+	* man/groff_out.man, src/devices/grops/grops.man,
+	src/preproc/pic/pic.man, src/roff/groff/groff.man,
+	src/utils/afmtodit/afmtodit.man, src/utils/pfbtops/pfbtops.man:
+	Updated.
+
+	* contrib/pdfmark/pdfmark.ms: Updated.
+
+2011-07-20  George HELFFRICH  <ghfbsd@gmail.com>
+
+	Improve line numbering support in tbl and with me macros.
+
+	* tmac/e.tmac (n1, n2, TH, PS): Implement it.
+	(@h, @n, @o, @t, @k, )b, (c, (q, )q, (l, )l, (f, @q, PE): Updated.
+	* doc/meref.me: Document changes.
+
+	* src/preproc/tbl/table.cpp (ROW_START_LINE_REG, ROW_SAVE_LINE_REG,
+	ROW_MAX_LINE_REG, REPEATED_NM_SET_MACRO, REPEATED_NM_SUS_MACRO): New
+	macros.
+	(table::init_output): Define REPEATED_NM_SET_MACRO and
+	REPEATED_NM_SUS_MACRO.
+	(table::print_single_hline, table::print_double_hline,
+	table::define_bottom_macro, table::do_row, table::do_top,
+	table::do_bottom): Updated.
+
+	* doc/webpage.ms: Updated.
+
+2011-07-12  Ted Harding  <ted.harding@wlandres.net>
+	    Werner LEMBERG  <wl@gnu.org>
+
+	* src/preproc/tbl/tbl.man: Mention trick to get abutting rules.
+
+2011-07-03  Ben Laurie  <benl@FreeBSD.org>
+
+	Fix clang warnings.
+
+	* src/libs/libdriver/input.cpp (odd): Use parentheses.
+
+	* src/roff/troff/mtsm.cpp (state_set::is_in): Fix parentheses;
+	previous code always tested for bit 0.
+
+2011-07-03  Guillem Jover  <guillem@debian.org>
+
+	mdoc: Update more OS versions strings.
+
+	* tmac/doc-common: Add versions strings for NetBSD, OpenBSD,
+	FreeBSD, and DragonFly.
+
+2011-04-08  Michail Vidiassov  <master@iaas.msu.ru>
+
+	mdoc: Update various strings related to Mac OS X and FreeBSD.
+
+	* tmac/doc-common: Add strings for FreeBSD 8.2 and Darwin 9.7-11.0.
+	* tmac/doc-syms: Add strings -lbsm and -lSystem.
+
+2011-03-29  Christian Weisgerber  <naddy@mips.inka.de>
+
+	Fix compilation issues with gcc 2.95.
+
+	* src/roff/troff/input.cpp (my_input_iterator): Define as an alias
+	for `input_iterator' which is predefined by an old libstdc++.
+
+2011-03-29  Ingo Schwarze  <schwarze@usta.de>
+
+	Add another POSIX standard.
+
+	* tmac/doc-syms: Add POSIX 1003.1b.
+
+2011-03-29  Christian Weisgerber  <naddy@mips.inka.de>
+
+	Fix build with non-GNU make.
+
+	* Makefile.in ($TARGETS): We must not pass `$MDEFINES' recursively
+	down to the sub-makes started in src/libs/gnulib, because that
+	directory has its own values for `$top_srcdir' etc., and overriding
+	those from the command line will cause the build to fail.
+	Currently, `$MAKEOVERRIDES' will prevent the recursive passing of
+	those overrides with GNU make, but not with other make(1)
+	implementations.  It looks like all targets that require `$MDEFINES'
+	set them explicitly anyway, so we shouldn't need to set `$MDEFINES'
+	on the top level.
+
+2011-03-21  Jan Vcelak <jvcelak@redhat.com>
+	    Bernd Warken <groff-bernd.warken-72@web.de>
+
+	[groffer] Remove hardcoded path to 'libdir/groff/groffer' directory.
+
+	* configure.ac: add GROFFERDIR variables.
+
+	* Makefile.in: add and handle variable groffer_dir
+
+	* m4/groff.m4: set up the --with-grofferdir command line option.
+
+2011-03-18  Werner LEMBERG  <wl@gnu.org>
+
+	[troff] Improve error message.
+
+	* src/roff/troff/input.cc (token::delimiter): Improve error message.
+	Suggested by Doug McIlroy <doug@cs.dartmouth.edu>.
+
+2011-03-04  Werner LEMBERG  <wl@gnu.org>
+
+	[mdoc] Within .An, .Aq, .Ao, and .Ac now use `<' and `>'.
+	Problem reported by Ulrich Spörlein <uqs@spoerlein.net>
+
+	* tmac/doc.tmac (Aq, Ao, Ac): Implement it to follow RFC 822 and RFC
+	2822.
+
+2011-02-14  Werner LEMBERG  <wl@gnu.org>
+
+	* doc/groff.texinfo: Add another example for .em request
+	Based on a patch from Anton Shepelev <anton.txt@gmail.com>.
+
+2011-01-31  Werner LEMBERG  <wl@gnu.org>
+
+	More fixes for Savannah bug #32301.
+
+	* src/devices/grops/Makefile.sub (XLIBS),
+	src/devices/grodvi/Makefile.sub, src/devices/grolj4/Makefile.sub,
+	src/devices/grohtml/Makefile.sub, src/devices/grolbp/Makefile.sub:
+	Add $(LIBGNU).
+
+2011-01-31  Werner LEMBERG  <wl@gnu.org>
+
+	Fix Savannah bug #32301.
+
+	* src/roff/groff/Makefile.sub (XLIBS), src/preproc/grn/Makefile.sub,
+	src/preproc/html/Makefile.sub: Add $(LIBGNU).
+
+2011-01-29  Krzysztof Żelechowski  <giecrilj@stegny.2a.pl>
+
+	* doc/groff.texinfo: Complete documentation on output devices.
+
+2011-01-28  Werner LEMBERG  <wl@gnu.org>
+
+	Handle `refer*.tmac'.
+
+	* tmac/Makefile.sub (NORMALFILES): Add `refer*.tmac'.
+	* tmac/refer-mm.tmac: Moved to contrib/mm.
+
+2011-01-28  Werner LEMBERG  <wl@gnu.org>
+
+	Improve `refer' support of -me.
+
+	* tmac/refer.tmac, tmac/refer-me.tmac, tmac/refer-ms.tmac,
+	tmac/refer-mm.tmac: New files.  The code in refer.tmac is
+	based on the old code from `s.tmac'.
+
+	* tmac/s.tmac: Remove direct refer support and include
+	`refer-ms.tmac' instead.
+	* tmac/e.tmac: Remove direct refer support and include
+	`refer-me.tmac' instead.
+
+	* NEWS: Updated.
+
+2011-01-22  Werner LEMBERG  <wl@gnu.org>
+
+	[groff.texinfo]: Updates.
+
+	* doc/groff.texinfo: Document groff's `-j' option.
+	Add dummy section for `chem' preprocessor.
+
+2011-01-22  Werner LEMBERG  <wl@gnu.org>
+
+	Update `grog'.
+
+	* src/roff/grog/{groff.sh,groff.pl}: `groff' now calls `pic'
+	automatically if `grap' or `chem' is used.
+	`chem' has been folded into `groff'.
+	* src/roff/grog/grog.man: Updated.
+
+2011-01-22  Werner LEMBERG  <wl@gnu.org>
+
+	Make `groff -G' imply `-p'.
+
+	* src/roff/groff/groff.cpp (main): Implement it.
+	* src/roff/groff/groff.man: Updated.
+
+2011-01-22  Werner LEMBERG  <wl@gnu.org>
+
+	Integrate `chem' into `groff' (new option -j).
+
+	* src/roff/groff/groff.cpp (CHEM_INDEX): New constant.
+	(main) ['j']: Add `chem'.
+	(synopsis, help): Updated.
+	* src/roff/troff/pipeline.h (MAX_COMMANDS): Increase to 14.
+
+	* src/roff/groff/groff.man: Document new command line option.
+	* NEWS: Updated.
+
+2011-01-22  Werner LEMBERG  <wl@gnu.org>
+
+	* doc/groff.texinfo: `chem' is now part of groff.
+
+2011-01-22  Werner LEMBERG  <wl@gnu.org>
+
+	* doc/groff.texinfo: Improve description of `.de'.
+
+	Based on suggestions by Ted Harding and Deri James.
+
+2011-01-20  Colin Watson  <cjwatson@debian.org>
+
+	Fix handling of wide characters in no-SGR mode.
+
+	* src/devices/grotty/tty.cpp (tty_printer::make_underline): Only
+	emit a single backspace in no-SGR mode.  less (at least) backspaces
+	over a character at a time.
+	(tty_printer::make_bold): Likewise.
+
+2011-01-19  Werner LEMBERG  <wl@gnu.org>
+
+	* src/preproc/pic/pic.man: Add pic manual to `SEE ALSO' section.
+
+2011-01-14  Werner LEMBERG  <wl@gnu.org>
+
+	Split ChangeLog.
+
+	* ChangeLog: Split off older entries into...
+	* ChangeLog.119, ChangeLog.120: these new files.
+
+2011-01-15  Colin Watson  <cjwatson@debian.org>
+
+	* Makefile.comm (INCLUDES): Fix typo.
+
+2011-01-05  Werner LEMBERG  <wl@gnu.org>
+
+	* doc/webpage.ms: Fix rendering of title image.
+
+Copyright 2011-2013
+  Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Local Variables:
+version-control: never
+coding: utf-8
+End:

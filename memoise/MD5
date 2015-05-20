@@ -1,0 +1,10 @@
+459044d0550e18e7fdbb06ab51a20f3a *DESCRIPTION
+42d91d5ce1f6db25d653397ec9da4f25 *LICENSE
+a191eefb459280216bf166898529f9d0 *NAMESPACE
+d4560c3d1ded2467aa3c5775277e1707 *NEWS
+65efb37c5ec0b0aef53eba56fdbbb49f *R/cache.r
+f34786b305803a7a108de7099327d332 *R/memoise.r
+5deda9a93204debb6e0317fdc2991231 *README.md
+6e6fd030fdc60ef6aff6dee953ed1ad2 *man/forget.Rd
+3081b56de525e4a4d1d7904e4a6e1e78 *man/is.memoised.Rd
+a2f65cec53b3f5fbeca4824ae2303ac8 *man/memoise.Rd

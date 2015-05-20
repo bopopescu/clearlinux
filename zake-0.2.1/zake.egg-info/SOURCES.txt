@@ -1,0 +1,16 @@
+README.rst
+setup.cfg
+setup.py
+zake/__init__.py
+zake/fake_client.py
+zake/fake_storage.py
+zake/test.py
+zake/utils.py
+zake/version.py
+zake.egg-info/PKG-INFO
+zake.egg-info/SOURCES.txt
+zake.egg-info/dependency_links.txt
+zake.egg-info/requires.txt
+zake.egg-info/top_level.txt
+zake/tests/__init__.py
+zake/tests/test_client.py

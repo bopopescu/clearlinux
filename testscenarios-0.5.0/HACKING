@@ -1,0 +1,39 @@
+Contributing to testscenarios
+=============================
+
+Code access
++++++++++++
+
+The main branch is `master` in `https://github.com/testing-cabal/testscenarios`
+
+Publish your branches wherever you like, I encourage github hosting though,
+as you can use a pull request there to get a web UI for code review.
+
+Copyright
++++++++++
+
+Testscenarios is Copyright (C) 2009,2015 Robert Collins. I'd like to be able to
+offer it up for stdlib inclusion once it has proved itself, so am asking for
+copyright assignment to me - or for your contributions to be under either the
+BSD and Apache-2.0 licences that Testscenarios are with (which permit inclusion
+in Python).
+
+Coding standards
+++++++++++++++++
+
+PEP-8 coding style please, though I'm not nitpicky. Make sure that 'make check'
+passes before sending in a patch.
+
+Code arrangement
+++++++++++++++++
+
+The ``testscenarios`` module should simply import classes and functions from
+more specific modules, rather than becoming large and bloated itself. For
+instance, TestWithScenarios lives in testscenarios.testcase, and is imported in
+the testscenarios __init__.py.
+
+Releases
+++++++++
+
+Commit a version to NEWS, tag with a signed tag, make release to build and push
+to pypi. push to github.

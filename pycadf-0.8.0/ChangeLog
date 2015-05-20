@@ -1,0 +1,212 @@
+CHANGES
+=======
+
+0.8.0
+-----
+
+* Add deprecation message to Audit API
+* Do not depend on endpoint id existing in the service catalog
+* Fix oslo.messaging link in docs
+* Use oslo_context
+* Use oslo namespaces
+* Updated from global requirements
+* Add a new CADF type for keystone trusts
+* add helper module
+
+0.7.1
+-----
+
+* Add new CADF taxonomy types
+* Pull out some CADF taxonomy to be constants
+* Updated from global requirements
+
+0.7.0
+-----
+
+* upgrade hacking to 0.10.0
+* Updated from global requirements
+* Updated from global requirements
+* Updated from global requirements
+* deprecate audit middleware
+* sync oslo
+* Updated from global requirements
+* Workflow documentation is now in infra-manual
+* Updated from global requirements
+* Updated from global requirements
+* Add classifiers for Python 3
+* Updated from global requirements
+* Add release notes
+* Updated from global requirements
+* Use correct name of oslo debugger script
+* Remove unused dependencies from pycadf
+* Use oslo tests fixture
+* Use oslo.serialization
+* Sync oslo libraries
+* Updated from global requirements
+* Remove dependencies from docs test env in tox.ini
+* Stop using intersphinx
+* Updated from global requirements
+* Updated from global requirements
+* Use oslo_debug_helper and remove our own version
+* Updated from global requirements
+* Updated from global requirements
+* Work toward Python 3.4 support and testing
+* Updated from global requirements
+
+0.6.0
+-----
+
+* add federated credential
+* define the project goal
+* Enable PEP8 checks E128, E251 and E265
+* clean up license headers
+* add CONTRIBUTING doc
+* revise readme with a project description
+* Updated from global requirements
+* Debug env for tox
+* Fix a grammatical error in contributing doc
+* Fix typo comments
+* Enabled hacking checks H305 and H307
+* Bump hacking to version 0.9.2
+* Remove docutils pin
+* Updated from global requirements
+* Expand © and remove unnecessary encoding lines
+* Bump hacking to 0.9.x series
+* add audit_maps for more OpenStack components
+* Updated from global requirements
+
+0.5.1
+-----
+
+* sync oslo
+* remove token from notifier middleware
+* Updated from global requirements
+* reorder documentation
+* import run_cross_tests.sh from incubator
+
+0.5
+---
+
+* Updated from global requirements
+* add OpenStack Foundation as author
+* pycadf documentation
+* Updated from global requirements
+* add docstrings to functions
+
+0.4.1
+-----
+
+* catch empty json body
+
+0.4
+---
+
+* add constant for security service
+* audit middleware in pycadf
+* oslo common code sync and requirements cleanup
+* Rollback change to that Install configs into /etc
+* Update .gitreview after repo rename
+* Install configs into /etc, not /usr/etc
+
+0.3.1
+-----
+
+* update audit_map
+* update build_typeURI to drop query string
+* sync common code and requirements
+* add path to event
+* mask token values
+* adjust typeURI to capture target better
+* Python 3: update setup.cfg to advertise python 3 compatibility
+
+0.3
+---
+
+* Python3: do not index a dict_keys object
+* Python3: use six.moves.urllib.parse instead of urlparse
+* Python 3: the request body should be bytes in test_api.py
+* Python 3: use six.with_metaclass
+* Python 3: replace 'basestring' by 'six.string_types'
+* Python 3: Use six.moves.configparser rather than ConfigParser
+* sync requirements and oslo
+
+0.2.2
+-----
+
+* add namespace to all ids
+* improve model validation
+* update requirements
+* update oslo
+* Updated from global requirements
+* do not set typeURI in resource shortform
+
+0.2.1
+-----
+
+* switch list action to read/list
+* support namespace prefix in id
+* observer and reporter should be valid Resource
+
+0.2
+---
+
+* fix conf file settings
+* Switch to oslo.config 1.2.0 final
+
+0.1.9
+-----
+
+* pycadf 0.1.8 broke oslo
+
+0.1.8
+-----
+
+* update tox to 1.6
+* DNS names may not map to service catalog values
+
+0.1.7
+-----
+
+* ensure unique id and timestamp defaults
+
+0.1.6
+-----
+
+* bump oslo.config req to 1.2.0a3
+
+0.1.5
+-----
+
+* update cadf spec to support new data model
+* update to use global requirements
+* Package api_audit_map.conf
+
+0.1.4
+-----
+
+* add event to CADF_EVENT
+
+0.1.3
+-----
+
+* add support for no response and failed request audit
+* move cadf correlation id under req.environ
+
+0.1.2
+-----
+
+* append cadf event to req.environ
+
+0.1.1
+-----
+
+* validate attributes against basestring
+
+v0.1
+----
+
+* add support for audit api middleware
+* DMTF CADF format
+* test commit
+* initial project setup
+* Added .gitreview

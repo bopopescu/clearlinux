@@ -1,0 +1,356 @@
+CHANGES
+=======
+
+1.0.14
+------
+
+* support specify user-id when create sample and alarm
+* add in missing options
+* Add timeout for keystoneclient session
+* add region_name to auth plugin parameters
+* ceilometerclient insecure argument no longer works
+* fix client docstring
+* Set auth_plugin in __init__
+* update README.rst to help release process
+* ceilometerclient fails with keystone v3 auth
+* Fixes bug with Client function not setting up SSL params
+* Support unicode for alarm
+* Enable specified project_id in CLI commands
+* Updated from global requirements
+* alarm: Use new gnocchi aggregation API
+* update defaultbranch
+
+1.0.13
+------
+
+* Updated from global requirements
+* Corrected the errors in sample-show and sample-create
+* Allow create/update gnocchi alarm rule
+* Don't enforce a kind of alarm rules
+* Update get_client() parameters with correct variable names
+* Add Sample API support
+* add --no-traits for event-list
+* Updated from global requirements
+* Add severity field to alarm CLI
+* Updated from global requirements
+* Remove trailing space before , in the help string of --time-constraint
+* Fix improper parameter setup for cacert and client certs
+* Upgrade to hacking 0.10
+* event-list should sort by timestamp, not id
+* Allow all pep8 checks
+* Fix H105 pep8 error
+* Update hacking to global requirements
+* Triple double-quoted strings should be used for docstrings
+* Updated from global requirements
+* Support ceilometer-url and os-endpoint
+* sync to latest oslo-incubator code
+* Add apiclient to openstack-common.conf
+* Add client property for common.base.Manager
+* Allow graceful shutdown on Ctrl+C
+* Updated from global requirements
+* Make methods static where it's possible
+* Fix old-style classes declaration
+* Remove redundant parentheses (except openstack.common)
+* Enable --os-insecure CLI option
+* sync with oslo and use oslo.i18n
+* Workflow documentation is now in infra-manual
+* Updated from global requirements
+* Support os-endpoint-type
+* Alarm TimeConstraint display incorrect
+* Add `requests` to requirements
+* Fix timeout argument not treated as integer
+* Refactor tests/test_shell.py
+* Add --slowest option for testr
+* Fix wrong initialization of AuthPlugin for keystone v3
+* Updated from global requirements
+* Add CONTRIBUTING.rst
+* Updated from global requirements
+* Updated from global requirements
+
+1.0.12
+------
+
+* sync oslo code
+* switch to oslo.utils
+
+1.0.11
+------
+
+* Reduce redundant parameter of some commands in CLI
+* Typo "authtenticated" instead of "authenticated"
+* Fix AuthPlugin authentification
+* Stop using intersphinx
+* Updated from global requirements
+* Fix sample-create in v2 api calls
+* keystone discovery fallback support
+* Fix a help string nit for statistics command
+* Verify alarm found before modifying
+* Revamp documentation, add module references
+* Check if the alarm has time constraints field before displaying
+* Updated from global requirements
+* Removed undefined method in install_env.py file
+* Replace assertTrue with assertIsNotNone for check an object
+* Add endpoint opt into auth_plugin
+* Updated from global requirements
+* Use HTTPClient from common Oslo code
+* Update developer docs template
+* Add doc/build to .gitignore
+* Add docs job to tox.ini
+* Don't expose X-Auth-Token in ceilometer CLI
+* Calculate a suitable column width for positional arguments
+* Use suitable assert
+* Improve --debug logging output
+* Update python-ceilometerclient to support Keystone V3 API
+* Updated from global requirements
+* Fix the alarm history order shown to user
+* Provide explicit help string of resource-metadata
+* Add methods to resource classes
+* Improve a bit query API
+* Fix hacking rules: H302,H305,H307,H402
+* Updated from global requirements
+* Fix alarm-threshold-update --query option
+* Refactor split_by_op and split_by_datatype
+* Remove © and remove unnecessary encoding lines
+* use mock instead of try...finally
+* Avoid unnecessary stderr message when run test
+* Avoid empty entity field in uri path
+* replace dict.iteritems() with six.iteritems(dict)
+* Fix exception handling of CLI
+* fixed several pep8 issues
+* Remove out-dated exceptions
+* extraneous vim editor configuration comments
+* Correct help string about insufficient_data
+* Avoid dead loop when token is string format
+* Fix some help strings
+* Updated from global requirements
+* Revert "Fix temporary pypy gate issue with setuptools"
+* Display message on HTTPException
+* Update v2.options docstring
+* Correct testcase content
+
+1.0.10
+------
+
+* Ensure statistics aggregates are ordered with parameterized first
+* Statistics groupby handling improvement
+* Implementation of statistics aggregators
+* Adds alarm time constraint support to ceilometer CLI
+* Updated from global requirements
+* Fix temporary pypy gate issue with setuptools
+* Add complex query support for alarm history
+* Add complex query support for alarms
+* Checking the type of auth_token, and fixing it if necessary
+* Deprecate 'alarm-update'
+* Add complex query support for samples
+* test created virtual env directory should git ignored
+* Updated from global requirements
+* Fix the ceilometer trait-description-list command
+* Updated from global requirements
+* py3kcompat: remove in python-ceilometerclient
+* Python 3 compatibility
+* Fix a typo in a comment in v2 client
+* test_url_generation_with_proxy: do not use contextlib.nested()
+* Ensure url sent to proxy don't have redundant /
+* Remove unused mock in v2/test_shell.py
+* fix help message of deprecated command
+* Sync with Oslo
+* Python 3: fix format_nested_list_of_dict()
+* Remove tox locale overrides
+* Improve help strings
+
+1.0.9
+-----
+
+* Modify ceilometer client cmd line help info
+* Remove unused import for print_function
+* Remove ununsed httplib2 requirement
+* Updated from global requirements
+* Update client to display data type of traits
+* Using common methods from oslo cliutils
+* Avoid discarding alarm-threshold-create --query option
+* Fix typos picked up by misspellings
+* return sample info when creating sample with CLI
+* Enable hacking H233 rule
+* Using common method 'bool_from_string' from oslo strutils
+* Raise traceback on error when using CLI and -debug
+* Remove print debugs statements
+* replace assertTrue(isinstance) to assertIsInstance
+* Add support for groupby in statistics for API v2
+* Remove dependencies on pep8, pyflakes and flake8
+* Replace inheritance hierarchy with composition
+* fix optional parameter of creating sample
+* abbreviating --meter-name to -m in alarm commands
+* Remove unused imports
+* Support the Event API
+* Python 3: fix test_sample_list
+* Use Resource() class from common Oslo code
+* client looking at wrong cacert argument name
+* Supports bash_completion for ceilometerclient
+* Fix the ceilometerlient log curl request incorrectly
+* Python 3: use six.moves.zip() rather than itertools.izip()
+* Display message on HTTP 400
+* Fix alarm-combination-update operator argument
+* Improve description of some commands
+* Updates tox.ini to use new features
+* Updated from global requirements
+
+1.0.8
+-----
+
+* sync with oslo-incubator
+* Change OpenStack Metering to OpenStack Telemetry
+* Update .gitignore
+* Add HTTP proxy support to ceilometer client
+* Encode exception on ceilometer-client for UnicodeDecodeError
+
+1.0.7
+-----
+
+* Allow alarm-threshold-update to upate generic attributes
+* Enable pep8 E711/E712/E721/H302 checking
+* Enable pep8 E128 checking
+* Enable pep8 E121/E122/E123 checking
+* Allow specifying a timestamp when creating a sample
+* Avoid reset of repeat_actions attribute on alarm update
+* Ensure basic logging config is applied
+* Support building wheels (PEP-427)
+* Add six to requirements.txt
+* Updated from global requirements
+* Ceilometer UnicodeEncodeError when update or show alarm fix
+* Adds the 'limit' parameter to sample list command in V2 API
+* Fix order of sample list
+* add cliutils from oslo-incubator
+* update oslo libraries
+* Updated from global requirements
+* Fix cacert argument to HTTPS connection
+* Updated from global requirements
+* Replace mox3 with mock in unit test
+* Updated from global requirements
+* Fix missed Pep8 error with 1.4.6
+* Updated from global requirements
+* Replace mox with mox3
+* align the order of parameters for urlencode()
+* replace basetring/xrange
+* Replace unicode() with six.u()
+* replace dict.keys() with list(dict)
+* Import urlutils to substitute urllib
+* Use six.iteritems() for dict
+* Translate print statement to print function
+* Fix module importing issues for Python 3
+* Import six.StringIO
+
+1.0.6
+-----
+
+* Add support for new alarm-history command
+* Use standard CLI object-verb ordering for alarm-{g|s}set-state
+* Fix shell.do_alarm_get_state to get as opposed to set
+* Updated from global requirements
+* Allow to update an alarm partially
+* Added support to --os-cacert
+* Help messages: specify which options are required
+* Improve the CM shell client alarm visualisation
+
+1.0.5
+-----
+
+* Use the new alarm format
+* Replace OpenStack LLC with OpenStack Foundation
+* Pass region_name argument to keystone client
+* Adding missing 'statistic' field to alarm-show
+* Use global openstack requirements
+* Fix a typo in "sample-create" help message
+* Added support for running the tests under PyPy with tox
+* alarm: rename counter_name to meter_name
+
+1.0.3
+-----
+
+* Add support for new alarm repeat_actions attribute
+* Updated from global requirements
+* Handle case where os_auth_token is set to ''
+* Ensure keystoneclient.auth_token is re-evaluated
+* Fix typo in help text
+* Enhance ceilometer statistics command with --period
+
+1.0.2
+-----
+
+* Allow to set matching_metadata with the cli
+* Add support for creating samples
+* Rename README.md to README.rst
+* Relax OpenStack upper capping of client versions
+* Allow Keystoneclient 0.3.x
+* Sync install_venv_common from oslo
+* Add matching_metadata to the allowed attributes
+* Move tests to ceilometerclient
+
+1.0.1
+-----
+
+* Avoid unnecessary GET of existing alarm for update
+* Make authenticated client easier to consume
+* Add support for specifying statistics period
+* requirements.txt is not configured properly
+* Drop unnecessary arg when instantiating HTTP class
+* Remove explicit distribute depend
+* Start using pyflakes
+* Use Python 3.x compatible except construct
+* Add client support for creating new alarms
+* Add client support for updating alarms
+* Fix install_venv.py requirements file
+* Enable more pep8 checks
+* Migrate to pbr
+* Rename tools/pip-requires to requirements.txt
+* Fix pep H306 (import order)
+* Fix pep H402 and H401 errors
+* Migrate to flake8
+* Add support for deleting alarms
+* Add support for getting individual alarms
+* Add support for listing alarms
+* Fix mis-scoped Client class breaking CLI
+* Use testr to run tests
+* Add install_venv_common from oslo
+* Update oslo code and split the module lines
+* Use the utils.BaseTestCase for all tests
+* Fix pep8 errors in test code
+* Remove unused test code in test_util.py
+* Fix manifest (README.rst -> README.md)
+* client does not show version
+* Sync requirements with openstack-common/requirements
+* Fix for Bug #1167521, ceilometer client crashes with missing content type response pep8 compliance
+* Restore compatibility with PrettyTable < 0.7.2
+* Change the default API version used by the cli to v2
+* v2 API: added resource-show
+
+1.0.0
+-----
+
+* Make it possible to pass -q "metadata.field=value"
+* Corrected help strings
+* Don't log unneccessarly on each http request
+* Catch KeyError exception as early as possible when there is no matching data on the server
+* Properly removing start and ending slashes
+* Remove warlock from pip-requires as it is not used
+* Add resources and meters to the v2 shell
+* Correct the help info of resource-list sub-command
+* Add shell.py so we can do v2 shell commands
+* Support --os-auth-token
+* v1-api: Added timestamp support
+* v1-api: Adapted resouce/user api
+* Add support for v2 API
+* Update to latest oslo-version
+* Add tests for samples
+* Add a test for list by source
+* fix the fields in v1 do_meter_list
+* Add missing dependencies
+* Pin pep8 to 1.3.3
+* Add support for metadata query
+* Fix tests
+* Move repository to openstack org
+* Revert "Remove the event class and use Meter instead."
+* Remove the event class and use Meter instead
+* Make sure the version is prepended
+* Fix the default service_type
+* Add basic functionality
+* Initial Commit

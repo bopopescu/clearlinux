@@ -1,0 +1,9 @@
+[console_scripts]
+openstack-autohelp = autogenerate_config_docs.autohelp:main
+openstack-jsoncheck = os_doc_tools.jsoncheck:main
+openstack-generate-docbook = os_doc_tools.handle_pot:generatedocbook
+openstack-doc-test = os_doc_tools.doctest:doctest
+openstack-auto-commands = os_doc_tools.commands:main
+openstack-dn2osdbk = os_doc_tools.dn2osdbk:main
+openstack-generate-pot = os_doc_tools.handle_pot:generatepot
+

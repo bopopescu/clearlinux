@@ -1,0 +1,13 @@
+MANIFEST.in
+README.txt
+setup.py
+XStatic_Angular_Cookies.egg-info/PKG-INFO
+XStatic_Angular_Cookies.egg-info/SOURCES.txt
+XStatic_Angular_Cookies.egg-info/dependency_links.txt
+XStatic_Angular_Cookies.egg-info/namespace_packages.txt
+XStatic_Angular_Cookies.egg-info/not-zip-safe
+XStatic_Angular_Cookies.egg-info/top_level.txt
+xstatic/__init__.py
+xstatic/pkg/__init__.py
+xstatic/pkg/angular_cookies/__init__.py
+xstatic/pkg/angular_cookies/data/angular-cookies.js

@@ -1,0 +1,161 @@
+
+R version 2.9.2 Patched (2009-09-08 r49685)
+Copyright (C) 2009 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> 
+> ### ceeboo 2008
+> 
+> library("tau")
+> 
+> .format.count <- function(x)
++     data.frame(counts = x, bytes = nchar(names(x), type = "bytes", 
++ 					 allowNA = TRUE),
++                Encoding = Encoding(names(x)),
++ 	       ## otherwise the code checks for illegal multibyte
++                ## sequences and fails. great!
++ 	       row.names = names(x),
++ 	       stringsAsFactors = FALSE)
+> 
+> ## latin capital letter a with diaresis
+> 
+> t1 <- c("abc", "a\xc4", "", NA)
+> Encoding(t1) <- c("unknow", "latin1", "unknown", "unknown") 
+> t1[2] <- iconv(t1[2], from = "latin1", to = "UTF-8")
+> t1
+[1] "abc" "aÄ"  ""    NA   
+> Encoding(t1)
+[1] "unknown" "UTF-8"   "unknown" "unknown"
+> 
+> t2 <- c(paste("_", t1[1:2], "_", sep = ""), t1[3:4])
+> t2
+[1] "_abc_" "_aÄ_"  ""      NA     
+> 
+> ## count n-grams
+> r <- .Call("R_utf8CountNgram", list(t2), 3L, 0L, TRUE, FALSE, TRUE)
+counting ... 10 string(s= using 19 nodes [0.00s]
+writing  ... 19 strings [0.00s]
+> .format.count(r)
+       counts bytes Encoding
+_           4     1  unknown
+_a          2     2  unknown
+_ab         1     3  unknown
+_aÃ         1     3  unknown
+a           2     1  unknown
+ab          1     2  unknown
+abc         1     3  unknown
+aÃ          1     2  unknown
+aÃ\204      1     3  unknown
+b           1     1  unknown
+bc          1     2  unknown
+bc_         1     3  unknown
+c           1     1  unknown
+c_          1     2  unknown
+\204        1     1  unknown
+\204_       1     2  unknown
+Ã           1     1  unknown
+Ã\204       1     2  unknown
+Ã\204_      1     3  unknown
+> 
+> ## incremental
+> .Call("R_utf8CountNgram", list(t2), 3L, 0L, TRUE, TRUE, TRUE)
+counting ... 10 string(s= using 19 nodes [0.00s]
+NULL
+> r <- .Call("R_utf8CountNgram", list(t2), 3L, 0L, TRUE, FALSE, TRUE)
+counting ... 10 string(s= using 19 nodes [0.00s]
+writing  ... 19 strings [0.00s]
+> .format.count(r)
+       counts bytes Encoding
+_           8     1  unknown
+_a          4     2  unknown
+_ab         2     3  unknown
+_aÃ         2     3  unknown
+a           4     1  unknown
+ab          2     2  unknown
+abc         2     3  unknown
+aÃ          2     2  unknown
+aÃ\204      2     3  unknown
+b           2     1  unknown
+bc          2     2  unknown
+bc_         2     3  unknown
+c           2     1  unknown
+c_          2     2  unknown
+\204        2     1  unknown
+\204_       2     2  unknown
+Ã           2     1  unknown
+Ã\204       2     2  unknown
+Ã\204_      2     3  unknown
+> 
+> ## count strings
+> r <- .Call("R_utf8CountString", list(t1), 3L, 0L, 0L, TRUE, FALSE, TRUE)
+counting ... 2 string(s) using 5 nodes [0.00s]
+writing  ... 2 strings [0.00s]
+> .format.count(r)
+       counts bytes Encoding
+abc         1     3  unknown
+aÃ\204      1     3  unknown
+> 
+> ## count prefixes
+> r <- .Call("R_utf8CountString", list(t1), 3L, 0L, 1L, TRUE, FALSE, TRUE)
+counting ... 2 string(s) using 5 nodes [0.00s]
+writing  ... 5 strings [0.00s]
+> .format.count(r)
+       counts bytes Encoding
+a           2     1  unknown
+ab          1     2  unknown
+abc         1     3  unknown
+aÃ          1     2  unknown
+aÃ\204      1     3  unknown
+> 
+> ## count suffixes
+> r <- .Call("R_utf8CountString", list(t1), 3L, 0L, 2L, TRUE, FALSE, TRUE)
+counting ... 2 string(s) using 6 nodes [0.00s]
+writing  ... 6 strings [0.00s]
+> .format.count(r)
+       counts bytes Encoding
+c           1     1  unknown
+bc          1     2  unknown
+abc         1     3  unknown
+\204        1     1  unknown
+Ã\204       1     2  unknown
+aÃ\204      1     3  unknown
+> 
+> ## FIXME add to interface
+> r <- .Call("R_utf8CountString", list(t1), 3L, 0L, 3L, TRUE, FALSE, TRUE)
+counting ... 2 string(s) using 6 nodes [0.00s]
+writing  ... 6 strings [0.00s]
+> .format.count(r)
+       counts bytes Encoding
+c           1     1  unknown
+cb          1     2  unknown
+cba         1     3  unknown
+\204        1     1  unknown
+\204Ã       1     2  unknown
+\204Ãa      1     3  unknown
+> 
+> ## incremental
+> .Call("R_utf8CountString", list(t1), 3L, 0L, 0L, TRUE, TRUE, TRUE)
+counting ... 2 string(s) using 5 nodes [0.00s]
+NULL
+> r <- .Call("R_utf8CountString", list(t1), 3L, 0L, 0L, TRUE, FALSE, TRUE)
+counting ... 2 string(s) using 5 nodes [0.00s]
+writing  ... 2 strings [0.00s]
+> .format.count(r)
+       counts bytes Encoding
+abc         2     3  unknown
+aÃ\204      2     3  unknown
+> 
+> ###
+> 

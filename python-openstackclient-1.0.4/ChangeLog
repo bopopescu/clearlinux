@@ -1,0 +1,638 @@
+CHANGES
+=======
+
+1.0.4
+-----
+
+* Create 1.0.4 release notes
+* Updated from global requirements
+* Updated from global requirements
+* update defaultbranch
+
+1.0.3
+-----
+
+* Create 1.0.3 release notes
+* Move OSC auth plugins so they can be found
+* Add identity v3 catalog show
+* Update README
+* Imported Translations from Transifex
+* Add identity v3 catalog list
+* Fix catalog list when region name is absent
+* Add ability for diplaying hypervisor statistics
+* Add 'uptime' in 'hypervisor show'
+* Raise AttributeError for unknown attributes
+* Add hypervisor docs
+* Don't hack the image url
+* Fix embarrassing typo in man page
+* Updated from global requirements
+* Fix identity v2 catalog list
+* Fix help messages
+* Handle novaclient >2.20.0
+* Fix auth-required for help command
+* change oslo namespace to avoid warning
+* Updated from global requirements
+* Revert "Skip functional tests until they are fixed"
+* Rename --verify for server resize to avoid conflict
+* Fix error msg in sort_items
+* Skip functional tests until they are fixed
+* Restrict groups and users from changing domains
+* Do not allow user to change domain of a project
+* Implement trust in identity v3 api
+* Imported Translations from Transifex
+* Change volume create --snapshot-id to --snapshot
+* Check volume status before extending size
+* Adding default user_domain_id parameter only when using password auth
+* Add sort support to image list
+* tenant_id to project_id in server show
+* Added capabilities/options to 'openstack flavor list' command to match capabilities already provided by 'nova flavor-list':
+* Improving the help of the lock command
+* Updated from global requirements
+* Change test order to avoid incompatibliity
+* Add network support to quota show
+* Add filter to image list
+* Add the ability to extend volumes in `osc volume set`
+* fix the wrong order of assertEqual args
+* Add 'find by name' to --nic for creating server
+* Remove ignore portion of tox.ini
+* fix object list command naming
+* Begin low-level API for Network v2
+* Command docs: network
+* Add region name for identity and volume clients
+* Begin low-level API for Image v1 and v2
+
+1.0.2
+-----
+
+* Fix doc building errors
+* Create 1.0.2 release notes
+* Imported Translations from Transifex
+* Add missing oslo-config to requirements
+* Update service clist commands for v2 and v3
+* Default user domain id and project domain id
+* Add helpful messages when authN'ing with password
+* Add version url config workaround
+* Use session for neutron client
+* Imported Translations from Transifex
+* Deprecate project usage list command
+* Copy wiki content to index page
+* Copy HIG from wiki
+* Tweaks to the catalog doc and show command
+* Fine tune some of the helps commands
+* Command doc: policy
+* Updated from global requirements
+* Upgrade hacking to 0.10
+* Command docs: add service
+* fix some small issues in catalog show
+* Rework role list v2 for --user and --project
+* Add versioning to the docs that missed it
+* Updated from global requirements
+* Command doc: access token
+* Request token authorize
+* Command doc: snapshot
+* Fix up snapshot command
+* Command doc: image
+* Request token creation docs + tweaks
+* Command doc: consumer
+* Allow user list to filter by project
+* Command doc: federation protocol
+* Command doc: identity provider
+* Command doc: mapping
+* Command doc: backup
+* Fixup backup list output
+* Command docs: volume
+* Update the command list
+* Command doc: volume type
+* tweak the server command docs
+* Check if service.name available before access
+* Command docs: group
+* Add endpoint v3 docs
+* Command docs: ec2 credentials
+* Rename column to `default project id` for long listing v3 user
+* Add missing content for token commands
+* Add docs for usage show/list
+* Command docs: flavor
+* Command docs: domain
+* Command docs: region
+* Add docs for listing availability zones
+* Bunch of formatting tweaks to server-image docs
+* type should be required for v2.0 service create
+* Command object docs: container, object
+* Catch exception when getting quota
+* Rename `os project usage list` to `os usage list`
+* Add usage show command
+* Fix a few issues with 'usage list'
+* Compute calls ignore region selection
+* add doc for group command
+* add doc for role assignment command
+* add doc for domain command
+* Allow service description to be set for KS V3
+* Revert some docs changes from multi-delete
+* add multi-delete support for identity
+* add multi-delete support for compute/image/net/volume
+* Properly format 'attached to' column list when listing volumes
+* Don't import form keystoneclient.openstack.common
+* list availability zones for compute
+* Updated from global requirements
+* Tweaks after the fact
+
+1.0.1
+-----
+
+* Release 1.0.1
+* Followup for ec2 credentials command fix
+* Fix ec2 credentials commands for new auth
+* Workflow documentation is now in infra-manual
+
+1.0.0
+-----
+
+* Command object docs: catalog, credentials, endpoint, region, token
+* Safely pop project parent id
+* Add documentation of interactive mode
+* 1.0.0 release notes
+* Command object docs: server, server image
+* Add the ability to list projects based on a user
+* Add support for domains when deleting identity v3 resources
+* Command object docs: project, role, user
+* Updated from global requirements
+* Command object docs: aggregate, console *, keypair
+* Begin copying wiki command list here
+* Enhance the theming for modules page
+* Fix volume create --image
+* add keystone v3 region object
+* Updated from global requirements
+* Add --or-show support for v3 identity resources
+* Add authentication description doc
+* Add environment variable in the os-auth-type help
+* Liberalize version matching a bit
+* Add more session/api examples
+* Add an API example base and functional test base
+* Add arg to 'server image create' tests
+* Add additional support for --or-show
+* Remove links from oauth consumers
+* Remove links from federation related commands in identity v3
+* cleanup files that are created for swift functional tests
+* Tests work fine with random PYTHONHASHSEED
+* Updated from global requirements
+* Swap remaining assertEqual arguments
+* Add --or-show option to user create
+* Add cliff-tablib to requirements
+* Use fixtures from keystoneclient for static data
+* Unscoped federated user-specific commands
+* Fix server create for boot-from-volume
+* Adjust some logging levels
+* Change --os-auth-plugin to --os-auth-type
+* Beef up object-store tests
+* Include support for using oslo debugger in tests
+* Clean up shell authentication
+* Fix token issue after auth changeup
+* only generate one clientmanager instance in interactive mode
+* Remove ClientManager._service_catalog
+* Remove now-unnecessary client creation hacks
+* use jsonutils in oslo.serialization instead of keystoneclient
+* Close files on server create, add tests
+* Close files on image create
+* Move plugin stuff to clientmanager
+* Update use of open() in object API
+* Put pbr and six first in requirements list
+* Add plugin to support token-endpoint auth
+* Remove 'links' section from several v3 Identity objects
+* Fix issue token for v3
+* Updated from global requirements
+* Fix operation on clouds with availability-zones
+* Allow --domain to be used for identity commands without lookup
+* Add translation markers for user v2 actions
+* Add domain parameters to user show for Identity V3
+* Mark identity v2 resources for translation
+* Support for keystone auth plugins
+* Add 'command list' command
+* CRUD operations for federated protocols
+* Update for cliff commandmanager >=1.6.1
+* Update compute server messages for translation
+* Implement CRUD operations for Mapping objects
+* Fix issues with object related commands
+* Update gitignore
+* Add some code-blocks to the docs
+* Place the command to generate docs on one line
+* Remove duplicate env function in shell.py
+* Pass in domain and project as positional args, not kwargs
+* Create a whole slew of functional tests for identity
+* Add functional tests to osc
+* Move object-store commands to low-level API
+* Add low-level API base class
+* Test top-to-bottom: object-store containers
+* Updated from global requirements
+* utils.find_resource does not catch right exception
+* Remove unused reference to keyring
+* v3 credential set always needs --user option
+* Use oslo.utils
+* Change help text for image save command
+* Fixing typo and improving docstring of find_domain
+* Updated from global requirements
+* Acknowlege git.o.o as OpenStack's git server
+* Add service catalog commands
+* Return current user/project for user/project show commands
+* Add support for 'file' format objects
+* Add preliminary save container support
+* Add preliminary support for downloading objects
+* Stop using intersphinx
+* Updated from global requirements
+
+0.4.1
+-----
+
+* Update docs and release notes for 0.4.1 release
+* Use Keystone client session.Session
+* Add action 'user password set' for identiy v3
+* Unordered dicts and lists causes variable results
+* Leverage openstack.common.importutils for import_class
+* Multiple args for object and container commands
+* Sync with oslo-incubator and add importutils
+* assertEquals order wrong
+* Work toward Python 3.4 support and testing
+* Make Identity client load like the others
+* Fix server add security group
+* Fix security group list for non-admin
+* Change app.restapi to app.client_manager.session
+* Add i18n module to openstackclient
+* Create message variables for exceptions
+* Add oslo.i18n as a dependency
+* Updated from global requirements
+* Network use enable/disable vs admin state up/down
+* add service/interface/region filter for endpoint v3
+* add tests for identity v3 endpoint
+* add tests for identity v3 domain
+* a mistake in tests/identity/v3/test_role.py
+* Add commands for object upload and delete
+* test_find_resource fails if run alone
+* Use oslosphinx to generate documentation
+* user create v2.0 depends on tenantId in response
+* Updated from global requirements
+* v3 endpoint set shouldn't always need service option
+* Add container create and delete support
+* Cleanup README.rst
+* fix typo in identity/v3/endpoint.py
+* Add network extension list
+* More make_client() logging cleanup
+* Change V2 image tests to actually run V2 image code
+* Add more columns to image list output
+* Normalize more help strings
+* Fix PEP8 E302 errors
+* Fix IDP commands
+* Update help text for some network commands
+* Change object API_NAME to 'object_store'
+* Add Python 3 support
+* Fix server resize
+* Add basic timing support
+* Clean up make_client() logging
+* Domain administrator cannot do project operations
+* Replaced some UTF-8 characters with ASCII characters
+* Python 3: do not compare a list to a zip object
+* Allow network find to use alternate name
+* Move network stuff to v2 instead of v2_0
+* Catch SystemExit for parse args
+* Add support to list volume extensions
+* Python 3: remove a useless code to safe_encode()
+* Add support to list compute extensions
+* Remove keyring support from openstackclient
+* trust authentication
+* Python 3: do not use __builtin__
+* Updated from global requirements
+* Remove backslash usage from a few tests
+* Sort/clean setup.cfg
+* Rename token classes to match command
+* Fix PEP8 E126 and E202 errors
+* Fix PEP8 E265 errors
+* Fix PEP8 H405 errors
+* Fixed typos in the identity client
+* Network CRUD
+* Updated from global requirements
+* sync oslo bits
+
+0.4.0
+-----
+
+* Update docs and release notes for 0.4.0
+* Updated from global requirements
+* Complete Identity v3 list command filters
+* Change the token verb to issue/revoke
+* Update docs template
+* Add a docs job to tox.ini
+* Fix find_resource for keystone and cinder
+* Image create and set command updates and tests
+* Refactor oauth1 code for updates
+* Updated from global requirements
+* Clean up logging levels
+* Ignore most of the new hacking 0.9.2 rules
+* Refactor role list subcommand for identity v3 api
+* Add support for extension list
+* Add role assignments list support to identity v3
+* Add token delete command for identity v2
+* Fixed several typos throughout the codebase
+* replace string format arguments with function parameters
+* Add tests for identity endpoints
+* Change volume create --volume-type to --type
+* Fix server image create
+* Display all server log when --lines option is None
+* Fix help message for `ip floating delete`
+* volume type create should display properties
+* Skip auth in cinderclient
+* Updated from global requirements
+* Implement CRUD operations for Identity Providers
+* Updated from global requirements
+* move read_blob_file_contents to utils
+* Pass arguments to v3 keystoneclient by kwarg
+* Fix the project option to user list so it filters
+* Make endpoint commands more consistent
+* Correct display of project/tenant id on display of credentials
+* Produce a useful error message for NoUniqueMatch
+* identity v3 allow project list filtering by domain
+* Updated from global requirements
+* Fix 'keypair show' command output
+* add interface and url to endpoint list
+* Fixed spelling error, compatability to compatibility
+* Fixed Spelling errors - compatability to compatibility
+* Fixed spelling errors - occurance to occurence
+* Make bash comple command best effort to authorize
+* Add ability to set key value pairs in projects
+* Updated from global requirements
+* Add --volume option to image create command
+* Update release notes for 0.3.1
+* In anticipation of network agents, rename compute
+
+0.3.1
+-----
+
+* Use cacert values when creating identity client
+* Updated from global requirements
+* Fix volume commands with multiple regions
+* Add ability to prompt for passwords for user create and set
+* Fix some help strings
+* Fix format errors in nova security group rule list
+* Update oslo incubator bits
+* Python 3: the content of a FakeResponse must be bytes
+* Rename Openstack to OpenStack
+* FakeResponse: use a default status code
+* Python 3: fix a syntax error
+* Use six.iteritems() rather than dict.iteritems()
+* Remove tox locale overrides
+* Glance client no longer isa http client
+* Fix misspellings in python openstackclient
+* Add token create subcommand for identity v3 api
+* Updated from global requirements
+* Fix keyring issue where there were name space problems
+* Remove remaining print statements
+* Remove copyright from empty files
+* Add token create subcommand for identity v2 api
+* Sync with global requirements
+* Fix errant underscores
+* Add support for specifying custom domains
+* Fix image set properties error
+* Displaying curl commands for nova and cinder calls
+* Closes-Bug: #1262322 Make links clickable
+* Closes-Bug: #1262321 Remove the unimplemented post_process method call
+
+0.3.0
+-----
+
+* Release notes for 0.3.0 release
+* Remove mox3 requirement
+* Updated from global requirements
+* Update docs for plugins and release notes
+* Add missing requests and six requirements
+* Add module list command
+* Update OSC's CommandManager subclass
+* Bring RESTApi closer to ithe imminent keystoneclient.Session
+* Add return Closes-Bug: 1246356
+* Restore Object API name 'object-store'
+* Expand support for command extensions
+* Fix typo
+* Support building wheels (PEP-427)
+* Add server image create command
+* Complete basic test infrastructure
+* change execute to run
+* Update URL for global hacking doc and fix typos
+* Remove httpretty from test requirements
+* Updated from global requirements
+* Do lookups for user, project in volume create
+* Adjust to non-deprecated names in Keyring 1.6.+
+* Updated from global requirements
+* Sync oslo-incubator for py33 fixes
+* Add options to support TLS certificate verification
+* Updated from global requirements
+* Add object-store show commands
+
+0.2.2
+-----
+
+* Update release notes for 0.2.2
+* Sort entrypoints in setup.cfg
+* Fix security group entrypoints
+* Delay authentication to handle commands that do not require it
+* Identity v3 tests
+* Prepare for Identity v3 tests
+* Add to clientmanager tests
+* Add Identity v2 role and service tests
+* Refactor fake data for projects and users
+* Update tox.ini for new tox 1.6 config
+* Update requirements.txt and test-requirements.txt
+* Object API commands using our REST API layer
+* Create a new base REST API interface
+* Re-order oauth commands and sync with keystoneclient
+* Add Identity v2 user tests
+* Add Identity v2 project tests
+* Updated from global requirements
+
+0.2.1
+-----
+
+* Add release notes in docs
+* Sync with global requirements
+
+0.2.0
+-----
+
+* Change version reporting to use pbr
+* Modify run_tests.sh to just run tox
+
+0.2.rc1
+-------
+
+* Prep for 0.2 release (0.2.rc1)
+
+0.2.alpha1
+----------
+
+* Remove 'oauth authorization show' function from identity v3
+* Remove tenant round 3 - other commands
+* Remove tenant round 2 - Identity API
+* Remove tenant round 1 - global options
+* Add server ssh command
+* Begin Python 3 compatability
+* Add security group commands
+* Add server resize command
+* Add server migrate command
+* Add server commands: (un)lock, (un)rescue, (un)set, add/remove volume
+* Add usage command for compute api
+* Add server diagnose for compute api
+* Fix --password in server rebuild
+* Change volume manager to volume type, unset property for type
+* Clean up properties (metadata) formatting
+* Add password field to set user
+* Add aggregate commands
+* Complete Image v1
+* Add quota commands
+* Add list and delete authorizations for oauth commands
+* Add --catalog to service show
+* Update openstack-common.conf format
+* Add show limits command
+* Remove api = apiName calls from each method
+* Add authenticate method to oauth code
+* Sync install_venv_common from oslo
+* Update documentation with info about setup.cfg
+* Add EC2 credentials CRUD
+* Finish up v3 role commands
+* Add methods for user and group interactions
+* Move tests into project package
+* Remove python3 incompatible exception syntax
+* Add OAuth support for Identity V3
+* Fix py26 tests: assertDictEqual
+* Remove explicit distribute depend
+* Add volume backup commands
+* python3: Introduce py33 to tox.ini
+* Rename requires files to standard names
+* Fix identity v2.0 entry point
+* Tweak volume commands and add k=v argparse action
+* Add domain and description to user for v3 identity
+* Migrate to pbr
+* Migrate to flake8
+* Fix flake8 errors in anticipation of flake8 patch
+* Rename all instances of 'metadata' to 'property'
+* Switch to noun-verb command forms
+* Add console commands
+* Adds image `create` and `delete` functionality
+* Add fixed-ip and floating-ip commands
+* Add compute keypair commands
+* metadata is one word
+* Add policy to identity v3
+* Add metadata support for volume
+* Make entry point strings readable
+* Add extra-specs support for volume-type
+* Add endpoint v3 functionality
+* Add service v3 support for identity
+* Add functionality for add-role commands
+* Add a simple extension hook
+* Removed unused imports
+* Add role v3 support to identity in openstack client
+* Added compute hypervisor support
+* Add optional arguments to volume list command
+* Turn down requests logging level
+* Add force-delete option for volumes
+* Add snapshot support for v1 volume
+* add domain, credential to identity v3 api
+* Add volume support for openstack client
+* Add compute hosts support
+* Clean up args and help strings in server commands
+* Change create flavor to use default arguments
+* Add metadata support for volume type
+* Added compute service support
+* Add quota v1 support for volume
+* Added compute flavor support
+* Remove underscore
+* Added compute agent support
+* Correct the version mapping to image service
+* Add volume test cases and structure
+* Add Cinder API V1 Support
+* Multiple API version support
+* Update .coveragerc
+* Sync latest openstack-common
+* Upgraded to PEP8 1.3.3 to stay aligned with Nova, etc
+* Copy cfg and iniparser from oslo-incubator
+* Clean up test_shell so that the tests are captured though the test framework
+* Remove old/unsupported options from run_tests help message
+* Use install_venv_common.py from oslo
+* Updated README to reflect latest changes
+* Ensure that image and identity clients are constructed properly
+* First pass at adding compute unit tests
+* v3 identity - group and project api
+* Fix test runner run_tests.sh is broken
+* Use the cliff framework's ShowOne as intended for `show image`
+* Sync latest openstack-common updates
+* Standardize on a copyright header and ensure all files have them
+* Remove incorrect 'raise'
+* Migrate from nose to testr
+* Clean up test environment and remove unused imports
+* Updated gitignore and manifest
+* Adds Glance API v2 support
+* Move from unittest2 to testtools
+* Increment minimum required keystoneclient version number
+* bug 1091029
+* Remove upper bounds on openstack dependencies
+* Fixes setup compatibility issue on Windows
+* Add OpenStack trove classifier for PyPI
+* Add cliff prereqs
+* Update compute client bits
+* Fix PEP8 issues
+* Document the use of keyring
+* Add nosehtmloutput as a test dependency
+* Keyring support for openstackclient
+* Secure password prompt (docs)
+* Use PyPI for client libs
+* If no password in env or command line, try prompting
+* Add read_versioninfo method
+* Fixed a typo in the rst docs
+* Add post-tag versioning
+* Update Contributing blurb in the docs
+* Create tests for shell interface
+* Refactor cliff.Command.run()
+* Fix pep8 issues
+* Move docs to doc
+* minor fixes
+* removing print call in roles get_data
+* Documented python setup.py develop
+* Fix 'set user' command
+* Add role CRUD commands
+* Add endpoint CRUD commands
+* Added :: to readme.rst to format correctly
+* Clean up tenant and server
+* Added conf.py so Sphinx docs will build
+* Document how to install the client
+* Moved test related packages to test-requires
+* Update service commands
+* Add user CRUD commands
+* Updating Readme Document
+* correcting ordering of imports
+* fix authentication setup in interactive mode and improve error handling so tracebacks are not printed twice
+* Revise command boolean flags
+* Move get_client_class() to common.utils
+* Add tenant CRUD commands
+* Add API versioning support
+* look at the command the user is going to run before trying to authenticate them
+* Add copyright notices and update dates
+* Add tenant commands, work on service
+* More identity client config
+* Remove printt
+* Add Identity to ClientManager
+* Fix "help" command and implement "list server" and "show server"
+* Adding HACKING doc to project
+* Change binary name to 'openstack'
+* Auto generate AUTHORS for python-openstackclient
+* Adding name to Authors and updating a bad URL. More to get my gerrit workflow up
+* Shell init & logging
+
+0.1
+---
+
+* Reset project version to 0.1
+* Add openstack-common and test infrastructure
+* Cleanup auth client path
+* Add 'list service' command and common modules
+* Add token auth to shell and README
+* Begin to add Keystone auth
+* Change to argparse to match cliff 0.2
+* Clean up command output
+* Use cliff
+* Set up common utils
+* Add openstackclient bits
+* First commit

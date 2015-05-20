@@ -1,0 +1,84 @@
+CHANGES
+=======
+
+2.5.0
+-----
+
+* Speed up blueprint checking with naming convention
+
+2.4.0
+-----
+
+* Allow alternate OpenStack themes
+* Update run_cross_tests.sh to latest
+* Add links to the README
+* Add run_cross_tests.sh from incubator
+* Add an extension for validating blueprint names
+* Workflow documentation is now in infra-manual
+
+2.3.0
+-----
+
+* provide visual separation in sidebar
+* Updated from global requirements
+* Add pbr to installation requirements
+* Tighten up documentation
+* Report documentation build warnings as errors
+* Add initial cut for documentation
+* Remove empty file
+* warn against sorting requirements
+
+2.2.0
+-----
+
+* Fixed link text colour for incubation variant
+
+2.2.0.0a2
+---------
+
+* Added a incubating project config option
+
+2.2.0.0a1
+---------
+
+* Updated from global requirements
+* Bump hacking to 0.9.x series
+* Updated from global requirements
+
+2.1.0
+-----
+
+* Update manifest to use oslosphinx
+* Prevent left sidebar text overflow
+* Add Python 3 trove classifiers
+* Remove vim header
+* Remove references to oslo.sphinx
+* Update .gitreview after repo rename
+* Support building wheels (PEP-427)
+
+2.0
+---
+
+* Rename package from oslo.sphinx to oslosphinx
+* Sync with global requirements
+* Add -U flag to pip install command
+* Update URL for global HACKING document
+
+1.1
+---
+
+* Update build config
+* Add namespace_packages to setup.cfg
+* Update pbr usage past needing d2to1
+* Remove useless jquery.tweet.js
+* Allow use of hacking 0.6.0 and fix min version
+* Add an OpenStack-wide intersphinx mapping file
+* Ensure that AUTHORS and ChangeLog are packaged
+* Add emacs save files to gitignore
+
+1.0
+---
+
+* Add venv tox env
+* Import Sphinx theme for OpenStack
+* Added .gitreview

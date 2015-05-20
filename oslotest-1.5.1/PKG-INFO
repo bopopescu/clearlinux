@@ -1,0 +1,32 @@
+Metadata-Version: 1.1
+Name: oslotest
+Version: 1.5.1
+Summary: OpenStack test framework
+Home-page: http://launchpad.net/oslo
+Author: OpenStack
+Author-email: openstack-dev@lists.openstack.org
+License: UNKNOWN
+Description: ==========
+         oslotest
+        ==========
+        
+        OpenStack test framework and test fixtures.
+        
+        * Free software: Apache license
+        * Documentation: http://docs.openstack.org/developer/oslotest
+        * Source: http://git.openstack.org/cgit/openstack/oslotest
+        * Bugs: http://bugs.launchpad.net/oslotest
+        
+        
+Platform: UNKNOWN
+Classifier: Environment :: OpenStack
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.3

@@ -1,0 +1,1077 @@
+CHANGES
+=======
+
+1.3.1
+-----
+
+* Fix s3_token middleware parsing insecure option
+* update defaultbranch
+
+1.3.0
+-----
+
+* Improve feedback message in SSL error
+* Add a FederatedBase v3 plugin
+* Deprecate keystone CLI
+* Clean arguments in test_federation.*.test_create()
+* Rename requests mock object in testing
+* Extract BaseAuth out of Auth Plugin
+* Split v3 authentication file into module
+* Federation Service Providers CRUD operations
+* Allow passing logger object to request
+* Crosslink to other sites that are owned by Keystone
+* Implements subtree_as_ids and parents_as_ids
+* Fix time issue in AccessInfo test
+* Add OS-SIMPLE-CERT support for v3
+* Updated from global requirements
+* Allow handling multiple service_types
+* Import functional CLI tests from tempest
+* Creating parameter to list inherited role assignments
+
+1.2.0
+-----
+
+* Updated from global requirements
+* Make post_test_hook.sh executable
+* Add default body for non-abstract empty methods
+* Create functional test base
+* Ignore all failures removing catalog when logging token
+* Using correct keyword for region in v3
+* Move tests to the unit subdirectory
+* Make remove_service_catalog private
+* Docs for v3 credentials
+* Change hacking check to verify all oslo imports
+* Change oslo.i18n to oslo_i18n
+* Add data to example data
+
+1.1.0
+-----
+
+* Remove 404 link to novaclient in README
+* Hierarchical multitenancy basic calls
+* Workflow documentation is now in infra-manual
+* use right resource_class to create resource instance
+* Basic AccessInfo plugin
+* Enable hacking rule E122 and H304
+* Add get_headers interface to authentication plugins
+* Add name parameter to NoMatchingPlugin exception
+* Change oslo.config to oslo_config
+* Change oslo.serialization to oslo_serialization
+* Switch from oslo.utils to oslo_utils
+* Add validate token for v3
+* Tests use keep_blank_values when parse_qs
+* Fix typo in Ec2Signer class docstring
+* Add validate token for v2.0
+* handles keyboard interrupt
+* make req_ref doesn't require id
+* Updated from global requirements
+* Surface the user_id and project_id beyond the plugin
+* Configure TCP Keep-Alive for certain Sessions
+* Correct failures for check H238
+* fix enabled parameter of update doesn't default to None
+* Enable hacking rule F821
+* Fixes bootstrap tests
+* Add auth plugin params to doc
+* Add generic auth plugin documentation
+* Correct failures for check W292
+* Move to hacking 0.10
+* Updated from global requirements
+* don't log service catalog in every token response
+* Updated from global requirements
+* Use a test fixture for mocking time
+* Docstring usability improvements
+* token signing support alternative message digest
+* Allow fetching user_id/project_id from auth
+* add clear definition of service list
+* Fix a comment error in cms.py
+* Add get certificates for v2.0
+* Updated service name to be optional in CLI
+* Reference identity plugins from __init__.py
+* Use textwrap instead of home made implementation
+* Allow v3 plugins to opt out of service catalog
+
+1.0.0
+-----
+
+* Document the auth plugins that are loadable by name
+* Updated from global requirements
+* Add fetch revocations for v3
+* Add fetch revocations for v2.0
+* Fix up types within API documentation
+* Update requests-mock syntax
+* Expose version matching functions to the public
+* Take plugin params from ENV rather than default
+* Project ID in OAuth headers was missing
+* get_endpoint should return the override
+* Pass all adapter parameters through to adapter
+* Correct documenting constructor parameters
+* Correct Session docstring
+* Add missing user-id option to generic.Password
+* duplicate auth-url option returned by BaseGenericPlugin
+* Replace magic numbers with named symbols
+* Fix importing config module and classmethod params
+* Removes confusing _uuid property
+* Curl statements to include globoff for IPv6 URLs
+* Cleanup exception logging
+* Make keystoneclient use an adapter
+* Remove middleware architecture doc
+* Remove useless log message
+* Updated from global requirements
+* Updated from global requirements
+* I18n
+* Correct use of noqa
+* Sync oslo-incubator to 1fc3cd47
+* Log the CA cert with the debug statement
+* Prevent AttributeError if no authorization
+
+0.11.2
+------
+
+* Use oslo_debug_helper and remove our own version
+* Updated from global requirements
+* set close_fds=True in Popen
+* Cleanup docs - raises class
+* Fix mappings.Mapping docstring
+* Actually test interactive password prompt
+* Docstring cleanup for return type
+* Correct typos in man page
+* Docstrings should have :returns: everywhere
+* Use oslo.utils and oslo.serialization
+* Remove warning about management token
+* Document session usage first
+* Doc cleanup, make concepts links
+* Rename the client API docs
+* Correct typos in using-sessions
+* Warn that keystone CLI is pending deprecation
+* Reorder index links
+* Explicit complaint about old OpenSSL when testing
+* Log token with sha1
+* Redact x-subject-token from response headers
+* Extracting common code to private method
+* Change cms_sign_data to use sha256 message digest
+* Enumerate Projects with Unscoped Tokens
+
+0.11.1
+------
+
+* Fix auth_token for old oslo.config
+* Do not iterate action.choices if it is none
+
+0.11.0
+------
+
+* Update hacking to 0.9.x
+* Updated from global requirements
+* Add support for endpoint policy
+* Fix a doc_string error
+* Handle federated tokens
+* SAML2 federated authentication for ADFS
+* Fix the condition expression for ssl_insecure
+* Allow retrying some failed requests
+* Versioned Endpoint hack for Sessions
+* Stop using intersphinx
+* Pass kwargs to auth plugins
+* Sync with latest oslo-incubator
+* Change 'secrete' to 'secret'
+* fix typos
+* Work toward Python 3.4 support and testing
+* warn against sorting requirements
+* Version independent plugins
+* Expose auth methods on the adapter
+* Add version parameter to adapter
+* Allow providing an endpoint_override to requests
+* fix EC2 Signature Version 4 calculation, in the case of POST
+* Fix test mistake with requests-mock
+* Allow passing None for username in v2.Password
+* Hash for PKIZ
+* Distinguish between name not provided and incorrect
+* Move fake session to HTTPClient
+* Allow providing a default value to CLI loading
+* Allow unauthenticated discovery
+* Remove cruft from setup.cfg
+* Unsort pbr and hacking in requirements files
+* Add v3scopedsaml entry to the setup.cfg
+* Fix handling of deprecated opts in CLI
+* Updated from global requirements
+* Revert "Add oslo.utils requirement"
+* Revert "Use oslo.utils"
+* Remove lxml as a forced depend
+* Allow passing user_id to v2Password plugin
+* Make auth plugins dest save to os_
+* Allow registering individual plugin CONF options
+* Standardize AccessInfo token setting
+* Convert shell tests to requests-mock
+* Change unscoped token fallback to be session aware
+* Individual plugin CLI registering
+* Remove intersphinx mappings
+* Mark auth plugin options as secret
+* move attributes of v3.client.Client into alphabetical order
+* Handle invalidate in identity plugins correctly
+* Isolate get_discovery function
+* Fixes import grouping
+* expose the revoke token for V3
+* Use oslo.utils
+* Add oslo.utils requirement
+* Mark the keystoneclient s3_token middleware deprecated
+* Add docs for how to create an OAuth auth instance
+* Control identity plugin reauthentication
+* Use token and discovery fixture in identity tests
+* Config fixture from oslo-incubator is not used
+* Use config fixture from oslo.config
+* List federated projects and domains
+* Redact tokens in request headers
+* Convert httpretty to requests-mock
+* Updated from global requirements
+* Add the 'auth' interface type
+* Use oslosphinx to generate doc theme
+* Add an example of using v3 client with sessions
+
+0.10.1
+------
+
+* Don't log sensitive auth data
+* Reorder the old compatibility arguments
+* Use keystoneclient.exceptions
+* Insert space between ``#`` and the comment
+* Rename saml2_token_url to token_url
+* Enforce authenticated=False in saml2 plugin
+* Allow passing kwargs from managers to session
+* Scope unscoped saml2 tokens
+* Example JSON files should be human-readable
+
+0.10.0
+------
+
+* use embedded URLs for hyperlinks in the README
+* Only conditionally import working keyring
+* Calculate a suitable column width for positional arguments
+* Fix mistakes in token fixtures
+* add deprecation warning for auth_token
+* SAML2 ECP auth plugin
+* remove useless part of error message
+* Test that tenant list function can use auth_url
+* Add v2 Token manager authenticate tests
+* Use jsonutils to load adapter response
+* Provide an __all__ for auth module
+* Docstrings for usability
+* Add CRUD operations for Federated Protocols
+* Direct move of the revoke model from keystone server
+* Add tests without optional create endpoint params
+* Allow loading auth plugins from CLI
+* Plugin loading from config objects
+* Ensure no double slash in get token URL
+* Pass user and roles manager to tenant manager
+* Add profiling support to keystoneclient
+* Add V2 tenant user manager tests
+* Pass roles manager to user manager
+* Add V2 user roles tests
+* endpoint_id and service_id should be random uuid
+* Add CONTRIBUTING.rst
+* Modify oauth calls to expect urlencoded responses
+* Document authentication plugins
+* Add a fixture for Keystone version discovery
+* Sync with oslo-incubator fd90c34a9
+* Session loading from CLI options
+* Session loading from conf
+* Keystoneclient create user API should have optional password
+* Use immutable arg rather mutable arg
+* Add trust users to AccessInfo and fixture
+* Add OAuth data to AccessInfo
+* Minor grammatical fix in doc
+* Updated from global requirements
+* Correcting using-api-v2.rst
+* Make parameters in EndpointManager optional
+* Add invalidate doc string to identity plugin
+* Session Adapters
+* Unversioned endpoints in service catalog
+* Update keystoneclient code to account for hacking 0.9.2
+* Rename v3._AuthConstructor to v3.AuthConstructor
+* Add issued handlers to auth_ref and fixtures
+* Add role ids to the AccessInfo
+* Doc build fails if warnings
+* Imports to fix build warnings
+* Updated from global requirements
+* auth_token _cache_get checks token expired
+* Adjust Python 2.6 OSerror-on-EPIPE workaround
+* Using six.u('') instead of u''
+* Added help text for the debug option
+* Session Documentation
+* Link to docstrings in using-api-v3
+* Set the iso8601 log level to WARN
+* Refactor auth_token token cache members to class
+* Add service_name to URL discovery
+* Don't use mock non-exist method assert_called_once
+* Remove _factory methods from auth plugins
+* Make get_oauth_params conditional for specific oauthlib versions
+* Changes exception raised by v3.trusts.update()
+* Add role assignments as concept in Client API V3 docs
+* Fix tests to use UUID strings rather than ints for IDs
+
+0.9.0
+-----
+
+* Clean up oauth auth plugin code
+* Fix a misspelling in a comment
+* Sync with oslo-incubator caed79d
+* Fix attributes ordering at v3/client.py
+* Add endpoint handling to Token/Endpoint auth
+* Add support for extensions-list
+* auth_token middleware hashes tokens with configurable algorithm
+* Remove left over vim headers
+* Add /role_assignments endpoint support
+* Authenticate via oauth
+* Add description param to v3 service create/update
+* Fixed an aparent typo in the code
+* Auth Plugin invalidation
+* Updated from global requirements
+* Move DisableModuleFixture to utils
+* replace string format arguments with function parameters
+* Fixes an erroneous type check in a test
+* Mark keystoneclient as being a universal wheel
+* auth_token hashes PKI token once
+* add docstr to v2 shell module regarding CLI deprecation
+* Compressed Signature and Validation
+* OAuth request/access token and consumer support for oauth client API
+* Add mailmap entry
+* Regions Management
+* Sync with oslo-incubator 2640847
+* Discovery URL querying functions
+* Remove importutils from oslo config
+* Move auth_token tests not requiring v2/v3 to new class
+* Cached tokens aren't expired
+* Move auth_token cache pool tests out of NoMemcache
+* Make auth_token return a V2 Catalog
+* Fix client fixtures
+* fixed typos found by RETF rules
+* Fix docstrings in keystoneclient
+* auth_token configurable check of revocations for cached
+* Remove unused AdjustedBaseAuthTokenMiddlewareTest
+* Synced jsonutils from oslo-incubator
+* auth_token test remove unused fake_app parameter
+* Fix typo in BaseAuthTokenMiddlewareTest
+* Updated from global requirements
+* Enhance tests for auth_token middleware
+* Limited use trusts
+* Debug log when token found in revocation list
+* Ensure that cached token is not revoked
+* Fix the catalog format of a sample token
+* remove universal_newlines
+* replace double quotes with single
+* Deprecate admin_token option in auth_token
+
+0.8.0
+-----
+
+* CLI always configures logging
+* Create a V3 Token Generator
+* Implement endpoint filtering functionality on the client side
+* Fix typo of ANS1 to ASN1
+* Add new error for invalid response
+* Rename HTTPError -> HttpError
+* Add CRUD operations for Federation Mapping Rules
+* Don't use generic kwargs in v2 Token Generation
+* Update docs for auth_token middleware config options
+* Allow session to return an error response object
+* Updated from global requirements
+* Add service name to catalog
+* Hash functions support different hash algorithms
+* Add CRUD operations for Identity Providers
+* eliminate race condition fetching certs
+* Allow passing auth plugin as a parameter
+* Prefer () to continue line per PEP8
+* Use `HttpNotImplemented` in `tests.v3.test_trusts`
+* Ensure JSON headers in Auth Requests
+* Create a test token generator and use it
+* Reuse module `exceptions` from Oslo
+* Updated from global requirements
+* Rename request_uri to identity_uri
+* Tests should use identity_uri by default
+* Replace auth fragements with identity_uri
+
+0.7.1
+-----
+
+* Adds to Keystone to convert V2 endpoints to V3
+* Remove releases.rst from keystone docs
+
+0.7.0
+-----
+
+* Improve language in update_password() validation error
+* Handle URLs via the session and auth_plugins
+* Add a method for changing a user's password in v3
+* sanity check memcached availability before running tests against it
+* Start using positional decorator
+* Fix passing get_token kwargs to get_access
+* add functional test for cache pool
+* Sync config fixture object from oslo.incubator
+* Add a positional decorator
+* add pooling for cache references
+* use v3 api to get certificates
+* Don't use a connection pool unless provided
+* Reference docstring for auth_token fields
+* Docs link to middlewarearchitecture
+* Discover should support other services
+* Revert "Add request/access token and consumer..."
+* Revert "Authenticate via oauth"
+* Fix doc build errors
+* Generate module docs
+* document that --pass can be required
+* Authenticate via oauth
+* Add request/access token and consumer support for keystoneclient
+* Use AccessInfo in auth_token middleware
+* Add 'methods' to all v3 test tokens
+* Handle Token/Endpoint authentication
+* Split sample PKI token generation
+* Updated from global requirements
+* Fix retry logic
+* Provide more data to AuthMethod plugins
+* Fix state modifying catalog tests
+* Remove reference to non-existent shell doc
+* increase default revocation_cache_time
+* Improve help strings
+* Make keystoneclient not log auth tokens
+* improve configuration help text in auth_token
+* Log the command output on CertificateConfigError
+* Enforce scope mutual exclusion for trusts
+* Atomic write of certificate files and revocation list
+* Privatize auth construction parameters
+* Remove blank space after print
+* Set the right permissions for signing_dir in tests
+* Capitalize Client API title consistently
+* Remove dependent module py3kcompat
+* Remove http_handler config option in auth_token
+* Rely on OSLO.config
+* Use admin_prefix consistently
+* demonstrate auth_token behavior with a simple echo service
+* Remove redundant default value None for dict.get
+* correct typo of config option name in error message
+* remove extra indentation
+* refer to non-deprecated config option in help
+* Create V3 Auth Plugins
+* Create V2 Auth Plugins
+* Fix role_names call from V3 AccessInfo
+* Interactive prompt for create user
+* Add Python 3 classifiers
+* Replace assertEqual(None, *) with assertIsNone in tests
+* Ensure domains.list filtered results are correct
+* Test query-string for list actions with filter arguments
+* Use Resource class from Oslo
+* Fix keystone command man page
+* Add link to the v3 client api doc
+* Fix references to auth_token in middlewarearchitecture doc
+
+0.6.0
+-----
+
+* Don't use private last_request variable
+* Python: Pass bytes to derive_keys()
+* Make sure to unset all variable starting with OS_
+* Remove tox locale overrides
+* Python3: use six.moves.urllib.parse.quote instead of urllib.quote
+* Remove vim header
+* Python3: httpretty.last_request().body is now bytes
+* Python3: fix test_insecure
+* Sync openstack/common/memorycache.py with Oslo
+* cms: Use universal_newlines=True in subprocess.Popen()
+* HTTPretty: Bump to 0.8.0
+* Check for any monkeypatching
+* Python3: webob.Response.body must be bytes
+* Python 3: call functions from memcache_crypt.py with bytes as input
+* Update my mailmap
+* Improve output of "keystone help discover"
+* Use requests library in S3 middleware
+* Python 3: make tests from v2_0/test_access.py pass
+* Sync apiclient from oslo
+* Create Authentication Plugins
+* Fix debug curl commands for included data
+* Add back --insecure option to CURL debug
+
+0.5.1
+-----
+
+* Use HTTPretty in S3 test code
+* Provide a conversion function for creating session
+* Update reference to middlewarearchitecture doc
+* Update middlewarearchitecture config options docs
+* Remove support for old Swift memcache interface
+
+0.5.0
+-----
+
+* refactor handling of extension list
+* Python 3: fix tests/test_utils.py
+* Python 3: Fix an str vs bytes issue in tempfile
+* Return role names by AccessInfo.role_names
+* Copy s3_token middleware from keystone
+* Fix discover command failed to discover keystone in ssl
+* Fix E12x warnings found by Pep8 1.4.6
+* Fix typos in documents and comments
+* Consistently support kwargs across all v3 CRUD Manager ops
+* Using common method 'bool_from_string' from oslo strutils
+* Python 3: set webob.Response().body to a bytes value
+* Remove test_print_{dict,list}_unicode_without_encode
+* Tests use cleanUp rather than tearDown
+* Sort items in requirement related files
+* Respect region name when processing domain URL
+* Python 3: fix the _calc_signature_* functions
+* Adjust import items according to hacking import rule
+* Replace assertTrue with explicit assertIsInstance
+* Sync with global requirements
+* Fix discover command failed to read extension list issue
+* Clarify roles validation error messages
+* Fix incorrect assertTrue usage
+* Make assertQueryStringIs usage simpler
+
+0.4.2
+-----
+
+* auth_token tests use assertIs/Not/None
+* Updated from global requirements
+* Python 3: Use HTTPMessage.get() rather than HTTPMessage.getheader()
+* auth_token tests close temp file descriptor
+* Tests cleanup temporary files
+* Use install_venv from oslo to fix no post_process issue
+* Removes use of timeutils.set_time_override
+* Saner debug log message generation
+* Controllable redirect handling
+* Revert "Whitelist external netaddr requirement"
+* Sync strutils from oslo
+* Verify token binding in auth_token middleware
+* Fix auth_token middleware test invalid cross-device link issue
+* Add unit tests for generic/shell.py
+* Rename using-api.rst to using-api-v2.rst
+* Debug env for tox
+* Whitelist external netaddr requirement
+* Prevent dictionary size from changing while iterating over its items
+* Do not try to call decode() on a text string
+* Documents keystone v3 API usage - part 1
+* v3 test utils, don't modify input parameter
+* Fix error in v3 credentials create/update
+* Rename instead of writing directly to revoked file
+* Correctly handle auth_url/token authentication
+* Move redirect handling to session
+* Remove debug specific handling
+* Fix missed management_url setter in v3 client
+* Add service catalog to domain scoped token fixture
+* Update requirements
+* Change assertEquals to assertIsNone
+* Avoid meaningless comparison that leads to a TypeError
+* HTTPretty: update to 0.7.1
+* Python3: replace urllib by six.moves.urllib
+* Remove the 'cmp' keyword from a call to 'sort()'
+* Make _get_utf8_value Python3 compliant
+* Don't install pre-release software with tox
+* Sync global requirements to pin sphinx to sphinx>=1.1.2,<1.2
+* Allow commit title messages to end with a period
+* Sync with latest module from oslo
+* Fix --debug handling in the shell
+* Rename tokenauth to authtoken in the doc
+* use six.StringIO for compatibility with io.StringIO in python3
+* Properly handle Regions in keystoneclient
+* Use testresources for example files
+* Discover supported APIs
+* Warn user about unsupported API version
+* Bump hacking to 0.8
+* Add workaround for OSError raised by Popen.communicate()
+* Use assertIn where appropriate
+* Updates .gitignore
+* Updates .gitignore
+* Extract a base Session object
+* Reorganize Service Catalog
+* Do not format messages before they are logged
+* keystoneclient requires an email address when creating a user
+* Fix typo in keystoneclient
+* Encode the text before print it to console
+* Opt-out of service catalog
+* Fix trustee/trustor definitions
+* Revert "Merge "Avoid returning stale token via auth_token property""
+* "publicurl" should be required on endpoint-create
+* Update the management url for every fetched token
+* Remove service type restriction from keystone client help text
+* Add testresources test requirement
+* Fix python3 incompatible use of urlparse
+* Update tox.ini to usedevelop
+* Make HACKING.rst DRYer and turn into rst file
+* Quote URL in curl output to handle query params
+* Fix curl debug output for requests with a body
+* Add --insecure to curl output if required
+* Convert revocation list file last modified to UTC
+* Improved error message on connection failure
+* PEP 8 Public and internal interfaces
+* python3: Work around httpretty issue
+* Remove unused simplejson requirement
+* Migrate the keystone.common.cms to keystoneclient
+* Avoid returning stale token via auth_token property
+* Remove SERVICE_TOKEN and SERVICE_ENDPOINT env vars
+* Apply six for metaclass
+* Make ROOTDIR determination more robust
+
+0.4.1
+-----
+
+* Replace OpenStack LLC with OpenStack Foundation
+* Add AssertRequestHeaderEqual test helper and make use of it
+* Sync jsonutils from oslo
+* python3: Refactor dict for python2/python3 compat
+* Updated from global requirements
+* python3: Make iteritems py3k compat
+
+0.4.0
+-----
+
+* Normalize datetimes to account for tz
+* assertEquals is deprecated, use assertEqual (H602)
+* Fix H202 assertRaises Exception
+* Refactor for testability of an upcoming change
+* Fixes print error for keystone action with non-English characters
+* Allow v2 client authentication with trust_id
+* Fix misused assertTrue in unit tests
+* Add auth_uri in conf to avoid unnecessary warning
+* Require oslo.config 1.2.0 final
+* Move tests in keystoneclient
+* Change Babel to a runtime requirement
+* Allow blank to email in user-update
+* Set example timestamps to 2038-01-18T21:14:07Z
+* Replace HttpConnection in auth_token with Requests
+* Convert tests to HTTPretty and reorganize
+* Support client generate literal ipv6 auth_uri base on auth_host
+* Log user info in auth_token middleware
+* Decode the non-english username str to unicode
+* Deprecation warning should be 'pending'
+* Deprecation warning for the CLI
+* Don't need to init testr explicitly
+* Allow Hacking 0.7.x or later
+* Remove testcase test_invalid_auth_version_request
+* Correct keyword args in test cases
+* python3: Use from future import unicode_literals
+* Fixing potential NameErrors
+* Modify keyring tests to test authentication
+* Fix and enable gating on F811
+* Fix and enable gating on F841
+* Remove duplicate method in AccessInfo
+* remove the UUID check for userids
+* Standardize base.py with novaclient
+* Fix and enable gating on H302: only import modules
+* Fix License Headers and Enable Gating on H102
+* Replace auth_token middleware tests with httpretty
+* Add domain attributes to accessinfo
+* Support older token formats for projects in accessinfo
+* Use OSLO jsonutils instead of json module
+* python3: Transition to mox3 instead of mox
+* Sync py3kcompat from oslo-incubator
+* Update oslo.config
+* clearer error when authenticate called without auth_url
+
+0.3.2
+-----
+
+* Add unittests for exceptions.EmptyCatalog
+* Allow configure the number of http retries
+* Restore client.py for backward compatibility
+* Initial Trusts support
+* Add importutils and strutils from oslo
+* Synchronize code from oslo
+* Add apiclient.exceptions hierarchy
+* Use hashed token for invalid PKI token cache key
+* Move flake8 option from run_tests.sh to tox.ini
+* Extract test token data from auth_token middleware
+* Make auth_token middleware fetching respect prefix
+* Fix and enable Gating on H404
+* Move all opens in auth_token to be in context
+* Refactor verify signing dir logic
+* Fixes files with wrong bitmode
+* flake8: enable H201, H202, H802
+* Adds support for passing extra tenant attributes to keystone
+* Add a get_data function to Service Catalog
+* Extract basic request call
+* Rename client.py to httpclient.py
+* Updated from global requirements
+* Don't cache tokens as invalid on network errors
+* Fix test_request_no_token_dummy cms dependency
+* Fix a typo in fetch_revocation_list
+* Make TestResponse properly inherit Response
+* auth_uri (public ep) should not default to auth_* values (admin ep)
+* Adds help in keystone_authtoken config opts
+* python3: Add basic compatibility support
+* Pass the default_project_id when managing User
+* Use flake8 in run_tests.sh and updated ignore flake8 rules with tox.ini
+* flake8: fix alphabetical imports and enable H306
+* Ec2Signer : Allow signature verification for older boto versions
+* Correct mis-spell in comments
+* Reorganize url creation
+* Add -u option in run_tests.sh
+* Drop webob from auth_token.py
+* no logging on cms failure
+* Client V3 shouldn't inherit V2
+* Add discover to test-requirements
+* rm improper assert syntax
+* Update openstack-common.conf format
+* Fix and enable gating on H403
+* Fix and enable gating on H402
+* Raise key length defaults
+* Use ServiceCatalog.factory, the object has no __init__
+* Ec2Signer : Modify v4 signer to match latest boto
+* Sync install_venv_common from oslo
+* Flake8 should ignore build folder
+* Fix auth_token.py bad signing_dir log message
+* Add name arguments to keystone command
+
+0.3.1
+-----
+
+* Fix and enable H401
+* List groups by domain in keystoneclient
+* Unmock requests when testing complete
+
+0.3.0
+-----
+
+* Use Python 3.x compatible print syntax
+* Fix the cache interface to use time= by default
+* Implements v3 auth client
+* Change memcache config entry name in Keystone to be consistent with Oslo
+* Fix memcache encryption middleware
+* Python-2.6 compatibility for tests/test_keyring.py
+* Remove endpoint.name attribute from v3 manager (bug 1191152)
+* Provide keystone CLI man page
+* Log cms_verify issues as warnings (not errors)
+* Cleanup shell's authentication check
+* Use AuthRef for some client fields
+* Fix optional keyring support, add basic keyring tests
+
+0.2.5
+-----
+
+* Fix unused imports(flake8 F401, F999)
+* Fix line continuations (flake8 E125, E126)
+* Fix --version to output version
+* python3: Introduce py33 to tox.ini
+* Add find() method to CrudManager
+
+0.2.4
+-----
+
+* Check Expiry
+* Enumerate ignored flake8 rules
+* Missing command descriptions for 'token-get' and 'endpoint-get'
+* Suggestion of a new arguments display in the help, to reflect required ones Fix bug 1182130
+* Rename requires files to standard names
+* Default signing_dir to secure temp dir (bug 1181157)
+* Only add logging handlers if there currently aren't any
+* Pass memcache_servers as array
+* Allow secure user password update
+* Make ManagerWithFind abstract and fix TokenManager
+* Migrate to flake8
+* Migrate to pbr
+* change "int(marker)" to "marker" on user list pagination
+* Use testr instead of nose
+* Perform oslo-incubator code sync
+* Securely create signing_dir (bug 1174608)
+* Added Conflict Exception to the exception code map
+* Refactor v3 API to support filtering
+* Revert "Use TokenManager to get token"
+* Restore compatibility with PrettyTable < 0.7.2
+* Remove duplicate test definitions
+* Use TokenManager to get token
+* Pass json object when invoking exception handler
+* modify mistake in comment
+* Ec2Signer: Initial support for v4 signature verification
+* adding notes about dealing with exceptions in the client
+* Fix v3 with UUID and memcache expiring
+* Convert requests.ConnectionError to ClientException
+* Restrict prettytable to >=0.6,<0.8
+* Allow keystoneclient to work with older keystone installs
+* Config value for revocation list timeout
+
+0.2.3
+-----
+
+* Cache tokens using memorycache from oslo
+* Make keystone client handle the response code 300
+* Make auth_token lazy load the auth_version
+* Doc info and other readability improvements
+* Retry http_request and json_request failure
+* Use v2.0 api by default in auth_token middleware
+* Switch to final 1.1.0 oslo.config release
+* Fix auth-token middleware to understand v3 tokens
+* help text improvements
+* Switch to oslo.config
+* update v3 domains - remove public/private namespace
+* Work better in server env with no keyrings
+* Remove test dep on name of dir (bug 1124283)
+* Sync memorycache and timeutils from oslo
+* Improve error message for missing endpoint
+* Update oslo-config version
+* Fix selef to self in class
+* Save test_auth_token_middleware from unlimited recursion
+* Use oslo-config-2013.1b3
+* Added missing unit tests for shell.py
+* Allow configure auth_token http connect timeout
+* Fix debug with requests
+* Allow requests up to 0.8 and greater
+* sync README with "keystone help"
+* Use install_venv_common.py from oslo
+* Fix incomplete sentence in help
+* Update .coveragerc
+* Pin requests module more strictly
+* Treat HTTP code 400 and above as error
+* Update requests requirements
+* Mark password config options with secret
+* Implements token expiration handling
+* fix discrepancies seen in domain and credential, v3 - bug 1109349
+* Fix how python 2.6 doesn't have assertDictEqual
+* If you specify the --debug argument, it doesn't show the body of a POST request. The body (string rep) is at 'data' in the kwargs dict. 'body' was deleted prior to this call
+* Fix STALE_TOKEN_DURATION usage
+* Factorize endpoint retrieval in access
+* Take region_name into account when calling url_for
+* Remove useless code
+* Fix thinko in self.middleware.cert_file_missing
+* Remove useless import
+* Restore Python 2.6 compatibility
+* Allow request timeout to be specified
+* Remove assertDictEqual for python 2.6 compatibility
+* Add name arguments to keystone command
+* Blueprint memcache-protection: enable memcache value encryption/integrity check
+* Make WebOb version specification more flexible
+* Warning message is not logged for valid token-less request
+
+0.2.2
+-----
+
+* Use os.path to find ~/keystone-signing (bug 1078947)
+* Remove iso8601 dep in favor of openstack.common
+* Move iso8601 dependency from test- to pip-requires
+* Pin requests to >=0.8.8
+* Use testtools instead of unittest for base classes
+* Add support for user groups
+
+0.2.1
+-----
+
+* Make it possible to debug by running module
+* remove unused import
+* Bug 1052674: added support for Swift cache
+* Add file 'ChangeLog' to MANIFEST.in
+* Fix keystone *-list order by 'name'
+* Use requests module for HTTP/HTTPS
+* Print to stderr when keyring module is missing
+* Prevent an uncaught exception from being rasied
+* modify ca-certificate default value
+* Spelling: compatibile->compatible
+* URL-encode user-supplied tokens (bug 974319)
+* Fix middleware logging for swift
+* Fix keystoneclient user-list output order
+* Misspelling error in README.rst
+* Rename --no_cache to --os_cache
+* Make use_keyring False by default
+* bug-1040361: use keyring to store tokens
+* Don't try to split a list of memcache servers
+* Drop hashlib/hmac from pip-requires
+* Add --version CLI opt and __version__ module attr
+* Add Ec2Signer utility class to keystoneclient
+* Add command to allow users to change their own password
+* updating PEP8 to 1.3.3
+* Correct a misspelled in comments
+* Remove Policy.endpoint_id reference
+* Fix scoped auth for non-admins (bug 1081192)
+
+0.2.0
+-----
+
+* Throw validation response into the environment
+* fixes auth_ref initialization error
+* Update README and CLI help
+* Add auth-token code to keystoneclient, along with supporting files
+* Make initial structural changes to keystoneclient in preparation to moving auth_token here from keystone. No functional change should occur from this commit (even though it did refresh a newer copy of openstack.common.setup.py, none of the newer updates are in functions called from this client)
+* removing repeat attempt at authorization in client
+* Check for auth URL before password (bug 1076235)
+* check creds before token/endpoint (bug 1076233)
+* Warn about bypassing auth on CLI (bug 1076225)
+* fixes 1075376
+* Fix keystoneclient so swift works against Rackspace Cloud Files
+* HACKING compliance: consistent usage of 'except'
+* Update --os-* error messages
+* Replace refs to 'Keystone API' with 'Identity API'
+* Don't log an exception for an expected empty catalog
+* Add OpenStack trove classifier for PyPI
+* add a new HTTPClient attr for setting the original IP
+* Fixes https connections to keystone when no CA certificates are specified
+* use mock context managers instead of decorators+functions
+* Ensure JSON isn't read on no HTTP response body
+* Added 'service_id' column to endpoint-list
+* Useful error msg when missing catalog (bug 949904)
+* bootstrap a keystone user (e.g. admin) in one cmd
+* Enable/disable services/endpoints (bug 1048662
+* v3 Domain/Project role grants
+* Fixed httplib2 mocking (bug 1050091, bug 1050097)
+* v3 List projects for a user
+* v3 Credential CRUD
+* v3 User CRUD
+* v3 Project CRUD
+* v3 Role CRUD
+* v3 Domain CRUD
+* v3 Policy CRUD
+* v3 Endpoint CRUD
+* v3 Service CRUD
+* change default wrap for tokens from 78 characters to 0
+* v3 Client & test utils
+* Manager for generic CRUD on v3
+* virtualenv quite installation for zypper
+* updating base keystoneclient documentation
+* updating keystoneclient doc theme
+* enabling i18n with Babel
+* pep8 1.3.1 cleanup
+* Allow empty description for tenants
+* Add wrap option to keystone token-get for humans
+* switching options to match authentication paths
+* Fixes setup compatibility issue on Windows
+* Handle "503 Service Unavailable" exception
+* removing deprecated commandline options
+* Require httplib2 version 0.7 or higher
+* Fixed httplib2 mocking (bug 1050091, bug 1050097)
+* Allow serialization impl to be overridden
+* Add generic entity.delete()
+* Add support for HEAD and PATCH
+* Don't need to lazy load resources loaded from API
+
+0.1.3
+-----
+
+* fixing pep8 formatting for 1.0.1+ pep8
+* Fix PEP8 issues
+* splitting http req and resp logging also some pep8 cleanup in shell.py
+* Change underscores in new cert options to dashes
+* Add nosehtmloutput as a test dependency
+
+0.1.2
+-----
+
+* Add '--insecure' commandline argument
+* If no password in env or command line, try prompting
+* Install test-requires in development venv
+* add keystone bash-completion
+* Replace obsolete option in README
+* Support 2-way SSL with Keystone server if it is configured to enforce 2-way SSL. See also https://review.openstack.org/#/c/7706/ for the corresponding review for the 2-way SSL addition to Keystone
+* Don't call PrettyTable add_row with a tuple
+* Change CLI options to use dashes
+
+0.1.1
+-----
+
+* Add post-tag versioning
+* decoding json only on 2xx success response bug 1007661
+* Do not display None in pretty tables for fields with no value
+
+0.1.0
+-----
+
+* Drop support for legacy OS args
+* Skip argparse when injecting requirements
+* Move unittest2 dependency
+* Fix coverage job. Turns out you need coverage
+* Update to latest openstack.common setup code
+* Move docs to doc
+* fix bug lp:936168,format output
+* pep8 1.1 changes and updates
+* Updated Sphinx documentation
+
+folsom-1
+--------
+
+* Fix Tenant.update() for enabled=False
+* Change --user to --user_id and --role to --role_id in the keystone client for consistency
+* Remove printt
+* Auto generate AUTHORS for python-keystoneclient
+* Require service_id for endpoint-create (bug 987457)
+* Removed unused imports and variables
+* Include last missing files in tarball
+* fix parameter name error in exapmle
+* Drop support for OS --tenant_id (bug 960977)
+* Open Folsom
+
+essex-rc1
+---------
+
+* Useful messages for missing auth data (bug 946297)
+* Updated tox.ini to work properly with Jenkins
+* Implement user-get based on tenant-get (bug 940272)
+* Backslash continuations (python-keystoneclient)
+* Split user-role-list from user-list
+* Change CLIAuth arg names
+* enabled treated as string (bug 953678)
+* CLI shows help without args (bug 936398)
+* fix bug 950685,make update user password works
+* Add endpoint commands help text
+* List roles for user on CLI (bug 932282)
+* prevent keyerrors when accessing optional keys
+* Removed ?fresh=nonsense (bug 936405)
+* Make ec2-credentials-* commands work properly for non-admin user
+* Remove trailing whitespaces in regular file
+
+essex-4
+-------
+
+* Endpoints: Add create, delete, list support
+* Clean up EC2 CRUD
+* Fix --tenant_id corner case with ec2-create-creds command
+* Improve usability of CLI
+* Help output tweaks, Vol I
+* Move --version to --identity_api_version
+* Remove internal '-' from flag names
+* Fix inconsistient method names and add tests
+* Added condition requirement to argparse
+* Add tenant commands to cli
+* Display token and service catalog for user
+* Restores proper PUT method for user update now that KSL supports it
+* Add license file to the tarball
+* Fixes user update methods
+* Use unittest2 instead of unittest
+* Fix conflicts with shell args for subcommands
+* Allow --token and --endpoint to bypass catalog
+* Blueprint cli-auth: common cli args
+* Correct tenant update HTTP method
+* Added delete token
+* Updates client to work with keystone essex roles API routes
+* Enabling/disabling users should use OS-KSADM extension (bug 922394)
+* Add limit and marker to user_list and tenant_list
+
+essex-3
+-------
+
+* Support for version and extension discovery
+* Implementing a minimal, but useful CLI
+* Adjust version number to match other deliveries
+* update ec2 crud responses we test against
+* support ec2 crud calls
+* Install a good version of pip in the venv
+* Modify tox.ini file to do the standard thigns
+* Added in common test, venv and gitreview stuff
+* log when no service catalog
+* update comment to be tenant_name
+* should have had tenant_name
+* use full name for args in readme
+* finish removing project_id
+* update test env shell
+* Fix the tests
+* remove X-Auth-Project-Id, re-add auth by token support (most tests pass)
+* pep8
+* set the management_url from the service_catalog
+* more work on standardizing project_id
+* typo in comments
+* remove print statements and uncomment exceptions
+* more work on standardization of cliauth
+* remove user_id as you shouldn't auth using it
+* initial pass to cliauth blueprint
+* Improved error message when unable to communicate with keystone
+* Improved logging/error messages
+* adding myself to authors
+* switching back per docs
+* fixing up the VerifyAll() bits
+* more pep8 cleanup
+* pep8 cleanup
+* Updated the docs a little bit
+* Project ID always treated as a string
+* Cleans up the data returned for a token a little
+* Fixed a typo... "API" should've been "CLI". Thanks termie. ;-)
+* Initial commit

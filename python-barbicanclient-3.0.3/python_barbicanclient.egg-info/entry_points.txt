@@ -1,0 +1,17 @@
+[barbican.client]
+container_create = barbicanclient.barbican_cli.containers:CreateContainer
+container_delete = barbicanclient.barbican_cli.containers:DeleteContainer
+container_get = barbicanclient.barbican_cli.containers:GetContainer
+container_list = barbicanclient.barbican_cli.containers:ListContainer
+order_create = barbicanclient.barbican_cli.orders:CreateOrder
+order_delete = barbicanclient.barbican_cli.orders:DeleteOrder
+order_get = barbicanclient.barbican_cli.orders:GetOrder
+order_list = barbicanclient.barbican_cli.orders:ListOrder
+secret_delete = barbicanclient.barbican_cli.secrets:DeleteSecret
+secret_get = barbicanclient.barbican_cli.secrets:GetSecret
+secret_list = barbicanclient.barbican_cli.secrets:ListSecret
+secret_store = barbicanclient.barbican_cli.secrets:StoreSecret
+
+[console_scripts]
+barbican = barbicanclient.barbican:main
+

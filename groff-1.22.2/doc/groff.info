@@ -1,0 +1,317 @@
+This is groff.info, produced by makeinfo version 4.13 from
+./groff.texinfo.
+
+This manual documents GNU `troff' version 1.22.2.
+
+   Copyright (C) 1994-2013 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover texts
+     being `A GNU Manual," and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     `GNU Free Documentation License."
+
+     (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+     modify this GNU manual.  Buying copies from the FSF supports it in
+     developing GNU and promoting software freedom."
+
+INFO-DIR-SECTION Typesetting
+START-INFO-DIR-ENTRY
+* Groff: (groff).               The GNU troff document formatting system.
+END-INFO-DIR-ENTRY
+
+
+Indirect:
+groff.info-1: 984
+groff.info-2: 298910
+groff.info-3: 551871
+
+Tag Table:
+(Indirect)
+Node: Top984
+Node: Introduction2260
+Node: What Is groff?2713
+Node: What Is groff?-Footnotes4169
+Ref: What Is groff?-Footnote-14243
+Node: History4280
+Node: History-Footnotes9259
+Ref: History-Footnote-19319
+Node: groff Capabilities9527
+Node: Macro Package Intro10723
+Node: Preprocessor Intro11356
+Node: Output device intro12986
+Node: Credits13473
+Node: Invoking groff13987
+Node: Groff Options15285
+Node: Environment26097
+Node: Macro Directories28446
+Node: Font Directories29782
+Node: Paper Size31429
+Node: Invocation Examples32784
+Node: Invocation Examples-Footnotes33986
+Ref: Invocation Examples-Footnote-134070
+Node: grog34303
+Node: Tutorial for Macro Users35586
+Node: Basics36012
+Node: Basics-Footnotes40837
+Ref: Basics-Footnote-140895
+Ref: Basics-Footnote-240989
+Node: Common Features41103
+Node: Paragraphs41898
+Node: Sections and Chapters43410
+Node: Headers and Footers43916
+Node: Page Layout Adjustment44803
+Node: Displays45084
+Node: Footnotes and Annotations46356
+Node: Table of Contents47029
+Node: Indices47558
+Node: Paper Formats47974
+Node: Multiple Columns48361
+Node: Font and Size Changes48625
+Node: Predefined Strings48943
+Node: Preprocessor Support49295
+Node: Configuration and Customization49865
+Node: Macro Packages50248
+Node: man50818
+Node: Man options51260
+Node: Man options-Footnotes53958
+Ref: Man options-Footnote-154026
+Node: Man usage54747
+Node: Man font macros60811
+Node: Miscellaneous man macros62648
+Node: Predefined man strings64384
+Node: Preprocessors in man pages64956
+Node: Optional man extensions65584
+Node: mdoc69581
+Node: ms69760
+Node: ms Intro70269
+Node: General ms Structure70952
+Node: General ms Structure-Footnotes73406
+Ref: General ms Structure-Footnote-173492
+Node: ms Document Control Registers73538
+Node: ms Cover Page Macros80192
+Node: ms Body Text83217
+Node: Paragraphs in ms83710
+Node: Headings in ms85484
+Node: Highlighting in ms88264
+Node: Lists in ms90859
+Node: Indentation values in ms94282
+Node: Tabstops in ms94916
+Node: ms Displays and Keeps95343
+Node: ms Insertions99302
+Node: Example multi-page table100879
+Node: ms Footnotes101340
+Node: ms Page Layout102610
+Node: ms Headers and Footers103141
+Node: ms Margins104602
+Node: ms Multiple Columns104861
+Node: ms TOC105681
+Node: ms Strings and Special Characters108418
+Node: ms Strings and Special Characters-Footnotes111230
+Ref: ms Strings and Special Characters-Footnote-1111342
+Node: Differences from AT&T ms111429
+Node: Missing ms Macros114515
+Node: Additional ms Macros115290
+Node: Naming Conventions116563
+Node: me117599
+Node: mm117767
+Node: mom117936
+Node: gtroff Reference118185
+Node: Text119109
+Node: Filling and Adjusting119678
+Node: Hyphenation120406
+Node: Sentences121203
+Node: Tab Stops122358
+Node: Implicit Line Breaks123266
+Node: Input Conventions124408
+Node: Input Encodings125214
+Node: Measurements127348
+Node: Measurements-Footnotes129553
+Ref: Measurements-Footnote-1129623
+Node: Default Units129695
+Node: Expressions130755
+Node: Expressions-Footnotes134168
+Ref: Expressions-Footnote-1134236
+Node: Identifiers134363
+Node: Embedded Commands138230
+Node: Requests138987
+Node: Request and Macro Arguments141233
+Node: Request and Macro Arguments-Footnotes143729
+Ref: Request and Macro Arguments-Footnote-1143829
+Ref: Request and Macro Arguments-Footnote-2143957
+Node: Macros144311
+Node: Escapes144702
+Node: Comments147574
+Node: Comments-Footnotes150155
+Ref: Comments-Footnote-1150217
+Node: Registers150316
+Node: Setting Registers150829
+Node: Interpolating Registers154746
+Node: Auto-increment155568
+Node: Assigning Formats157124
+Node: Built-in Registers159985
+Node: Manipulating Filling and Adjusting163814
+Node: Manipulating Hyphenation172915
+Node: Manipulating Hyphenation-Footnotes184489
+Ref: Manipulating Hyphenation-Footnote-1184583
+Node: Manipulating Spacing184658
+Node: Tabs and Fields189212
+Node: Tabs and Fields-Footnotes195216
+Ref: Tabs and Fields-Footnote-1195292
+Node: Leaders195370
+Node: Leaders-Footnotes196979
+Ref: Leaders-Footnote-1197039
+Node: Fields197120
+Node: Character Translations198553
+Node: Troff and Nroff Mode207799
+Node: Line Layout209799
+Node: Line Control215663
+Node: Page Layout218325
+Node: Page Control222187
+Node: Fonts and Symbols225927
+Node: Changing Fonts226534
+Node: Font Families230069
+Node: Font Positions234641
+Node: Using Symbols237791
+Node: Using Symbols-Footnotes254791
+Ref: Using Symbols-Footnote-1254863
+Ref: Using Symbols-Footnote-2255316
+Ref: Using Symbols-Footnote-3255387
+Ref: Using Symbols-Footnote-4255626
+Node: Character Classes255689
+Node: Special Fonts258408
+Node: Artificial Fonts259602
+Node: Ligatures and Kerning265150
+Node: Sizes271181
+Node: Sizes-Footnotes272022
+Ref: Sizes-Footnote-1272078
+Node: Changing Type Sizes272490
+Node: Fractional Type Sizes277968
+Node: Strings281045
+Ref: als288787
+Node: Conditionals and Loops290671
+Node: Operators in Conditionals290903
+Node: Operators in Conditionals-Footnotes294652
+Ref: Operators in Conditionals-Footnote-1294748
+Ref: Operators in Conditionals-Footnote-2294827
+Node: if-else294926
+Node: while296518
+Node: Writing Macros298910
+Node: Writing Macros-Footnotes304363
+Ref: Writing Macros-Footnote-1304437
+Node: Copy-in Mode304735
+Node: Parameters305634
+Node: Page Motions308837
+Node: Drawing Requests316520
+Node: Traps326913
+Node: Page Location Traps327555
+Node: Diversion Traps333768
+Node: Input Line Traps334388
+Node: Blank Line Traps335422
+Node: Leading Spaces Traps335716
+Node: End-of-input Traps337297
+Node: Diversions340843
+Node: Environments348473
+Node: Suppressing output352348
+Node: Colors354387
+Node: I/O357964
+Node: Postprocessor Access366504
+Node: Miscellaneous368208
+Node: Miscellaneous-Footnotes373695
+Ref: Miscellaneous-Footnote-1373767
+Node: Gtroff Internals373837
+Node: Gtroff Internals-Footnotes378154
+Ref: Gtroff Internals-Footnote-1378232
+Node: Debugging378366
+Node: Warnings384353
+Node: Warnings-Footnotes387451
+Ref: Warnings-Footnote-1387513
+Node: Implementation Differences387634
+Node: Implementation Differences-Footnotes392468
+Ref: Implementation Differences-Footnote-1392566
+Node: Preprocessors392701
+Node: geqn393030
+Node: Invoking geqn393169
+Node: gtbl393280
+Node: Invoking gtbl393410
+Node: gpic393521
+Node: Invoking gpic393651
+Node: ggrn393762
+Node: Invoking ggrn393892
+Node: grap394003
+Node: gchem394283
+Node: Invoking gchem394419
+Node: grefer394535
+Node: Invoking grefer394677
+Node: gsoelim394798
+Node: Invoking gsoelim394945
+Node: preconv395071
+Node: Invoking preconv395203
+Node: Output Devices395329
+Node: Special Characters395584
+Node: grotty395758
+Node: Invoking grotty396086
+Node: grops397884
+Node: Invoking grops398221
+Node: Embedding PostScript399722
+Node: gropdf400404
+Node: Invoking gropdf400732
+Node: Embedding PDF402174
+Node: grodvi402791
+Node: Invoking grodvi403142
+Node: grolj4403931
+Node: Invoking grolj4404280
+Node: grolbp405136
+Node: Invoking grolbp405482
+Node: grohtml406275
+Node: Invoking grohtml407706
+Node: grohtml specific registers and strings409524
+Node: gxditview410536
+Node: Invoking gxditview410677
+Node: File formats410813
+Node: gtroff Output411089
+Node: gtroff Output-Footnotes412934
+Ref: gtroff Output-Footnote-1413006
+Node: Language Concepts413141
+Node: Separation413892
+Node: Argument Units416145
+Node: Document Parts417298
+Node: Command Reference418705
+Node: Comment Command419121
+Node: Simple Commands419619
+Node: Simple Commands-Footnotes425544
+Ref: Simple Commands-Footnote-1425620
+Node: Graphics Commands425681
+Node: Device Control Commands433006
+Node: Obsolete Command437066
+Node: Intermediate Output Examples438352
+Node: Output Language Compatibility441149
+Node: Font Files443210
+Node: Font Files-Footnotes443831
+Ref: Font Files-Footnote-1443897
+Node: DESC File Format443958
+Node: Font File Format449840
+Node: Font File Format-Footnotes456077
+Ref: Font File Format-Footnote-1456155
+Ref: Font File Format-Footnote-2456246
+Node: Installation456465
+Node: Copying This Manual456596
+Node: Request Index481732
+Node: Escape Index498246
+Node: Operator Index504737
+Node: Register Index506219
+Node: Macro Index520584
+Node: String Index533602
+Node: Glyph Name Index542287
+Node: Font File Keyword Index542593
+Node: Program and File Index546002
+Node: Concept Index551871
+
+End Tag Table
+
+
+Local Variables:
+coding: iso-8859-1
+End:

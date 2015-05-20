@@ -1,0 +1,15 @@
+[settings]
+server=10.7.200.60
+
+socket_path=@SOCKETDIR@/telem-0
+
+#record expiry time in minutes
+record_expiry=1200
+
+spool_dir=@localstatedir@/spool/telemetry
+
+#maximum size of the spool directory in KB
+spool_max_size=1024
+
+#time in seconds for processing spool
+spool_process_time=900

@@ -1,0 +1,14 @@
+[Unit]
+Description=remount rootfs rw
+DefaultDependencies=no
+Requires=-.mount
+After=-.mount
+Before=systemd-remount-fs.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/mount -oremount,rw /
+
+[Install]
+WantedBy=local-fs.target

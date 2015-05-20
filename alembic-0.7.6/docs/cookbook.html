@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cookbook &mdash; Alembic 0.7.6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature_override.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/changelog.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx_paramlinks.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.7.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Alembic 0.7.6 documentation" href="index.html" />
+    <link rel="next" title="API Details" href="api.html" />
+    <link rel="prev" title="Operation Reference" href="ops.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API Details"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ops.html" title="Operation Reference"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Alembic 0.7.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cookbook">
+<h1>Cookbook<a class="headerlink" href="#cookbook" title="Permalink to this headline">¶</a></h1>
+<p>A collection of &#8220;How-Tos&#8221;, highlighting various ways to extend
+Alembic.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is a new section where we hope to start cataloguing various &#8220;how-tos&#8221;
+we come up with based on user requests.  It is often the case that users
+will request a feature only to learn that simple customization can
+provide the same thing.   There&#8217;s only one recipe at the moment but
+we hope to get more soon!</p>
+</div>
+<div class="section" id="building-an-up-to-date-database-from-scratch">
+<span id="building-uptodate"></span><h2>Building an Up to Date Database from Scratch<a class="headerlink" href="#building-an-up-to-date-database-from-scratch" title="Permalink to this headline">¶</a></h2>
+<p>There&#8217;s a theory of database migrations that says that the revisions in existence for a database should be
+able to go from an entirely blank schema to the finished product, and back again.   Alembic can roll
+this way.   Though we think it&#8217;s kind of overkill, considering that SQLAlchemy itself can emit
+the full CREATE statements for any given model using <a class="reference external" href="http://www.sqlalchemy.org/docs/core/metadata.html#sqlalchemy.schema.MetaData.create_all" title="(in SQLAlchemy v1.0)"><tt class="xref py py-meth docutils literal"><span class="pre">create_all()</span></tt></a>.   If you check out
+a copy of an application, running this will give you the entire database in one shot, without the need
+to run through all those migration files, which are instead tailored towards applying incremental
+changes to an existing database.</p>
+<p>Alembic can integrate with a <a class="reference external" href="http://www.sqlalchemy.org/docs/core/metadata.html#sqlalchemy.schema.MetaData.create_all" title="(in SQLAlchemy v1.0)"><tt class="xref py py-meth docutils literal"><span class="pre">create_all()</span></tt></a> script quite easily.  After running the
+create operation, tell Alembic to create a new version table, and to stamp it with the most recent
+revision (i.e. <tt class="docutils literal"><span class="pre">head</span></tt>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># inside of a &quot;create the database&quot; script, first create</span>
+<span class="c"># tables:</span>
+<span class="n">my_metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="c"># then, load the Alembic configuration and generate the</span>
+<span class="c"># version table, &quot;stamping&quot; it with the most recent rev:</span>
+<span class="kn">from</span> <span class="nn">alembic.config</span> <span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span> <span class="nn">alembic</span> <span class="kn">import</span> <span class="n">command</span>
+<span class="n">alembic_cfg</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="s">&quot;/path/to/yourapp/alembic.ini&quot;</span><span class="p">)</span>
+<span class="n">command</span><span class="o">.</span><span class="n">stamp</span><span class="p">(</span><span class="n">alembic_cfg</span><span class="p">,</span> <span class="s">&quot;head&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When this approach is used, the application can generate the database using normal SQLAlchemy
+techniques instead of iterating through hundreds of migration scripts.   Now, the purpose of the
+migration scripts is relegated just to movement between versions on out-of-date databases, not
+<em>new</em> databases.    You can now remove old migration files that are no longer represented
+on any existing environments.</p>
+<p>To prune old migration files, simply delete the files.   Then, in the earliest, still-remaining
+migration file, set <tt class="docutils literal"><span class="pre">down_revision</span></tt> to <tt class="docutils literal"><span class="pre">None</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># replace this:</span>
+<span class="c">#down_revision = &#39;290696571ad2&#39;</span>
+
+<span class="c"># with this:</span>
+<span class="n">down_revision</span> <span class="o">=</span> <span class="bp">None</span>
+</pre></div>
+</div>
+<p>That file now becomes the &#8220;base&#8221; of the migration series.</p>
+</div>
+<div class="section" id="conditional-migration-elements">
+<h2>Conditional Migration Elements<a class="headerlink" href="#conditional-migration-elements" title="Permalink to this headline">¶</a></h2>
+<p>This example features the basic idea of a common need, that of affecting
+how a migration runs based on command line switches.</p>
+<p>The technique to use here is simple; within a migration script, inspect
+the <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.get_x_argument" title="alembic.environment.EnvironmentContext.get_x_argument"><tt class="xref py py-meth docutils literal"><span class="pre">EnvironmentContext.get_x_argument()</span></tt></a> collection for any additional,
+user-defined parameters.  Then take action based on the presence of those
+arguments.</p>
+<p>To make it such that the logic to inspect these flags is easy to use and
+modify, we modify our <tt class="docutils literal"><span class="pre">script.py.mako</span></tt> template to make this feature
+available in all new revision files:</p>
+<div class="highlight-mako"><div class="highlight"><pre><span class="x">&quot;&quot;&quot;</span><span class="cp">${</span><span class="n">message</span><span class="cp">}</span><span class="x"></span>
+
+<span class="x">Revision ID: </span><span class="cp">${</span><span class="n">up_revision</span><span class="cp">}</span><span class="x"></span>
+<span class="x">Revises: </span><span class="cp">${</span><span class="n">down_revision</span><span class="cp">}</span><span class="x"></span>
+<span class="x">Create Date: </span><span class="cp">${</span><span class="n">create_date</span><span class="cp">}</span><span class="x"></span>
+
+<span class="x">&quot;&quot;&quot;</span>
+
+<span class="x"># revision identifiers, used by Alembic.</span>
+<span class="x">revision = </span><span class="cp">${</span><span class="nb">repr</span><span class="p">(</span><span class="n">up_revision</span><span class="p">)</span><span class="cp">}</span><span class="x"></span>
+<span class="x">down_revision = </span><span class="cp">${</span><span class="nb">repr</span><span class="p">(</span><span class="n">down_revision</span><span class="p">)</span><span class="cp">}</span><span class="x"></span>
+
+<span class="x">from alembic import op</span>
+<span class="x">import sqlalchemy as sa</span>
+<span class="cp">${</span><span class="n">imports</span> <span class="k">if</span> <span class="n">imports</span> <span class="k">else</span> <span class="s">&quot;&quot;</span><span class="cp">}</span><span class="x"></span>
+
+<span class="x">from alembic import context</span>
+
+
+<span class="x">def upgrade():</span>
+<span class="x">    schema_upgrades()</span>
+<span class="x">    if context.get_x_argument(as_dictionary=True).get(&#39;data&#39;, None):</span>
+<span class="x">        data_upgrades()</span>
+
+<span class="x">def downgrade():</span>
+<span class="x">    if context.get_x_argument(as_dictionary=True).get(&#39;data&#39;, None):</span>
+<span class="x">        data_downgrades()</span>
+<span class="x">    schema_downgrades()</span>
+
+<span class="x">def schema_upgrades():</span>
+<span class="x">    &quot;&quot;&quot;schema upgrade migrations go here.&quot;&quot;&quot;</span>
+<span class="x">    </span><span class="cp">${</span><span class="n">upgrades</span> <span class="k">if</span> <span class="n">upgrades</span> <span class="k">else</span> <span class="s">&quot;pass&quot;</span><span class="cp">}</span><span class="x"></span>
+
+<span class="x">def schema_downgrades():</span>
+<span class="x">    &quot;&quot;&quot;schema downgrade migrations go here.&quot;&quot;&quot;</span>
+<span class="x">    </span><span class="cp">${</span><span class="n">downgrades</span> <span class="k">if</span> <span class="n">downgrades</span> <span class="k">else</span> <span class="s">&quot;pass&quot;</span><span class="cp">}</span><span class="x"></span>
+
+<span class="x">def data_upgrades():</span>
+<span class="x">    &quot;&quot;&quot;Add any optional data upgrade migrations here!&quot;&quot;&quot;</span>
+<span class="x">    pass</span>
+
+<span class="x">def data_downgrades():</span>
+<span class="x">    &quot;&quot;&quot;Add any optional data downgrade migrations here!&quot;&quot;&quot;</span>
+<span class="x">    pass</span>
+</pre></div>
+</div>
+<p>Now, when we create a new migration file, the <tt class="docutils literal"><span class="pre">data_upgrades()</span></tt> and <tt class="docutils literal"><span class="pre">data_downgrades()</span></tt>
+placeholders will be available, where we can add optional data migrations:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;rev one</span>
+
+<span class="sd">Revision ID: 3ba2b522d10d</span>
+<span class="sd">Revises: None</span>
+<span class="sd">Create Date: 2014-03-04 18:05:36.992867</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c"># revision identifiers, used by Alembic.</span>
+<span class="n">revision</span> <span class="o">=</span> <span class="s">&#39;3ba2b522d10d&#39;</span>
+<span class="n">down_revision</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="kn">from</span> <span class="nn">alembic</span> <span class="kn">import</span> <span class="n">op</span>
+<span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="kn">as</span> <span class="nn">sa</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">String</span><span class="p">,</span> <span class="n">Column</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.sql</span> <span class="kn">import</span> <span class="n">table</span><span class="p">,</span> <span class="n">column</span>
+
+<span class="kn">from</span> <span class="nn">alembic</span> <span class="kn">import</span> <span class="n">context</span>
+
+<span class="k">def</span> <span class="nf">upgrade</span><span class="p">():</span>
+    <span class="n">schema_upgrades</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">get_x_argument</span><span class="p">(</span><span class="n">as_dictionary</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="n">data_upgrades</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">downgrade</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">get_x_argument</span><span class="p">(</span><span class="n">as_dictionary</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="n">data_downgrades</span><span class="p">()</span>
+    <span class="n">schema_downgrades</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">schema_upgrades</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;schema upgrade migrations go here.&quot;&quot;&quot;</span>
+    <span class="n">op</span><span class="o">.</span><span class="n">create_table</span><span class="p">(</span><span class="s">&quot;my_table&quot;</span><span class="p">,</span> <span class="n">Column</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">schema_downgrades</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;schema downgrade migrations go here.&quot;&quot;&quot;</span>
+    <span class="n">op</span><span class="o">.</span><span class="n">drop_table</span><span class="p">(</span><span class="s">&quot;my_table&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">data_upgrades</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Add any optional data upgrade migrations here!&quot;&quot;&quot;</span>
+
+    <span class="n">my_table</span> <span class="o">=</span> <span class="n">table</span><span class="p">(</span><span class="s">&#39;my_table&#39;</span><span class="p">,</span>
+        <span class="n">column</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">op</span><span class="o">.</span><span class="n">bulk_insert</span><span class="p">(</span><span class="n">my_table</span><span class="p">,</span>
+        <span class="p">[</span>
+            <span class="p">{</span><span class="s">&#39;data&#39;</span><span class="p">:</span> <span class="s">&#39;data 1&#39;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s">&#39;data&#39;</span><span class="p">:</span> <span class="s">&#39;data 2&#39;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s">&#39;data&#39;</span><span class="p">:</span> <span class="s">&#39;data 3&#39;</span><span class="p">},</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">data_downgrades</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Add any optional data downgrade migrations here!&quot;&quot;&quot;</span>
+
+    <span class="n">op</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;delete from my_table&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To invoke our migrations with data included, we use the <tt class="docutils literal"><span class="pre">-x</span></tt> flag:</p>
+<div class="highlight-python"><div class="highlight"><pre>alembic -x data=true upgrade head
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.get_x_argument" title="alembic.environment.EnvironmentContext.get_x_argument"><tt class="xref py py-meth docutils literal"><span class="pre">EnvironmentContext.get_x_argument()</span></tt></a> is an easy way to support
+new commandline options within environment and migration scripts.</p>
+</div>
+<div class="section" id="sharing-a-connection-with-a-series-of-migration-commands-and-environments">
+<span id="connection-sharing"></span><h2>Sharing a Connection with a Series of Migration Commands and Environments<a class="headerlink" href="#sharing-a-connection-with-a-series-of-migration-commands-and-environments" title="Permalink to this headline">¶</a></h2>
+<p>It is often the case that an application will need to call upon a series
+of commands within <a class="reference internal" href="api.html#module-alembic.command" title="alembic.command"><tt class="xref py py-mod docutils literal"><span class="pre">alembic.command</span></tt></a>, where it would be advantageous
+for all operations to proceed along a single transaction.   The connectivity
+for a migration is typically solely determined within the <tt class="docutils literal"><span class="pre">env.py</span></tt> script
+of a migration environment, which is called within the scope of a command.</p>
+<p>The steps to take here are:</p>
+<ol class="arabic simple">
+<li>Produce the <a class="reference external" href="http://www.sqlalchemy.org/docs/core/connections.html#sqlalchemy.engine.Connection" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Connection</span></tt></a> object to use.</li>
+<li>Place it somewhere that <tt class="docutils literal"><span class="pre">env.py</span></tt> will be able to access it.  This
+can be either a. a module-level global somewhere, or b.
+an attribute which we place into the <a class="reference internal" href="api.html#alembic.config.Config.attributes" title="alembic.config.Config.attributes"><tt class="xref py py-attr docutils literal"><span class="pre">Config.attributes</span></tt></a>
+dictionary (if we are on an older Alembic version, we may also attach
+an attribute directly to the <a class="reference internal" href="api.html#alembic.config.Config" title="alembic.config.Config"><tt class="xref py py-class docutils literal"><span class="pre">Config</span></tt></a> object).</li>
+<li>The <tt class="docutils literal"><span class="pre">env.py</span></tt> script is modified such that it looks for this
+<a class="reference external" href="http://www.sqlalchemy.org/docs/core/connections.html#sqlalchemy.engine.Connection" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Connection</span></tt></a> and makes use of it, in lieu
+of building up its own <a class="reference external" href="http://www.sqlalchemy.org/docs/core/connections.html#sqlalchemy.engine.Engine" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Engine</span></tt></a> instance.</li>
+</ol>
+<p>We illustrate using <a class="reference internal" href="api.html#alembic.config.Config.attributes" title="alembic.config.Config.attributes"><tt class="xref py py-attr docutils literal"><span class="pre">Config.attributes</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">alembic</span> <span class="kn">import</span> <span class="n">command</span><span class="p">,</span> <span class="n">config</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">Config</span><span class="p">(</span><span class="s">&quot;/path/to/yourapp/alembic.ini&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s">&#39;connection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">connection</span>
+    <span class="n">command</span><span class="o">.</span><span class="n">upgrade</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="s">&quot;head&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then in <tt class="docutils literal"><span class="pre">env.py</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">run_migrations_online</span><span class="p">():</span>
+    <span class="n">connectable</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;connection&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">connectable</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c"># only create Engine if we don&#39;t have a Connection</span>
+        <span class="c"># from the outside</span>
+        <span class="n">connectable</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">get_section</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">config_ini_section</span><span class="p">),</span>
+            <span class="n">prefix</span><span class="o">=</span><span class="s">&#39;sqlalchemy.&#39;</span><span class="p">,</span>
+            <span class="n">poolclass</span><span class="o">=</span><span class="n">pool</span><span class="o">.</span><span class="n">NullPool</span><span class="p">)</span>
+
+    <span class="c"># when connectable is already a Connection object, calling</span>
+    <span class="c"># connect() gives us a *branched connection*.</span>
+
+    <span class="k">with</span> <span class="n">connectable</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+            <span class="n">connection</span><span class="o">=</span><span class="n">connection</span><span class="p">,</span>
+            <span class="n">target_metadata</span><span class="o">=</span><span class="n">target_metadata</span>
+        <span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">context</span><span class="o">.</span><span class="n">begin_transaction</span><span class="p">():</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">run_migrations</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title first">Branched Connections</p>
+<p>Note that we are calling the <tt class="docutils literal"><span class="pre">connect()</span></tt> method, <strong>even if we are
+using a</strong> <a class="reference external" href="http://www.sqlalchemy.org/docs/core/connections.html#sqlalchemy.engine.Connection" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Connection</span></tt></a> <strong>object to start with</strong>.
+The effect this has when calling <a class="reference external" href="http://www.sqlalchemy.org/docs/core/connections.html#sqlalchemy.engine.Connection.connect" title="(in SQLAlchemy v1.0)"><tt class="xref py py-meth docutils literal"><span class="pre">connect()</span></tt></a>
+is that SQLAlchemy passes us a <strong>branch</strong> of the original connection; it
+is in every way the same as the <a class="reference external" href="http://www.sqlalchemy.org/docs/core/connections.html#sqlalchemy.engine.Connection" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Connection</span></tt></a>
+we started with, except it provides <strong>nested scope</strong>; the
+context we have here as well as the
+<a class="reference external" href="http://www.sqlalchemy.org/docs/core/connections.html#sqlalchemy.engine.Connection.close" title="(in SQLAlchemy v1.0)"><tt class="xref py py-meth docutils literal"><span class="pre">close()</span></tt></a> method of this branched
+connection doesn&#8217;t actually close the outer connection, which stays
+active for continued use.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.7.5: </span>Added <a class="reference internal" href="api.html#alembic.config.Config.attributes" title="alembic.config.Config.attributes"><tt class="xref py py-attr docutils literal"><span class="pre">Config.attributes</span></tt></a>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Cookbook</a><ul>
+<li><a class="reference internal" href="#building-an-up-to-date-database-from-scratch">Building an Up to Date Database from Scratch</a></li>
+<li><a class="reference internal" href="#conditional-migration-elements">Conditional Migration Elements</a></li>
+<li><a class="reference internal" href="#sharing-a-connection-with-a-series-of-migration-commands-and-environments">Sharing a Connection with a Series of Migration Commands and Environments</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ops.html"
+                        title="previous chapter">Operation Reference</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="next chapter">API Details</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/cookbook.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API Details"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ops.html" title="Operation Reference"
+             >previous</a> |</li>
+        <li><a href="index.html">Alembic 0.7.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010-2015, Mike Bayer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

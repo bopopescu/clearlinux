@@ -1,0 +1,96 @@
+
+#  These are some aliases that a lot of people might find useful, well those
+# who install yum-aliases plugin anyway :). Note that they require alias
+# recursion, which is the default.
+
+DEV --enablerepo=development
+UPT --enablerepo=updates-testing
+
+SRC --enablerepo=fedora-source    --enablerepo=updates-source
+DEVSRC --enablerepo=development-source
+UPTSRC --enablerepo=updates-testing-source
+# Note that we/you can move to =X,Y in 3.2.9 onwards.
+DBG --enablerepo=fedora-debuginfo --enablerepo=updates-debuginfo
+DEVDBG --enablerepo=development-debuginfo
+UPTDBG --enablerepo=updates-testing-debuginfo
+
+ALLSRC SRC DEVSRC UPTSRC
+ALLDBG DBG DEVDBG UPTDBG
+
+ALL DEV UPT ALLSRC ALLDBG
+
+SEC --security
+CRIT --sec-severity=critical
+FORCE --skip-broken --disableexcludes=all
+DUPS --showduplicates
+
+up   upgrade
+inst install
+in   install
+rm   remove
+down downgrade
+rein reinstall
+
+chk check-update
+
+upi updateinfo
+lp  upi list
+lps upi list security
+
+ls  list
+lsi ls installed
+lsa ls available
+lsu ls updates
+lupi list-updateinfo
+lssu SEC lsu
+
+force-install FORCE install
+force-inst    FORCE inst
+force-upgrade FORCE upgrade
+force-up      FORCE up
+force-update  FORCE update
+
+v  version
+
+h  history
+hi history info
+hl history list
+hs history summary
+hp history package-list
+
+rl repolist
+
+g group
+gi groupinfo
+gl grouplist
+
+u updateinfo
+
+dbg-install DBG install
+dbg-inst    DBG inst
+
+#  These are some example aliases, which probably aren't worth enabling for
+# everyone. Mostly useful for people who use DEV / UPT a lot.
+
+# lsT UPT ls
+# lsD DEV ls
+# chkT UPT chk
+# chkD DEV chk
+# 
+# lsuT lsT updates
+# lsuD lsD updates
+# 
+# lssT SEC lsT
+# lssD SEC lsD
+# 
+# lssuT SEC lsT updates 
+# lssuD SEC lsD updates
+# 
+# lupiT UPT lupi
+# lupiD DEV lupi
+# 
+# upT UPT up
+# upD DEV up
+# 
+# inT UPT inst
+# inD DEV inst

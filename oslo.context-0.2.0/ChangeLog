@@ -1,0 +1,50 @@
+CHANGES
+=======
+
+0.2.0
+-----
+
+* ensure we reset contexts when fixture is used
+* Activate pep8 check that _ is imported
+
+0.1.0
+-----
+
+* Workflow documentation is now in infra-manual
+* Documentation cleanup
+* Add ClearRequestContext fixture
+* Cache the current context for the thread
+* Add docstring to get_admin_context()
+* Change instance_uuid to resource_uuid
+* Better information in the README
+* Generate better documentation for the module
+* Move out of the oslo namespace package
+* get test to actually run
+* fix links and requirements to latest versions
+* Make the unit test run properly - fix import
+* exported from oslo-incubator by graduate.sh
+* Add a RequestContext.from_dict method
+* Use oslotest instead of common test module
+* Python 3: enable tests/unit/middleware/test_request_id.py
+* Add model_query() to db.sqlalchemy.utils module
+* Adding domain to context and log
+* Remove vim header
+* Remove uuidutils imports in oslo modules
+* Revert "Removes generate_uuid from uuidutils"
+* Removes generate_uuid from uuidutils
+* Adding instance_uuid to context and log
+* Replace using tests.utils with openstack.common.test
+* Fix bad default for show_deleted
+* Enable hacking H404 test
+* Replaces the standard uuid with common in the context module
+* Fix Copyright Headers - Rename LLC to Foundation
+* Fix inconsistency with auth_tok/auth_token
+* Replace direct use of testtools BaseTestCase
+* Use testtools as test base class
+* Move get_context_from_function_and_args() to context.py
+* Added dictify() and uuids to the common request context
+* add context 'tests'
+* make the skeleton project a template
+* reog from import merge
+* Add some more generic middleware, request context, utils, and versioning. Add basic template for server binary
+* Initial skeleton project

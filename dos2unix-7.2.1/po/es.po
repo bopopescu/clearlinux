@@ -1,0 +1,646 @@
+# Spanish translations for the dos2unix package.
+# Traducciones al español para el paquete dos2unix.
+# Copyright (C) 2011,2014 THE dos2unix'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the dos2unix package.
+#
+# Julio A. Freyre-Gonzalez <jfreyreg@gmail.com>, 2011, 2012, 2013.
+# Enrique Lazcorreta Puigmartí <enrique.lazcorreta@gmail.com>, 2014, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: dos2unix 7.2-beta5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-01-15 22:35+0100\n"
+"PO-Revision-Date: 2015-01-18 10:54+0100\n"
+"Last-Translator: Enrique Lazcorreta Puigmartí <enrique.lazcorreta@gmail.com>\n"
+"Language-Team: Spanish <es@tp.org.es>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.7.3\n"
+
+#: dos2unix.c:76
+msgid ""
+"Copyright (C) 2009-2015 Erwin Waterlander\n"
+"Copyright (C) 1998      Christian Wurll (Version 3.1)\n"
+"Copyright (C) 1998      Bernd Johannes Wuebben (Version 3.0)\n"
+"Copyright (C) 1994-1995 Benjamin Lin\n"
+"All rights reserved.\n"
+"\n"
+msgstr ""
+"Copyright (C) 2009-2015 Erwin Waterlander\n"
+"Copyright (C) 1998      Christian Wurll (Version 3.1)\n"
+"Copyright (C) 1998      Bernd Johannes Wuebben (Version 3.0)\n"
+"Copyright (C) 1994-1995 Benjamin Lin\n"
+"Todos los derechos reservados.\n"
+"\n"
+
+#: dos2unix.c:169 dos2unix.c:206 unix2dos.c:133 unix2dos.c:183
+#, c-format
+msgid "Binary symbol 0x00%02X found at line %u\n"
+msgstr "Símbolo binario 0x00%02X encontrado en la línea %u\n"
+
+#: dos2unix.c:183 dos2unix.c:220 dos2unix.c:243 dos2unix.c:362 dos2unix.c:397
+#: dos2unix.c:418 unix2dos.c:160 unix2dos.c:195 unix2dos.c:216 unix2dos.c:232
+#: unix2dos.c:361 unix2dos.c:394 unix2dos.c:413 unix2dos.c:427
+#, c-format
+msgid "can not write to output file: %s\n"
+msgstr "no puedo escribir al archivo de salida: %s\n"
+
+#: dos2unix.c:260 dos2unix.c:434 unix2dos.c:248 unix2dos.c:442
+#, c-format
+msgid "program error, invalid conversion mode %d\n"
+msgstr "error, modo de conversión %d inválido\n"
+
+#: dos2unix.c:266 dos2unix.c:440 unix2dos.c:254 unix2dos.c:448
+#, c-format
+msgid "Converted %u out of %u line breaks.\n"
+msgstr "Convertidos %u saltos de línea de un total de %u.\n"
+
+#: dos2unix.c:325 unix2dos.c:313
+#, c-format
+msgid "using code page %d.\n"
+msgstr "usando página de códigos %d.\n"
+
+#: dos2unix.c:349 dos2unix.c:384 unix2dos.c:335 unix2dos.c:383
+#, c-format
+msgid "Binary symbol 0x%02X found at line %u\n"
+msgstr "Símbolo binario 0x%02X encontrado en la línea %u\n"
+
+#: dos2unix.c:469 unix2dos.c:477
+msgid "error: Value of environment variable DOS2UNIX_LOCALEDIR is too long.\n"
+msgstr "error: El valor de la variable de entorno DOS2UNIX_LOCALEDIR es demasiado largo.\n"
+
+#: unix2dos.c:66
+msgid ""
+"Copyright (C) 2009-2015 Erwin Waterlander\n"
+"Copyright (C) 1994-1995 Benjamin Lin\n"
+"All rights reserved.\n"
+"\n"
+msgstr ""
+"Copyright (C) 2009-2015 Erwin Waterlander\n"
+"Copyright (C) 1994-1995 Benjamin Lin\n"
+"Todos los derechos reservados.\n"
+"\n"
+
+# Traducción obtenida de http://es.wikipedia.org/wiki/Licencia_BSD
+#: common.c:185
+msgid ""
+"Redistribution and use in source and binary forms, with or without\n"
+"modification, are permitted provided that the following conditions\n"
+"are met:\n"
+"1. Redistributions of source code must retain the above copyright\n"
+"   notice, this list of conditions and the following disclaimer.\n"
+"2. Redistributions in binary form must reproduce the above copyright\n"
+"   notice in the documentation and/or other materials provided with\n"
+"   the distribution.\n"
+"\n"
+msgstr ""
+"La redistribución y el uso en las formas de código fuente y binario, con o sin\n"
+"modificaciones, están permitidos siempre que se cumplan las siguientes\n"
+"condiciones:\n"
+"1. Las redistribuciones del código fuente deben conservar el aviso de copyright\n"
+"   anterior, esta lista de condiciones y el siguiente descargo de responsabilidad.\n"
+"2. Las redistribuciones en formato binario deben reproducir el aviso de copyright\n"
+"   anterior, esta lista de condiciones y la siguiente renuncia en la documentación\n"
+"   y/u otros materiales suministrados con la distribución.\n"
+"\n"
+
+# Traducción obtenida de http://es.wikipedia.org/wiki/Licencia_BSD
+#: common.c:195
+msgid ""
+"THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY\n"
+"EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n"
+"IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR\n"
+"PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE\n"
+"FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\n"
+"CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT\n"
+"OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR\n"
+"BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,\n"
+"WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE\n"
+"OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN\n"
+"IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+msgstr ""
+"ESTE SOFTWARE SE SUMINISTRA POR EL AUTOR ``COMO ESTÁ'' Y CUALQUIER\n"
+"GARANTÍA EXPRESA O IMPLÍCITAS, INCLUYENDO, PERO NO LIMITADO A, LAS\n"
+"GARANTÍAS IMPLÍCITAS DE COMERCIALIZACIÓN Y APTITUD PARA UN PROPÓSITO\n"
+"DETERMINADO SON RECHAZADAS. EN NINGÚN CASO EL AUTOR SERÁ RESPONSABLE\n"
+"POR NINGÚN DAÑO DIRECTO, INDIRECTO, INCIDENTAL, ESPECIAL, EJEMPLAR O\n"
+"CONSECUENTE (INCLUYENDO, PERO NO LIMITADO A, LA ADQUISICIÓN DE BIENES O\n"
+"SERVICIOS; LA PÉRDIDA DE USO, DE DATOS O DE BENEFICIOS; O INTERRUPCIÓN DE LA\n"
+"ACTIVIDAD EMPRESARIAL) O POR CUALQUIER TEORÍA DE RESPONSABILIDAD, YA SEA\n"
+"POR CONTRATO, RESPONSABILIDAD ESTRICTA O AGRAVIO (INCLUYENDO NEGLIGENCIA\n"
+"O CUALQUIER OTRA CAUSA) QUE SURJA DE CUALQUIER MANERA DEL USO DE ESTE\n"
+"SOFTWARE, INCLUSO SI SE HA ADVERTIDO DE LA POSIBILIDAD DE TALES DAÑOS.\n"
+
+#: common.c:220
+#, c-format
+msgid "Usage: %s [options] [file ...] [-n infile outfile ...]\n"
+msgstr "Uso: %s [parámetros] [archivo ...] [-n archivo_de_entrada archivo_de_salida ...]\n"
+
+#: common.c:221
+#, c-format
+msgid " -ascii                convert only line breaks (default)\n"
+msgstr " -ascii                solamente convierte los saltos de línea (por defecto)\n"
+
+#: common.c:222
+#, c-format
+msgid " -iso                  conversion between DOS and ISO-8859-1 character set\n"
+msgstr " -iso                  conversión entre DOS y el conjunto de caracteres ISO-8859-1\n"
+
+#: common.c:223
+#, c-format
+msgid "   -1252               use Windows code page 1252 (Western European)\n"
+msgstr "   -1252               usa la página de códigos Windows 1252 (Europa Occidental)\n"
+
+#: common.c:224
+#, c-format
+msgid "   -437                use DOS code page 437 (US) (default)\n"
+msgstr "   -437                usa la página de códigos DOS 437 (EE. UU.) (por defecto)\n"
+
+#: common.c:225
+#, c-format
+msgid "   -850                use DOS code page 850 (Western European)\n"
+msgstr "   -850                usa la página de códigos DOS 850 (Europa Occidental)\n"
+
+#: common.c:226
+#, c-format
+msgid "   -860                use DOS code page 860 (Portuguese)\n"
+msgstr "   -860                usa la página de códigos DOS 860 (Portugués)\n"
+
+#: common.c:227
+#, c-format
+msgid "   -863                use DOS code page 863 (French Canadian)\n"
+msgstr "   -863                usa la página de códigos DOS 863 (Francocanadiense)\n"
+
+#: common.c:228
+#, c-format
+msgid "   -865                use DOS code page 865 (Nordic)\n"
+msgstr "   -865                usa la página de códigos DOS 865 (Nórdico)\n"
+
+#: common.c:229
+#, c-format
+msgid " -7                    convert 8 bit characters to 7 bit space\n"
+msgstr " -7                    convierte caracteres de 8 bits al espacio de 7 bits\n"
+
+#: common.c:231
+#, c-format
+msgid " -b, --keep-bom        keep Byte Order Mark\n"
+msgstr " -b, --keep-bom        conserva la Marca de Orden del Byte, BOM\n"
+
+#: common.c:233
+#, c-format
+msgid " -b, --keep-bom        keep Byte Order Mark (default)\n"
+msgstr " -b, --keep-bom         conserva la Marca de Orden del Byte, BOM (por defecto)\n"
+
+#: common.c:234
+#, c-format
+msgid ""
+" -c, --convmode        conversion mode\n"
+"   convmode            ascii, 7bit, iso, mac, default to ascii\n"
+msgstr ""
+" -c, --convmode        modo de conversión\n"
+"   modo_de_conversion  ascii, 7bit, iso, mac, por defecto es ascii\n"
+
+#: common.c:236
+#, c-format
+msgid " -f, --force           force conversion of binary files\n"
+msgstr " -f, --force           fuerza la conversión de archivos binarios\n"
+
+#: common.c:239
+#, c-format
+msgid " -gb, --gb18030        convert UTF-16 to GB18030\n"
+msgstr " -gb, --gb18030        convierte UTF-16 a GB18030\n"
+
+#: common.c:242
+#, c-format
+msgid " -h, --help            display this help text\n"
+msgstr " -h, --help            arroja esta ayuda\n"
+
+#: common.c:243
+#, c-format
+msgid ""
+" -i, --info[=FLAGS]    display file information\n"
+"   file ...            files to analyze\n"
+msgstr ""
+" -i, --info[=FLAGS]    muestra información del archivo\n"
+"   archivo ...            archivos a analizar\n"
+
+#: common.c:245
+#, c-format
+msgid " -k, --keepdate        keep output file date\n"
+msgstr " -k, --keepdate        conserva la fecha en el archivo de salida\n"
+
+#: common.c:246
+#, c-format
+msgid " -L, --license         display software license\n"
+msgstr " -L, --license         muestra la licencia del programa\n"
+
+#: common.c:247
+#, c-format
+msgid " -l, --newline         add additional newline\n"
+msgstr " -l, --newline         añade salto de línea adicional\n"
+
+#: common.c:248
+#, c-format
+msgid " -m, --add-bom         add Byte Order Mark (default UTF-8)\n"
+msgstr " -m, --add-bom         añade la Marca de Orden del Byte, BOM (por defecto en UTF-8)\n"
+
+#: common.c:249
+#, c-format
+msgid ""
+" -n, --newfile         write to new file\n"
+"   infile              original file in new-file mode\n"
+"   outfile             output file in new-file mode\n"
+msgstr ""
+" -n, --newfile         escribe a un nuevo archivo\n"
+"   archivo_de_entrada  archivo original en el modo de archivo nuevo\n"
+"   archivo_de_salida   archivo de salida en el modo de archivo nuevo\n"
+
+#: common.c:252
+#, c-format
+msgid ""
+" -o, --oldfile         write to old file (default)\n"
+"   file ...            files to convert in old-file mode\n"
+msgstr ""
+" -o, --oldfile         escribe al archivo antiguo (por defecto)\n"
+"   archivo ...         archivos a convertir en el modo de archivo antiguo\n"
+
+#: common.c:254
+#, c-format
+msgid " -q, --quiet           quiet mode, suppress all warnings\n"
+msgstr " -q, --quiet           modo silencioso, suprime todas las advertencias\n"
+
+#: common.c:256
+#, c-format
+msgid " -r, --remove-bom      remove Byte Order Mark (default)\n"
+msgstr " -r, --remove-bom      elimina la Marca de Orden del Byte, BOM (por defecto)\n"
+
+#: common.c:258
+#, c-format
+msgid " -r, --remove-bom      remove Byte Order Mark\n"
+msgstr " -r, --remove-bom      elimina la Marca de Orden del Byte, BOM\n"
+
+#: common.c:259
+#, c-format
+msgid " -s, --safe            skip binary files (default)\n"
+msgstr " -s, --safe            ignora archivos binarios (por defecto)\n"
+
+#: common.c:261
+#, c-format
+msgid " -u,  --keep-utf16     keep UTF-16 encoding\n"
+msgstr " -u,  --keep-utf16     mantiene la codificación UTF-16\n"
+
+#: common.c:262
+#, c-format
+msgid " -ul, --assume-utf16le assume that the input format is UTF-16LE\n"
+msgstr " -ul, --assume-utf16le supone que el formato de entrada es UTF-16LE\n"
+
+#: common.c:263
+#, c-format
+msgid " -ub, --assume-utf16be assume that the input format is UTF-16BE\n"
+msgstr " -ub, --assume-utf16be supone que el formato de entrada es UTF-16BE\n"
+
+#: common.c:265
+#, c-format
+msgid " -v,  --verbose        verbose operation\n"
+msgstr " -v,  --verbose        operación detallada\n"
+
+#: common.c:267
+#, c-format
+msgid " -F, --follow-symlink  follow symbolic links and convert the targets\n"
+msgstr " -F, --follow-symlink  sigue los enlaces simbólicos y convierte los destinos\n"
+
+#: common.c:270
+#, c-format
+msgid ""
+" -R, --replace-symlink replace symbolic links with converted files\n"
+"                         (original target files remain unchanged)\n"
+msgstr ""
+" -R, --replace-symlink reemplaza los enlaces simbólicos con los archivos convertidos\n"
+"                         (los archivos destino originales no son alterados)\n"
+
+#: common.c:272
+#, c-format
+msgid " -S, --skip-symlink    keep symbolic links and targets unchanged (default)\n"
+msgstr " -S, --skip-symlink    no altera los enlaces simbólicos ni sus destinos (por defecto)\n"
+
+#: common.c:274
+#, c-format
+msgid " -V, --version         display version number\n"
+msgstr " -V, --version         despliega el número de versión\n"
+
+#: common.c:286
+msgid "DOS 16 bit version (WATCOMC).\n"
+msgstr "Versión DOS de 16 bit (WATCOMC).\n"
+
+#: common.c:288
+msgid "DOS 16 bit version (TURBOC).\n"
+msgstr "Versión DOS de 16 bit (TURBOC).\n"
+
+#: common.c:290
+msgid "DOS 32 bit version (WATCOMC).\n"
+msgstr "Versión DOS de 32 bit (WATCOMC).\n"
+
+#: common.c:292
+msgid "DOS 32 bit version (DJGPP).\n"
+msgstr "Versión DOS de 32 bit (DJGPP).\n"
+
+#: common.c:294
+msgid "MSYS version.\n"
+msgstr "Versión para MSYS.\n"
+
+#: common.c:296
+msgid "Cygwin version.\n"
+msgstr "Versión para Cygwin.\n"
+
+#: common.c:298
+msgid "Windows 64 bit version (MinGW-w64).\n"
+msgstr "Versión Windows de 64 bit (MinGW-w64).\n"
+
+#: common.c:300
+msgid "Windows 32 bit version (WATCOMC).\n"
+msgstr "Versión Windows de 32 bit (WATCOMC).\n"
+
+#: common.c:302
+msgid "Windows 32 bit version (MinGW-w64).\n"
+msgstr "Versión Windows de 32 bit (MinGW-w64).\n"
+
+#: common.c:304
+msgid "Windows 32 bit version (MinGW).\n"
+msgstr "Versión Windows de 32 bit (MinGW).\n"
+
+#: common.c:306
+#, c-format
+msgid "Windows 64 bit version (MSVC %d).\n"
+msgstr "Versión Windows de 64 bit (MSVC %d).\n"
+
+#: common.c:308
+#, c-format
+msgid "Windows 32 bit version (MSVC %d).\n"
+msgstr "Versión Windows de 32 bit (MSVC %d).\n"
+
+#: common.c:310
+msgid "OS/2 version (WATCOMC).\n"
+msgstr "Versión para OS/2 (WATCOMC).\n"
+
+#: common.c:312
+msgid "OS/2 version (EMX).\n"
+msgstr "Versión para OS/2 (EMX).\n"
+
+#: common.c:314
+#, c-format
+msgid "%s version.\n"
+msgstr "Versión para %s.\n"
+
+#: common.c:317
+msgid "With Unicode UTF-16 support.\n"
+msgstr "Con soporte Unicode UTF-16.\n"
+
+#: common.c:319
+msgid "Without Unicode UTF-16 support.\n"
+msgstr "Sin soporte Unicode UTF-16.\n"
+
+#: common.c:322
+msgid "With native language support.\n"
+msgstr "Con soporte de idioma materno.\n"
+
+#: common.c:585 common.c:592 common.c:599 common.c:606 common.c:618
+#: common.c:625
+#, c-format
+msgid "Writing %s BOM.\n"
+msgstr "Escribiendo BOM %s.\n"
+
+#: common.c:585 common.c:637 common.c:1117 common.c:1138
+msgid "UTF-16LE"
+msgstr "UTF-16LE"
+
+#: common.c:592 common.c:641 common.c:1119 common.c:1140
+msgid "UTF-16BE"
+msgstr "UTF-16BE"
+
+#: common.c:599 common.c:618 common.c:649 common.c:1130
+msgid "GB18030"
+msgstr "GB18030"
+
+#: common.c:606 common.c:625 common.c:645 common.c:1132
+msgid "UTF-8"
+msgstr "UTF-8"
+
+#: common.c:637 common.c:641 common.c:645 common.c:649
+#, c-format
+msgid "Input file %s has %s BOM.\n"
+msgstr "El archivo de entrada %s tiene BOM %s.\n"
+
+#: common.c:687 common.c:727
+#, c-format
+msgid "Assuming UTF-16LE encoding.\n"
+msgstr "Se asume codificación UTF-16LE.\n"
+
+#: common.c:691 common.c:731
+#, c-format
+msgid "Assuming UTF-16BE encoding.\n"
+msgstr "Se asume codificación UTF-16BE.\n"
+
+#: common.c:847
+#, c-format
+msgid "Failed to open temporary output file: %s\n"
+msgstr "Falló al abrir el archivo de salida temporal: %s\n"
+
+#: common.c:854
+#, c-format
+msgid "using %s as temporary file\n"
+msgstr "usando %s como archivo temporal\n"
+
+#: common.c:917
+#, c-format
+msgid "Failed to write to temporary output file %s: %s\n"
+msgstr "Falló al escribir el archivo de salida temporal %s: %s\n"
+
+#: common.c:947
+#, c-format
+msgid "Failed to change the permissions of temporary output file %s: %s\n"
+msgstr "Error al cambiar los permisos del archivo temporal de salida %s: %s\n"
+
+#: common.c:963
+#, c-format
+msgid "Failed to change the owner and group of temporary output file %s: %s\n"
+msgstr "Error al cambiar el propietario y grupo del archivo temporal de salida %s: %s\n"
+
+#: common.c:1007
+#, c-format
+msgid "problems resolving symbolic link '%s'\n"
+msgstr "problemas al resolver el enlace simbólico '%s'\n"
+
+#: common.c:1008 common.c:1037
+#, c-format
+msgid "          output file remains in '%s'\n"
+msgstr "          el archivo de salida permanece en '%s'\n"
+
+#: common.c:1032
+#, c-format
+msgid "problems renaming '%s' to '%s': %s\n"
+msgstr "problemas al renombrar '%s' como '%s': %s\n"
+
+#: common.c:1035
+#, c-format
+msgid "          which is the target of symbolic link '%s'\n"
+msgstr "          cual es el destino del enlace simbólico '%s'\n"
+
+#: common.c:1098 common.c:1168 common.c:1230
+#, c-format
+msgid "Skipping binary file %s\n"
+msgstr "Ignorando archivo binario %s\n"
+
+#: common.c:1101 common.c:1171 common.c:1233
+#, c-format
+msgid "code page %d is not supported.\n"
+msgstr "La página de códigos %d no está soportada.\n"
+
+#: common.c:1104 common.c:1174 common.c:1236 common.c:1288
+#, c-format
+msgid "Skipping UTF-16 file %s, the size of wchar_t is %d bytes.\n"
+msgstr "Ignorando archivo UTF-16 %s, el tamaño de wchar_t es %d bytes.\n"
+
+#: common.c:1107 common.c:1177 common.c:1239
+#, c-format
+msgid "Skipping UTF-16 file %s, an UTF-16 conversion error occurred.\n"
+msgstr "Ignorando archivo UTF-16 %s, ocurrió un error de conversión a UTF-16.\n"
+
+#: common.c:1156 common.c:1221 common.c:1278
+#, c-format
+msgid "Skipping %s, not a regular file.\n"
+msgstr "Ignorando %s, no es un archivo regular.\n"
+
+#: common.c:1159
+#, c-format
+msgid "Skipping %s, output file %s is a symbolic link.\n"
+msgstr "Ignorando %s, el archivo de salida %s es un enlace simbólico.\n"
+
+#: common.c:1162 common.c:1227 common.c:1283
+#, c-format
+msgid "Skipping symbolic link %s, target is not a regular file.\n"
+msgstr "Ignorando enlace simbólico %s, el destino no es un archivo regular.\n"
+
+#: common.c:1165
+#, c-format
+msgid "Skipping %s, target of symbolic link %s is not a regular file.\n"
+msgstr "Ignorando %s, el destino del enlace simbólico %s no es un archivo regular.\n"
+
+#: common.c:1182
+#, c-format
+msgid "converting file %s to file %s in Unix format...\n"
+msgstr "convirtiendo archivo %s a %s in formato Unix...\n"
+
+#: common.c:1185
+#, c-format
+msgid "converting file %s to file %s in Mac format...\n"
+msgstr "convirtiendo archivo %s a %s in formato Mac...\n"
+
+#: common.c:1187
+#, c-format
+msgid "converting file %s to file %s in DOS format...\n"
+msgstr "convirtiendo archivo %s a %s en formato DOS...\n"
+
+#. TRANSLATORS:
+#. 1st %s is encoding of input file.
+#. 2nd %s is name of input file.
+#. 3rd %s is encoding of output file.
+#. 4th %s is name of output file.
+#. E.g.: converting UTF-16LE file in.txt to UTF-8 file out.txt in Unix format...
+#: common.c:1197
+#, c-format
+msgid "converting %s file %s to %s file %s in Unix format...\n"
+msgstr "convirtiendo archivo %s %s en archivo %s %s en formato Unix...\n"
+
+#: common.c:1200
+#, c-format
+msgid "converting %s file %s to %s file %s in Mac format...\n"
+msgstr "convirtiendo archivo %s %s en archivo %s %s en formato Mac...\n"
+
+#: common.c:1202
+#, c-format
+msgid "converting %s file %s to %s file %s in DOS format...\n"
+msgstr "convirtiendo archivo %s %s en archivo %s %s en formato DOS...\n"
+
+#: common.c:1207
+#, c-format
+msgid "problems converting file %s to file %s\n"
+msgstr "problemas al convertir el archivo %s a %s\n"
+
+#: common.c:1224
+#, c-format
+msgid "Skipping symbolic link %s.\n"
+msgstr "Ignorando enlace simbólico %s.\n"
+
+#: common.c:1244
+#, c-format
+msgid "converting file %s to Unix format...\n"
+msgstr "convirtiendo archivo %s a formato Unix...\n"
+
+#: common.c:1247
+#, c-format
+msgid "converting file %s to Mac format...\n"
+msgstr "convirtiendo archivo %s a formato Mac...\n"
+
+#: common.c:1249
+#, c-format
+msgid "converting file %s to DOS format...\n"
+msgstr "convirtiendo archivo %s a formato DOS...\n"
+
+#. TRANSLATORS:
+#. 1st %s is encoding of input file.
+#. 2nd %s is name of input file.
+#. 3rd %s is encoding of output (input file is overwritten).
+#. E.g.: converting UTF-16LE file foo.txt to UTF-8 Unix format...
+#: common.c:1258
+#, c-format
+msgid "converting %s file %s to %s Unix format...\n"
+msgstr "convirtiendo archivo %s %s a formato %s Unix...\n"
+
+#: common.c:1261
+#, c-format
+msgid "converting %s file %s to %s Mac format...\n"
+msgstr "convirtiendo archivo %s %s a formato %s Mac...\n"
+
+#: common.c:1263
+#, c-format
+msgid "converting %s file %s to %s DOS format...\n"
+msgstr "convirtiendo archivo %s %s a formato %s DOS...\n"
+
+#: common.c:1268
+#, c-format
+msgid "problems converting file %s\n"
+msgstr "problemas convirtiendo el archivo %s\n"
+
+#: common.c:1561
+#, c-format
+msgid "wrong flag '%c' for option -i or --info\n"
+msgstr "'%c' es un valor incorrecto para la opción -i o --info\n"
+
+#: common.c:1670 common.c:1707
+#, c-format
+msgid "active code page: %d\n"
+msgstr "Página de códigos activa: %d\n"
+
+#: common.c:1719
+#, c-format
+msgid "invalid %s conversion mode specified\n"
+msgstr "modo de conversión %s especificado es inválido\n"
+
+#: common.c:1727
+#, c-format
+msgid "option '%s' requires an argument\n"
+msgstr "el parámetro '%s' requiere un argumento\n"
+
+#: common.c:1738 common.c:1751 common.c:1817
+#, c-format
+msgid "target of file %s not specified in new-file mode\n"
+msgstr "el destino del archivo %s no se especificó en el modo de archivo nuevo\n"
+
+#~ msgid "Skipping UTF-16 file %s, the current locale character encoding is not UTF-8.\n"
+#~ msgstr "Ignorando archivo UTF-16 %s, la codificación actual no es UTF-8.\n"
+
+#~ msgid " -m, --add-bom         add UTF-8 Byte Order Mark\n"
+#~ msgstr " -m, --add-bom         añade marca de orden de bytes para UTF-8\n"

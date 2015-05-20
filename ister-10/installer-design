@@ -1,0 +1,58 @@
+* ister
+** Goals
+   - Installer will run without user interaction
+   - Will use a template to allow customization
+   - Template may be a local or remote file
+*** Installer template system
+    - Template will have the following structure (key: {} object,
+      [] array, ! optional, || options):
+      {
+        DestinationType : |physical, virtual|
+        PartitionLayout : [ { disk : 'sda', partition : 1,
+      size : |rest, X|M, G, T|| type : |EFI, linux, swap| }, ... ],
+        FilesystemTypes : [ { disk : 'sda', partition : 1,
+      type : |vfat, ext4, btrfs, xfs, swap, ... |
+      !options : |mkfs options| }, ... ],
+	PartitionMountPoints : [ { disk : 'sda', partition : 1,
+      mount : '/' }, ... ],
+	!Users : [ { username : 'uname', !key : URI, !uid : 1000,
+      !sudo : |password| }, ... ],
+        Version : version-number,
+        Bundles : [ 'bundle1', ... ],
+        !PostNonChroot : [ '/path/to/script', ... ],
+        //Future
+	!PostChroot : [ '/path/to/script', ... ],
+	!RaidSupport : |md lvm btrfs|,
+	!RaidSetup : [ { raid : 'md-raid0', rdisk : 'md0', rpartitions :
+      [ sda1, sda2, ... ] }, ... ],
+      }
+    - Use json as template format
+** Installer image creation
+   - Done via bootstrap script using ister
+** Installer programs
+   - One program that will be started via systemd
+   - Can be configured to use a local or remote install template
+   - Installer will parse and validate template, download and validate
+     source file if needed, either use the template for partitioning
+     and filesystem creation as well as mount point locations or
+     identify the first non installer disk and use a default
+     partition scheme and create filesystems on the disk, and then
+     install the os with software update
+   - partitions will be identified by UUID and used in gummiboot and
+     fstab configuration files
+*** Installer dependencies
+    - python3 (installer runtime)
+    - parted (partition creation)
+    - e2fsprogs (filesystem creation)
+    - gummiboot (bootloader installation)
+    - dosfstools (filesystem creation)
+    - btrfs-progs (filesystem creation)
+    - xfsprogs (filesystem creation)
+    - util-linux (UUID verification, loop device management)
+    - qemu efi bios (testing)
+    - qemu-img (image file creation)
+    - partprobe (detect partitions)
+    - systemd (setting machine-id)
+    - swupd (install os)
+    - gptfdisk (set partition attributes)
+    - shadow (user additions)

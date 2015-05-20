@@ -1,0 +1,208 @@
+{
+	"ImportPath": "github.com/coreos/rkt",
+	"GoVersion": "go1.4.2",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "code.google.com/p/go-uuid/uuid",
+			"Comment": "null-12",
+			"Rev": "7dda39b2e7d5e265014674c5af696ba4186679e9"
+		},
+		{
+			"ImportPath": "github.com/GoogleCloudPlatform/kubernetes/pkg/api/resource",
+			"Comment": "v0.12.0-270-g53ec66c",
+			"Rev": "53ec66caf4e952a1384ec93b9f0cde37616e4caf"
+		},
+		{
+			"ImportPath": "github.com/ThomasRooney/gexpect",
+			"Rev": "3b60906367401d3dc2f9e5f3b5395184f8a2d75f"
+		},
+		{
+			"ImportPath": "github.com/appc/cni/pkg/ip",
+			"Rev": "88377fa3466eea30817b038c69ac06686e7655b7"
+		},
+		{
+			"ImportPath": "github.com/appc/cni/pkg/ns",
+			"Rev": "88377fa3466eea30817b038c69ac06686e7655b7"
+		},
+		{
+			"ImportPath": "github.com/appc/cni/pkg/plugin",
+			"Rev": "88377fa3466eea30817b038c69ac06686e7655b7"
+		},
+		{
+			"ImportPath": "github.com/appc/cni/pkg/skel",
+			"Rev": "88377fa3466eea30817b038c69ac06686e7655b7"
+		},
+		{
+			"ImportPath": "github.com/appc/cni/plugins/ipam/host-local",
+			"Rev": "88377fa3466eea30817b038c69ac06686e7655b7"
+		},
+		{
+			"ImportPath": "github.com/appc/cni/plugins/main/bridge",
+			"Rev": "88377fa3466eea30817b038c69ac06686e7655b7"
+		},
+		{
+			"ImportPath": "github.com/appc/cni/plugins/main/macvlan",
+			"Rev": "88377fa3466eea30817b038c69ac06686e7655b7"
+		},
+		{
+			"ImportPath": "github.com/appc/cni/plugins/main/veth",
+			"Rev": "88377fa3466eea30817b038c69ac06686e7655b7"
+		},
+		{
+			"ImportPath": "github.com/appc/docker2aci/lib",
+			"Rev": "4e4333c116ee15c74ea06ec036c1bc4fad651628"
+		},
+		{
+			"ImportPath": "github.com/appc/docker2aci/tarball",
+			"Rev": "4e4333c116ee15c74ea06ec036c1bc4fad651628"
+		},
+		{
+			"ImportPath": "github.com/appc/spec/aci",
+			"Comment": "v0.5.1-24-gab87c4e",
+			"Rev": "ab87c4ea3a9e51c357bfbd544044572b838385f5"
+		},
+		{
+			"ImportPath": "github.com/appc/spec/actool",
+			"Comment": "v0.5.1-24-gab87c4e",
+			"Rev": "ab87c4ea3a9e51c357bfbd544044572b838385f5"
+		},
+		{
+			"ImportPath": "github.com/appc/spec/discovery",
+			"Comment": "v0.5.1-24-gab87c4e",
+			"Rev": "ab87c4ea3a9e51c357bfbd544044572b838385f5"
+		},
+		{
+			"ImportPath": "github.com/appc/spec/pkg/acirenderer",
+			"Comment": "v0.5.1-24-gab87c4e",
+			"Rev": "ab87c4ea3a9e51c357bfbd544044572b838385f5"
+		},
+		{
+			"ImportPath": "github.com/appc/spec/pkg/tarheader",
+			"Comment": "v0.5.1-24-gab87c4e",
+			"Rev": "ab87c4ea3a9e51c357bfbd544044572b838385f5"
+		},
+		{
+			"ImportPath": "github.com/appc/spec/schema",
+			"Comment": "v0.5.1-24-gab87c4e",
+			"Rev": "ab87c4ea3a9e51c357bfbd544044572b838385f5"
+		},
+		{
+			"ImportPath": "github.com/camlistore/lock",
+			"Rev": "ae27720f340952636b826119b58130b9c1a847a0"
+		},
+		{
+			"ImportPath": "github.com/coreos/go-iptables/iptables",
+			"Rev": "83dfad0f13fd7310fb3c1cb8563248d8d604b95b"
+		},
+		{
+			"ImportPath": "github.com/coreos/go-semver/semver",
+			"Rev": "6fe83ccda8fb9b7549c9ab4ba47f47858bc950aa"
+		},
+		{
+			"ImportPath": "github.com/coreos/go-systemd/unit",
+			"Comment": "v2-41-g415a79c4bfa3",
+			"Rev": "415a79c4bfa377b484b16c632347b3925a0f35ff"
+		},
+		{
+			"ImportPath": "github.com/coreos/ioprogress",
+			"Rev": "326b3ee6276a33c8bdcf480ca9c99228942ab970"
+		},
+		{
+			"ImportPath": "github.com/cznic/b",
+			"Rev": "e2e747ce049fb910cff6b1fd7ad8faf3900939d5"
+		},
+		{
+			"ImportPath": "github.com/cznic/bufs",
+			"Rev": "3dcccbd7064a1689f9c093a988ea11ac00e21f51"
+		},
+		{
+			"ImportPath": "github.com/cznic/exp/lldb",
+			"Rev": "9b0e4be12fbdb7b843e0a658a04c35d160371789"
+		},
+		{
+			"ImportPath": "github.com/cznic/fileutil",
+			"Rev": "21ae57c9dce724a15e88bd9cd46d5668f3e880a5"
+		},
+		{
+			"ImportPath": "github.com/cznic/mathutil",
+			"Rev": "250d0b9d3304c5ea0c4cfc7d9efc7ee528b81f3b"
+		},
+		{
+			"ImportPath": "github.com/cznic/ql",
+			"Rev": "69ca5f1dbae7e230dbfc8812d3e9764e144bbf45"
+		},
+		{
+			"ImportPath": "github.com/cznic/sortutil",
+			"Rev": "d4401851b4c370f979b842fa1e45e0b3b718b391"
+		},
+		{
+			"ImportPath": "github.com/cznic/strutil",
+			"Rev": "97bc31f80ac4c9fa9c5dc5fea74c383858988ea2"
+		},
+		{
+			"ImportPath": "github.com/cznic/zappy",
+			"Rev": "47331054e4f96186e3ff772877c0443909368a45"
+		},
+		{
+			"ImportPath": "github.com/godbus/dbus",
+			"Comment": "v2-3-g4160802",
+			"Rev": "41608027bdce7bfa8959d653a00b954591220e67"
+		},
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Rev": "50c25fb3b2b3b3cc724e9b6ac75fb44b3bccd0da"
+		},
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Rev": "e444e69cbd2e2e3e0749a2f3c717cec491552bbf"
+		},
+		{
+			"ImportPath": "github.com/kballard/go-shellquote",
+			"Rev": "e5c918b80c17694cbc49aab32a759f9a40067f5d"
+		},
+		{
+			"ImportPath": "github.com/kr/pty",
+			"Comment": "release.r56-25-g05017fc",
+			"Rev": "05017fcccf23c823bfdea560dcc958a136e54fb7"
+		},
+		{
+			"ImportPath": "github.com/petar/GoLLRB/llrb",
+			"Rev": "53be0d36a84c2a886ca057d34b6aa4468df9ccb4"
+		},
+		{
+			"ImportPath": "github.com/peterbourgon/diskv",
+			"Rev": "508f5671a72eeaef05cf8c24abe7fbc1c07faf69"
+		},
+		{
+			"ImportPath": "github.com/spf13/pflag",
+			"Rev": "370c3171201099fa6b466db45c8a032cbce33d8d"
+		},
+		{
+			"ImportPath": "github.com/syndtr/gocapability/capability",
+			"Rev": "8e4cdcb3c22b40d5e330ade0b68cb2e2a3cf6f98"
+		},
+		{
+			"ImportPath": "github.com/vishvananda/netlink",
+			"Rev": "ae3e7dba57271b4e976c4f91637861ee477135e2"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/cast5",
+			"Rev": "a7ead6ddf06233883deca151dffaef2effbf498f"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/openpgp",
+			"Rev": "a7ead6ddf06233883deca151dffaef2effbf498f"
+		},
+		{
+			"ImportPath": "golang.org/x/net/html",
+			"Rev": "1dfe7915deaf3f80b962c163b918868d8a6d8974"
+		},
+		{
+			"ImportPath": "speter.net/go/exp/math/dec/inf",
+			"Rev": "42ca6cd68aa922bc3f32f1e056e61b65945d9ad7"
+		}
+	]
+}

@@ -1,0 +1,183 @@
+CHANGES
+=======
+
+1.1.1
+-----
+
+* Refactor KS session creation and support CA certs
+* Move some useful code outside v1
+* Make token + endpoints work correctly
+* Move session creation up to shell
+* Set defaults for endpoint_type and service_type
+* Updated from global requirements
+* Use keystone sessions for v1 client
+* Fixes homepage in metadata and internal docs
+* Updated from global requirements
+* Updated from global requirements
+* Fixes pypi tarball not delivering Apache 2.0 LICENSE file
+* Updated from global requirements
+* Updated from global requirements
+
+1.1.0
+-----
+
+* Add support for SOA records
+* sync and touch Commands Extend the base.DeleteCommand
+* Updated from global requirements
+* Updated from global requirements
+* Add support for quotas for v1 cli / bindings
+* Enable hacking check H104
+* Added oslosphinx theme, and enabled the incubating option
+* Enabled hacking check H401
+* Support Keystone V3 authentication
+* Support better logging (Fixes --debug option)
+* Update hacking package, fix/ignore new style errors
+* Updated from global requirements
+* Update .gitreview for repository move
+* Use six.add_metaclass instead of __metaclass__
+* Add dummy tests
+
+1.0.3
+-----
+
+* designate record-list should display record data
+* Correct Python bindings create-record example
+* Standardize doc requirements
+
+1.0.2
+-----
+
+* Ensure that url stripping is done correctly
+* Sync with global-requirements
+
+1.0.1
+-----
+
+* Support versionless catalog URLs
+* Correctly support multiple regions
+* Update global requirements
+* Fix misspellings in python designateclient
+* Disable verbose logging by default
+* There are no mox tests, so remove dependency
+* Remove dependencies on pep8, pyflakes and flake8
+* Sync with global requirements
+* Fix and enable gating on H306
+* Support building wheels (PEP-427)
+* Add touch-domain to CLI
+* Move "sync" commands out of Diagnostics and fix them
+
+1.0.0
+-----
+
+* Keyring is not actually used
+* Remove outdated version value from setup.cfg
+* Added domain and record description editing
+* Sync requirements with stable/havana requirements
+* Ensure TTL is treated as an int in the CLI
+
+0.0.5
+-----
+
+* Update dependency versions
+* Ensure Invalid JSON and errors during deletes are displayed correctly
+* Correct two Record examples in the binding docs
+* Add Python bindings docs
+* first drop of python-designateclient docs
+* Ensure beta versions are not downloaded from pypi
+* Add a --insecure arg to ignore invalid SSL certs
+* Ensure we only list sphinx as a dep once
+* Use Python 3.x compatible except construct
+
+0.0.4
+-----
+
+* Allow auth using a pre-fetched token
+* Update to PBR 0.5.21+
+* doc/requirements.txt should be a proxy
+* Remove comments from *requirements.txt (workaround pbr bug)
+* Sync with openstack/requirements
+* Rename to designate in .gitreview
+* Rename Moniker -> Designate
+* Add Hacking checks
+* Migrate to PBR
+* Always allow overriding the endpoint
+* Switch to flake8 and testr
+* Added reporting functionality to Moniker client
+* Correct diagnostics URI
+* Include type when listing records
+
+0.0.3
+-----
+
+* Support loading resources from 3rd party packages. E.g. client extensions
+* Allow for controllers to be loaded dynamically
+* Add a command to list the nameservers for a domain
+* List commands should show a reduced set of columns
+* Add keyring to pip-requires
+* Clean error message display :)
+* Cleanup optional and obsolete CLI params
+* Rename OS_SERVICE_ENDPOINT env var to OS_DNS_ENDPOINT
+* Sync JSONSchemas
+* Rename OS_SERVICE_TYPE env var to OS_DNS_SERVICE_TYPE
+
+0.0.2
+-----
+
+* Sync JSONSchemas
+* Have tox.ini actually run nosetests
+* Pin to jsonschema less than 1.0
+* Add support for administrative access (via X-Moniker-Sudo-Tenant-ID header)
+* Ensure resources and tools/* are included in sdist
+* Add diagnostics to Python API and CLI
+
+0.0.1
+-----
+
+* Bump JSONSchema version to 0.8, tracking the server component
+* Attempt to support both cliff 1.2 and 1.3
+* Re-add version.py
+* Sync with Oslo 30a50c8a
+* Sync Schemas
+* Add support for supplying custom service type
+* Fixup MANIFEST.in
+* Ensure we supply Oslo Version with the correct `python_package` name
+* Sync with oslo a8973c52
+* Ensure `moniker --version` reports the correct version number
+* Sync with oslo-incubator ad93e4e3
+
+0.0.1.alpha1
+------------
+
+* Actually use the *correct* version of requests
+* Depend on and update for requests>1.0 (Matching {keystone,cinder,nova}client)
+* Depend on cliff>=1.2.1
+* Support record priority in the CLI
+* Support CLI updating of domains/records/servers
+* Ensure Update Records and Servers works correctly in the Python API
+* Sync JSON-Schemas
+* Provide a sane error message when --os-auth-url or --os-endpoint have not been supplied
+* Handle HTTP 400 errors somewhat more sanely
+* Ensure Warlock passes the approperiate error message along with it's exceptions
+* Include setup-requires in tox.ini
+* Positionals don't need require=Bool
+* Sync with Oslo e6c576d9
+* Remove unused code
+* Ensure Servers CLI args are defined correctly
+* Sync Server JSONSchema
+* Fixup pyflakes issue
+* Add Records and Servers CLI commands
+* Add ID as a positional argument to GetCommand
+* More helpers in the base Controller
+* Fix actual != expected row count for items
+* Initial Python client bindings and CLI
+* Initial Domain/Record/Server model skeletons
+* Sync tox.ini with moniker repo
+* Add PyFlakes tox env
+* Add JSONSchemas
+* Sync with OS-Common 3d6c2368 + Use OS-C's Version Module
+* Rename package to python-monikerclient
+* Add pypi trove classifiers
+* Cache pip downloads on Jenkins
+* Fixup tox.ini for Stackforge+Gerrit
+* Exit with the correct return code
+* Initial Commit - CLI Skeleton

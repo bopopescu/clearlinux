@@ -1,0 +1,15 @@
+CHANGES
+=======
+
+1.0.0
+-----
+
+* Add a makefile
+* Add missing files, ignore build and dist
+* Issue #17911: traceback module overhaul
+
+0.0.1
+-----
+
+* Backport linecache for Python 2.6 and up
+* Initial boilerplate

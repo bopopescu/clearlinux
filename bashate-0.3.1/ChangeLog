@@ -1,0 +1,73 @@
+CHANGES
+=======
+
+0.3.1
+-----
+
+
+0.3.0
+-----
+
+* Add man page
+* Remove automagic file finder
+* Strip comments before checks
+* Revert "Add E040: $(COMMAND) preferred over `COMMAND`"
+* Check for bash-like "for"
+* Warn against sorting requirements
+* Rename doc environment to docs
+* Add Pylint testenv environment
+* Add a check for $[
+* Add E040: $(COMMAND) preferred over `COMMAND`
+* Treat if and elif equally
+* Add new register_ignores unit tests
+* Clean-up E011 and E020 messages
+* Bump hacking to 0.9.x series
+* Reduce loops and if statements in method discover_files
+* Remove unneeded definitions of Python Source Code Encoding
+* Add a space to the output of the method log_error
+* Fix source location URL in README
+* Fix .gitreview project path
+
+0.2.0
+-----
+
+* Update pbr version
+* Refactor in BashateRun class
+* Remove redundant doc from top of bashate.py
+* add python34 target for those of use on trusty
+* discover shell files
+* don't use fileinput loop
+* the great rename of bash8 -> bashate
+* Document E020 in README
+* Add tests and samples for legacy bash8
+* Add cleanup for IGNORE in test_bash8
+
+0.1.1
+-----
+
+* Improve error message in check_if_then
+* Fix ignore option and add first tests
+* Remove the executable bit from bash8.py
+* Doc: fix contributing and readme links
+* Use venv to build documentation
+* switch to sphinxdoc
+* Fix print statement for python3 compatibility
+* Add argparse requirement for py26
+
+0.1.0
+-----
+
+* Update README file with current check info
+* Add .gitreview
+* Fix PEP8 violations
+* Add entry point for bash8 script
+* Move bash8 module into bash8 package
+* Import fresh cookiecut bash8 project
+* Enforce function declaration format in bash8
+* Add end-of-file checks to bash8
+* make bash8 take a -v flag
+* Add while/until to the for/do rule
+* introduce if/then & for/do rules
+* add ability to ignore rules in bash8
+* add support for heredoc folding of lines
+* add bash8 tool (like pep8, but way hackier)

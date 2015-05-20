@@ -1,0 +1,150 @@
+rfc3986
+=======
+
+A Python implementation of `RFC 3986`_ including validation and authority 
+parsing. Coming soon: `Reference Resolution <http://tools.ietf.org/html/rfc3986#section-5>`_.
+
+Installation
+------------
+
+Simply use pip to install ``rfc3986`` like so::
+
+    pip install rfc3986
+
+License
+-------
+
+`Apache License Version 2.0`_
+
+Example Usage
+-------------
+
+To parse a URI into a convenient named tuple, you can simply::
+
+    from rfc3986 import uri_reference
+
+    example = uri_reference('http://example.com')
+    email = uri_reference('mailto:user@domain.com')
+    ssh = uri_reference('ssh://user@git.openstack.org:29418/openstack/keystone.git')
+
+With a parsed URI you can access data about the components::
+
+    print(example.scheme)  # => http
+    print(email.path)  # => user@domain.com
+    print(ssh.userinfo)  # => user
+    print(ssh.host)  # => git.openstack.org
+    print(ssh.port)  # => 29418
+
+It can also parse URIs with unicode present::
+
+    uni = uri_reference(b'http://httpbin.org/get?utf8=\xe2\x98\x83')  # ☃
+    print(uni.query)  # utf8=%E2%98%83
+
+With a parsed URI you can also validate it::
+
+    if ssh.is_valid():
+        subprocess.call(['git', 'clone', ssh.unsplit()])
+
+You can also take a parsed URI and normalize it::
+
+    mangled = uri_reference('hTTp://exAMPLe.COM')
+    print(mangled.scheme)  # => hTTp
+    print(mangled.authority)  # => exAMPLe.COM
+
+    normal = mangled.normalize()
+    print(normal.scheme)  # => http
+    print(mangled.authority)  # => example.com
+
+But these two URIs are (functionally) equivalent::
+
+    if normal == mangled:
+        webbrowser.open(normal.unsplit())
+
+Your paths, queries, and fragments are safe with us though::
+
+    mangled = uri_reference('hTTp://exAMPLe.COM/Some/reallY/biZZare/pAth')
+    normal = mangled.normalize()
+    assert normal == 'hTTp://exAMPLe.COM/Some/reallY/biZZare/pAth'
+    assert normal == 'http://example.com/Some/reallY/biZZare/pAth'
+    assert normal != 'http://example.com/some/really/bizzare/path'
+
+If you do not actually need a real reference object and just want to normalize
+your URI::
+
+    from rfc3986 import normalize_uri
+
+    assert (normalize_uri('hTTp://exAMPLe.COM/Some/reallY/biZZare/pAth') ==
+            'http://example.com/Some/reallY/biZZare/pAth')
+
+You can also very simply validate a URI::
+
+    from rfc3986 import is_valid_uri
+
+    assert is_valid_uri('hTTp://exAMPLe.COM/Some/reallY/biZZare/pAth')
+
+Requiring Components
+~~~~~~~~~~~~~~~~~~~~
+
+You can validate that a particular string is a valid URI and require
+independent components::
+
+    from rfc3986 import is_valid_uri
+
+    assert is_valid_uri('http://localhost:8774/v2/resource',
+                        require_scheme=True,
+                        require_authority=True,
+                        require_path=True)
+
+    # Assert that a mailto URI is invalid if you require an authority
+    # component
+    assert is_valid_uri('mailto:user@example.com', require_authority=True) is False
+
+If you have an instance of a ``URIReference``, you can pass the same arguments
+to ``URIReference#is_valid``, e.g.,
+
+::
+
+    from rfc3986 import uri_reference
+
+    http = uri_reference('http://localhost:8774/v2/resource')
+    assert uri.is_valid(require_scheme=True,
+                        require_authority=True,
+                        require_path=True)
+
+    # Assert that a mailto URI is invalid if you require an authority
+    # component
+    mailto = uri_reference('mailto:user@example.com')
+    assert uri.is_valid(require_authority=True) is False
+
+Alternatives
+------------
+
+- `rfc3987 <https://pypi.python.org/pypi/rfc3987/1.3.4>`_
+
+  This is a direct competitor to this library, with extra features,
+  licensed under the GPL.
+
+- `uritools <https://pypi.python.org/pypi/uritools/0.5.1>`_
+
+  This can parse URIs in the manner of RFC 3986 but provides no validation and
+  only recently added Python 3 support.
+
+- Standard library's `urlparse`/`urllib.parse`
+
+  The functions in these libraries can only split a URI (valid or not) and
+  provide no validation.
+
+Contributing
+------------
+
+This project follows and enforces the Python Software Foundation's `Code of
+Conduct <https://www.python.org/psf/codeofconduct/>`_.
+
+If you would like to contribute but do not have a bug or feature in mind, feel
+free to email Ian and find out how you can help.
+
+The git repository for this project is maintained at
+https://github.com/sigmavirus24/rfc3986
+
+.. _RFC 3986: http://tools.ietf.org/html/rfc3986
+.. _Apache License Version 2.0: https://www.apache.org/licenses/LICENSE-2.0

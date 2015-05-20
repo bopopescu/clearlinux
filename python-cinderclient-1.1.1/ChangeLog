@@ -1,0 +1,344 @@
+CHANGES
+=======
+
+1.1.1
+-----
+
+* Update version to 1.1.1 in index
+* Enables debug mode for keystone session object
+
+1.1.0
+-----
+
+* Make <volume-types> required option for create cg
+* Update index file for release of 1.1.0
+* Cinder Client for Consistency Groups
+* Use adapter from keystoneclient
+* Updated from global requirements
+* Add client support in Cinder for volume replication
+* convert availability zone tests to requests-mock
+* Convert snapshot tests to requests-mock
+* Replace httpretty with requests-mock
+* Fix order of arguments in assertEqual
+* Avoid extra lookups in extra-specs-list
+* Support pagination for volume list
+* Mask passwords in client debug output
+* Move debug logging to shell
+* Quotaset update does not return result
+* Fix the return code of the command reset-state
+* Update theme for docs
+* Change "Connection refused" to "Connection error"
+* Add a tox job for generating docs
+* Retry when connection to cinder is refused
+* Add commands for managing and unmanaging volumes
+* sync latest strutils to python-cinderclient
+* Optional size parameter for volume creation
+* Use suitable assert
+* Fix version discovery and auth_plugins
+* Add tenant uuid when running cinder list --all-tenants
+* Remove deprecated command-line args
+* Updated from global requirements
+* Added support for keystone v3client
+* Updated from global requirements
+* Remove "OPTIONAL:" from optional argument help text
+* Mark cinderclient as being a universal wheel
+* Update help strings for cinder client
+
+1.0.9
+-----
+
+* Bump client doc index version to 1.0.9
+* Ambiguous option error should not appear if Arg is SUPPRESS
+* Fix malformed encryption-type body in test cases
+* Reuse Resource from oslo
+* Use region_name in service catalog
+* Use real timestamps in authentication tests
+* Accept deleting multiple snapshots in one shot
+* Add set-bootable command
+* Add quota-delete command to cinder client
+* Updated from global requirements
+* Include the Python 3/3.3 trove classifiers
+* Fix Volume.extend and Volume.update_readonly_flag methods
+* CLI for disable service reason
+* Fix usage of v1 and v2 availability zones
+* Updated from global requirements
+* replace assertTrue(isinstance) to assertIsInstance
+* Pretty print of endpoints for ambiguous error
+* Client support for export and import backup service metadata
+* When there is no error body return the HTTP reason
+* Import access module from keystoneclient to handle V3 endpoints
+* Allow list_extensions to work in cinderclient v2
+* Update service function name for service enable
+* Update doc string for service disable
+* Fix type-delete to allow deletion by name and ID
+* Fix typos in the volumes and snapshots docstrings
+* Set v2 commands available for v2 service_type
+* Updated from global requirements
+* Wrong hint key in volume create function
+* Add auth_plugin support to cinderclient
+* Remove dependent module py3kcompat
+* Require ctrl_location for encryption-type-create
+* Remove vim header
+* Remove call to undefined install.post_process()
+* Remove tox locale overrides
+* Fix typos in cinderclient
+
+1.0.8
+-----
+
+* Revert "Update cinderclient to skip the additional GET during create"
+* Update release notes for push to pypi
+* Fixed image_name from image-name in upload-to-image
+* Add shell tests for snapshot_delete
+* Sync latest apiclient code from Oslo
+* Sync up with oslo-incubator
+* Add retype to index.rst
+* Add volume retype command
+* Remove RAX-specific auth in cinderclient
+* disable/enable a service has no output
+* Fix 'search_opts' unexpected keyword argument error
+* Remove dependencies on pep8, pyflakes and flake8
+* Remove copyright from empty files
+* Unit tests for limits.py in cinderclient/v1 and v2
+* Update cinderclient to skip the additional GET during create
+* Fix RateLimit.__repr__ - self.method is undefined
+* Fix inappropriate comment for volume update api
+* Updates .gitignore for environment files
+* Updates .gitignore
+* Discrepancy between README.rst and cinder help
+* Updated from global requirements
+* Fix broken argument name in v2 volume extend routine
+* Updates tox.ini to use new features
+* Reset-state and snapshot-reset-state for multiple objects
+* Ignore swap files generated during file edting by vim
+* Add search_opts into the method list() for VolumeTypeManager
+* Add assert to delete multiple test
+* Fix typo in cinderclient
+* Fix string representation of VolumeBackupsRestore
+* Fix inappropriate comment for set_metadata
+* Update HACKING.rst with release note requirement
+* Add encryption-type-delete to cinderclient
+* Updated from global requirements
+* change assertEquals to assertEqual
+* Add index.rst section for patches merged to master
+* Update link in HACKING.rst and Make it DRYer
+
+1.0.7
+-----
+
+* Update version and index.rst for push
+* Fix py33 due to readonly and metadata patches
+* Enable del of other tenants resources by name
+* Adding volume readonly-mode-update interface to Cinder client
+* Enable "cinder delete" can delete multiple volumes in one request
+* Adding Read-Only volume attaching support to Cinder client
+* Deprecates --volume-id arg for v2 backup-restore
+* Override endpoint URL check for API version
+* Fixes broken v1 and v2 api backup-restore
+* Addition of volume/snapshot_metadata CLI
+* python3: iteration order of dict is unpredictable
+* python3: align the order of parameters for urlencode()
+* python3: sort dict for post_volumes_1234_action test
+* python3: Refactor dict for python2/python3 compat
+* Updated from global requirements
+* Fix DeprecationWarning when printing exception
+* Fix the failure of fetching the version in cinder endpoint
+
+1.0.6
+-----
+
+* Update docs/index.rst with release info for 1.0.6
+* Add quota-usage command
+* Synch up with OSLO-Incubator
+* Implement qos support
+* Fix find volume for migrate command
+* Replace OpenStack LLC with OpenStack Foundation
+* Error if arguments are not supplied for rename commands
+* Use v2 endpoint with v2 shell for migration
+* Add volume name arguments
+* Implement ability to migrate volume
+* Fix help messages for name arguments
+* Added support for running the tests under PyPy with tox
+* Don't need to init testr explicitly
+* Add update_snapshot_metadata action
+* Add volume encryption metadata to cinderclient
+* Sync strutils from oslo
+* Fixing erroneous clearing of test callstack
+* Fixing malformed assert message formatting
+* Add commandline option --metadata for cinder list
+* Add print for "backup-create" command
+* Add missing babel dependency
+* Add support for multiple cinder endpoints
+* Updated from global requirements
+* python3: Fix tox requirements
+
+1.0.5
+-----
+
+* Add a couple more things to index before release
+* Sync with global requirements
+* convert third-party exception to ConnectionError
+* Provide cinder CLI man page
+* Revert "Add evaluation of --force parameter when creating snapshots"
+* Add timeout parameter in requests
+* Remove locals() from cinder client code base
+* Add evaluation of --force parameter when creating snapshots
+* Updating HACKING file
+* Add availability-zone-list command
+* Revert "Use exceptions from oslo"
+* Changes for volume type quotas
+* Update to latest openstack/requirements
+* Add print to the upload-to-image command
+* Add os-services extension support
+* Update index.rst
+* Fix wrong method call for extend subcommand
+* Implement ability to extend volume for v1
+* Sync install_venv_common from oslo
+* Enable ability to reset state on snapshots
+* Implement ability to extend volume
+* Use exceptions from oslo
+* Fix volume info display error on create with v2
+* Implement reset-state (os-reset_status) action
+* Connectivity between the endpoint version and OS_VOLUME_API_VERSION
+* python3: Strutils is not needed
+* python3: Fix traceback while running tests
+* Implements support migration for volume transfer
+* python3: Fix traceback while running tests
+* python3: Fix import compatibility
+* python3: Fix unicode strings
+* python3: Update for metaclasses
+* python3: fix imports compatibility
+* python3: Basic python3 compatibility
+* python3: compatibility for iteritems and iterkeys
+* Remove explicit depend on distribute
+* python3: Drop mox dependency
+* Start Gating on Pyflakes and Hacking
+* Add `snapshots` key support for quota class update
+* python3: Introduce py33 to tox.ini
+* Update run_tests and bring back colorizer
+* Set the correct location for the tests
+* Only add logging handlers if there currently aren't any
+* Move tests into cinderclient package
+* Rename requires files to standard names
+* Migrate to pbr
+* Implement scheduler hints for APIv2
+* Make ManagerWithFind abstract and fix its descendants
+* Migrate to flake8
+* Add .coveragerc file to show correct code coverage
+* Allow generator as input to utils.print_list
+* Fixed do_create() in v2 shell
+* Add license information
+
+1.0.4
+-----
+
+* Update release info in index.rst
+* Update setup.py prior to next upload to pypi
+* Add support for volume backups
+* Fixed unit test name in v1 and v2 tests
+* Don't print the empty table on list operations
+* Sync with oslo-incubator copy of setup.py and version.py
+* Minor typo/message fixes
+* Remove unused "import sys"
+* Fix result -> resp typo in unset_keys
+* Fix X-Auth_Token -> X-Auth-Token header name
+* Pin prettytable versions
+
+1.0.3
+-----
+
+* Decodes input and encodes output
+* Add OS_TENANT_ID as authentication option
+* Remove unused tools/rfc.sh
+* Add debug option processing to run_tests
+* Add support for snapshot quotas
+* Catch KeyboardInterrupt
+* Docs in cinderlcient were never actually updated
+* Debug output the http body
+* Fix typo breaking --debug option to cinder client
+* Fix upload-to-image volume_id help
+* Handle metadata args the same for all calls
+* adding v2 support to cinderclient
+* Allow requests 0.8 and greater
+* Re-add setuptools-git to setup.py
+* Avoid UnicodeEncodeError exception on exception
+* Correct parsing of volume metadata
+* Update to latest oslo version code
+* Fixed documentation of the cinder shell command
+* Change Nova -> Cinder in credentials error message
+* Add ability to call force_delete from cinderclient
+* Move from nose to testr
+* Fixed Version Functionality
+* Add upload-to-image function to client
+* Add access to update volume metadata
+* Move from unittest2 to testtools
+
+1.0.2
+-----
+
+* Add list-extensions capability to cinderclient
+* Use requests module for HTTP/HTTPS
+* Port some additional logging changes from novaclient
+* Bring back the output from client.http_log()
+* Add clone volume support to cinderclient
+* Update to swapped versioninfo logic
+* Align cinderclient version code
+
+1.0.1
+-----
+
+* Adding bootable column to volume list view
+* Pin pep8 to 1.3.3
+* show help when calling without arguments
+* Add retries to cinderclient
+* Fixes setup compatibility issue on Windows
+* Revert "Add retries to cinderclient."
+* Add retries to cinderclient
+* Remove extra-specs from types-list command output
+* Remove attach/detach code from cinderclient
+* Add python_cinderclient.egg-info to .gitignore
+* Fix support for Unicode volume names
+* Add OpenStack trove classifier for PyPI
+* Add volume_type extra_specs support to client
+* add rename and snapshot-rename commands
+
+1.0.0
+-----
+
+* Show volume and snapshot data on create
+* Fix some pep8 issues
+* Remove unused methods in FakeHTTPClient and unused unittests
+* Patch for bug #1004382
+* add tenant_id and make projectid optional
+* Add begin_detaching and roll_detaching functions
+* Add filter options to list and snapshot-list
+* Fixes bug 1045777
+* Implement volume quota support in the cinderclient
+* Fix PEP8 issues
+* Change '_' to '-' in options
+* Correct param comments in docstring
+* Add the test environment for the virtualenv
+* Add nosehtmloutput as a test dependency
+* Add ability to provide metadata on volume creation
+* Add image id arg to create
+
+0.2
+---
+
+* Add availability_zone support for volume creation
+* Rename bash completion file from nova to cinder
+* Add all_tenants flag to snapshots and volumes
+* Add missing parameters to volume create body
+* Bump pep8 to 1.2
+* Add post-tag versioning
+* Add support for extended_snapshot_attributes
+* Add client work for new cinder extensions
+* Move docs to doc
+* Set pep8 version to 1.1 in test_requires
+* Auto generate AUTHORS file for python-cinderclient component
+* Align setup.py and tox with standards
+
+0.0
+---
+
+* Initial split from python-novaclient

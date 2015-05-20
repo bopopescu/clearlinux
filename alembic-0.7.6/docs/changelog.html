@@ -1,0 +1,2202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Changelog &mdash; Alembic 0.7.6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature_override.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/changelog.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx_paramlinks.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.7.6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Alembic 0.7.6 documentation" href="index.html" />
+    <link rel="prev" title="API Details" href="api.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API Details"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Alembic 0.7.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="change-0.7.6">
+<h2>0.7.6<a class="headerlink" href="#change-0.7.6" title="Permalink to this headline">¶</a></h2>
+Released: May 5, 2015<div class="section" id="change-0.7.6-feature">
+<h3>feature<a class="headerlink" href="#change-0.7.6-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.7.6-0"><span class="target" id="change-03efca581ba1c07c8338bb99bcbf4739"><strong>[feature] [versioning] </strong></span>Fixed bug where the case of multiple mergepoints that all
+have the identical set of ancestor revisions would fail to be
+upgradable, producing an assertion failure.   Merge points were
+previously assumed to always require at least an UPDATE in
+alembic_revision from one of the previous revs to the new one,
+however in this case, if one of the mergepoints has already
+been reached, the remaining mergepoints have no row to UPDATE therefore
+they must do an INSERT of their target version.<a class="changeset-link headerlink reference internal" href="#change-03efca581ba1c07c8338bb99bcbf4739">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/297/">#297</a></p>
+</p>
+</li>
+<li><p id="change-0.7.6-1"><span class="target" id="change-27e4a2489a4ce0f2c626c9543267f2d9"><strong>[feature] [autogenerate] </strong></span>Added support for type comparison functions to be not just per
+environment, but also present on the custom types themselves, by
+supplying a method <tt class="docutils literal"><span class="pre">compare_against_backend</span></tt>.
+Added a new documentation section <a class="reference internal" href="autogenerate.html#compare-types"><em>Comparing Types</em></a> describing
+type comparison fully.<a class="changeset-link headerlink reference internal" href="#change-27e4a2489a4ce0f2c626c9543267f2d9">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/296/">#296</a></p>
+</p>
+</li>
+<li><p id="change-0.7.6-2"><span class="target" id="change-063d0f4120250ad1ef764e5f81488242"><strong>[feature] [operations] </strong></span>Added a new option
+<a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.literal_binds" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">EnvironmentContext.configure.literal_binds</span></tt></a>, which
+will pass the <tt class="docutils literal"><span class="pre">literal_binds</span></tt> flag into the compilation of SQL
+constructs when using &#8220;offline&#8221; mode.  This has the effect that
+SQL objects like inserts, updates, deletes as well as textual
+statements sent using <tt class="docutils literal"><span class="pre">text()</span></tt> will be compiled such that the dialect
+will attempt to render literal values &#8220;inline&#8221; automatically.
+Only a subset of types is typically supported; the
+<a class="reference internal" href="ops.html#alembic.operations.Operations.inline_literal" title="alembic.operations.Operations.inline_literal"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.inline_literal()</span></tt></a> construct remains as the construct
+used to force a specific literal representation of a value.
+The <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.literal_binds" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">EnvironmentContext.configure.literal_binds</span></tt></a> flag
+is added to the &#8220;offline&#8221; section of the <tt class="docutils literal"><span class="pre">env.py</span></tt> files generated
+in new environments.<a class="changeset-link headerlink reference internal" href="#change-063d0f4120250ad1ef764e5f81488242">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/255/">#255</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.7.6-bug">
+<h3>bug<a class="headerlink" href="#change-0.7.6-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.7.6-3"><span class="target" id="change-84e0c8c6a21044248b8be616265e22ae"><strong>[bug] [batch] </strong></span>Fully implemented the
+<a class="reference internal" href="ops.html#alembic.operations.Operations.batch_alter_table.params.copy_from" title="alembic.operations.Operations.batch_alter_table"><tt class="xref py py-paramref docutils literal"><span class="pre">copy_from</span></tt></a> parameter for
+batch mode, which previously was not functioning.  This allows
+&#8220;batch mode&#8221; to be usable in conjunction with <tt class="docutils literal"><span class="pre">--sql</span></tt>.<a class="changeset-link headerlink reference internal" href="#change-84e0c8c6a21044248b8be616265e22ae">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/289/">#289</a></p>
+</p>
+</li>
+<li><p id="change-0.7.6-4"><span class="target" id="change-7359836ab17b432f3cde6ce1a7c3c7e4"><strong>[bug] [batch] </strong></span>Repaired support for the <a class="reference internal" href="ops.html#alembic.operations.BatchOperations.create_index" title="alembic.operations.BatchOperations.create_index"><tt class="xref py py-meth docutils literal"><span class="pre">BatchOperations.create_index()</span></tt></a>
+directive, which was mis-named internally such that the operation
+within a batch context could not proceed.   The create index
+operation will proceed as part of a larger &#8220;batch table recreate&#8221;
+operation only if
+<a class="reference internal" href="ops.html#alembic.operations.Operations.batch_alter_table.params.recreate" title="alembic.operations.Operations.batch_alter_table"><tt class="xref py py-paramref docutils literal"><span class="pre">recreate</span></tt></a> is set to
+&#8220;always&#8221;, or if the batch operation includes other instructions that
+require a table recreate.<a class="changeset-link headerlink reference internal" href="#change-7359836ab17b432f3cde6ce1a7c3c7e4">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/287/">#287</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.7.5">
+<h2>0.7.5<a class="headerlink" href="#change-0.7.5" title="Permalink to this headline">¶</a></h2>
+Released: March 19, 2015<div class="section" id="change-0.7.5-feature">
+<h3>feature<a class="headerlink" href="#change-0.7.5-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.7.5-0"><span class="target" id="change-68f4a04edd159fbf2501a823d67df2ab"><strong>[feature] [commands] </strong></span>Added a new feature <a class="reference internal" href="api.html#alembic.config.Config.attributes" title="alembic.config.Config.attributes"><tt class="xref py py-attr docutils literal"><span class="pre">Config.attributes</span></tt></a>, to help with the use
+case of sharing state such as engines and connections on the outside
+with a series of Alembic API calls; also added a new cookbook section
+to describe this simple but pretty important use case.<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="cookbook.html#connection-sharing"><em>Sharing a Connection with a Series of Migration Commands and Environments</em></a></p>
+</div>
+<a class="changeset-link headerlink reference internal" href="#change-68f4a04edd159fbf2501a823d67df2ab">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.7.5-1"><span class="target" id="change-32867b9a86ca1c3e6a5efc5018ad967d"><strong>[feature] [environment] </strong></span>The format of the default <tt class="docutils literal"><span class="pre">env.py</span></tt> script has been refined a bit;
+it now uses context managers not only for the scope of the transaction,
+but also for connectivity from the starting engine.  The engine is also
+now called a &#8220;connectable&#8221; in support of the use case of an external
+connection being passed in.<a class="changeset-link headerlink reference internal" href="#change-32867b9a86ca1c3e6a5efc5018ad967d">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.7.5-2"><span class="target" id="change-c517f2fafe0e5fa9ea5d277d0b0cb91f"><strong>[feature] [versioning] </strong></span>Added support for &#8220;alembic stamp&#8221; to work when given &#8220;heads&#8221; as an
+argument, when multiple heads are present.<a class="changeset-link headerlink reference internal" href="#change-c517f2fafe0e5fa9ea5d277d0b0cb91f">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/267/">#267</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.7.5-bug">
+<h3>bug<a class="headerlink" href="#change-0.7.5-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.7.5-3"><span class="target" id="change-1b8448bdb477b9f3d222f3e43af1028b"><strong>[bug] [autogenerate] </strong></span>The <tt class="docutils literal"><span class="pre">--autogenerate</span></tt> option is not valid when used in conjunction
+with &#8220;offline&#8221; mode, e.g. <tt class="docutils literal"><span class="pre">--sql</span></tt>.  This now raises a <tt class="docutils literal"><span class="pre">CommandError</span></tt>,
+rather than failing more deeply later on.  Pull request courtesy
+Johannes Erdfelt.<a class="changeset-link headerlink reference internal" href="#change-1b8448bdb477b9f3d222f3e43af1028b">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/266/">#266</a>, <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/39">pull request bitbucket:39</a></p>
+</p>
+</li>
+<li><p id="change-0.7.5-4"><span class="target" id="change-95b87d2b0273197c862d01665bc26128"><strong>[bug] [operations] [mssql] </strong></span>Fixed bug where the mssql DROP COLUMN directive failed to include
+modifiers such as &#8220;schema&#8221; when emitting the DDL.<a class="changeset-link headerlink reference internal" href="#change-95b87d2b0273197c862d01665bc26128">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/284/">#284</a></p>
+</p>
+</li>
+<li><p id="change-0.7.5-5"><span class="target" id="change-c128649439c1d280c9b07e878a8fc24f"><strong>[bug] [postgresql] [autogenerate] </strong></span>Postgresql &#8220;functional&#8221; indexes are necessarily skipped from the
+autogenerate process, as the SQLAlchemy backend currently does not
+support reflection of these structures.   A warning is emitted
+both from the SQLAlchemy backend as well as from the Alembic
+backend for Postgresql when such an index is detected.<a class="changeset-link headerlink reference internal" href="#change-c128649439c1d280c9b07e878a8fc24f">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/282/">#282</a></p>
+</p>
+</li>
+<li><p id="change-0.7.5-6"><span class="target" id="change-40b43f94dca3aeee601dd90579335cb6"><strong>[bug] [autogenerate] [mysql] </strong></span>Fixed bug where MySQL backend would report dropped unique indexes
+and/or constraints as both at the same time.  This is because
+MySQL doesn&#8217;t actually have a &#8220;unique constraint&#8221; construct that
+reports differently than a &#8220;unique index&#8221;, so it is present in both
+lists.  The net effect though is that the MySQL backend will report
+a dropped unique index/constraint as an index in cases where the object
+was first created as a unique constraint, if no other information
+is available to make the decision.  This differs from other backends
+like Postgresql which can report on unique constraints and
+unique indexes separately.<a class="changeset-link headerlink reference internal" href="#change-40b43f94dca3aeee601dd90579335cb6">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/276/">#276</a></p>
+</p>
+</li>
+<li><p id="change-0.7.5-7"><span class="target" id="change-672bde6a4d0c6039a492706b5457d46b"><strong>[bug] [commands] </strong></span>Fixed bug where using a partial revision identifier as the
+&#8220;starting revision&#8221; in <tt class="docutils literal"><span class="pre">--sql</span></tt> mode in a downgrade operation
+would fail to resolve properly.<p>As a side effect of this change, the
+<a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.get_starting_revision_argument" title="alembic.environment.EnvironmentContext.get_starting_revision_argument"><tt class="xref py py-meth docutils literal"><span class="pre">EnvironmentContext.get_starting_revision_argument()</span></tt></a>
+method will return the &#8220;starting&#8221; revision in its originally-
+given &#8220;partial&#8221; form in all cases, whereas previously when
+running within the <tt class="xref py py-meth docutils literal"><span class="pre">command.stamp()</span></tt> command, it would have
+been resolved to a full number before passing it to the
+<a class="reference internal" href="api.html#alembic.environment.EnvironmentContext" title="alembic.environment.EnvironmentContext"><tt class="xref py py-class docutils literal"><span class="pre">EnvironmentContext</span></tt></a>.  The resolution of this value to
+a real revision number has basically been moved to a more fundamental
+level within the offline migration process.</p>
+<a class="changeset-link headerlink reference internal" href="#change-672bde6a4d0c6039a492706b5457d46b">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/269/">#269</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.7.4">
+<h2>0.7.4<a class="headerlink" href="#change-0.7.4" title="Permalink to this headline">¶</a></h2>
+Released: January 12, 2015<div class="section" id="change-0.7.4-bug">
+<h3>bug<a class="headerlink" href="#change-0.7.4-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.7.4-0"><span class="target" id="change-67b3d80132e3657ea4c9993c2d4f587d"><strong>[bug] [postgresql] [autogenerate] </strong></span>Repaired issue where a server default specified without <tt class="docutils literal"><span class="pre">text()</span></tt>
+that represented a numeric or floating point (e.g. with decimal places)
+value would fail in the Postgresql-specific check for &#8220;compare server
+default&#8221;; as PG accepts the value with quotes in the table specification,
+it&#8217;s still valid.  Pull request courtesy Dimitris Theodorou.<a class="changeset-link headerlink reference internal" href="#change-67b3d80132e3657ea4c9993c2d4f587d">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/241/">#241</a>, <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/37">pull request bitbucket:37</a></p>
+</p>
+</li>
+<li><p id="change-0.7.4-1"><span class="target" id="change-aa7772b6ea7a40a10180856865c276cc"><strong>[bug] [autogenerate] </strong></span>The rendering of a <a class="reference external" href="http://www.sqlalchemy.org/docs/core/constraints.html#sqlalchemy.schema.ForeignKeyConstraint" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">ForeignKeyConstraint</span></tt></a>
+will now ensure that the names of the source and target columns are
+the database-side name of each column, and not the value of the
+<tt class="docutils literal"><span class="pre">.key</span></tt> attribute as may be set only on the Python side.
+This is because Alembic generates the DDL for constraints
+as standalone objects without the need to actually refer to an in-Python
+<a class="reference external" href="http://www.sqlalchemy.org/docs/core/metadata.html#sqlalchemy.schema.Table" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Table</span></tt></a> object, so there&#8217;s no step that
+would resolve these Python-only key names to database column names.<a class="changeset-link headerlink reference internal" href="#change-aa7772b6ea7a40a10180856865c276cc">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/259/">#259</a></p>
+</p>
+</li>
+<li><p id="change-0.7.4-2"><span class="target" id="change-1c70cc234b1cac2257cb8eb77879955e"><strong>[bug] [autogenerate] </strong></span>Fixed bug in foreign key autogenerate where if the in-Python table
+used custom column keys (e.g. using the <tt class="docutils literal"><span class="pre">key='foo'</span></tt> kwarg to
+<tt class="docutils literal"><span class="pre">Column</span></tt>), the comparison of existing foreign keys to those specified
+in the metadata would fail, as the reflected table would not have
+these keys available which to match up.  Foreign key comparison for
+autogenerate now ensures it&#8217;s looking at the database-side names
+of the columns in all cases; this matches the same functionality
+within unique constraints and indexes.<a class="changeset-link headerlink reference internal" href="#change-1c70cc234b1cac2257cb8eb77879955e">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/260/">#260</a></p>
+</p>
+</li>
+<li><p id="change-0.7.4-3"><span class="target" id="change-4deef0362ad86b8e59c1929b45ec8882"><strong>[bug] [autogenerate] </strong></span>Fixed issue in autogenerate type rendering where types that belong
+to modules that have the name &#8220;sqlalchemy&#8221; in them would be mistaken
+as being part of the <tt class="docutils literal"><span class="pre">sqlalchemy.</span></tt> namespace.  Pull req courtesy
+Bartosz Burclaf.<a class="changeset-link headerlink reference internal" href="#change-4deef0362ad86b8e59c1929b45ec8882">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/261/">#261</a>, <a class="reference external" href="https://github.com/zzzeek/alembic/pull/17">pull request github:17</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.7.3">
+<h2>0.7.3<a class="headerlink" href="#change-0.7.3" title="Permalink to this headline">¶</a></h2>
+Released: December 30, 2014<div class="section" id="change-0.7.3-bug">
+<h3>bug<a class="headerlink" href="#change-0.7.3-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.7.3-0"><span class="target" id="change-d7f431254183a5ab8d99d6360a4f00ed"><strong>[bug] [versioning] </strong></span>Fixed regression in new versioning system where upgrade / history
+operation would fail on AttributeError if no version files were
+present at all.<a class="changeset-link headerlink reference internal" href="#change-d7f431254183a5ab8d99d6360a4f00ed">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/258/">#258</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.7.2">
+<h2>0.7.2<a class="headerlink" href="#change-0.7.2" title="Permalink to this headline">¶</a></h2>
+Released: December 18, 2014<div class="section" id="change-0.7.2-bug">
+<h3>bug<a class="headerlink" href="#change-0.7.2-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.7.2-0"><span class="target" id="change-e7cd4687841cf3188b3bb304746e93d3"><strong>[bug] [sqlite] [autogenerate] </strong></span>Adjusted the SQLite backend regarding autogen of unique constraints
+to work fully with the current SQLAlchemy 1.0, which now will report
+on UNIQUE constraints that have no name.<a class="changeset-link headerlink reference internal" href="#change-e7cd4687841cf3188b3bb304746e93d3">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.7.2-1"><span class="target" id="change-1c850c3af41ce4e37db0115c54ab7207"><strong>[bug] [batch] </strong></span>Fixed bug in batch where if the target table contained multiple
+foreign keys to the same target table, the batch mechanics would
+fail with a &#8220;table already exists&#8221; error.  Thanks for the help
+on this from Lucas Kahlert.<a class="changeset-link headerlink reference internal" href="#change-1c850c3af41ce4e37db0115c54ab7207">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/254/">#254</a></p>
+</p>
+</li>
+<li><p id="change-0.7.2-2"><span class="target" id="change-eab1b8d1275c880ff0119018f4754bd0"><strong>[bug] [mysql] </strong></span>Fixed an issue where the MySQL routine to skip foreign-key-implicit
+indexes would also catch unnamed unique indexes, as they would be
+named after the column and look like the FK indexes.  Pull request
+courtesy Johannes Erdfelt.<a class="changeset-link headerlink reference internal" href="#change-eab1b8d1275c880ff0119018f4754bd0">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/251/">#251</a>, <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/35">pull request bitbucket:35</a></p>
+</p>
+</li>
+<li><p id="change-0.7.2-3"><span class="target" id="change-331f7c3132dbc3d8bc7fa5ad308bca8d"><strong>[bug] [oracle] [mssql] </strong></span>Repaired a regression in both the MSSQL and Oracle dialects whereby
+the overridden <tt class="docutils literal"><span class="pre">_exec()</span></tt> method failed to return a value, as is
+needed now in the 0.7 series.<a class="changeset-link headerlink reference internal" href="#change-331f7c3132dbc3d8bc7fa5ad308bca8d">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/253/">#253</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.7.1">
+<h2>0.7.1<a class="headerlink" href="#change-0.7.1" title="Permalink to this headline">¶</a></h2>
+Released: December 3, 2014<div class="section" id="change-0.7.1-feature">
+<h3>feature<a class="headerlink" href="#change-0.7.1-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.7.1-0"><span class="target" id="change-d6c235651452d863922773adcfa217e6"><strong>[feature] [autogenerate] </strong></span>Support for autogenerate of FOREIGN KEY constraints has been added.
+These are delivered within the autogenerate process in the same
+manner as UNIQUE constraints, including <tt class="docutils literal"><span class="pre">include_object</span></tt> support.
+Big thanks to Ann Kamyshnikova for doing the heavy lifting here.<a class="changeset-link headerlink reference internal" href="#change-d6c235651452d863922773adcfa217e6">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/178/">#178</a>, <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/32">pull request bitbucket:32</a></p>
+</p>
+</li>
+<li><p id="change-0.7.1-1"><span class="target" id="change-fbaf6763200b1b917216a3f7e2d35701"><strong>[feature] [batch] </strong></span>Added <a class="reference internal" href="ops.html#alembic.operations.Operations.batch_alter_table.params.naming_convention" title="alembic.operations.Operations.batch_alter_table"><tt class="xref py py-paramref docutils literal"><span class="pre">naming_convention</span></tt></a>
+argument to <a class="reference internal" href="ops.html#alembic.operations.Operations.batch_alter_table" title="alembic.operations.Operations.batch_alter_table"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.batch_alter_table()</span></tt></a>, as this is necessary
+in order to drop foreign key constraints; these are often unnamed
+on the target database, and in the case that they are named, SQLAlchemy
+is as of the 0.9 series not including these names yet.<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="batch.html#dropping-sqlite-foreign-keys"><em>Dropping Unnamed or Named Foreign Key Constraints</em></a></p>
+</div>
+<a class="changeset-link headerlink reference internal" href="#change-fbaf6763200b1b917216a3f7e2d35701">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.7.1-2"><span class="target" id="change-d668b1bb4150b06a3caa876ddc16a352"><strong>[feature] [batch] </strong></span>Added two new arguments
+<a class="reference internal" href="ops.html#alembic.operations.Operations.batch_alter_table.params.reflect_args" title="alembic.operations.Operations.batch_alter_table"><tt class="xref py py-paramref docutils literal"><span class="pre">Operations.batch_alter_table.reflect_args</span></tt></a>
+and <a class="reference internal" href="ops.html#alembic.operations.Operations.batch_alter_table.params.reflect_kwargs" title="alembic.operations.Operations.batch_alter_table"><tt class="xref py py-paramref docutils literal"><span class="pre">Operations.batch_alter_table.reflect_kwargs</span></tt></a>, so that
+arguments may be passed directly to suit the
+<a class="reference external" href="http://www.sqlalchemy.org/docs/core/metadata.html#sqlalchemy.schema.Table" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Table</span></tt></a>
+object that will be reflected.<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="batch.html#batch-controlling-table-reflection"><em>Controlling Table Reflection</em></a></p>
+</div>
+<a class="changeset-link headerlink reference internal" href="#change-d668b1bb4150b06a3caa876ddc16a352">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.7.1-bug">
+<h3>bug<a class="headerlink" href="#change-0.7.1-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.7.1-3"><span class="target" id="change-417d8d55b2461360d5810789eb5e58c8"><strong>[bug] [batch] </strong></span>The <tt class="docutils literal"><span class="pre">render_as_batch</span></tt> flag was inadvertently hardcoded to <tt class="docutils literal"><span class="pre">True</span></tt>,
+so all autogenerates were spitting out batch mode...this has been
+fixed so that batch mode again is only when selected in env.py.<a class="changeset-link headerlink reference internal" href="#change-417d8d55b2461360d5810789eb5e58c8">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.7.1-4"><span class="target" id="change-19a6d3c26f2c15f65fec9642ffaf430c"><strong>[bug] [batch] </strong></span>Fixed bug where the &#8220;source_schema&#8221; argument was not correctly passed
+when calling <a class="reference internal" href="ops.html#alembic.operations.BatchOperations.create_foreign_key" title="alembic.operations.BatchOperations.create_foreign_key"><tt class="xref py py-meth docutils literal"><span class="pre">BatchOperations.create_foreign_key()</span></tt></a>.  Pull
+request courtesy Malte Marquarding.<a class="changeset-link headerlink reference internal" href="#change-19a6d3c26f2c15f65fec9642ffaf430c">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/34">pull request bitbucket:34</a></p>
+</p>
+</li>
+<li><p id="change-0.7.1-5"><span class="target" id="change-807ac0ed86f33666dd974ceec6c242ca"><strong>[bug] [batch] </strong></span>Repaired the inspection, copying and rendering of CHECK constraints
+and so-called &#8220;schema&#8221; types such as Boolean, Enum within the batch
+copy system; the CHECK constraint will not be &#8220;doubled&#8221; when the table is
+copied, and additionally the inspection of the CHECK constraint for
+its member columns will no longer fail with an attribute error.<a class="changeset-link headerlink reference internal" href="#change-807ac0ed86f33666dd974ceec6c242ca">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/249/">#249</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.7.0">
+<h2>0.7.0<a class="headerlink" href="#change-0.7.0" title="Permalink to this headline">¶</a></h2>
+Released: November 24, 2014<div class="section" id="change-0.7.0-changed">
+<h3>changed<a class="headerlink" href="#change-0.7.0-changed" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.7.0-0"><span class="target" id="change-d29da7e6769afa23c882b725af8463df"><strong>[changed] [commands] </strong></span>The <tt class="docutils literal"><span class="pre">--head_only</span></tt> option to the <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">current</span></tt> command is
+deprecated; the <tt class="docutils literal"><span class="pre">current</span></tt> command now lists just the version numbers
+alone by default; use <tt class="docutils literal"><span class="pre">--verbose</span></tt> to get at additional output.<a class="changeset-link headerlink reference internal" href="#change-d29da7e6769afa23c882b725af8463df">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.7.0-1"><span class="target" id="change-87498973d80028689b298195ab000c27"><strong>[changed] [autogenerate] </strong></span>The default value of the
+<a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.user_module_prefix" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">EnvironmentContext.configure.user_module_prefix</span></tt></a>
+parameter is <strong>no longer the same as the SQLAlchemy prefix</strong>.
+When omitted, user-defined types will now use the <tt class="docutils literal"><span class="pre">__module__</span></tt>
+attribute of the type class itself when rendering in an
+autogenerated module.<a class="changeset-link headerlink reference internal" href="#change-87498973d80028689b298195ab000c27">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/229/">#229</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-2"><span class="target" id="change-f27953254386cf132a96ce79b2c0cb0b"><strong>[changed] [compatibility] </strong></span>Minimum SQLAlchemy version is now 0.7.6, however at least
+0.8.4 is strongly recommended.  The overhaul of the test suite
+allows for fully passing tests on all SQLAlchemy versions
+from 0.7.6 on forward.<a class="changeset-link headerlink reference internal" href="#change-f27953254386cf132a96ce79b2c0cb0b">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.7.0-feature">
+<h3>feature<a class="headerlink" href="#change-0.7.0-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.7.0-3"><span class="target" id="change-a34444a70439195e84311f01f6b0ee1b"><strong>[feature] [versioning] </strong></span>The &#8220;multiple heads / branches&#8221; feature has now landed.  This is
+by far the most significant change Alembic has seen since its inception;
+while the workflow of most commands hasn&#8217;t changed, and the format
+of version files and the <tt class="docutils literal"><span class="pre">alembic_version</span></tt> table are unchanged as well,
+a new suite of features opens up in the case where multiple version
+files refer to the same parent, or to the &#8220;base&#8221;.  Merging of
+branches, operating across distinct named heads, and multiple
+independent bases are now all supported.   The feature incurs radical
+changes to the internals of versioning and traversal, and should be
+treated as &#8220;beta mode&#8221; for the next several subsequent releases
+within 0.7.<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="branches.html#branches"><em>Working with Branches</em></a></p>
+</div>
+<a class="changeset-link headerlink reference internal" href="#change-a34444a70439195e84311f01f6b0ee1b">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/167/">#167</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-4"><span class="target" id="change-0c25b7600787adc0f81611e49788d3de"><strong>[feature] [versioning] </strong></span>In conjunction with support for multiple independent bases, the
+specific version directories are now also configurable to include
+multiple, user-defined directories.   When multiple directories exist,
+the creation of a revision file with no down revision requires
+that the starting directory is indicated; the creation of subsequent
+revisions along that lineage will then automatically use that
+directory for new files.<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="branches.html#multiple-version-directories"><em>Setting up Multiple Version Directories</em></a></p>
+</div>
+<a class="changeset-link headerlink reference internal" href="#change-0c25b7600787adc0f81611e49788d3de">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/124/">#124</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-5"><span class="target" id="change-db6f85bc76d41e8f551d4011bb3c4168"><strong>[feature] [operations] [sqlite] </strong></span>Added &#8220;move and copy&#8221; workflow, where a table to be altered is copied to
+a new one with the new structure and the old one dropped, is now
+implemented for SQLite as well as all database backends in general
+using the new <a class="reference internal" href="ops.html#alembic.operations.Operations.batch_alter_table" title="alembic.operations.Operations.batch_alter_table"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.batch_alter_table()</span></tt></a> system.   This
+directive provides a table-specific operations context which gathers
+column- and constraint-level mutations specific to that table, and
+at the end of the context creates a new table combining the structure
+of the old one with the given changes, copies data from old table to new,
+and finally drops the old table,
+renaming the new one to the existing name.  This is required for
+fully featured SQLite migrations, as SQLite has very little support for the
+traditional ALTER directive.   The batch directive
+is intended to produce code that is still compatible with other databases,
+in that the &#8220;move and copy&#8221; process only occurs for SQLite by default,
+while still providing some level of sanity to SQLite&#8217;s
+requirement by allowing multiple table mutation operations to
+proceed within one &#8220;move and copy&#8221; as well as providing explicit
+control over when this operation actually occurs.  The &#8220;move and copy&#8221;
+feature may be optionally applied to other backends as well, however
+dealing with referential integrity constraints from other tables must
+still be handled explicitly.<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="batch.html#batch-migrations"><em>Running &#8220;Batch&#8221; Migrations for SQLite and Other Databases</em></a></p>
+</div>
+<a class="changeset-link headerlink reference internal" href="#change-db6f85bc76d41e8f551d4011bb3c4168">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/21/">#21</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-6"><span class="target" id="change-dec3009a090c21082e7f576b0a4653a4"><strong>[feature] [commands] </strong></span>Relative revision identifiers as used with <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">upgrade</span></tt>,
+<tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">downgrade</span></tt> and <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">history</span></tt> can be combined with
+specific revisions as well, e.g. <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">upgrade</span> <span class="pre">ae10+3</span></tt>, to produce
+a migration target relative to the given exact version.<a class="changeset-link headerlink reference internal" href="#change-dec3009a090c21082e7f576b0a4653a4">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.7.0-7"><span class="target" id="change-4efddca1a4935691140cffea05fbb63c"><strong>[feature] [commands] </strong></span>New commands added: <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">show</span></tt>, <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">heads</span></tt> and
+<tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">merge</span></tt>.  Also, a new option <tt class="docutils literal"><span class="pre">--verbose</span></tt> has been
+added to  several informational commands, such as <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">history</span></tt>,
+<tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">current</span></tt>, <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">branches</span></tt>, and <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">heads</span></tt>.
+<tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">revision</span></tt> also contains several new options used
+within the new branch management system.    The output of commands has
+been altered in many cases to support new fields and attributes;
+the <tt class="docutils literal"><span class="pre">history</span></tt> command in particular now returns it&#8217;s &#8220;verbose&#8221; output
+only if <tt class="docutils literal"><span class="pre">--verbose</span></tt> is sent; without this flag it reverts to it&#8217;s
+older behavior of short line items (which was never changed in the docs).<a class="changeset-link headerlink reference internal" href="#change-4efddca1a4935691140cffea05fbb63c">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.7.0-8"><span class="target" id="change-3ad5c14959029aa2a8dc9c4b443cd625"><strong>[feature] [config] </strong></span>Added new argument <a class="reference internal" href="api.html#alembic.config.Config.params.config_args" title="alembic.config.Config"><tt class="xref py py-paramref docutils literal"><span class="pre">Config.config_args</span></tt></a>, allows a dictionary
+of replacement variables to be passed which will serve as substitution
+values when an API-produced <a class="reference internal" href="api.html#alembic.config.Config" title="alembic.config.Config"><tt class="xref py py-class docutils literal"><span class="pre">Config</span></tt></a> consumes the <tt class="docutils literal"><span class="pre">.ini</span></tt>
+file.  Pull request courtesy Noufal Ibrahim.<a class="changeset-link headerlink reference internal" href="#change-3ad5c14959029aa2a8dc9c4b443cd625">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/33">pull request bitbucket:33</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-9"><span class="target" id="change-1ab0d6e9d0e6ec90e38ef38bb47269b4"><strong>[feature] [operations] </strong></span>The <a class="reference external" href="http://www.sqlalchemy.org/docs/core/metadata.html#sqlalchemy.schema.Table" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Table</span></tt></a> object is now returned when
+the <a class="reference internal" href="ops.html#alembic.operations.Operations.create_table" title="alembic.operations.Operations.create_table"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.create_table()</span></tt></a> method is used.  This <tt class="docutils literal"><span class="pre">Table</span></tt>
+is suitable for use in subsequent SQL operations, in particular
+the <a class="reference internal" href="ops.html#alembic.operations.Operations.bulk_insert" title="alembic.operations.Operations.bulk_insert"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.bulk_insert()</span></tt></a> operation.<a class="changeset-link headerlink reference internal" href="#change-1ab0d6e9d0e6ec90e38ef38bb47269b4">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/205/">#205</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-10"><span class="target" id="change-f82542103269627ada2c618df1ed5c87"><strong>[feature] [autogenerate] </strong></span>Indexes and unique constraints are now included in the
+<a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.include_object" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">EnvironmentContext.configure.include_object</span></tt></a> hook.
+Indexes are sent with type <tt class="docutils literal"><span class="pre">&quot;index&quot;</span></tt> and unique constraints with
+type <tt class="docutils literal"><span class="pre">&quot;unique_constraint&quot;</span></tt>.<a class="changeset-link headerlink reference internal" href="#change-f82542103269627ada2c618df1ed5c87">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/203/">#203</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-11"><span class="target" id="change-7ac4c12c9bf52594da3181db6595ac79"><strong>[feature] </strong></span>SQLAlchemy&#8217;s testing infrastructure is now used to run tests.
+This system supports both nose and pytest and opens the way
+for Alembic testing to support any number of backends, parallel
+testing, and 3rd party dialect testing.<a class="changeset-link headerlink reference internal" href="#change-7ac4c12c9bf52594da3181db6595ac79">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.7.0-bug">
+<h3>bug<a class="headerlink" href="#change-0.7.0-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.7.0-12"><span class="target" id="change-f15e1e4ee535baa37b7322f3a29eec25"><strong>[bug] [commands] </strong></span>The <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">revision</span></tt> command accepts the <tt class="docutils literal"><span class="pre">--sql</span></tt> option to
+suit some very obscure use case where the <tt class="docutils literal"><span class="pre">revision_environment</span></tt>
+flag is set up, so that <tt class="docutils literal"><span class="pre">env.py</span></tt> is run when <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">revision</span></tt>
+is run even though autogenerate isn&#8217;t specified.   As this flag is
+otherwise confusing, error messages are now raised if
+<tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">revision</span></tt> is invoked with both <tt class="docutils literal"><span class="pre">--sql</span></tt> and
+<tt class="docutils literal"><span class="pre">--autogenerate</span></tt> or with <tt class="docutils literal"><span class="pre">--sql</span></tt> without
+<tt class="docutils literal"><span class="pre">revision_environment</span></tt> being set.<a class="changeset-link headerlink reference internal" href="#change-f15e1e4ee535baa37b7322f3a29eec25">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/248/">#248</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-13"><span class="target" id="change-b6ed2c44086e4d8c38da44bababd660e"><strong>[bug] [postgresql] [autogenerate] </strong></span>Added a rule for Postgresql to not render a &#8220;drop unique&#8221; and &#8220;drop index&#8221;
+given the same name; for now it is assumed that the &#8220;index&#8221; is the
+implicit one Postgreql generates.   Future integration with
+new SQLAlchemy 1.0 features will improve this to be more
+resilient.<a class="changeset-link headerlink reference internal" href="#change-b6ed2c44086e4d8c38da44bababd660e">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/247/">#247</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-14"><span class="target" id="change-4ae0ee2ba481ff390459892a4a37c0f3"><strong>[bug] [autogenerate] </strong></span>A change in the ordering when columns and constraints are dropped;
+autogenerate will now place the &#8220;drop constraint&#8221; calls <em>before</em>
+the &#8220;drop column&#8221; calls, so that columns involved in those constraints
+still exist when the constraint is dropped.<a class="changeset-link headerlink reference internal" href="#change-4ae0ee2ba481ff390459892a4a37c0f3">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/247/">#247</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-15"><span class="target" id="change-2805c3d5a2d66fe24e3d6edb285dec92"><strong>[bug] [oracle] </strong></span>The Oracle dialect sets &#8220;transactional DDL&#8221; to False by default,
+as Oracle does not support transactional DDL.<a class="changeset-link headerlink reference internal" href="#change-2805c3d5a2d66fe24e3d6edb285dec92">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/245/">#245</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-16"><span class="target" id="change-c5bf69f3054ddcff091d729dcba2ba0b"><strong>[bug] [autogenerate] </strong></span>Fixed a variety of issues surrounding rendering of Python code that
+contains unicode literals.  The first is that the &#8220;quoted_name&#8221; construct
+that SQLAlchemy uses to represent table and column names as well
+as schema names does not <tt class="docutils literal"><span class="pre">repr()</span></tt> correctly on Py2K when the value
+contains unicode characters; therefore an explicit stringification is
+added to these.  Additionally, SQL expressions such as server defaults
+were not being generated in a unicode-safe fashion leading to decode
+errors if server defaults contained non-ascii characters.<a class="changeset-link headerlink reference internal" href="#change-c5bf69f3054ddcff091d729dcba2ba0b">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/243/">#243</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-17"><span class="target" id="change-263802e51f07a564f2e80228ee50efa8"><strong>[bug] [operations] </strong></span>The <a class="reference internal" href="ops.html#alembic.operations.Operations.add_column" title="alembic.operations.Operations.add_column"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.add_column()</span></tt></a> directive will now additionally emit
+the appropriate <tt class="docutils literal"><span class="pre">CREATE</span> <span class="pre">INDEX</span></tt> statement if the
+<a class="reference external" href="http://www.sqlalchemy.org/docs/core/metadata.html#sqlalchemy.schema.Column" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Column</span></tt></a> object specifies <tt class="docutils literal"><span class="pre">index=True</span></tt>.
+Pull request courtesy David Szotten.<a class="changeset-link headerlink reference internal" href="#change-263802e51f07a564f2e80228ee50efa8">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/174/">#174</a>, <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/29">pull request bitbucket:29</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-18"><span class="target" id="change-438ea1be5699b9226b5ef0e1c298a0c0"><strong>[bug] [autogenerate] </strong></span>Bound parameters are now resolved as &#8220;literal&#8221; values within the
+SQL expression inside of a CheckConstraint(), when rendering the SQL
+as a text string; supported for SQLAlchemy 0.8.0 and forward.<a class="changeset-link headerlink reference internal" href="#change-438ea1be5699b9226b5ef0e1c298a0c0">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/219/">#219</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-19"><span class="target" id="change-e6c112ca1d9cdf5b60608d18c4f4b073"><strong>[bug] [autogenerate] </strong></span>Added a workaround for SQLAlchemy issue #3023 (fixed in 0.9.5) where
+a column that&#8217;s part of an explicit PrimaryKeyConstraint would not
+have its &#8220;nullable&#8221; flag set to False, thus producing a false
+autogenerate.  Also added a related correction to MySQL which will
+correct for MySQL&#8217;s implicit server default of &#8216;0&#8217; when a NULL integer
+column is turned into a primary key column.<a class="changeset-link headerlink reference internal" href="#change-e6c112ca1d9cdf5b60608d18c4f4b073">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/199/">#199</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-20"><span class="target" id="change-23fb92aa3b8117c9d89ce3c87a45f0fe"><strong>[bug] [autogenerate] [mysql] </strong></span>Repaired issue related to the fix for #208 and others; a composite
+foreign key reported by MySQL would cause a KeyError as Alembic
+attempted to remove MySQL&#8217;s implicitly generated indexes from the
+autogenerate list.<a class="changeset-link headerlink reference internal" href="#change-23fb92aa3b8117c9d89ce3c87a45f0fe">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/240/">#240</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-21"><span class="target" id="change-5ca7ae6aa537988e7d02beda23acae3e"><strong>[bug] [autogenerate] </strong></span>If the &#8220;alembic_version&#8221; table is present in the target metadata,
+autogenerate will skip this also.  Pull request courtesy
+Dj Gilcrease.<a class="changeset-link headerlink reference internal" href="#change-5ca7ae6aa537988e7d02beda23acae3e">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/28/">#28</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-22"><span class="target" id="change-40ae1af5952dbe3b749bac486e208583"><strong>[bug] [autogenerate] </strong></span>The <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.version_table" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">EnvironmentContext.configure.version_table</span></tt></a>
+and <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.version_table_schema" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">EnvironmentContext.configure.version_table_schema</span></tt></a>
+arguments are now honored during the autogenerate process, such that
+these names will be used as the &#8220;skip&#8221; names on both the database
+reflection and target metadata sides.<a class="changeset-link headerlink reference internal" href="#change-40ae1af5952dbe3b749bac486e208583">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/77/">#77</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-23"><span class="target" id="change-1d63826fda64150da1fe33662c38ca22"><strong>[bug] [templates] </strong></span>Revision files are now written out using the <tt class="docutils literal"><span class="pre">'wb'</span></tt> modifier to
+<tt class="docutils literal"><span class="pre">open()</span></tt>, since Mako reads the templates with <tt class="docutils literal"><span class="pre">'rb'</span></tt>, thus preventing
+CRs from being doubled up as has been observed on windows.  The encoding
+of the output now defaults to &#8216;utf-8&#8217;, which can be configured using
+a newly added config file parameter <tt class="docutils literal"><span class="pre">output_encoding</span></tt>.<a class="changeset-link headerlink reference internal" href="#change-1d63826fda64150da1fe33662c38ca22">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/234/">#234</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-24"><span class="target" id="change-5d25e097771fb68b6a7d50b2c3ff3b8e"><strong>[bug] [operations] </strong></span>Added support for use of the <a class="reference external" href="http://www.sqlalchemy.org/docs/core/sqlelement.html#sqlalchemy.sql.elements.quoted_name" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">quoted_name</span></tt></a>
+construct when using the <tt class="docutils literal"><span class="pre">schema</span></tt> argument within operations.  This
+allows a name containing a dot to be fully quoted, as well as to
+provide configurable quoting on a per-name basis.<a class="changeset-link headerlink reference internal" href="#change-5d25e097771fb68b6a7d50b2c3ff3b8e">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/230/">#230</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-25"><span class="target" id="change-bf968f9f5fad2434ed503394651ec076"><strong>[bug] [postgresql] [autogenerate] </strong></span>Added a routine by which the Postgresql Alembic dialect inspects
+the server default of INTEGER/BIGINT columns as they are reflected
+during autogenerate for the pattern <tt class="docutils literal"><span class="pre">nextval(&lt;name&gt;...)</span></tt> containing
+a potential sequence name, then queries <tt class="docutils literal"><span class="pre">pg_catalog</span></tt> to see if this
+sequence is &#8220;owned&#8221; by the column being reflected; if so, it assumes
+this is a SERIAL or BIGSERIAL column and the server default is
+omitted from the column reflection as well as any kind of
+server_default comparison or rendering, along with an INFO message
+in the logs indicating this has taken place. This allows SERIAL/BIGSERIAL
+columns to keep the SEQUENCE from being unnecessarily present within
+the autogenerate operation.<a class="changeset-link headerlink reference internal" href="#change-bf968f9f5fad2434ed503394651ec076">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/73/">#73</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-26"><span class="target" id="change-99d69e5327f8dd694fcf6001b77fb267"><strong>[bug] [autogenerate] </strong></span>The system by which autogenerate renders expressions within
+a <a class="reference external" href="http://www.sqlalchemy.org/docs/core/constraints.html#sqlalchemy.schema.Index" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Index</span></tt></a>, the <tt class="docutils literal"><span class="pre">server_default</span></tt>
+of <a class="reference external" href="http://www.sqlalchemy.org/docs/core/metadata.html#sqlalchemy.schema.Column" title="(in SQLAlchemy v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Column</span></tt></a>, and the
+<tt class="docutils literal"><span class="pre">existing_server_default</span></tt> of
+<a class="reference internal" href="ops.html#alembic.operations.Operations.alter_column" title="alembic.operations.Operations.alter_column"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.alter_column()</span></tt></a> has been overhauled to anticipate
+arbitrary SQLAlchemy SQL constructs, such as <tt class="docutils literal"><span class="pre">func.somefunction()</span></tt>,
+<tt class="docutils literal"><span class="pre">cast()</span></tt>, <tt class="docutils literal"><span class="pre">desc()</span></tt>, and others.   The system does not, as might
+be preferred, render the full-blown Python expression as originally
+created within the application&#8217;s source code, as this would be exceedingly
+complex and difficult.  Instead, it renders the SQL expression against
+the target backend that&#8217;s subject to the autogenerate, and then
+renders that SQL inside of a <a class="reference external" href="http://www.sqlalchemy.org/docs/core/sqlelement.html#sqlalchemy.sql.expression.text" title="(in SQLAlchemy v1.0)"><tt class="xref py py-func docutils literal"><span class="pre">text()</span></tt></a>
+construct as a literal SQL string.  This approach still has the
+downside that the rendered SQL construct may not be backend-agnostic
+in all cases, so there is still a need for manual intervention in that
+small number of cases, but overall the majority of cases should work
+correctly now.  Big thanks to Carlos Rivera for pull requests and
+support on this.<a class="changeset-link headerlink reference internal" href="#change-99d69e5327f8dd694fcf6001b77fb267">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/197/">#197</a>, <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/196/">#196</a>, <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/64/">#64</a></p>
+</p>
+</li>
+<li><p id="change-0.7.0-27"><span class="target" id="change-35b9e45fd447fb83eba6120dab13bfbb"><strong>[bug] [operations] </strong></span>The &#8220;match&#8221; keyword is not sent to <tt class="xref py py-class docutils literal"><span class="pre">ForeignKeyConstraint</span></tt>
+by <a class="reference internal" href="ops.html#alembic.operations.Operations.create_foreign_key" title="alembic.operations.Operations.create_foreign_key"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.create_foreign_key()</span></tt></a> when SQLAlchemy 0.7 is in use;
+this keyword was added to SQLAlchemy as of 0.8.0.<a class="changeset-link headerlink reference internal" href="#change-35b9e45fd447fb83eba6120dab13bfbb">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.6.7">
+<h2>0.6.7<a class="headerlink" href="#change-0.6.7" title="Permalink to this headline">¶</a></h2>
+Released: September 9, 2014<div class="section" id="change-0.6.7-feature">
+<h3>feature<a class="headerlink" href="#change-0.6.7-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.7-0"><span class="target" id="change-367fd1b9fe1fe5d7c56408fa73ab418c"><strong>[feature] </strong></span>Added support for functional indexes when using the
+<a class="reference internal" href="ops.html#alembic.operations.Operations.create_index" title="alembic.operations.Operations.create_index"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.create_index()</span></tt></a> directive.   Within the list of columns,
+the SQLAlchemy <tt class="docutils literal"><span class="pre">text()</span></tt> construct can be sent, embedding a literal
+SQL expression; the <a class="reference internal" href="ops.html#alembic.operations.Operations.create_index" title="alembic.operations.Operations.create_index"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.create_index()</span></tt></a> will perform some hackery
+behind the scenes to get the <tt class="xref py py-class docutils literal"><span class="pre">Index</span></tt> construct to cooperate.
+This works around some current limitations in <tt class="xref py py-class docutils literal"><span class="pre">Index</span></tt>
+which should be resolved on the SQLAlchemy side at some point.<a class="changeset-link headerlink reference internal" href="#change-367fd1b9fe1fe5d7c56408fa73ab418c">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/222/">#222</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.6.7-bug">
+<h3>bug<a class="headerlink" href="#change-0.6.7-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.7-1"><span class="target" id="change-be1e47b17da492587438fb8424adb7a1"><strong>[bug] [mssql] </strong></span>Fixed bug in MSSQL dialect where &#8220;rename table&#8221; wasn&#8217;t using
+<tt class="docutils literal"><span class="pre">sp_rename()</span></tt> as is required on SQL Server.  Pull request courtesy
+Łukasz Bołdys.<a class="changeset-link headerlink reference internal" href="#change-be1e47b17da492587438fb8424adb7a1">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/26">pull request bitbucket:26</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.6.6">
+<h2>0.6.6<a class="headerlink" href="#change-0.6.6" title="Permalink to this headline">¶</a></h2>
+Released: August 7, 2014<div class="section" id="change-0.6.6-feature">
+<h3>feature<a class="headerlink" href="#change-0.6.6-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.6-0"><span class="target" id="change-d057961ce5b3254ebbbc9fcf8e533680"><strong>[feature] </strong></span>Added a new accessor <a class="reference internal" href="api.html#alembic.migration.MigrationContext.config" title="alembic.migration.MigrationContext.config"><tt class="xref py py-attr docutils literal"><span class="pre">MigrationContext.config</span></tt></a>, when used
+in conjunction with a <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext" title="alembic.environment.EnvironmentContext"><tt class="xref py py-class docutils literal"><span class="pre">EnvironmentContext</span></tt></a> and
+<a class="reference internal" href="api.html#alembic.config.Config" title="alembic.config.Config"><tt class="xref py py-class docutils literal"><span class="pre">Config</span></tt></a>, this config will be returned.  Patch
+courtesy Marc Abramowitz.<a class="changeset-link headerlink reference internal" href="#change-d057961ce5b3254ebbbc9fcf8e533680">¶</a><p>References: <a class="reference external" href="https://github.com/zzzeek/alembic/pull/10">pull request github:10</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.6.6-bug">
+<h3>bug<a class="headerlink" href="#change-0.6.6-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.6-1"><span class="target" id="change-fb1cdc0b0595b08864e2ebd72f685282"><strong>[bug] </strong></span>A file named <tt class="docutils literal"><span class="pre">__init__.py</span></tt> in the <tt class="docutils literal"><span class="pre">versions/</span></tt> directory is now
+ignored by Alembic when the collection of version files is retrieved.
+Pull request courtesy Michael Floering.<a class="changeset-link headerlink reference internal" href="#change-fb1cdc0b0595b08864e2ebd72f685282">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/95/">#95</a>, <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/24">pull request bitbucket:24</a></p>
+</p>
+</li>
+<li><p id="change-0.6.6-2"><span class="target" id="change-36ad882cb5e3ba518e933bec9ad8097f"><strong>[bug] </strong></span>Fixed Py3K bug where an attempt would be made to sort None against
+string values when autogenerate would detect tables across multiple
+schemas, including the default schema.  Pull request courtesy
+paradoxxxzero.<a class="changeset-link headerlink reference internal" href="#change-36ad882cb5e3ba518e933bec9ad8097f">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/23">pull request bitbucket:23</a></p>
+</p>
+</li>
+<li><p id="change-0.6.6-3"><span class="target" id="change-aebc3eaf30968bbd26c53659377d8aa4"><strong>[bug] </strong></span>Autogenerate render will render the arguments within a Table construct
+using <tt class="docutils literal"><span class="pre">*[...]</span></tt> when the number of columns/elements is greater than
+255.  Pull request courtesy Ryan P. Kelly.<a class="changeset-link headerlink reference internal" href="#change-aebc3eaf30968bbd26c53659377d8aa4">¶</a><p>References: <a class="reference external" href="https://github.com/zzzeek/alembic/pull/15">pull request github:15</a></p>
+</p>
+</li>
+<li><p id="change-0.6.6-4"><span class="target" id="change-13e6dabbe64ea41e59509b94b0ca1e32"><strong>[bug] </strong></span>Fixed bug where foreign key constraints would fail to render in
+autogenerate when a schema name was present.  Pull request courtesy
+Andreas Zeidler.<a class="changeset-link headerlink reference internal" href="#change-13e6dabbe64ea41e59509b94b0ca1e32">¶</a><p>References: <a class="reference external" href="https://github.com/zzzeek/alembic/pull/14">pull request github:14</a></p>
+</p>
+</li>
+<li><p id="change-0.6.6-5"><span class="target" id="change-5d9e3cf552242293705305168a87aa4b"><strong>[bug] </strong></span>Some deep-in-the-weeds fixes to try to get &#8220;server default&#8221; comparison
+working better across platforms and expressions, in particular on
+the Postgresql backend, mostly dealing with quoting/not quoting of various
+expressions at the appropriate time and on a per-backend basis.
+Repaired and tested support for such defaults as Postgresql interval
+and array defaults.<a class="changeset-link headerlink reference internal" href="#change-5d9e3cf552242293705305168a87aa4b">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/212/">#212</a></p>
+</p>
+</li>
+<li><p id="change-0.6.6-6"><span class="target" id="change-afcf3a95ca0bfe87c9371ba9bef1d750"><strong>[bug] </strong></span>Liberalized even more the check for MySQL indexes that shouldn&#8217;t be
+counted in autogenerate as &#8220;drops&#8221;; this time it&#8217;s been reported
+that an implicitly created index might be named the same as a composite
+foreign key constraint, and not the actual columns, so we now skip those
+when detected as well.<a class="changeset-link headerlink reference internal" href="#change-afcf3a95ca0bfe87c9371ba9bef1d750">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/208/">#208</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.6.6-misc">
+<h3>misc<a class="headerlink" href="#change-0.6.6-misc" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.6-7"><span class="target" id="change-777474403d509be94efdd14f3262e410"><strong>[enhancement] </strong></span>When a run of Alembic command line fails due to <tt class="docutils literal"><span class="pre">CommandError</span></tt>,
+the output now prefixes the string with <tt class="docutils literal"><span class="pre">&quot;FAILED:&quot;</span></tt>, and the error
+is also written to the log output using <tt class="docutils literal"><span class="pre">log.error()</span></tt>.<a class="changeset-link headerlink reference internal" href="#change-777474403d509be94efdd14f3262e410">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/209/">#209</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.6.5">
+<h2>0.6.5<a class="headerlink" href="#change-0.6.5" title="Permalink to this headline">¶</a></h2>
+Released: May 3, 2014<div class="section" id="change-0.6.5-feature">
+<h3>feature<a class="headerlink" href="#change-0.6.5-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.5-0"><span class="target" id="change-82b2f1589317c30a3bf32cbf7b4e089c"><strong>[feature] [environment] </strong></span>Added new feature <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.transaction_per_migration" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">EnvironmentContext.configure.transaction_per_migration</span></tt></a>,
+which when True causes the BEGIN/COMMIT pair to incur for each migration
+individually, rather than for the whole series of migrations.  This is
+to assist with some database directives that need to be within individual
+transactions, without the need to disable transactional DDL entirely.<a class="changeset-link headerlink reference internal" href="#change-82b2f1589317c30a3bf32cbf7b4e089c">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/201/">#201</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.6.5-bug">
+<h3>bug<a class="headerlink" href="#change-0.6.5-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.5-1"><span class="target" id="change-08832fb2cc714d02fe5132ef43a318f5"><strong>[bug] [autogenerate] [mysql] </strong></span>This releases&#8217; &#8220;autogenerate index detection&#8221; bug, when a MySQL table
+includes an Index with the same name as a column, autogenerate reported
+it as an &#8220;add&#8221; even though its not; this is because we ignore reflected
+indexes of this nature due to MySQL creating them implicitly.  Indexes
+that are named the same as a column are now ignored on
+MySQL if we see that the backend is reporting that it already exists;
+this indicates that we can still detect additions of these indexes
+but not drops, as we cannot distinguish a backend index same-named
+as the column as one that is user generated or mysql-generated.<a class="changeset-link headerlink reference internal" href="#change-08832fb2cc714d02fe5132ef43a318f5">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/202/">#202</a></p>
+</p>
+</li>
+<li><p id="change-0.6.5-2"><span class="target" id="change-dbb0806fb97da35ffe87ba5acf3651d4"><strong>[bug] [autogenerate] </strong></span>Fixed bug where the <tt class="docutils literal"><span class="pre">include_object()</span></tt> filter would not receive
+the original <tt class="xref py py-class docutils literal"><span class="pre">Column</span></tt> object when evaluating a database-only
+column to be dropped; the object would not include the parent
+<tt class="xref py py-class docutils literal"><span class="pre">Table</span></tt> nor other aspects of the column that are important
+for generating the &#8220;downgrade&#8221; case where the column is recreated.<a class="changeset-link headerlink reference internal" href="#change-dbb0806fb97da35ffe87ba5acf3651d4">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/200/">#200</a></p>
+</p>
+</li>
+<li><p id="change-0.6.5-3"><span class="target" id="change-24610c8aede24d249a1afcab632ffdef"><strong>[bug] [environment] </strong></span>Fixed bug where <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.get_x_argument" title="alembic.environment.EnvironmentContext.get_x_argument"><tt class="xref py py-meth docutils literal"><span class="pre">EnvironmentContext.get_x_argument()</span></tt></a>
+would fail if the <a class="reference internal" href="api.html#alembic.config.Config" title="alembic.config.Config"><tt class="xref py py-class docutils literal"><span class="pre">Config</span></tt></a> in use didn&#8217;t actually
+originate from a command line call.<a class="changeset-link headerlink reference internal" href="#change-24610c8aede24d249a1afcab632ffdef">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/195/">#195</a></p>
+</p>
+</li>
+<li><p id="change-0.6.5-4"><span class="target" id="change-66c78964c43f4efabe562c923a416922"><strong>[bug] [autogenerate] </strong></span>Fixed another bug regarding naming conventions, continuing
+from <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/183/">#183</a>, where add_index()
+drop_index() directives would not correctly render the <tt class="docutils literal"><span class="pre">f()</span></tt>
+construct when the index contained a convention-driven name.<a class="changeset-link headerlink reference internal" href="#change-66c78964c43f4efabe562c923a416922">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/194/">#194</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.6.4">
+<h2>0.6.4<a class="headerlink" href="#change-0.6.4" title="Permalink to this headline">¶</a></h2>
+Released: March 28, 2014<div class="section" id="change-0.6.4-feature">
+<h3>feature<a class="headerlink" href="#change-0.6.4-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.4-0"><span class="target" id="change-1cec795b398f1046836fd19744767935"><strong>[feature] </strong></span>The <a class="reference internal" href="api.html#alembic.command.revision" title="alembic.command.revision"><tt class="xref py py-func docutils literal"><span class="pre">command.revision()</span></tt></a> command now returns the <a class="reference internal" href="api.html#alembic.script.Script" title="alembic.script.Script"><tt class="xref py py-class docutils literal"><span class="pre">Script</span></tt></a>
+object corresponding to the newly generated revision.  From this
+structure, one can get the revision id, the module documentation,
+and everything else, for use in scripts that call upon this command.
+Pull request courtesy Robbie Coomber.<a class="changeset-link headerlink reference internal" href="#change-1cec795b398f1046836fd19744767935">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/20">pull request bitbucket:20</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.6.4-bug">
+<h3>bug<a class="headerlink" href="#change-0.6.4-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.4-1"><span class="target" id="change-8d72b390933c9eeed92ce824dfea07ab"><strong>[bug] [mssql] </strong></span>Added quoting to the table name when the special EXEC is run to
+drop any existing server defaults or constraints when the
+<a class="reference internal" href="ops.html#alembic.operations.BatchOperations.drop_column.params.mssql_drop_check" title="alembic.operations.BatchOperations.drop_column"><tt class="xref py py-paramref docutils literal"><span class="pre">drop_column.mssql_drop_check</span></tt></a> or
+<a class="reference internal" href="ops.html#alembic.operations.BatchOperations.drop_column.params.mssql_drop_default" title="alembic.operations.BatchOperations.drop_column"><tt class="xref py py-paramref docutils literal"><span class="pre">drop_column.mssql_drop_default</span></tt></a>
+arguments are used.<a class="changeset-link headerlink reference internal" href="#change-8d72b390933c9eeed92ce824dfea07ab">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/186/">#186</a></p>
+</p>
+</li>
+<li><p id="change-0.6.4-2"><span class="target" id="change-37a0a4b5af840eefcf7d0f2e1fff22f6"><strong>[bug] [mysql] </strong></span>Added/fixed support for MySQL &#8220;SET DEFAULT&#8221; / &#8220;DROP DEFAULT&#8221; phrases,
+which will now be rendered if only the server default is changing
+or being dropped (e.g. specify None to alter_column() to indicate
+&#8220;DROP DEFAULT&#8221;).  Also added support for rendering MODIFY rather than
+CHANGE when the column name isn&#8217;t changing.<a class="changeset-link headerlink reference internal" href="#change-37a0a4b5af840eefcf7d0f2e1fff22f6">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/103/">#103</a></p>
+</p>
+</li>
+<li><p id="change-0.6.4-3"><span class="target" id="change-02a2337216c3734fc205d6b50783e08e"><strong>[bug] </strong></span>Added support for the <tt class="docutils literal"><span class="pre">initially</span></tt>, <tt class="docutils literal"><span class="pre">match</span></tt> keyword arguments
+as well as dialect-specific keyword arguments to
+<a class="reference internal" href="ops.html#alembic.operations.Operations.create_foreign_key" title="alembic.operations.Operations.create_foreign_key"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.create_foreign_key()</span></tt></a>.<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">tags:</th><td class="field-body">feature</td>
+</tr>
+<tr class="field-even field"><th class="field-name">tickets:</th><td class="field-body">163</td>
+</tr>
+</tbody>
+</table>
+<p>Altered the support for &#8220;sourceless&#8221; migration files (e.g. only
+.pyc or .pyo present) so that the flag &#8220;sourceless=true&#8221; needs to
+be in alembic.ini for this behavior to take effect.</p>
+<a class="changeset-link headerlink reference internal" href="#change-02a2337216c3734fc205d6b50783e08e">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/190/">#190</a></p>
+</p>
+</li>
+<li><p id="change-0.6.4-4"><span class="target" id="change-ae1e7d2785afd70303343b0a6f876572"><strong>[bug] [mssql] </strong></span>The feature that keeps on giving, index/unique constraint autogenerate
+detection, has even more fixes, this time to accommodate database dialects
+that both don&#8217;t yet report on unique constraints, but the backend
+does report unique constraints as indexes.   The logic
+Alembic uses to distinguish between &#8220;this is an index!&#8221; vs.
+&#8220;this is a unique constraint that is also reported as an index!&#8221; has now
+been further enhanced to not produce unwanted migrations when the dialect
+is observed to not yet implement get_unique_constraints() (e.g. mssql).
+Note that such a backend will no longer report index drops for unique
+indexes, as these cannot be distinguished from an unreported unique
+index.<a class="changeset-link headerlink reference internal" href="#change-ae1e7d2785afd70303343b0a6f876572">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/185/">#185</a></p>
+</p>
+</li>
+<li><p id="change-0.6.4-5"><span class="target" id="change-8b2e57ac61a4493d86940abbc8167df2"><strong>[bug] </strong></span>Extensive changes have been made to more fully support SQLAlchemy&#8217;s new
+naming conventions feature.  Note that while SQLAlchemy has added this
+feature as of 0.9.2, some additional fixes in 0.9.4 are needed to
+resolve some of the issues:<ol class="arabic">
+<li>The <a class="reference internal" href="ops.html#alembic.operations.Operations" title="alembic.operations.Operations"><tt class="xref py py-class docutils literal"><span class="pre">Operations</span></tt></a> object now takes into account the naming
+conventions that are present on the <tt class="xref py py-class docutils literal"><span class="pre">MetaData</span></tt> object that&#8217;s
+associated using <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.target_metadata" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">target_metadata</span></tt></a>.
+When <a class="reference internal" href="ops.html#alembic.operations.Operations" title="alembic.operations.Operations"><tt class="xref py py-class docutils literal"><span class="pre">Operations</span></tt></a> renders a constraint directive like
+<tt class="docutils literal"><span class="pre">ADD</span> <span class="pre">CONSTRAINT</span></tt>, it now will make use of this naming convention
+when it produces its own temporary <tt class="xref py py-class docutils literal"><span class="pre">MetaData</span></tt> object.</li>
+<li>Note however that the autogenerate feature in most cases generates
+constraints like foreign keys and unique constraints with the
+final names intact; the only exception are the constraints implicit
+with a schema-type like Boolean or Enum.  In most of these cases,
+the naming convention feature will not take effect for these constraints
+and will instead use the given name as is, with one exception....</li>
+<li>Naming conventions which use the <tt class="docutils literal"><span class="pre">&quot;%(constraint_name)s&quot;</span></tt> token, that
+is, produce a new name that uses the original name as a component,
+will still be pulled into the naming convention converter and be
+converted.  The problem arises when autogenerate renders a constraint
+with it&#8217;s already-generated name present in the migration file&#8217;s source
+code, the name will be doubled up at render time due to the combination
+of #1 and #2.  So to work around this, autogenerate now renders these
+already-tokenized names using the new <a class="reference internal" href="ops.html#alembic.operations.Operations.f" title="alembic.operations.Operations.f"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.f()</span></tt></a> component.
+This component is only generated if <strong>SQLAlchemy 0.9.4</strong> or greater
+is in use.</li>
+</ol>
+<p>Therefore it is highly recommended that an upgrade to Alembic 0.6.4
+be accompanied by an upgrade of SQLAlchemy 0.9.4, if the new naming
+conventions feature is used.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="naming.html#autogen-naming-conventions"><em>Integration of Naming Conventions into Operations, Autogenerate</em></a></p>
+</div>
+<a class="changeset-link headerlink reference internal" href="#change-8b2e57ac61a4493d86940abbc8167df2">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/183/">#183</a></p>
+</p>
+</li>
+<li><p id="change-0.6.4-6"><span class="target" id="change-3ed8c566a5744760031ab16b1223933f"><strong>[bug] </strong></span>Suppressed IOErrors which can raise when program output pipe
+is closed under a program like <tt class="docutils literal"><span class="pre">head</span></tt>; however this only
+works on Python 2.  On Python 3, there is not yet a known way to
+suppress the BrokenPipeError warnings without prematurely terminating
+the program via signals.<a class="changeset-link headerlink reference internal" href="#change-3ed8c566a5744760031ab16b1223933f">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/160/">#160</a></p>
+</p>
+</li>
+<li><p id="change-0.6.4-7"><span class="target" id="change-d8ad925bf390337cbb38b6fbefb8f545"><strong>[bug] </strong></span>Fixed bug where <a class="reference internal" href="ops.html#alembic.operations.Operations.bulk_insert" title="alembic.operations.Operations.bulk_insert"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.bulk_insert()</span></tt></a> would not function
+properly when <a class="reference internal" href="ops.html#alembic.operations.Operations.inline_literal" title="alembic.operations.Operations.inline_literal"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.inline_literal()</span></tt></a> values were used,
+either in &#8211;sql or non-sql mode.    The values will now render
+directly in &#8211;sql mode.  For compatibility with &#8220;online&#8221; mode,
+a new flag <a class="reference internal" href="ops.html#alembic.operations.Operations.bulk_insert.params.multiinsert" title="alembic.operations.Operations.bulk_insert"><tt class="xref py py-paramref docutils literal"><span class="pre">multiinsert</span></tt></a>
+can be set to False which will cause each parameter set to be
+compiled and executed with individual INSERT statements.<a class="changeset-link headerlink reference internal" href="#change-d8ad925bf390337cbb38b6fbefb8f545">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/179/">#179</a></p>
+</p>
+</li>
+<li><p id="change-0.6.4-8"><span class="target" id="change-d94fdbccfa3c17c2917e19c4f23f8b32"><strong>[bug] [py3k] </strong></span>Fixed a failure of the system that allows &#8220;legacy keyword arguments&#8221;
+to be understood, which arose as of a change in Python 3.4 regarding
+decorators.  A workaround is applied that allows the code to work
+across Python 3 versions.<a class="changeset-link headerlink reference internal" href="#change-d94fdbccfa3c17c2917e19c4f23f8b32">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/175/">#175</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.6.3">
+<h2>0.6.3<a class="headerlink" href="#change-0.6.3" title="Permalink to this headline">¶</a></h2>
+Released: February 2, 2014<div class="section" id="change-0.6.3-feature">
+<h3>feature<a class="headerlink" href="#change-0.6.3-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.3-0"><span class="target" id="change-551755ae8a5aa7d31976678bf04faf16"><strong>[feature] </strong></span>Added new argument
+<a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.user_module_prefix" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">EnvironmentContext.configure.user_module_prefix</span></tt></a>.
+This prefix is applied when autogenerate renders a user-defined type,
+which here is defined as any type that is from a module outside of the
+<tt class="docutils literal"><span class="pre">sqlalchemy.</span></tt> hierarchy.   This prefix defaults to <tt class="docutils literal"><span class="pre">None</span></tt>, in
+which case the <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.sqlalchemy_module_prefix" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">EnvironmentContext.configure.sqlalchemy_module_prefix</span></tt></a>
+is used, thus preserving the current behavior.<a class="changeset-link headerlink reference internal" href="#change-551755ae8a5aa7d31976678bf04faf16">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/171/">#171</a></p>
+</p>
+</li>
+<li><p id="change-0.6.3-1"><span class="target" id="change-f4b9dab7aa1559258ccce0c07b670731"><strong>[feature] </strong></span>The <a class="reference internal" href="api.html#alembic.script.ScriptDirectory" title="alembic.script.ScriptDirectory"><tt class="xref py py-class docutils literal"><span class="pre">ScriptDirectory</span></tt></a> system that loads migration files
+from a  <tt class="docutils literal"><span class="pre">versions/</span></tt> directory now supports so-called
+&#8220;sourceless&#8221; operation,  where the <tt class="docutils literal"><span class="pre">.py</span></tt> files are not present
+and instead <tt class="docutils literal"><span class="pre">.pyc</span></tt> or <tt class="docutils literal"><span class="pre">.pyo</span></tt> files are directly present where
+the <tt class="docutils literal"><span class="pre">.py</span></tt> files should be.  Note that while Python 3.3 has a
+new system of locating <tt class="docutils literal"><span class="pre">.pyc</span></tt>/<tt class="docutils literal"><span class="pre">.pyo</span></tt> files within a directory
+called <tt class="docutils literal"><span class="pre">__pycache__</span></tt> (e.g. PEP-3147), PEP-3147 maintains
+support for the &#8220;source-less imports&#8221; use case, where the
+<tt class="docutils literal"><span class="pre">.pyc</span></tt>/<tt class="docutils literal"><span class="pre">.pyo</span></tt> are in present in the &#8220;old&#8221; location, e.g. next
+to the <tt class="docutils literal"><span class="pre">.py</span></tt> file; this is the usage that&#8217;s supported even when
+running Python3.3.<a class="changeset-link headerlink reference internal" href="#change-f4b9dab7aa1559258ccce0c07b670731">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/163/">#163</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.6.3-bug">
+<h3>bug<a class="headerlink" href="#change-0.6.3-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.3-2"><span class="target" id="change-8f1d37b9f0a00cf5988d065471a33ef4"><strong>[bug] </strong></span>Added a workaround for when we call <tt class="docutils literal"><span class="pre">fcntl.ioctl()</span></tt> to get at
+<tt class="docutils literal"><span class="pre">TERMWIDTH</span></tt>; if the function returns zero, as is reported to occur
+in some pseudo-ttys, the message wrapping system is disabled in the
+same way as if <tt class="docutils literal"><span class="pre">ioctl()</span></tt> failed.<a class="changeset-link headerlink reference internal" href="#change-8f1d37b9f0a00cf5988d065471a33ef4">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/172/">#172</a></p>
+</p>
+</li>
+<li><p id="change-0.6.3-3"><span class="target" id="change-a4a58822612e56e3bd38e3bbc6ef443f"><strong>[bug] </strong></span>Added support for autogenerate covering the use case where <tt class="xref py py-class docutils literal"><span class="pre">Table</span></tt>
+objects specified in the metadata have an explicit <tt class="docutils literal"><span class="pre">schema</span></tt> attribute
+whose name matches that of the connection&#8217;s default schema
+(e.g. &#8220;public&#8221; for Postgresql).  Previously, it was assumed that &#8220;schema&#8221;
+was <tt class="docutils literal"><span class="pre">None</span></tt> when it matched the &#8220;default&#8221; schema, now the comparison
+adjusts for this.<a class="changeset-link headerlink reference internal" href="#change-a4a58822612e56e3bd38e3bbc6ef443f">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/170/">#170</a></p>
+</p>
+</li>
+<li><p id="change-0.6.3-4"><span class="target" id="change-5a17153f8a32571400b59ac4b3f62126"><strong>[bug] </strong></span>The <a class="reference internal" href="api.html#alembic.autogenerate.compare_metadata" title="alembic.autogenerate.compare_metadata"><tt class="xref py py-func docutils literal"><span class="pre">compare_metadata()</span></tt></a> public API function now takes into
+account the settings for
+<a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.include_object" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">EnvironmentContext.configure.include_object</span></tt></a>,
+<a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.include_symbol" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">EnvironmentContext.configure.include_symbol</span></tt></a>,
+and <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure.params.include_schemas" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-paramref docutils literal"><span class="pre">EnvironmentContext.configure.include_schemas</span></tt></a>, in the
+same way that the <tt class="docutils literal"><span class="pre">--autogenerate</span></tt> command does.  Pull
+request courtesy Roman Podoliaka.<a class="changeset-link headerlink reference internal" href="#change-5a17153f8a32571400b59ac4b3f62126">¶</a><p>References: <a class="reference external" href="https://github.com/zzzeek/alembic/pull/9">pull request github:9</a></p>
+</p>
+</li>
+<li><p id="change-0.6.3-5"><span class="target" id="change-a5967b3d1fb33cd181893d83eb3431de"><strong>[bug] </strong></span>Calling <tt class="xref py py-func docutils literal"><span class="pre">bulk_insert()</span></tt> with an empty list will not emit any
+commands on the current connection.  This was already the case with
+<tt class="docutils literal"><span class="pre">--sql</span></tt> mode, so is now the case with &#8220;online&#8221; mode.<a class="changeset-link headerlink reference internal" href="#change-a5967b3d1fb33cd181893d83eb3431de">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/168/">#168</a></p>
+</p>
+</li>
+<li><p id="change-0.6.3-6"><span class="target" id="change-9c0aaf2dd246f7ce94469201ff20b04e"><strong>[bug] </strong></span>Enabled schema support for index and unique constraint autodetection;
+previously these were non-functional and could in some cases lead to
+attribute errors.  Pull request courtesy Dimitris Theodorou.<a class="changeset-link headerlink reference internal" href="#change-9c0aaf2dd246f7ce94469201ff20b04e">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/17">pull request bitbucket:17</a></p>
+</p>
+</li>
+<li><p id="change-0.6.3-7"><span class="target" id="change-3753611dc2a39d1c40279d9466542710"><strong>[bug] </strong></span>More fixes to index autodetection; indexes created with expressions
+like DESC or functional indexes will no longer cause AttributeError
+exceptions when attempting to compare the columns.<a class="changeset-link headerlink reference internal" href="#change-3753611dc2a39d1c40279d9466542710">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/164/">#164</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.6.2">
+<h2>0.6.2<a class="headerlink" href="#change-0.6.2" title="Permalink to this headline">¶</a></h2>
+Released: Fri Dec 27 2013<div class="section" id="change-0.6.2-feature">
+<h3>feature<a class="headerlink" href="#change-0.6.2-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.2-0"><span class="target" id="change-230e5662147d698eb044179aedd758a5"><strong>[feature] [mssql] </strong></span>Added new argument <tt class="docutils literal"><span class="pre">mssql_drop_foreign_key</span></tt> to
+<a class="reference internal" href="ops.html#alembic.operations.Operations.drop_column" title="alembic.operations.Operations.drop_column"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.drop_column()</span></tt></a>.  Like <tt class="docutils literal"><span class="pre">mssql_drop_default</span></tt>
+and <tt class="docutils literal"><span class="pre">mssql_drop_check</span></tt>, will do an inline lookup for a
+single foreign key which applies to this column, and drop it.
+For a column with more than one FK, you&#8217;d still need to explicitly
+use <a class="reference internal" href="ops.html#alembic.operations.Operations.drop_constraint" title="alembic.operations.Operations.drop_constraint"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.drop_constraint()</span></tt></a> given the name,
+even though only MSSQL has this limitation in the first place.<a class="changeset-link headerlink reference internal" href="#change-230e5662147d698eb044179aedd758a5">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.6.2-bug">
+<h3>bug<a class="headerlink" href="#change-0.6.2-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.2-1"><span class="target" id="change-aee87ad5e26501f6f72178e43c0071f7"><strong>[bug] </strong></span>Autogenerate for <tt class="docutils literal"><span class="pre">op.create_table()</span></tt> will not include a
+<tt class="docutils literal"><span class="pre">PrimaryKeyConstraint()</span></tt> that has no columns.<a class="changeset-link headerlink reference internal" href="#change-aee87ad5e26501f6f72178e43c0071f7">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.6.2-2"><span class="target" id="change-e5e89e6d64436d86221ce330786ec931"><strong>[bug] </strong></span>Fixed bug in the not-internally-used <a class="reference internal" href="api.html#alembic.script.ScriptDirectory.get_base" title="alembic.script.ScriptDirectory.get_base"><tt class="xref py py-meth docutils literal"><span class="pre">ScriptDirectory.get_base()</span></tt></a>
+method which would fail if called on an empty versions directory.<a class="changeset-link headerlink reference internal" href="#change-e5e89e6d64436d86221ce330786ec931">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.6.2-3"><span class="target" id="change-0e713ff458d492df51483d1b5482cdbe"><strong>[bug] </strong></span>An almost-rewrite of the new unique constraint/index autogenerate
+detection, to accommodate a variety of issues.  The emphasis is on
+not generating false positives for those cases where no net change
+is present, as these errors are the ones that impact all autogenerate
+runs:<blockquote>
+<div><ul>
+<li>Fixed an issue with unique constraint autogenerate detection where
+a named <tt class="docutils literal"><span class="pre">UniqueConstraint</span></tt> on both sides with column changes would
+render with the &#8220;add&#8221; operation before the &#8220;drop&#8221;, requiring the
+user to reverse the order manually.</li>
+<li>Corrected for MySQL&#8217;s apparent addition of an implicit index
+for a foreign key column, so that it doesn&#8217;t show up as &#8220;removed&#8221;.
+This required that the index/constraint autogen system query the
+dialect-specific implementation for special exceptions.</li>
+<li>reworked the &#8220;dedupe&#8221; logic to accommodate MySQL&#8217;s bi-directional
+duplication of unique indexes as unique constraints, and unique
+constraints as unique indexes.  Postgresql&#8217;s slightly different
+logic of duplicating unique constraints into unique indexes
+continues to be accommodated as well.  Note that a unique index
+or unique constraint removal on a backend that duplicates these may
+show up as a distinct &#8220;remove_constraint()&#8221; / &#8220;remove_index()&#8221; pair,
+which may need to be corrected in the post-autogenerate if multiple
+backends are being supported.</li>
+<li>added another dialect-specific exception to the SQLite backend
+when dealing with unnamed unique constraints, as the backend can&#8217;t
+currently report on constraints that were made with this technique,
+hence they&#8217;d come out as &#8220;added&#8221; on every run.</li>
+<li>the <tt class="docutils literal"><span class="pre">op.create_table()</span></tt> directive will be auto-generated with
+the <tt class="docutils literal"><span class="pre">UniqueConstraint</span></tt> objects inline, but will not double them
+up with a separate <tt class="docutils literal"><span class="pre">create_unique_constraint()</span></tt> call, which may
+have been occurring.  Indexes still get rendered as distinct
+<tt class="docutils literal"><span class="pre">op.create_index()</span></tt> calls even when the corresponding table was
+created in the same script.</li>
+<li>the inline <tt class="docutils literal"><span class="pre">UniqueConstraint</span></tt> within <tt class="docutils literal"><span class="pre">op.create_table()</span></tt> includes
+all the options like <tt class="docutils literal"><span class="pre">deferrable</span></tt>, <tt class="docutils literal"><span class="pre">initially</span></tt>, etc.  Previously
+these weren&#8217;t rendering.</li>
+</ul>
+</div></blockquote>
+<a class="changeset-link headerlink reference internal" href="#change-0e713ff458d492df51483d1b5482cdbe">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/157/">#157</a></p>
+</p>
+</li>
+<li><p id="change-0.6.2-4"><span class="target" id="change-a5728333532adfd1bc5d62b39798ce5c"><strong>[bug] [mssql] </strong></span>The MSSQL backend will add the batch separator (e.g. <tt class="docutils literal"><span class="pre">&quot;GO&quot;</span></tt>)
+in <tt class="docutils literal"><span class="pre">--sql</span></tt> mode after the final <tt class="docutils literal"><span class="pre">COMMIT</span></tt> statement, to ensure
+that statement is also processed in batch mode.  Courtesy
+Derek Harland.<a class="changeset-link headerlink reference internal" href="#change-a5728333532adfd1bc5d62b39798ce5c">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/13">pull request bitbucket:13</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.6.1">
+<h2>0.6.1<a class="headerlink" href="#change-0.6.1" title="Permalink to this headline">¶</a></h2>
+Released: Wed Nov 27 2013<div class="section" id="change-0.6.1-feature">
+<h3>feature<a class="headerlink" href="#change-0.6.1-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.1-0"><span class="target" id="change-73af9c713e70dbedca14caa1898b24bb"><strong>[feature] </strong></span>Expanded the size of the &#8220;slug&#8221; generated by &#8220;revision&#8221; to 40
+characters, which is also configurable by new field
+<tt class="docutils literal"><span class="pre">truncate_slug_length</span></tt>; and also split on the word rather than the
+character; courtesy Frozenball.<a class="changeset-link headerlink reference internal" href="#change-73af9c713e70dbedca14caa1898b24bb">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/12">pull request bitbucket:12</a></p>
+</p>
+</li>
+<li><p id="change-0.6.1-1"><span class="target" id="change-6013b903919340a579de5096e6623085"><strong>[feature] </strong></span>Support for autogeneration detection and rendering of indexes and
+unique constraints has been added.  The logic goes through some effort
+in order to differentiate between true unique constraints and
+unique indexes, where there are some quirks on backends like Postgresql.
+The effort here in producing the feature and tests is courtesy of IJL.<a class="changeset-link headerlink reference internal" href="#change-6013b903919340a579de5096e6623085">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/107/">#107</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.6.1-bug">
+<h3>bug<a class="headerlink" href="#change-0.6.1-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.1-2"><span class="target" id="change-88dc9ccb41233be8b455a9fb51d5e49b"><strong>[bug] [mysql] </strong></span>Fixed bug where <tt class="xref py py-func docutils literal"><span class="pre">op.alter_column()</span></tt> in the MySQL dialect
+would fail to apply quotes to column names that had mixed casing
+or spaces.<a class="changeset-link headerlink reference internal" href="#change-88dc9ccb41233be8b455a9fb51d5e49b">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/152/">#152</a></p>
+</p>
+</li>
+<li><p id="change-0.6.1-3"><span class="target" id="change-c2178a0f5084e8fb15d3ee1cd4a15320"><strong>[bug] </strong></span>Fixed the output wrapping for Alembic message output, so that
+we either get the terminal width for &#8220;pretty printing&#8221; with
+indentation, or if not we just output the text as is; in any
+case the text won&#8217;t be wrapped too short.<a class="changeset-link headerlink reference internal" href="#change-c2178a0f5084e8fb15d3ee1cd4a15320">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/135/">#135</a></p>
+</p>
+</li>
+<li><p id="change-0.6.1-4"><span class="target" id="change-7765250de7b0f2eab8bacc4f6558b4b2"><strong>[bug] </strong></span>Fixes to Py3k in-place compatibity regarding output encoding and related;
+the use of the new io.* package introduced some incompatibilities on Py2k.
+These should be resolved, due to the introduction of new adapter types
+for translating from io.* to Py2k file types, StringIO types.
+Thanks to Javier Santacruz for help with this.<a class="changeset-link headerlink reference internal" href="#change-7765250de7b0f2eab8bacc4f6558b4b2">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/pull-request/9">pull request bitbucket:9</a></p>
+</p>
+</li>
+<li><p id="change-0.6.1-5"><span class="target" id="change-74efe224d5846b980546895432ed91c0"><strong>[bug] </strong></span>Fixed py3k bug where the wrong form of <tt class="docutils literal"><span class="pre">next()</span></tt> was being called
+when using the list_templates command.  Courtesy Chris Wilkes.<a class="changeset-link headerlink reference internal" href="#change-74efe224d5846b980546895432ed91c0">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/145/">#145</a></p>
+</p>
+</li>
+<li><p id="change-0.6.1-6"><span class="target" id="change-949fab900590ca5b0ddbfde83a0c4f09"><strong>[bug] </strong></span>Fixed bug introduced by new <tt class="docutils literal"><span class="pre">include_object</span></tt> argument where the
+inspected column would be misinterpreted when using a user-defined
+type comparison function, causing a KeyError or similar expression-related
+error.  Fix courtesy Maarten van Schaik.<a class="changeset-link headerlink reference internal" href="#change-949fab900590ca5b0ddbfde83a0c4f09">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.6.1-7"><span class="target" id="change-6d738971da915e4a33c0e8055c4faa6a"><strong>[bug] </strong></span>Added the &#8220;deferrable&#8221; keyword argument to <tt class="xref py py-func docutils literal"><span class="pre">op.create_foreign_key()</span></tt>
+so that <tt class="docutils literal"><span class="pre">DEFERRABLE</span></tt> constraint generation is supported; courtesy
+Pedro Romano.<a class="changeset-link headerlink reference internal" href="#change-6d738971da915e4a33c0e8055c4faa6a">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.6.1-8"><span class="target" id="change-5442bff8942adce65c56459dabc52133"><strong>[bug] </strong></span>Ensured that strings going to stdout go through an encode/decode phase,
+so that any non-ASCII characters get to the output stream correctly
+in both Py2k and Py3k.   Also added source encoding detection using
+Mako&#8217;s parse_encoding() routine in Py2k so that the __doc__ of a
+non-ascii revision file can be treated as unicode in Py2k.<a class="changeset-link headerlink reference internal" href="#change-5442bff8942adce65c56459dabc52133">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/137/">#137</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.6.0">
+<h2>0.6.0<a class="headerlink" href="#change-0.6.0" title="Permalink to this headline">¶</a></h2>
+Released: Fri July 19 2013<div class="section" id="change-0.6.0-feature">
+<h3>feature<a class="headerlink" href="#change-0.6.0-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.0-0"><span class="target" id="change-e85aac89057d7ecbc7ff64a4b078459b"><strong>[feature] </strong></span>Added new kw argument to <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-meth docutils literal"><span class="pre">EnvironmentContext.configure()</span></tt></a>
+<tt class="docutils literal"><span class="pre">include_object</span></tt>.  This is a more flexible version of the
+<tt class="docutils literal"><span class="pre">include_symbol</span></tt> argument which allows filtering of columns as well as tables
+from the autogenerate process,
+and in the future will also work for types, constraints and
+other constructs.  The fully constructed schema object is passed,
+including its name and type as well as a flag indicating if the object
+is from the local application metadata or is reflected.<a class="changeset-link headerlink reference internal" href="#change-e85aac89057d7ecbc7ff64a4b078459b">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/101/">#101</a></p>
+</p>
+</li>
+<li><p id="change-0.6.0-1"><span class="target" id="change-718040a480981a8de5ed3abaede6b37e"><strong>[feature] </strong></span>The output of the <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">history</span></tt> command is now
+expanded to show information about each change on multiple
+lines, including the full top message,
+resembling the formatting of git log.<a class="changeset-link headerlink reference internal" href="#change-718040a480981a8de5ed3abaede6b37e">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.6.0-2"><span class="target" id="change-22eb2ef73a6d1d21241dd76696605f47"><strong>[feature] </strong></span>Added <a class="reference internal" href="api.html#alembic.config.Config.cmd_opts" title="alembic.config.Config.cmd_opts"><tt class="xref py py-attr docutils literal"><span class="pre">alembic.config.Config.cmd_opts</span></tt></a> attribute,
+allows access to the <tt class="docutils literal"><span class="pre">argparse</span></tt> options passed to the
+<tt class="docutils literal"><span class="pre">alembic</span></tt> runner.<a class="changeset-link headerlink reference internal" href="#change-22eb2ef73a6d1d21241dd76696605f47">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.6.0-3"><span class="target" id="change-354fd496ba36170581ccca493196020a"><strong>[feature] </strong></span>Added new command line argument <tt class="docutils literal"><span class="pre">-x</span></tt>, allows extra arguments
+to be appended to the command line which can be consumed
+within an <tt class="docutils literal"><span class="pre">env.py</span></tt> script by looking at
+<tt class="docutils literal"><span class="pre">context.config.cmd_opts.x</span></tt>, or more simply a new
+method <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.get_x_argument" title="alembic.environment.EnvironmentContext.get_x_argument"><tt class="xref py py-meth docutils literal"><span class="pre">EnvironmentContext.get_x_argument()</span></tt></a>.<a class="changeset-link headerlink reference internal" href="#change-354fd496ba36170581ccca493196020a">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/120/">#120</a></p>
+</p>
+</li>
+<li><p id="change-0.6.0-4"><span class="target" id="change-c079c00ed4644a2b1d013c1a56c5758c"><strong>[feature] </strong></span>Added <tt class="docutils literal"><span class="pre">-r</span></tt> argument to <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">history</span></tt> command,
+allows specification of <tt class="docutils literal"><span class="pre">[start]:[end]</span></tt> to view
+a slice of history.  Accepts revision numbers, symbols
+&#8220;base&#8221;, &#8220;head&#8221;, a new symbol &#8220;current&#8221; representing the
+current migration, as well as relative ranges for one
+side at a time (i.e. <tt class="docutils literal"><span class="pre">-r-5:head</span></tt>, <tt class="docutils literal"><span class="pre">-rcurrent:+3</span></tt>).
+Courtesy Atsushi Odagiri for this feature.<a class="changeset-link headerlink reference internal" href="#change-c079c00ed4644a2b1d013c1a56c5758c">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.6.0-5"><span class="target" id="change-18f647f894ffa0b6a0932b815d8a3f64"><strong>[feature] </strong></span>Source base is now in-place for Python 2.6 through
+3.3, without the need for 2to3.   Support for Python 2.5
+and below has been dropped.   Huge thanks to
+Hong Minhee for all the effort on this!<a class="changeset-link headerlink reference internal" href="#change-18f647f894ffa0b6a0932b815d8a3f64">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/55/">#55</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.6.0-bug">
+<h3>bug<a class="headerlink" href="#change-0.6.0-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.0-6"><span class="target" id="change-67121f13cd1633d339ca8d3501a64835"><strong>[bug] </strong></span>Added support for options like &#8220;name&#8221; etc. to be rendered
+within CHECK constraints in autogenerate.  Courtesy
+Sok Ann Yap.<a class="changeset-link headerlink reference internal" href="#change-67121f13cd1633d339ca8d3501a64835">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/125/">#125</a></p>
+</p>
+</li>
+<li><p id="change-0.6.0-7"><span class="target" id="change-2bd1c9b7a8cd58fda7933b1f8d517924"><strong>[bug] </strong></span>Repaired autogenerate rendering of ForeignKeyConstraint
+to include use_alter argument, if present.<a class="changeset-link headerlink reference internal" href="#change-2bd1c9b7a8cd58fda7933b1f8d517924">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.6.0-misc">
+<h3>misc<a class="headerlink" href="#change-0.6.0-misc" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.6.0-8"><span class="target" id="change-8f52fd722bff10d1e76ed9c1e41951d0"><strong>[misc] </strong></span>Source repository has been moved from Mercurial to Git.<a class="changeset-link headerlink reference internal" href="#change-8f52fd722bff10d1e76ed9c1e41951d0">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.5.0">
+<h2>0.5.0<a class="headerlink" href="#change-0.5.0" title="Permalink to this headline">¶</a></h2>
+Released: Thu Apr 4 2013<p><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Alembic 0.5.0 now requires at least
+version 0.7.3 of SQLAlchemy to run properly.
+Support for 0.6 has been dropped.</p>
+</div>
+</p>
+<div class="section" id="change-0.5.0-feature">
+<h3>feature<a class="headerlink" href="#change-0.5.0-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.5.0-0"><span class="target" id="change-7bcc8bee5be4b3648ef4267e30e5ab94"><strong>[feature] </strong></span>Added <tt class="docutils literal"><span class="pre">version_table_schema</span></tt> argument
+to <a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-meth docutils literal"><span class="pre">EnvironmentContext.configure()</span></tt></a>,
+complements the <tt class="docutils literal"><span class="pre">version_table</span></tt> argument to
+set an optional remote schema for the version
+table.  Courtesy Christian Blume.<a class="changeset-link headerlink reference internal" href="#change-7bcc8bee5be4b3648ef4267e30e5ab94">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/76/">#76</a></p>
+</p>
+</li>
+<li><p id="change-0.5.0-1"><span class="target" id="change-44c3d7b8009510f527754b06796814ed"><strong>[feature] </strong></span>Added <tt class="docutils literal"><span class="pre">output_encoding</span></tt> option to
+<a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-meth docutils literal"><span class="pre">EnvironmentContext.configure()</span></tt></a>,
+used with <tt class="docutils literal"><span class="pre">--sql</span></tt> mode to apply an encoding
+to the output stream.<a class="changeset-link headerlink reference internal" href="#change-44c3d7b8009510f527754b06796814ed">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/90/">#90</a></p>
+</p>
+</li>
+<li><p id="change-0.5.0-2"><span class="target" id="change-66f93edf3a52f4a0a2d52b972af2c90f"><strong>[feature] </strong></span>Added <a class="reference internal" href="ops.html#alembic.operations.Operations.create_primary_key" title="alembic.operations.Operations.create_primary_key"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.create_primary_key()</span></tt></a>
+operation, will genenerate an ADD CONSTRAINT
+for a primary key.<a class="changeset-link headerlink reference internal" href="#change-66f93edf3a52f4a0a2d52b972af2c90f">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/93/">#93</a></p>
+</p>
+</li>
+<li><p id="change-0.5.0-3"><span class="target" id="change-06476e4633169136465535ba4cbcdd49"><strong>[feature] </strong></span>upgrade and downgrade commands will list the
+first line of the docstring out next to the
+version number.  Courtesy Hong Minhee.<a class="changeset-link headerlink reference internal" href="#change-06476e4633169136465535ba4cbcdd49">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/115/">#115</a></p>
+</p>
+</li>
+<li><p id="change-0.5.0-4"><span class="target" id="change-d5785fa5012c5b4b900ce403cf69c2c1"><strong>[feature] </strong></span>Added &#8211;head-only option to &#8220;alembic current&#8221;,
+will print current version plus the symbol
+&#8220;(head)&#8221; if this version is the head or not.
+Courtesy Charles-Axel Dein.<a class="changeset-link headerlink reference internal" href="#change-d5785fa5012c5b4b900ce403cf69c2c1">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.5.0-5"><span class="target" id="change-94df06496a5f7f0e97278b19de40874f"><strong>[feature] </strong></span>The rendering of any construct during autogenerate
+can be customized, in particular to allow special rendering
+for user-defined column, constraint subclasses, using new
+<tt class="docutils literal"><span class="pre">render_item</span></tt> argument to
+<a class="reference internal" href="api.html#alembic.environment.EnvironmentContext.configure" title="alembic.environment.EnvironmentContext.configure"><tt class="xref py py-meth docutils literal"><span class="pre">EnvironmentContext.configure()</span></tt></a>.<a class="changeset-link headerlink reference internal" href="#change-94df06496a5f7f0e97278b19de40874f">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/108/">#108</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.5.0-bug">
+<h3>bug<a class="headerlink" href="#change-0.5.0-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.5.0-6"><span class="target" id="change-ae05f9f39c819ed9cef1962598186b2f"><strong>[bug] [postgresql] </strong></span>Fixed format of RENAME for table that includes
+schema with Postgresql; the schema name shouldn&#8217;t
+be in the &#8220;TO&#8221; field.<a class="changeset-link headerlink reference internal" href="#change-ae05f9f39c819ed9cef1962598186b2f">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/32/">#32</a></p>
+</p>
+</li>
+<li><p id="change-0.5.0-7"><span class="target" id="change-3ceaed79e3eee38b675683a25b901c63"><strong>[bug] [mssql] </strong></span>Fixed bug whereby double quoting would be applied
+to target column name during an <tt class="docutils literal"><span class="pre">sp_rename</span></tt>
+operation.<a class="changeset-link headerlink reference internal" href="#change-3ceaed79e3eee38b675683a25b901c63">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/109/">#109</a></p>
+</p>
+</li>
+<li><p id="change-0.5.0-8"><span class="target" id="change-77934556af5d1f9af69a879cf7ad2858"><strong>[bug] [sqlite] [mysql] </strong></span>transactional_ddl flag for SQLite, MySQL dialects
+set to False.  MySQL doesn&#8217;t support it,
+SQLite does but current pysqlite driver does not.<a class="changeset-link headerlink reference internal" href="#change-77934556af5d1f9af69a879cf7ad2858">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/112/">#112</a></p>
+</p>
+</li>
+<li><p id="change-0.5.0-9"><span class="target" id="change-aee549930b2cceefac966a434463ac0f"><strong>[bug] </strong></span>Autogenerate will render additional table keyword
+arguments like &#8220;mysql_engine&#8221; and others within
+op.create_table().<a class="changeset-link headerlink reference internal" href="#change-aee549930b2cceefac966a434463ac0f">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/110/">#110</a></p>
+</p>
+</li>
+<li><p id="change-0.5.0-10"><span class="target" id="change-f6193b4d3fa49d70a624c774180a67a7"><strong>[bug] </strong></span>Fixed bug whereby create_index()
+would include in the constraint columns that
+are added to all Table objects using events,
+externally to the generation of the constraint.
+This is the same issue that was fixed for unique
+constraints in version 0.3.2.<a class="changeset-link headerlink reference internal" href="#change-f6193b4d3fa49d70a624c774180a67a7">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.5.0-11"><span class="target" id="change-6e919cc46f4044ed08366ca619516b1d"><strong>[bug] </strong></span>Worked around a backwards-incompatible regression in Python3.3
+regarding argparse; running &#8220;alembic&#8221; with no arguments
+now yields an informative error in py3.3 as with all previous versions.
+Courtesy Andrey Antukh.<a class="changeset-link headerlink reference internal" href="#change-6e919cc46f4044ed08366ca619516b1d">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.5.0-12"><span class="target" id="change-6084ec2cdaea0d6f32ae9f918a592e90"><strong>[bug] </strong></span>A host of argument name changes within migration
+operations for consistency.  Keyword arguments
+will continue to work on the old name for backwards compatibility,
+however required positional arguments will not:<blockquote>
+<div><a class="reference internal" href="ops.html#alembic.operations.Operations.alter_column" title="alembic.operations.Operations.alter_column"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.alter_column()</span></tt></a> - <tt class="docutils literal"><span class="pre">name</span></tt> -&gt; <tt class="docutils literal"><span class="pre">new_column_name</span></tt> - old
+name will work for backwards compatibility.<p><a class="reference internal" href="ops.html#alembic.operations.Operations.create_index" title="alembic.operations.Operations.create_index"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.create_index()</span></tt></a> - <tt class="docutils literal"><span class="pre">tablename</span></tt> -&gt; <tt class="docutils literal"><span class="pre">table_name</span></tt> -
+argument is positional.</p>
+<p><a class="reference internal" href="ops.html#alembic.operations.Operations.drop_index" title="alembic.operations.Operations.drop_index"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.drop_index()</span></tt></a> - <tt class="docutils literal"><span class="pre">tablename</span></tt> -&gt; <tt class="docutils literal"><span class="pre">table_name</span></tt> - old
+name will work for backwards compatibility.</p>
+<p><a class="reference internal" href="ops.html#alembic.operations.Operations.drop_constraint" title="alembic.operations.Operations.drop_constraint"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.drop_constraint()</span></tt></a> - <tt class="docutils literal"><span class="pre">tablename</span></tt> -&gt; <tt class="docutils literal"><span class="pre">table_name</span></tt> -
+argument is positional.</p>
+<p><a class="reference internal" href="ops.html#alembic.operations.Operations.drop_constraint" title="alembic.operations.Operations.drop_constraint"><tt class="xref py py-meth docutils literal"><span class="pre">Operations.drop_constraint()</span></tt></a> - <tt class="docutils literal"><span class="pre">type</span></tt> -&gt; <tt class="docutils literal"><span class="pre">type_</span></tt> - old
+name will work for backwards compatibility</p>
+</div></blockquote>
+<a class="changeset-link headerlink reference internal" href="#change-6084ec2cdaea0d6f32ae9f918a592e90">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/104/">#104</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.5.0-misc">
+<h3>misc<a class="headerlink" href="#change-0.5.0-misc" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.5.0-13"><span class="target" id="change-ea81e9cbb239d6be28134dc135a745e9"><strong>[change] </strong></span>SQLAlchemy 0.6 is no longer supported by Alembic - minimum version is 0.7.3,
+full support is as of 0.7.9.<a class="changeset-link headerlink reference internal" href="#change-ea81e9cbb239d6be28134dc135a745e9">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.4.2">
+<h2>0.4.2<a class="headerlink" href="#change-0.4.2" title="Permalink to this headline">¶</a></h2>
+Released: Fri Jan 11 2013<div class="section" id="change-0.4.2-feature">
+<h3>feature<a class="headerlink" href="#change-0.4.2-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.4.2-0"><span class="target" id="change-d207f84c16109708f5cddc54f7722467"><strong>[feature] </strong></span>Added a README.unittests with instructions for running the test
+suite fully.<a class="changeset-link headerlink reference internal" href="#change-d207f84c16109708f5cddc54f7722467">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/96/">#96</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.4.2-bug">
+<h3>bug<a class="headerlink" href="#change-0.4.2-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.4.2-1"><span class="target" id="change-45a44bd6cfb1bc17ccb913636b67e518"><strong>[bug] [autogenerate] </strong></span>Fixed bug where autogenerate would fail if a Column
+to be added to a table made use of the &#8221;.key&#8221; paramter.<a class="changeset-link headerlink reference internal" href="#change-45a44bd6cfb1bc17ccb913636b67e518">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/99/">#99</a></p>
+</p>
+</li>
+<li><p id="change-0.4.2-2"><span class="target" id="change-05aaf6cacc7032ceb71f3582d8108f4d"><strong>[bug] [sqlite] </strong></span>The &#8220;implicit&#8221; constraint generated by a
+type such as Boolean or Enum will not generate an
+ALTER statement when run on SQlite, which does not
+support ALTER for the purpose of adding/removing
+constraints separate from the column def itself.
+While SQLite supports adding a CHECK constraint
+at the column level, SQLAlchemy would need modification
+to support this.
+A warning is emitted indicating this
+constraint cannot be added in this scenario.<a class="changeset-link headerlink reference internal" href="#change-05aaf6cacc7032ceb71f3582d8108f4d">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/98/">#98</a></p>
+</p>
+</li>
+<li><p id="change-0.4.2-3"><span class="target" id="change-e4421a8d7ed895e7ba1f116055564d70"><strong>[bug] </strong></span>Added a workaround to setup.py to prevent
+&#8220;NoneType&#8221; error from occuring when
+&#8220;setup.py test&#8221; is run.<a class="changeset-link headerlink reference internal" href="#change-e4421a8d7ed895e7ba1f116055564d70">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/96/">#96</a></p>
+</p>
+</li>
+<li><p id="change-0.4.2-4"><span class="target" id="change-2dfa99e708aed4b0abbad1a864bf5fc4"><strong>[bug] </strong></span>Added an append_constraint() step to each
+condition within
+test_autogenerate:AutogenRenderTest.test_render_fk_constraint_kwarg
+if the SQLAlchemy version is less than 0.8, as ForeignKeyConstraint
+does not auto-append prior to 0.8.<a class="changeset-link headerlink reference internal" href="#change-2dfa99e708aed4b0abbad1a864bf5fc4">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/96/">#96</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.4.1">
+<h2>0.4.1<a class="headerlink" href="#change-0.4.1" title="Permalink to this headline">¶</a></h2>
+Released: Sun Dec 9 2012<div class="section" id="change-0.4.1-feature">
+<h3>feature<a class="headerlink" href="#change-0.4.1-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.4.1-0"><span class="target" id="change-5d1492191e209fdc33b2e2d8e271e585"><strong>[feature] </strong></span>Explicit error message describing the case
+when downgrade &#8211;sql is used without specifying
+specific start/end versions.<a class="changeset-link headerlink reference internal" href="#change-5d1492191e209fdc33b2e2d8e271e585">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/66/">#66</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.4.1-bug">
+<h3>bug<a class="headerlink" href="#change-0.4.1-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.4.1-1"><span class="target" id="change-4e3d73095ce733c33d91575ef55f659e"><strong>[bug] </strong></span>Added support for autogenerate render of
+ForeignKeyConstraint options onupdate,
+ondelete, initially, and deferred.<a class="changeset-link headerlink reference internal" href="#change-4e3d73095ce733c33d91575ef55f659e">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/92/">#92</a></p>
+</p>
+</li>
+<li><p id="change-0.4.1-2"><span class="target" id="change-b2375af17815f3cc722b670d5184a4cb"><strong>[bug] </strong></span>Autogenerate will include &#8220;autoincrement=False&#8221;
+in the rendered table metadata
+if this flag was set to false on the source
+<tt class="xref py py-class docutils literal"><span class="pre">Column</span></tt> object.<a class="changeset-link headerlink reference internal" href="#change-b2375af17815f3cc722b670d5184a4cb">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/94/">#94</a></p>
+</p>
+</li>
+<li><p id="change-0.4.1-3"><span class="target" id="change-71a4a1da2935282b724147cda3b83236"><strong>[bug] </strong></span>Removed erroneous &#8220;emit_events&#8221; attribute
+from operations.create_table() documentation.<a class="changeset-link headerlink reference internal" href="#change-71a4a1da2935282b724147cda3b83236">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/81/">#81</a></p>
+</p>
+</li>
+<li><p id="change-0.4.1-4"><span class="target" id="change-83ea9fdb69e6700c2af5115a14f1e1b5"><strong>[bug] </strong></span>Fixed the minute component in file_template
+which returned the month part of the create date.<a class="changeset-link headerlink reference internal" href="#change-83ea9fdb69e6700c2af5115a14f1e1b5">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.4.0">
+<h2>0.4.0<a class="headerlink" href="#change-0.4.0" title="Permalink to this headline">¶</a></h2>
+Released: Mon Oct 01 2012<div class="section" id="change-0.4.0-feature">
+<h3>feature<a class="headerlink" href="#change-0.4.0-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.4.0-0"><span class="target" id="change-9b1299fcb16787d5a3edd744879d4f81"><strong>[feature] </strong></span>Support for tables in alternate schemas
+has been added fully to all operations, as well as to
+the autogenerate feature.  When using autogenerate,
+specifying the flag include_schemas=True to
+Environment.configure() will also cause autogenerate
+to scan all schemas located by Inspector.get_schema_names(),
+which is supported by <em>some</em> (but not all)
+SQLAlchemy dialects including Postgresql.
+<em>Enormous</em> thanks to Bruno Binet for a huge effort
+in implementing as well as writing tests. .<a class="changeset-link headerlink reference internal" href="#change-9b1299fcb16787d5a3edd744879d4f81">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/33/">#33</a></p>
+</p>
+</li>
+<li><p id="change-0.4.0-1"><span class="target" id="change-256bc913e99949e5f61598f615db8c50"><strong>[feature] </strong></span>The command line runner has been organized
+into a reusable CommandLine object, so that other
+front-ends can re-use the argument parsing built
+in.<a class="changeset-link headerlink reference internal" href="#change-256bc913e99949e5f61598f615db8c50">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/70/">#70</a></p>
+</p>
+</li>
+<li><p id="change-0.4.0-2"><span class="target" id="change-a2f7d3fc1d4dd8c17688312bbf743b75"><strong>[feature] </strong></span>Added &#8220;stdout&#8221; option to Config, provides
+control over where the &#8220;print&#8221; output of commands like
+&#8220;history&#8221;, &#8220;init&#8221;, &#8220;current&#8221; etc. are sent.<a class="changeset-link headerlink reference internal" href="#change-a2f7d3fc1d4dd8c17688312bbf743b75">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/43/">#43</a></p>
+</p>
+</li>
+<li><p id="change-0.4.0-3"><span class="target" id="change-4d004eb1dc79a217abe8c4b14b1eb8c1"><strong>[feature] </strong></span>Added support for alteration of MySQL
+columns that have AUTO_INCREMENT, as well as enabling
+this flag.  Courtesy Moriyoshi Koizumi.<a class="changeset-link headerlink reference internal" href="#change-4d004eb1dc79a217abe8c4b14b1eb8c1">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.4.0-bug">
+<h3>bug<a class="headerlink" href="#change-0.4.0-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.4.0-4"><span class="target" id="change-60fcb783e2619c2d3c7dff34807da8f2"><strong>[bug] </strong></span>Fixed the &#8220;multidb&#8221; template which was badly out
+of date.   It now generates revision files using
+the configuration to determine the different
+upgrade_&lt;xyz&gt;() methods needed as well, instead of
+needing to hardcode these.  Huge thanks to
+BryceLohr for doing the heavy lifting here.<a class="changeset-link headerlink reference internal" href="#change-60fcb783e2619c2d3c7dff34807da8f2">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/71/">#71</a></p>
+</p>
+</li>
+<li><p id="change-0.4.0-5"><span class="target" id="change-562d7c0c8922e49234572d05b4e8eb7f"><strong>[bug] </strong></span>Fixed the regexp that was checking for .py files
+in the version directory to allow any .py file through.
+Previously it was doing some kind of defensive checking,
+probably from some early notions of how this directory
+works, that was prohibiting various filename patterns
+such as those which begin with numbers.<a class="changeset-link headerlink reference internal" href="#change-562d7c0c8922e49234572d05b4e8eb7f">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/72/">#72</a></p>
+</p>
+</li>
+<li><p id="change-0.4.0-6"><span class="target" id="change-faef85831d9f0866054182696400548e"><strong>[bug] </strong></span>Fixed MySQL rendering for server_default which
+didn&#8217;t work if the server_default was a generated
+SQL expression.  Courtesy Moriyoshi Koizumi.<a class="changeset-link headerlink reference internal" href="#change-faef85831d9f0866054182696400548e">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.3.6">
+<h2>0.3.6<a class="headerlink" href="#change-0.3.6" title="Permalink to this headline">¶</a></h2>
+Released: Wed Aug 15 2012<div class="section" id="change-0.3.6-feature">
+<h3>feature<a class="headerlink" href="#change-0.3.6-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.3.6-0"><span class="target" id="change-50b5e8b5db1d6da813197a308f978d92"><strong>[feature] </strong></span>Added include_symbol option to
+EnvironmentContext.configure(),
+specifies a callable which will include/exclude tables
+in their entirety from the autogeneration process
+based on name.<a class="changeset-link headerlink reference internal" href="#change-50b5e8b5db1d6da813197a308f978d92">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/27/">#27</a></p>
+</p>
+</li>
+<li><p id="change-0.3.6-1"><span class="target" id="change-8bf61dc5da45349affc396c2d229ac65"><strong>[feature] </strong></span>Added year, month, day, hour, minute, second
+variables to file_template.<a class="changeset-link headerlink reference internal" href="#change-8bf61dc5da45349affc396c2d229ac65">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/59/">#59</a></p>
+</p>
+</li>
+<li><p id="change-0.3.6-2"><span class="target" id="change-1ab161c769d09a63315ac32834ffacaf"><strong>[feature] </strong></span>Added &#8216;primary&#8217; to the list of constraint types
+recognized for MySQL drop_constraint().<a class="changeset-link headerlink reference internal" href="#change-1ab161c769d09a63315ac32834ffacaf">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.3.6-3"><span class="target" id="change-5fb90f5f2f96678fc971d3ab5c8a0efa"><strong>[feature] </strong></span>Added &#8211;sql argument to the &#8220;revision&#8221; command,
+for the use case where the &#8220;revision_environment&#8221;
+config option is being used but SQL access isn&#8217;t
+desired.<a class="changeset-link headerlink reference internal" href="#change-5fb90f5f2f96678fc971d3ab5c8a0efa">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.3.6-bug">
+<h3>bug<a class="headerlink" href="#change-0.3.6-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.3.6-4"><span class="target" id="change-a4109feae5103c32fff5c87edd36c87a"><strong>[bug] </strong></span>Repaired create_foreign_key() for
+self-referential foreign keys, which weren&#8217;t working
+at all.<a class="changeset-link headerlink reference internal" href="#change-a4109feae5103c32fff5c87edd36c87a">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.3.6-5"><span class="target" id="change-bfcc03669e1796b7305cff4bd5352cec"><strong>[bug] </strong></span>&#8216;alembic&#8217; command reports an informative
+error message when the configuration is missing
+the &#8216;script_directory&#8217; key.<a class="changeset-link headerlink reference internal" href="#change-bfcc03669e1796b7305cff4bd5352cec">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/63/">#63</a></p>
+</p>
+</li>
+<li><p id="change-0.3.6-6"><span class="target" id="change-e2af8c0f5b9665f4875c0e7a303fd863"><strong>[bug] </strong></span>Fixes made to the constraints created/dropped
+alongside so-called &#8220;schema&#8221; types such as
+Boolean and Enum.  The create/drop constraint logic
+does not kick in when using a dialect that doesn&#8217;t
+use constraints for these types, such as postgresql,
+even when existing_type is specified to
+alter_column().  Additionally, the constraints
+are not affected if existing_type is passed but
+type_ is not, i.e. there&#8217;s no net change
+in type.<a class="changeset-link headerlink reference internal" href="#change-e2af8c0f5b9665f4875c0e7a303fd863">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/62/">#62</a></p>
+</p>
+</li>
+<li><p id="change-0.3.6-7"><span class="target" id="change-19cad4c5c64f86362305cb73e9987c45"><strong>[bug] </strong></span>Improved error message when specifiying
+non-ordered revision identifiers to cover
+the case when the &#8220;higher&#8221; rev is None,
+improved message overall.<a class="changeset-link headerlink reference internal" href="#change-19cad4c5c64f86362305cb73e9987c45">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/66/">#66</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.3.5">
+<h2>0.3.5<a class="headerlink" href="#change-0.3.5" title="Permalink to this headline">¶</a></h2>
+Released: Sun Jul 08 2012<div class="section" id="change-0.3.5-feature">
+<h3>feature<a class="headerlink" href="#change-0.3.5-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.3.5-0"><span class="target" id="change-702c3ef26a6bbe78644e304cdf6c97dc"><strong>[feature] </strong></span>Implemented SQL rendering for
+CheckConstraint() within autogenerate upgrade,
+including for literal SQL as well as SQL Expression
+Language expressions.<a class="changeset-link headerlink reference internal" href="#change-702c3ef26a6bbe78644e304cdf6c97dc">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.3.5-bug">
+<h3>bug<a class="headerlink" href="#change-0.3.5-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.3.5-1"><span class="target" id="change-fba487fa7c2eb6a0aac1b479a4f4581b"><strong>[bug] </strong></span>Fixed issue whereby reflected server defaults
+wouldn&#8217;t be quoted correctly; uses repr() now.<a class="changeset-link headerlink reference internal" href="#change-fba487fa7c2eb6a0aac1b479a4f4581b">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/31/">#31</a></p>
+</p>
+</li>
+<li><p id="change-0.3.5-2"><span class="target" id="change-63991eb331c186489985b2961617f94a"><strong>[bug] </strong></span>Fixed issue whereby when autogenerate would
+render create_table() on the upgrade side for a
+table that has a Boolean type, an unnecessary
+CheckConstraint() would be generated.<a class="changeset-link headerlink reference internal" href="#change-63991eb331c186489985b2961617f94a">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/58/">#58</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.3.4">
+<h2>0.3.4<a class="headerlink" href="#change-0.3.4" title="Permalink to this headline">¶</a></h2>
+Released: Sat Jun 02 2012<div class="section" id="change-0.3.4-bug">
+<h3>bug<a class="headerlink" href="#change-0.3.4-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.3.4-0"><span class="target" id="change-dbecb3724f5f321fb61f73677fbb91af"><strong>[bug] </strong></span>Fixed command-line bug introduced by the
+&#8220;revision_environment&#8221; feature.<a class="changeset-link headerlink reference internal" href="#change-dbecb3724f5f321fb61f73677fbb91af">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.3.3">
+<h2>0.3.3<a class="headerlink" href="#change-0.3.3" title="Permalink to this headline">¶</a></h2>
+Released: Sat Jun 02 2012<div class="section" id="change-0.3.3-feature">
+<h3>feature<a class="headerlink" href="#change-0.3.3-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.3.3-0"><span class="target" id="change-6ad1e20f5d28df802007006218e656f2"><strong>[feature] </strong></span>New config argument
+&#8220;revision_environment=true&#8221;, causes env.py to
+be run unconditionally when the &#8220;revision&#8221; command
+is run, to support script.py.mako templates with
+dependencies on custom &#8220;template_args&#8221;.<a class="changeset-link headerlink reference internal" href="#change-6ad1e20f5d28df802007006218e656f2">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.3.3-1"><span class="target" id="change-b844b5824bf2a8994775e9ea199c302f"><strong>[feature] </strong></span>Added &#8220;template_args&#8221; option to configure()
+so that an env.py can add additional arguments
+to the template context when running the
+&#8220;revision&#8221; command.  This requires either &#8211;autogenerate
+or the configuration directive &#8220;revision_environment=true&#8221;.<a class="changeset-link headerlink reference internal" href="#change-b844b5824bf2a8994775e9ea199c302f">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.3.3-2"><span class="target" id="change-f86a13e1f5037e1613d8551fdfe3413c"><strong>[feature] </strong></span>Added version_table argument to
+EnvironmentContext.configure(), allowing for the
+configuration of the version table name.<a class="changeset-link headerlink reference internal" href="#change-f86a13e1f5037e1613d8551fdfe3413c">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/34/">#34</a></p>
+</p>
+</li>
+<li><p id="change-0.3.3-3"><span class="target" id="change-4083dba0217c503213f2d5624b2eb68f"><strong>[feature] </strong></span>Added support for &#8220;relative&#8221; migration
+identifiers, i.e. &#8220;alembic upgrade +2&#8221;,
+&#8220;alembic downgrade -1&#8221;.  Courtesy
+Atsushi Odagiri for this feature.<a class="changeset-link headerlink reference internal" href="#change-4083dba0217c503213f2d5624b2eb68f">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.3.3-bug">
+<h3>bug<a class="headerlink" href="#change-0.3.3-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.3.3-4"><span class="target" id="change-9b359b67f8c971c3e297f0e7a43961d6"><strong>[bug] </strong></span>Added &#8220;type&#8221; argument to op.drop_constraint(),
+and implemented full constraint drop support for
+MySQL.  CHECK and undefined raise an error.
+MySQL needs the constraint type
+in order to emit a DROP CONSTRAINT.<a class="changeset-link headerlink reference internal" href="#change-9b359b67f8c971c3e297f0e7a43961d6">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/44/">#44</a></p>
+</p>
+</li>
+<li><p id="change-0.3.3-5"><span class="target" id="change-6a2380fc3246033a4dc5b92bfbb4a912"><strong>[bug] </strong></span>Fixed bug whereby directories inside of
+the template directories, such as __pycache__
+on Pypy, would mistakenly be interpreted as
+files which are part of the template.<a class="changeset-link headerlink reference internal" href="#change-6a2380fc3246033a4dc5b92bfbb4a912">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/49/">#49</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.3.2">
+<h2>0.3.2<a class="headerlink" href="#change-0.3.2" title="Permalink to this headline">¶</a></h2>
+Released: Mon Apr 30 2012<div class="section" id="change-0.3.2-feature">
+<h3>feature<a class="headerlink" href="#change-0.3.2-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.3.2-0"><span class="target" id="change-11f35c8973f5b01ad5fa1a839697b59a"><strong>[feature] </strong></span>Basic support for Oracle added,
+courtesy shgoh.<a class="changeset-link headerlink reference internal" href="#change-11f35c8973f5b01ad5fa1a839697b59a">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/40/">#40</a></p>
+</p>
+</li>
+<li><p id="change-0.3.2-1"><span class="target" id="change-b354cc9151751dfccba00da896bc7e7f"><strong>[feature] </strong></span>Added support for UniqueConstraint
+in autogenerate, courtesy Atsushi Odagiri<a class="changeset-link headerlink reference internal" href="#change-b354cc9151751dfccba00da896bc7e7f">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.3.2-bug">
+<h3>bug<a class="headerlink" href="#change-0.3.2-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.3.2-2"><span class="target" id="change-54479ea31f6f572c1a819096c163104e"><strong>[bug] </strong></span>Fixed support of schema-qualified
+ForeignKey target in column alter operations,
+courtesy Alexander Kolov.<a class="changeset-link headerlink reference internal" href="#change-54479ea31f6f572c1a819096c163104e">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.3.2-3"><span class="target" id="change-78b69d3937bf1c24df3ee1b3266dfa9c"><strong>[bug] </strong></span>Fixed bug whereby create_unique_constraint()
+would include in the constraint columns that
+are added to all Table objects using events,
+externally to the generation of the constraint.<a class="changeset-link headerlink reference internal" href="#change-78b69d3937bf1c24df3ee1b3266dfa9c">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.3.1">
+<h2>0.3.1<a class="headerlink" href="#change-0.3.1" title="Permalink to this headline">¶</a></h2>
+Released: Sat Apr 07 2012<div class="section" id="change-0.3.1-bug">
+<h3>bug<a class="headerlink" href="#change-0.3.1-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.3.1-0"><span class="target" id="change-e6bddcb7cfc7dd08ce1ebf56c4cd75f7"><strong>[bug] </strong></span>bulk_insert() fixes:<blockquote>
+<div><ol class="arabic">
+<li>bulk_insert() operation was
+not working most likely since the 0.2 series
+when used with an engine.</li>
+<li>Repaired bulk_insert() to complete when
+used against a lower-case-t table and executing
+with only one set of parameters, working
+around SQLAlchemy bug #2461 in this regard.</li>
+<li>bulk_insert() uses &#8220;inline=True&#8221; so that phrases
+like RETURNING and such don&#8217;t get invoked for
+single-row bulk inserts.</li>
+<li>bulk_insert() will check that you&#8217;re passing
+a list of dictionaries in, raises TypeError
+if not detected.</li>
+</ol>
+</div></blockquote>
+<a class="changeset-link headerlink reference internal" href="#change-e6bddcb7cfc7dd08ce1ebf56c4cd75f7">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/41/">#41</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.3.0">
+<h2>0.3.0<a class="headerlink" href="#change-0.3.0" title="Permalink to this headline">¶</a></h2>
+Released: Thu Apr 05 2012<div class="section" id="change-0.3.0-feature">
+<h3>feature<a class="headerlink" href="#change-0.3.0-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.3.0-0"><span class="target" id="change-d74b8be921f581f9c8d83a854ac2e058"><strong>[feature] </strong></span>Added a bit of autogenerate to the
+public API in the form of the function
+alembic.autogenerate.compare_metadata.<a class="changeset-link headerlink reference internal" href="#change-d74b8be921f581f9c8d83a854ac2e058">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.3.0-misc">
+<h3>misc<a class="headerlink" href="#change-0.3.0-misc" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.3.0-1"><span class="target" id="change-9bea060194208b5b93a887ec9e9a4ea3"><strong>[general] </strong></span>The focus of 0.3 is to clean up
+and more fully document the public API of Alembic,
+including better accessors on the MigrationContext
+and ScriptDirectory objects.  Methods that are
+not considered to be public on these objects have
+been underscored, and methods which should be public
+have been cleaned up and documented, including:<blockquote>
+<div>MigrationContext.get_current_revision()
+ScriptDirectory.iterate_revisions()
+ScriptDirectory.get_current_head()
+ScriptDirectory.get_heads()
+ScriptDirectory.get_base()
+ScriptDirectory.generate_revision()</div></blockquote>
+<a class="changeset-link headerlink reference internal" href="#change-9bea060194208b5b93a887ec9e9a4ea3">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.2.2">
+<h2>0.2.2<a class="headerlink" href="#change-0.2.2" title="Permalink to this headline">¶</a></h2>
+Released: Mon Mar 12 2012<div class="section" id="change-0.2.2-feature">
+<h3>feature<a class="headerlink" href="#change-0.2.2-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.2.2-0"><span class="target" id="change-31e9ab1ef05dd2127cb4775df81aa2c4"><strong>[feature] </strong></span>Informative error message when op.XYZ
+directives are invoked at module import time.<a class="changeset-link headerlink reference internal" href="#change-31e9ab1ef05dd2127cb4775df81aa2c4">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.2.2-1"><span class="target" id="change-1dff9e522d76403d9af885164fd284e9"><strong>[feature] </strong></span>Added execution_options parameter
+to op.execute(), will call execution_options()
+on the Connection before executing.<p>The immediate use case here is to allow
+access to the new no_parameters option
+in SQLAlchemy 0.7.6, which allows
+some DBAPIs (psycopg2, MySQLdb) to allow
+percent signs straight through without
+escaping, thus providing cross-compatible
+operation with DBAPI execution and
+static script generation.</p>
+<a class="changeset-link headerlink reference internal" href="#change-1dff9e522d76403d9af885164fd284e9">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.2.2-2"><span class="target" id="change-6ecf74f311264ea5b943ed81cef59b41"><strong>[feature] </strong></span>script_location can be interpreted
+by pkg_resources.resource_filename(), if
+it is a non-absolute URI that contains
+colons.   This scheme is the same
+one used by Pyramid.<a class="changeset-link headerlink reference internal" href="#change-6ecf74f311264ea5b943ed81cef59b41">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/29/">#29</a></p>
+</p>
+</li>
+<li><p id="change-0.2.2-3"><span class="target" id="change-eb02c33a6ae7ebdb1d15d6baa6908278"><strong>[feature] </strong></span>added missing support for
+onupdate/ondelete flags for
+ForeignKeyConstraint, courtesy Giacomo Bagnoli<a class="changeset-link headerlink reference internal" href="#change-eb02c33a6ae7ebdb1d15d6baa6908278">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.2.2-bug">
+<h3>bug<a class="headerlink" href="#change-0.2.2-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.2.2-4"><span class="target" id="change-3ac60363e69dba9d296a183fadb4f425"><strong>[bug] </strong></span>Fixed inappropriate direct call to
+util.err() and therefore sys.exit()
+when Config failed to locate the
+config file within library usage.<a class="changeset-link headerlink reference internal" href="#change-3ac60363e69dba9d296a183fadb4f425">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/35/">#35</a></p>
+</p>
+</li>
+<li><p id="change-0.2.2-5"><span class="target" id="change-017cdecac20a7dd99654362880189d57"><strong>[bug] </strong></span>Autogenerate will emit CREATE TABLE
+and DROP TABLE directives according to
+foreign key dependency order.<a class="changeset-link headerlink reference internal" href="#change-017cdecac20a7dd99654362880189d57">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.2.2-6"><span class="target" id="change-e3e024ffb77c9436e5a43d11c291b072"><strong>[bug] </strong></span>implement &#8216;tablename&#8217; parameter on
+drop_index() as this is needed by some
+backends.<a class="changeset-link headerlink reference internal" href="#change-e3e024ffb77c9436e5a43d11c291b072">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.2.2-7"><span class="target" id="change-a57a474f392fc1f7773d8f095795c652"><strong>[bug] </strong></span>setup.py won&#8217;t install argparse if on
+Python 2.7/3.2<a class="changeset-link headerlink reference internal" href="#change-a57a474f392fc1f7773d8f095795c652">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.2.2-8"><span class="target" id="change-e61d183980d6b843c73c9c00063e4b99"><strong>[bug] </strong></span>fixed a regression regarding an autogenerate
+error message, as well as various glitches
+in the Pylons sample template.  The Pylons sample
+template requires that you tell it where to
+get the Engine from now.  courtesy
+Marcin Kuzminski<a class="changeset-link headerlink reference internal" href="#change-e61d183980d6b843c73c9c00063e4b99">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/30/">#30</a></p>
+</p>
+</li>
+<li><p id="change-0.2.2-9"><span class="target" id="change-8a840870ac091491f2f7ce78feb57536"><strong>[bug] </strong></span>drop_index() ensures a dummy column
+is added when it calls &#8220;Index&#8221;, as SQLAlchemy
+0.7.6 will warn on index with no column names.<a class="changeset-link headerlink reference internal" href="#change-8a840870ac091491f2f7ce78feb57536">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.2.1">
+<h2>0.2.1<a class="headerlink" href="#change-0.2.1" title="Permalink to this headline">¶</a></h2>
+Released: Tue Jan 31 2012<div class="section" id="change-0.2.1-bug">
+<h3>bug<a class="headerlink" href="#change-0.2.1-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.2.1-0"><span class="target" id="change-ddfa2f020fe4676dbc9ebb826761cedd"><strong>[bug] </strong></span>Fixed the generation of CHECK constraint,
+regression from 0.2.0<a class="changeset-link headerlink reference internal" href="#change-ddfa2f020fe4676dbc9ebb826761cedd">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/26/">#26</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.2.0">
+<h2>0.2.0<a class="headerlink" href="#change-0.2.0" title="Permalink to this headline">¶</a></h2>
+Released: Mon Jan 30 2012<div class="section" id="change-0.2.0-feature">
+<h3>feature<a class="headerlink" href="#change-0.2.0-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.2.0-0"><span class="target" id="change-227a7aaca2dc2c2529e3f199acdec57a"><strong>[feature] </strong></span>API rearrangement allows everything
+Alembic does to be represented by contextual
+objects, including EnvironmentContext,
+MigrationContext, and Operations.   Other
+libraries and applications can now use
+things like &#8220;alembic.op&#8221; without relying
+upon global configuration variables.
+The rearrangement was done such that
+existing migrations should be OK,
+as long as they use the pattern
+of &#8220;from alembic import context&#8221; and
+&#8220;from alembic import op&#8221;, as these
+are now contextual objects, not modules.<a class="changeset-link headerlink reference internal" href="#change-227a7aaca2dc2c2529e3f199acdec57a">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/19/">#19</a></p>
+</p>
+</li>
+<li><p id="change-0.2.0-1"><span class="target" id="change-5969574fd983fb44688382a6b7e4ade0"><strong>[feature] </strong></span>The naming of revision files can
+now be customized to be some combination
+of &#8220;rev id&#8221; and &#8220;slug&#8221;, the latter of which
+is based on the revision message.
+By default, the pattern &#8220;&lt;rev&gt;_&lt;slug&gt;&#8221;
+is used for new files.   New script files
+should include the &#8220;revision&#8221; variable
+for this to work, which is part of
+the newer script.py.mako scripts.<a class="changeset-link headerlink reference internal" href="#change-5969574fd983fb44688382a6b7e4ade0">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/24/">#24</a></p>
+</p>
+</li>
+<li><p id="change-0.2.0-2"><span class="target" id="change-11b37049b12c1fa41dd89a7576f4a02d"><strong>[feature] </strong></span>Can create alembic.config.Config
+with no filename, use set_main_option()
+to add values.  Also added set_section_option()
+which will add sections.<a class="changeset-link headerlink reference internal" href="#change-11b37049b12c1fa41dd89a7576f4a02d">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/23/">#23</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.2.0-bug">
+<h3>bug<a class="headerlink" href="#change-0.2.0-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.2.0-3"><span class="target" id="change-4da1339450ed512b388fd6f98927beb5"><strong>[bug] </strong></span>env.py templates call
+connection.close() to better support
+programmatic usage of commands; use
+NullPool in conjunction with create_engine()
+as well so that no connection resources
+remain afterwards.<a class="changeset-link headerlink reference internal" href="#change-4da1339450ed512b388fd6f98927beb5">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/25/">#25</a></p>
+</p>
+</li>
+<li><p id="change-0.2.0-4"><span class="target" id="change-a0b966d35927872805e4ab8873cc1ca2"><strong>[bug] </strong></span>fix the config.main() function to honor
+the arguments passed, remove no longer used
+&#8220;scripts/alembic&#8221; as setuptools creates this
+for us.<a class="changeset-link headerlink reference internal" href="#change-a0b966d35927872805e4ab8873cc1ca2">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/22/">#22</a></p>
+</p>
+</li>
+<li><p id="change-0.2.0-5"><span class="target" id="change-463a9dae4494b0adcb3d210e3cbd9fd0"><strong>[bug] </strong></span>Fixed alteration of column type on
+MSSQL to not include the keyword &#8220;TYPE&#8221;.<a class="changeset-link headerlink reference internal" href="#change-463a9dae4494b0adcb3d210e3cbd9fd0">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.1.1">
+<h2>0.1.1<a class="headerlink" href="#change-0.1.1" title="Permalink to this headline">¶</a></h2>
+Released: Wed Jan 04 2012<div class="section" id="change-0.1.1-feature">
+<h3>feature<a class="headerlink" href="#change-0.1.1-feature" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.1.1-0"><span class="target" id="change-5e0ab0b4bb77cc02b03e4a045b207fbb"><strong>[feature] </strong></span>PyPy is supported.<a class="changeset-link headerlink reference internal" href="#change-5e0ab0b4bb77cc02b03e4a045b207fbb">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.1-1"><span class="target" id="change-ec385420eb00e18aee59f0023a1d367a"><strong>[feature] </strong></span>Python 2.5 is supported, needs
+__future__.with_statement<a class="changeset-link headerlink reference internal" href="#change-ec385420eb00e18aee59f0023a1d367a">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.1-2"><span class="target" id="change-1317d390fab9cd845fa5832e074e3be7"><strong>[feature] </strong></span>Add alembic_module_prefix argument
+to configure() to complement
+sqlalchemy_module_prefix.<a class="changeset-link headerlink reference internal" href="#change-1317d390fab9cd845fa5832e074e3be7">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/18/">#18</a></p>
+</p>
+</li>
+</ul>
+</div>
+<div class="section" id="change-0.1.1-bug">
+<h3>bug<a class="headerlink" href="#change-0.1.1-bug" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p id="change-0.1.1-3"><span class="target" id="change-ace63702014ec05799d1d78c8b16791f"><strong>[bug] </strong></span>Clean up file write operations so that
+file handles are closed.<a class="changeset-link headerlink reference internal" href="#change-ace63702014ec05799d1d78c8b16791f">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.1-4"><span class="target" id="change-01d57df3a5d28309b1f22c08ec7bb31e"><strong>[bug] </strong></span>Fix autogenerate so that &#8220;pass&#8221; is
+generated between the two comments
+if no net migrations were present.<a class="changeset-link headerlink reference internal" href="#change-01d57df3a5d28309b1f22c08ec7bb31e">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.1-5"><span class="target" id="change-7b771e8f748941c4fdbb6d56ed03a1db"><strong>[bug] </strong></span>Fix autogenerate bug that prevented
+correct reflection of a foreign-key
+referenced table in the list of &#8220;to remove&#8221;.<a class="changeset-link headerlink reference internal" href="#change-7b771e8f748941c4fdbb6d56ed03a1db">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/16/">#16</a></p>
+</p>
+</li>
+<li><p id="change-0.1.1-6"><span class="target" id="change-fcf03a3cc5cb4c5192ef2b071199e5ff"><strong>[bug] </strong></span>Fix bug where create_table() didn&#8217;t
+handle self-referential foreign key
+correctly<a class="changeset-link headerlink reference internal" href="#change-fcf03a3cc5cb4c5192ef2b071199e5ff">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/17/">#17</a></p>
+</p>
+</li>
+<li><p id="change-0.1.1-7"><span class="target" id="change-c91501ec04034b80454cce278b392074"><strong>[bug] </strong></span>Default prefix for autogenerate
+directives is &#8220;op.&#8221;, matching the
+mako templates.<a class="changeset-link headerlink reference internal" href="#change-c91501ec04034b80454cce278b392074">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/18/">#18</a></p>
+</p>
+</li>
+<li><p id="change-0.1.1-8"><span class="target" id="change-3b9ff7bf53c5f2888f6c0d508866f95f"><strong>[bug] </strong></span>fix quotes not being rendered in
+ForeignKeConstraint during
+autogenerate<a class="changeset-link headerlink reference internal" href="#change-3b9ff7bf53c5f2888f6c0d508866f95f">¶</a><p>References: <a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issue/14/">#14</a></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-0.1.0">
+<h2>0.1.0<a class="headerlink" href="#change-0.1.0" title="Permalink to this headline">¶</a></h2>
+Released: Wed Nov 30 2011<ul class="simple">
+<li><p id="change-0.1.0-0"><span class="target" id="change-d90468ce526135f320bc9756e9dec309"></span>Initial release.  Status of features:<a class="changeset-link headerlink reference internal" href="#change-d90468ce526135f320bc9756e9dec309">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-1"><span class="target" id="change-827df2ddfd68bd78a423065c02a5603f"></span>Alembic is used in at least one production
+environment, but should still be considered
+ALPHA LEVEL SOFTWARE as of this release,
+particularly in that many features are expected
+to be missing / unimplemented.   Major API
+changes are not anticipated but for the moment
+nothing should be assumed.<p>The author asks that you <em>please</em> report all
+issues, missing features, workarounds etc.
+to the bugtracker, at
+<a class="reference external" href="https://bitbucket.org/zzzeek/alembic/issues/new">https://bitbucket.org/zzzeek/alembic/issues/new</a> .</p>
+<a class="changeset-link headerlink reference internal" href="#change-827df2ddfd68bd78a423065c02a5603f">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-2"><span class="target" id="change-19e53c2382ef1a7b5f9616a0eda0e90d"></span>Python 3 is supported and has been tested.<a class="changeset-link headerlink reference internal" href="#change-19e53c2382ef1a7b5f9616a0eda0e90d">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-3"><span class="target" id="change-1f25deca2b5d7bb9554f35e025239f7d"></span>The &#8220;Pylons&#8221; and &#8220;MultiDB&#8221; environment templates
+have not been directly tested - these should be
+considered to be samples to be modified as
+needed.   Multiple database support itself
+is well tested, however.<a class="changeset-link headerlink reference internal" href="#change-1f25deca2b5d7bb9554f35e025239f7d">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-4"><span class="target" id="change-8a35e494319a1955f606683d245f947d"></span>Postgresql and MS SQL Server environments
+have been tested for several weeks in a production
+environment.  In particular, some involved workarounds
+were implemented to allow fully-automated dropping
+of default- or constraint-holding columns with
+SQL Server.<a class="changeset-link headerlink reference internal" href="#change-8a35e494319a1955f606683d245f947d">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-5"><span class="target" id="change-d99858c9238ff25eb1c74e8f7fe23e45"></span>MySQL support has also been implemented to a
+basic degree, including MySQL&#8217;s awkward style
+of modifying columns being accommodated.<a class="changeset-link headerlink reference internal" href="#change-d99858c9238ff25eb1c74e8f7fe23e45">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-6"><span class="target" id="change-0bcc5a9c66f70cda5fdaaf31b0ce0c3e"></span>Other database environments not included among
+those three have <em>not</em> been tested, <em>at all</em>.  This
+includes Firebird, Oracle, Sybase.   Adding
+support for these backends should be
+straightforward.  Please report all missing/
+incorrect behaviors to the bugtracker! Patches
+are welcome here but are optional - please just
+indicate the exact format expected by the target
+database.<a class="changeset-link headerlink reference internal" href="#change-0bcc5a9c66f70cda5fdaaf31b0ce0c3e">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-7"><span class="target" id="change-4b55e4d42ba8fdcf3050cecac36107ed"></span>SQLite, as a backend, has almost no support for
+schema alterations to existing databases.  The author
+would strongly recommend that SQLite not be used in
+a migration context - just dump your SQLite database
+into an intermediary format, then dump it back
+into a new schema.  For dev environments, the
+dev installer should be building the whole DB from
+scratch.  Or just use Postgresql, which is a much
+better database for non-trivial schemas.
+Requests for full ALTER support on SQLite should be
+reported to SQLite&#8217;s bug tracker at
+<a class="reference external" href="http://www.sqlite.org/src/wiki?name=Bug+Reports">http://www.sqlite.org/src/wiki?name=Bug+Reports</a>,
+as Alembic will not be implementing the
+&#8220;rename the table to a temptable then copy the
+data into a new table&#8221; workaround.
+Note that Alembic will at some point offer an
+extensible API so that you can implement commands
+like this yourself.<a class="changeset-link headerlink reference internal" href="#change-4b55e4d42ba8fdcf3050cecac36107ed">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-8"><span class="target" id="change-4a49127db40546e806c53443450ced50"></span>Well-tested directives include add/drop table, add/drop
+column, including support for SQLAlchemy &#8220;schema&#8221;
+types which generate additional CHECK
+constraints, i.e. Boolean, Enum.  Other directives not
+included here have <em>not</em> been strongly tested
+in production, i.e. rename table, etc.<a class="changeset-link headerlink reference internal" href="#change-4a49127db40546e806c53443450ced50">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-9"><span class="target" id="change-9ae153c6234cbed85deed93244b725ca"></span>Both &#8220;online&#8221; and &#8220;offline&#8221; migrations, the latter
+being generated SQL scripts to hand off to a DBA,
+have been strongly production tested against
+Postgresql and SQL Server.<a class="changeset-link headerlink reference internal" href="#change-9ae153c6234cbed85deed93244b725ca">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-10"><span class="target" id="change-1f1b97118b6fcbbd345f7ae5f1aee08e"></span>Modify column type, default status, nullable, is
+functional and tested across PG, MSSQL, MySQL,
+but not yet widely tested in production usage.<a class="changeset-link headerlink reference internal" href="#change-1f1b97118b6fcbbd345f7ae5f1aee08e">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-11"><span class="target" id="change-5d178aa6493a1b141e953b284c26f3e4"></span>Many migrations are still outright missing, i.e.
+create/add sequences, etc.  As a workaround,
+execute() can be used for those which are missing,
+though posting of tickets for new features/missing
+behaviors is strongly encouraged.<a class="changeset-link headerlink reference internal" href="#change-5d178aa6493a1b141e953b284c26f3e4">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-12"><span class="target" id="change-3d42011fdfe5fc3fab6550e1d567d1b8"></span>Autogenerate feature is implemented and has been
+tested, though only a little bit in a production setting.
+In particular, detection of type and server
+default changes are optional and are off by default;
+they can also be customized by a callable.
+Both features work but can have surprises particularly
+the disparity between BIT/TINYINT and boolean,
+which hasn&#8217;t yet been worked around, as well as
+format changes performed by the database on defaults
+when it reports back.  When enabled, the PG dialect
+will execute the two defaults to be compared to
+see if they are equivalent.  Other backends may
+need to do the same thing.<p>The autogenerate feature only generates
+&#8220;candidate&#8221; commands which must be hand-tailored
+in any case, so is still a useful feature and
+is safe to use.  Please report missing/broken features
+of autogenerate!  This will be a great feature and
+will also improve SQLAlchemy&#8217;s reflection services.</p>
+<a class="changeset-link headerlink reference internal" href="#change-3d42011fdfe5fc3fab6550e1d567d1b8">¶</a><p></p>
+</p>
+</li>
+<li><p id="change-0.1.0-13"><span class="target" id="change-a1553a278d22086c7e4b26a0e5195cd5"></span>Support for non-ASCII table, column and constraint
+names is mostly nonexistent.   This is also a
+straightforward feature add as SQLAlchemy itself
+supports unicode identifiers; Alembic itself will
+likely need fixes to logging, column identification
+by key, etc. for full support here.<a class="changeset-link headerlink reference internal" href="#change-a1553a278d22086c7e4b26a0e5195cd5">¶</a><p></p>
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Changelog</a><ul>
+<li><a class="reference internal" href="#change-0.7.6">0.7.6</a><ul>
+<li><a class="reference internal" href="#change-0.7.6-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.7.6-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.7.5">0.7.5</a><ul>
+<li><a class="reference internal" href="#change-0.7.5-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.7.5-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.7.4">0.7.4</a><ul>
+<li><a class="reference internal" href="#change-0.7.4-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.7.3">0.7.3</a><ul>
+<li><a class="reference internal" href="#change-0.7.3-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.7.2">0.7.2</a><ul>
+<li><a class="reference internal" href="#change-0.7.2-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.7.1">0.7.1</a><ul>
+<li><a class="reference internal" href="#change-0.7.1-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.7.1-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.7.0">0.7.0</a><ul>
+<li><a class="reference internal" href="#change-0.7.0-changed">changed</a></li>
+<li><a class="reference internal" href="#change-0.7.0-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.7.0-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.6.7">0.6.7</a><ul>
+<li><a class="reference internal" href="#change-0.6.7-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.6.7-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.6.6">0.6.6</a><ul>
+<li><a class="reference internal" href="#change-0.6.6-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.6.6-bug">bug</a></li>
+<li><a class="reference internal" href="#change-0.6.6-misc">misc</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.6.5">0.6.5</a><ul>
+<li><a class="reference internal" href="#change-0.6.5-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.6.5-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.6.4">0.6.4</a><ul>
+<li><a class="reference internal" href="#change-0.6.4-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.6.4-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.6.3">0.6.3</a><ul>
+<li><a class="reference internal" href="#change-0.6.3-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.6.3-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.6.2">0.6.2</a><ul>
+<li><a class="reference internal" href="#change-0.6.2-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.6.2-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.6.1">0.6.1</a><ul>
+<li><a class="reference internal" href="#change-0.6.1-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.6.1-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.6.0">0.6.0</a><ul>
+<li><a class="reference internal" href="#change-0.6.0-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.6.0-bug">bug</a></li>
+<li><a class="reference internal" href="#change-0.6.0-misc">misc</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.5.0">0.5.0</a><ul>
+<li><a class="reference internal" href="#change-0.5.0-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.5.0-bug">bug</a></li>
+<li><a class="reference internal" href="#change-0.5.0-misc">misc</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.4.2">0.4.2</a><ul>
+<li><a class="reference internal" href="#change-0.4.2-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.4.2-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.4.1">0.4.1</a><ul>
+<li><a class="reference internal" href="#change-0.4.1-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.4.1-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.4.0">0.4.0</a><ul>
+<li><a class="reference internal" href="#change-0.4.0-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.4.0-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.3.6">0.3.6</a><ul>
+<li><a class="reference internal" href="#change-0.3.6-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.3.6-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.3.5">0.3.5</a><ul>
+<li><a class="reference internal" href="#change-0.3.5-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.3.5-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.3.4">0.3.4</a><ul>
+<li><a class="reference internal" href="#change-0.3.4-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.3.3">0.3.3</a><ul>
+<li><a class="reference internal" href="#change-0.3.3-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.3.3-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.3.2">0.3.2</a><ul>
+<li><a class="reference internal" href="#change-0.3.2-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.3.2-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.3.1">0.3.1</a><ul>
+<li><a class="reference internal" href="#change-0.3.1-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.3.0">0.3.0</a><ul>
+<li><a class="reference internal" href="#change-0.3.0-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.3.0-misc">misc</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.2.2">0.2.2</a><ul>
+<li><a class="reference internal" href="#change-0.2.2-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.2.2-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.2.1">0.2.1</a><ul>
+<li><a class="reference internal" href="#change-0.2.1-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.2.0">0.2.0</a><ul>
+<li><a class="reference internal" href="#change-0.2.0-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.2.0-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.1.1">0.1.1</a><ul>
+<li><a class="reference internal" href="#change-0.1.1-feature">feature</a></li>
+<li><a class="reference internal" href="#change-0.1.1-bug">bug</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-0.1.0">0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="previous chapter">API Details</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/changelog.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="API Details"
+             >previous</a> |</li>
+        <li><a href="index.html">Alembic 0.7.6 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010-2015, Mike Bayer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

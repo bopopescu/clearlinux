@@ -1,0 +1,2 @@
+eventlet
+trollius>=0.3

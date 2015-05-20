@@ -1,0 +1,23 @@
+Crypto signing/verifying test stuff.
+
+Test code to demonstrate that we know how to sign and verify data
+using the scheme that the crypto experts have come up with. To build
+on your typical linux dev machine:
+
+    cd ../..
+    make sig_verify_test
+
+To generate some random data and sign it:
+
+    cd test/signature
+    ./sign.sh
+
+To verify the signed data using an openssl command:
+
+    ./verify.sh
+
+To do the same verification using code written in C:
+
+    ../../sig_verify_test my-data my-data.signed ca.cert.pem
+
+

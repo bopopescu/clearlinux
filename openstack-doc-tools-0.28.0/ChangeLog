@@ -1,0 +1,616 @@
+CHANGES
+=======
+
+0.28.0
+------
+
+* Fix RST languages
+* diff_branches: improve handling of deprecated options
+* Sort entries in index.html
+
+0.27.0
+------
+
+* openstack-doc-test: Fix index.html
+* Updated from global requirements
+* autohelp: load oslo.middleware options
+* Do no build Debian Install Guide by default
+
+0.26
+----
+
+* Further improvements for openstack-auto-commands
+* Improve openstack-auto-commands
+* Fix translation building and publishing
+
+0.25
+----
+
+* Autohelp: update the scripts for the juno/kilo diff
+* autohelp: updated to handle juno
+* Remove venv tools
+* Drop use of 'oslo' namespace package
+* extract_swift_flags: strip help strings
+* autohelp: updated to include vmware-nsx options
+* autohelp: add a neutron hook
+* Update RELEASE_NOTES.rst for the 0.25 release
+* autohelp: lookup options in more oslo libraries
+* Use parameter instead of option
+* autohelp-wrapper: reorganise project dependencies
+* autohelp-wrapper: build one venv per project
+* Handle RST languages and drafts
+* Remove /draft from sitemap
+* Capitalize project names correctly
+
+0.24
+----
+
+* Update RELEASE Notes for 0.24 release
+* Update README.rst notes for Neutron project due to recent vendor decomposition
+* Handle User Guides
+* swift flag: handle XML in help strings
+* autohelp: strip help strings on dump too
+* autohelp: update the ignored modules list
+* [commands] add a deprecation note for python-keystoneclient
+* [commands] extract correct version string when client is deprecated
+* Updated from global requirements
+* Add wrapper script to update CLI references
+* Handle SPECIAL_BOOKs in doc-tools-check-languages
+* Updated from global requirements
+* autohelp: fix the nova_spice hook on juno
+* Rework the autohelp serialization of options
+* [autogenerate_config_docs] use filename tags to mark filenames
+* [commands] use --os-auth-type token only for python-openstackclient
+* [commands] fix generator for latest python-openstackclient
+* Use yaml.safe_load() instead of yaml.load()
+
+0.23
+----
+
+* Build index even for RST only change
+* Handle RST files
+* autohelp: don't ignore cmd/ folders
+
+0.22
+----
+
+* Add option --ignore-book
+* Update sitemap generator
+* autohelp: don't specify encoding in the base xml
+* Include ironic in the autohelp default projects
+* Handle possible keystone duplicated opts
+* Add a hook for nova.cmd.spicehtml5proxy
+* Update to hacking 0.10
+* Adds niceness check to avoid unwanted unicode charaters
+* Updated from global requirements
+* Ignore <option> tags in generatepot
+* Fix xml tagging for non-swift config tables
+* Add <option> tags to options in autogenerateconfig
+* [build-environment] add repository ha-guide and update README file
+
+0.21.1
+------
+
+* Add final newline to file formatting
+
+0.21
+----
+
+* Update RELEASE_NOTES
+* Change config changes generator script
+* Add new parameter --url-exception to not check URLs for reachability
+* Workflow documentation is now in infra-manual
+* Add ironic to the list of supported commands in os_doc_tools.commands
+* Add sahara to the list of supported commands in os_doc_tools.commands
+* Updated from global requirements
+* Updated from global requirements
+* dn2osdbk: Add a new line at the end of index pages
+* dn2osdbk: Fix string template
+* Added dependencies for lxml on Fedora
+* Document sahara common auth options
+* Fixed the command to install maven on Fedora
+* Autohelp: sanitize the value during discovery
+* master is now Kilo
+* diff_branches: capitalize the release name
+* Updated from global requirements
+* Use jsoncheck in doctest
+* Cap maximal cyclomatic complexity
+* Split out some functions
+
+0.20
+----
+
+* Updated from global requirements
+* dn2osdbk: handle internal references
+* Remove extraneous vim editor configuration comments
+* Remove @author tags from copyright statements
+* Fix extract_swift_flags.py
+* autohelp: Remove trailing spaces from help strings
+* Ensure a newline (\n) at the end of a file
+* Don't fail if glance_store is not available
+* Mark openstack-doc-tools as being a universal wheel
+* Updated from global requirements
+* Typo "Initialze" instead of "Initialize"
+* Add a hook to load glance_store options
+
+0.19
+----
+
+* Document cinderclient v2 as well
+* Document glance v2 commands
+* Generate subcommands for python-openstackclient
+* commands: add 'openstack' to the list of clients
+* Improve output of CLI documentation
+* diff_branches: improve the generated title
+* Use ironic's bash-completion for CLI commands
+* diff_branches: add the project sources in sys.path
+* Rework translation only logic
+* wrapper: clean the source dir before a checkout
+* Print only xml files for --print-unused-files
+* Fix git checkout
+* Fix handling of arguments in autohelp-wrapper
+* Document openstack client
+* Provide the hotref sphinx extension
+* autohelp: add a module blacklisting mechanism
+* Warn against sorting requirements files
+* Work toward Python 3.4 support and testing
+* Add fast option to autohelp-wrapper
+* Allow comments in flag and headers
+* Parse shared.headers for autohelp
+* dn2osdbk: support the :command: inline markup
+* Update the autohelp readme
+* autohelp-wrapper: support the create subcommand
+* autohelp: Set table names
+* Improve the autohelp scripts
+* Handle translations, update RELEASE NOTES
+* Update sanitizer to handle '/sources' in pybasedir
+* Fix output/doc strings that assume only XML files
+* Updated from global requirements
+* jsoncheck: set exit status if exception occured
+* Fix issues found by bashate and include in gating
+* Run doc8 as part of pep8 test
+
+0.18.1
+------
+
+* Fix doc-tools-check-language
+
+0.18
+----
+
+* It's isfile
+* jsoncheck: use ValueError to pass errors to outside callers
+* Handle exceptions of handle_options
+* Add a link to the static index of generated WWW pages
+* Remove CLI parameters and import/initialize logging
+* Number of errors should be returned
+* Add requirements required by openstack.common.log
+* Do not abort on first failure
+* Use which instead of type to check if a binary exists
+* Remove publish_www and simplify www_touched
+* A virtual building and testing environment using Vagrant
+* Import module log and needed dependencies from oslo-incubator
+* Add check for links
+* jsoncheck: indent strings only when printing them
+* Print run time
+* jsoncheck: fix _indent_note for pre-formatted strings
+* jsoncheck: fix handling of formatting argument
+* Add missing shift to make language for loop workable
+* Make doc-tools-check-languages configurable
+* Fix method name of verify_section_tags_have_xmid
+* Import doc-tools-check-languages and improve it
+* Support files as source for dn2osdbk
+* Don't always build the hot-guide
+* Fix bashate issue E003
+* Replace usage of readlines()
+* autohelp: make sure that oslo.i18n is setup
+* Add sahara to the autohelp supported projects
+* Move release notes into a separate file
+* Updated from global requirements
+
+0.17
+----
+
+* README update for the 0.17 release
+* Provide openstack-dn2osdbk
+* sanitizer: handle values ending with spaces
+* Adds Python as a prerequisite to readme
+* Updated from global requirements
+* Add API for sahara description
+* Removed trailing whitespace from help output
+* Bump hacking to version 0.9.2
+* Don't use oslo's _sanitize_default
+* Updated from global requirements
+* Add requirement pbr in documentation
+* Fix wrong variable name in autogenerate_config_docs documentation
+* Transformed README file to RST and included missing URLs
+* Rewrite return statement in method use_help_flag
+* Update README.rst
+* Update XML root elements
+* Added support for *-manage CLI doc generation
+* Add 0.17 marker to README.rst
+* Correctly handle CTRL+C in openstack-doc-test
+* Do not set xlink namespace for links
+* Handle errors when parsing XML files using Expat
+
+0.16.1
+------
+
+* Fix includes for rackbook.rng
+
+0.16
+----
+
+* Update generate-doc-book entity handling
+* Use lxml to handle the XML data
+* autohelp: import oslo extensions only if needed
+* autohelp-wrapper: fix the extract_swift_flags call
+* Improve sitemap generation
+* Remove client-requirements.txt
+* Sync rackbook.rng with clouddoc-maven-plugin
+* Update README.rst with recent changes
+* Update README
+* diff_branches: don't generate empty tables
+* Improve the output format for option names
+* Support swift in diff_branches.py
+* extract_swift_flags.py: implement a 'dump' argument
+* Add a public interface to jsoncheck.py
+* Updated from global requirements
+* Fix the target argument
+* jsoncheck: make formatting check optional
+* Include swift in the autohelp-wrapper script
+* Provide CLI options for extract_swift_flags.py
+* Don't check the autohelp-wrapper output dirs
+* Bump hacking to 0.9.x series
+* Provide a script to gerenate options changes
+* A script to prettify HTML and XML syntax
+* remove jsoncheck's check_format()
+* add exceptions check to is_testable_{,_xml}_file
+* jsoncheck: split process_one_file from main
+* rename is_xml{,like}: is_testable{,_xml}_file
+* make use of is_xml()
+* remove redundant check from find_affected_books
+* commands.py: handle missing command
+* Improve help text for commands.py
+* is_xml{,_like} handle paths, not filenames
+* Ignore the generated sitemap
+* Add a wrapper to simplify the autohelp.py usage
+* cleaning up index.rst file
+* script to generate the sitemap.xml for docs.openstack.org
+* make sure that source is not a directory
+* Updated from global requirements
+* Fix 0.16/0.15 notes
+* Fix README
+* Fix handling of ignored_dirs
+
+0.15
+----
+
+* Fix ENTITY bug with xml2po
+* Remove Docbook conversion in tox for HA Guide
+* Add RETF to README.rst
+* Update for swift 2.1.0
+* Special case entity files
+* Show git info
+* rewrote a branch in two methods to increase readability
+* use /usr/bin/env python instead of /usr/bin/python
+* remove definitions of Python Source Code Encoding
+
+0.14
+----
+
+* Fix for building identity-api
+* Update branch handling
+* Fix setup.cfg for rename of main in doctest
+* Add pylint target for testing
+* Fix some more pylint warnings
+* script to apply RETF rules onto a set of files
+* Fix error in build-ha-guide.sh
+* Remove some pylint warnings
+* fixed several pep8 issues
+* Do not special case publish flag for www only change
+* Only print properties in verbose mode
+* fixed pep8 issues in doc/source/conf.py
+* Refactor the generation of docbook data
+* Fix generation of ha localized guide
+* autohelp.py: update the paramters handling
+* Don't use a common file
+* Display more information with -v
+* Add new script jsoncheck.py
+* Warn about usage of non-breaking space
+* auto-commands: Improve swift display
+* Updated from global requirements
+* Place </screen> on proper line, fix swift usage
+* Update README
+* extract_swift_flags: Improve the output
+* extract_swift_flags: fix the tables parsing
+
+0.13
+----
+
+* Handle translations for api-site
+* Update client-requirements.txt
+* Remove compatibility names
+
+0.12
+----
+
+* Improve api-site handling for openstack-doc-test
+* Discover keystone_authtoken options
+
+0.11
+----
+
+* Keystone 0.8 is recent
+* Handle www pages properly when publishing
+* Use option.dest instead of option.name
+* Update versions of clients
+* Updated from global requirements
+* autohelp: add a hook mechanism
+* Generate docs for projects' rootwrap.conf file
+* Update Service spelling for commands
+* Fix README formatting
+
+0.10
+----
+
+* Update for keystone client 0.7.1
+* Handle api-ref-guides publishing
+* Minor README.md update
+* Fix ListOpt output
+* Remove code for flapmappings file compatibility
+* Minor cleanup
+* Fix sorting of flagmapping files
+* autohelp.py: generate an ID for the tables
+* Add period at end of help string
+* Fix generation of command usage (--help)
+* Handle options not registered on module import
+* Add client-requirements.txt file
+* Fix computing of the package name from the git repo
+* Handle CLI commands for ironic and sahara
+* Stop using generator._list_opts; use cfg.CONF instead
+
+0.9
+---
+
+* Add client version number
+* Update README for 0.9 release
+* Sanitize file paths
+* autohelp.py: Fix sanitizing of modules paths values
+* autogenerate_config_docs: use a venv in README example
+* Add new option --build-file-exception to openstack-doc-test
+* autohelp.py: add a --output option
+* Don't fail if an old mapping file is invalid
+* Don't fail on DuplicateOptError
+* autogenerate_config_docs: fix computing of relative path
+* Fix generation of markdown chapters
+* Don't descend into publish-docs directory
+* Validate JSON files
+* Do not check for xml:ids in wadl resources
+
+0.8.2
+-----
+
+* Fix error reporting of doctest and parallel builds
+* Updated from global requirements
+
+0.8.1
+-----
+
+* Initialize output properly
+* Fix index generation for api-ref
+* Use pandoc templates to set root element, xml:id, and default title
+* Fix building of identity-api-v3
+
+0.8
+---
+
+* Fix building of image-api-2 etc
+* Improve cli output
+* Fix markdown of autogenerate_config_docs/README.md
+* Typo in autogenerate_config_docs working example
+
+0.7.1
+-----
+
+* Fix building of image-api-v2
+* Prepare for 0.7.1 release
+* Improve robustness with localbuilding
+* Fix niceness and syntax wadl checks
+
+0.7
+---
+
+* Fix typo, add new line - for index.html file
+* Create index.html file to find books more easily
+* Also copy atom.xml
+* Allow setting of publish directory
+* Rename Openstack to OpenStack
+* Do not install internal scripts in /usr/bin
+* Remove empty path elements when constructing modname
+* Remove tox locale overrides
+* Remove obsolete option --exceptions-file
+* Encode language in build log file
+* Generate a log file for each built book
+* Fix gating of identity and image apis
+
+0.6
+---
+
+* Start adding 0.6 release notes
+* Add a suitable default for '-b'
+* Avoid putting autogenerate_config_docs/.gitignore into sdist
+* Honor install prefix
+* Check that mvn is installed and abort if not
+
+0.5
+---
+
+* Handle translations
+* Copy all generated books to common path
+* Generate chapters instead of sections for commands
+* Verify that resources have xml:id
+* Improve docbook format for cli commands
+* Remove default exceptions
+
+0.4
+---
+
+* Add tool to document cli tools
+* Rename autogenerate-config-docs to autogenerate_config_docs
+* Re-add support for multiple categories per option
+* Sort option names by group in autohelp log output
+* Use '.' not '/' when comparing module names
+* Resolve pep8 comments
+* Switch to / for group delimieter in flagmappings files
+* Add group information to autohelp.py DocBook output
+* Add option --exceptions-file
+* Minor cleanup of test-requirements and tox
+* Sanitize option defaults in autogenerated config reference
+* Sync with global requirements
+* Reworked autohelp to support dup option names in different groups
+* Updates root README.rst to contain release notes
+
+0.3
+---
+
+* Validate further XML files
+* Fix path in generatedocbook
+* Fix misspellings
+* Display name and version at each run
+
+0.2
+---
+
+* Add parameter --ignore-dir
+* Do not download RNG Schema, instead use local copies
+* Add .mailmap
+* Do not abort on invalid XML
+* Fixes for building
+* Use sphinx for documentation of openstack-doc-tools
+* Require hacking for additional checks
+* Do not check directories starting with "."
+* Document lxml requirement
+* Add HACKING.rst
+
+0.1
+---
+
+* Version handling
+* Import venv setup from oslo-incubator
+* Add empty autogenerate-config-docs/__init__.py
+* Add webpage as audience for profiling
+* More robust book building for api-site
+* Explicitely add license information to code files
+* Enhance .gitignore list
+* Add test-requirements.txt
+* Build markdown documents
+* Make markdown-docbook.sh more robust
+* Package markdown-docbook.sh
+* Import markdown-docbook.sh from config
+* Extend niceness check to handle tabs as well
+* Initial support for gating api-site
+* Autogenerate config tools: Allow line wrapping
+* Add HACKING.rst
+* Fix issues found by flake8
+* Add tox.ini
+* Remove flagmappings
+* Rework repository to make it an installable python package
+* Adds multiple group support for config options in autohelp.py
+* Add LICENSE and README.rst
+* Use th for table headers
+* Sync generatedocbook with operations-guide
+* Add .gitignore file
+* Add .gitreview
+* Update nova flagmappings for libvirt group
+* Move libvirt flags to libvirt group (cont.)
+* Renamed docker_registry_default_port flag
+* Handle audience profiling in test.py
+* Removed references to unused libvirt_ovs_bridge flag
+* Ensure all "os" values are valid/recognized
+* test.py: Improve output
+* Detect conflicting profiling attributes
+* Adding guidance on software installation
+* Fix typo on error message
+* Cleanup for test.py
+* VMware: Using auto-gen table in cinder driver doc
+* Build separate Install Guides for Ubuntu and Debian
+* Updates sitemap.xml for havana release links
+* Add sles for os profiling
+* Fix behaviour with removed files
+* Move coraid_esm_address to coraid table
+* Add debian to build commands for Install Guide
+* Fix test.py invocation, fix deletions check, cleanup
+* Remove training-guide from translated guides
+* Fix path used in generatepot
+* Updates conf reference for neutron ml2 plugin
+* Search all dependencies to check which books to build
+* Remove old basic install pom file
+* Improve output of test.py
+* Handle FILE_EXCEPTIONS properly
+* Fix cleanup tools
+* Improve output of test.py
+* Remove tools/validate.py
+* Remove bk001-ch003-associate-general.xml from blacklist
+* Update conf option tables for cinder
+* Handle changes of tools or pom.xml, ignore doc/pom.xml
+* Rebuild HA Guide if files modified
+* Build all Install Guides and HA Guide in gates
+* Improve checking for modified files
+* Have test.py run all checks if no arguments given
+* It's test.py --check-deletions
+* Fix book building
+* Improve validation tools
+* Possible fix for FontTriplet errors during heavy load
+* Autogenerate neutron tables
+* Improve validation of removed files
+* Fix validate.py and test.py traversals
+* Modularize cinder tables and use them in Config Guide
+* Fix test.py
+* Handle imagedata in test.py and validate.py
+* Update glance autogenerated tables
+* Update cinder flags with autogenerate tools
+* Update common/tables/nova*
+* Check also for non-xml include files
+* Updated nova config tables after feature freeze
+* Update tools/test.py for directory rename
+* Improve validate output
+* Fix validate.py and print process message
+* Do not build all books if only www/ is changed
+* Adjust validate.py for flattened directory structure
+* Update autogenerate tools for new directory struct
+* Handle removed files in tools/validate.py
+* Fix output of tools/validate.py --force
+* modication including sets
+* Make swift config tables the source of truth
+* Swift work for config reference
+* Update DocBook validating schema to 5.1CR1
+* Don't descent into target dirs
+* Add file name to whitespace information
+* Add a tiny bit more verbosity to validate.py
+* added parameters to control the behaviour
+* added scripts to cleanup spaces in XML files
+* take care of books with sources in subdirectories
+* introduced force to validate and build everything
+* print the relative path in list of modified files
+* build several books in parallel
+* build every book only once
+* strip spaces before writing the files
+* Update flagmappings
+* make validation workable inside book directories
+* Change whitespace check to be info only
+* reduced verbosity of validation script
+* validate modified files and build affected books
+* Add Autogenerate-config-doc code to tools
+* verify that no unnecessary whitespaces are used
+* validate.py variable changes
+* do not exit after first invalid file
+* Attempt to build all books
+* The docbookxi.rng schema moved to oasis-open.org
+* Validate presence of xml:id in section
+* Update generatedocbook
+* Add slicing tool to the master branch
+* Fix XML schema validation failures
+* Add script to validate files are valid DocBook
+* Remove unused tools/rfc.sh
+* Add rfc.sh to help with gerrit workflow

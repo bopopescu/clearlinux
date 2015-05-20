@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.py
+django_pyscss/__init__.py
+django_pyscss/compressor.py
+django_pyscss/scss.py
+django_pyscss/utils.py
+django_pyscss.egg-info/PKG-INFO
+django_pyscss.egg-info/SOURCES.txt
+django_pyscss.egg-info/dependency_links.txt
+django_pyscss.egg-info/not-zip-safe
+django_pyscss.egg-info/requires.txt
+django_pyscss.egg-info/top_level.txt

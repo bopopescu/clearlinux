@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: rtslib-fb
+Version: 2.1.51
+Summary: API for Linux kernel SCSI target (aka LIO)
+Home-page: http://github.com/agrover/rtslib-fb
+Author: Andy Grover
+Author-email: agrover@redhat.com
+License: Apache 2.0
+Description: UNKNOWN
+Platform: UNKNOWN

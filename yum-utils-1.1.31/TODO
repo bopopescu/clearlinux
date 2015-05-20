@@ -1,0 +1,3 @@
+- port all tools to optparser
+- standardize some of the args a bit
+- work on manpages/docs

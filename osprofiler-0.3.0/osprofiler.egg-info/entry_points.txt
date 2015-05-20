@@ -1,0 +1,3 @@
+[console_scripts]
+osprofiler = osprofiler.cmd.shell:main
+

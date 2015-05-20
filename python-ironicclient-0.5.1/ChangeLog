@@ -1,0 +1,290 @@
+CHANGES
+=======
+
+0.5.1
+-----
+
+* Client should fall back to the lower versions if necessary
+* Upgrade hacking to latest release
+* Fix node_uuid option is required for port-create
+
+0.5.0
+-----
+
+* Force LANGUAGE=en_US in test runs
+* Add unittests for resource_fields
+* Updated from global requirements
+* Add support for generating a config drive
+* Clean openstack-common module list
+* Send version header by default
+* Use oslo.i18n lib
+* Add support for logical names
+* Metavar name should be hyphenated
+* Avoid httpretty 0.8.8 as it can break unittests
+* Add support for inspection to node-set-provision-state
+* Fix the final PEP8 errors
+* Adds basic ironicclient functional testing
+* Fix two error strings in the CLI
+* Fix typo on patch 155624
+* Enable ironicclient with --ironic-api-version 1.x
+* Fix PEP8 E121,E122,E123,E124,E125,E129 errors
+* Updated from global requirements
+* For flake8 check, make the 'E12' ignore be more granular
+* Updated from global requirements
+* Consistent names of args and metavars, and help strings
+* Remove unused OS_TEST_TIMEOUT variable
+* Capture stdout or stderr in tests
+* Updated from global requirements
+* Fix Python Ironic Client Documentation
+
+0.4.1
+-----
+
+* Rename --configdrive to --config-drive
+* Fix argument for configdrive usage
+* Fix help string for port-list
+
+0.4.0
+-----
+
+* port-list support get-port-from-mac
+* Update requirements.txt
+* cli support --os-endpoint
+* ironicclient node-set-maintenance to accept true/false
+* Updated from global requirements
+* Check if --config-drive is only used with provision state "active"
+* Add --config-drive to node-set-provision-state
+* Add driver_internal_info to node-show output
+
+0.3.3
+-----
+
+* ironicclient handle faultstring when using SessionClient
+* Support setting non-string fields
+* Workflow documentation is now in infra-manual
+* Removed http proxy environment variable so that httpretty can work
+* Fix to properly issue an Unauthorized exception
+
+0.3.2
+-----
+
+* Add option to specify node uuid in node-create subcommand
+* Add IRONIC_URL to README
+* Fix log_curl_request API version duplication
+* Update README
+* Fix node-set-provision-state cmd's help strings
+* Updated from global requirements
+* Add maintenance_reason to node-show output
+* Add 'API' to description of ironic command
+* Fix the usage comment of node-set-power-state cmd
+* Updated from global requirements
+* Fix sphinx warnings
+* VendorPassthru commands to support different HTTP methods
+* Sane parameters for node and driver vendor_passthru()
+* Updated from global requirements
+* Sync apiclient from Oslo
+* Add node-set-maintenance command
+* Fix python-ironicclient crash
+* Adds tty password entry for ironicclient
+
+0.3.1
+-----
+
+* Correct node CREATION_ATTRIBUTE "uuid"
+* Updated from global requirements
+* Add keystone v3 CLI support
+* Stop using intersphinx
+* Bump hacking version
+* Add "ironic node-set-power-state" cmd unit test
+* Small fixes for utils/{common_filters,common_params_for_list}
+* Add unit tests for "ironic node-show" shell cmd
+* Remove unused command in tox.ini
+* Add unit tests for "ironic node-create" shell cmd
+* Add unit test for "ironic node-update" shell cmd
+* Updated from global requirements
+
+0.3.0
+-----
+
+* Replace calls to Mock.assert_not_called
+* Add defaults to the CLI help strings
+* Updates to CLI doc
+* Add 'rebuild' option to node-set-provision-state
+* Update README with a bit more info
+* ironic client to use os_region_name if provided
+* Add unit test for "ironic port-update" shell cmd
+* Add unit tests for "ironic node-delete" shell cmd
+* handles keyboard interrupt
+* fixes help string for driver-list
+* Add 'bash-completion' to 'ironic help' response
+* List resources with detail
+* Add sort_key and sort_dir parameters to *-list
+* Fix column headings regression due to switch to cliutils
+* Work toward Python 3.4 support and testing
+* Updated from global requirements
+* Fix misspelled class name AmbigiousAuthSystem
+* Optimize get_by_instance_uuid
+* Show port by MAC address
+
+0.2.1
+-----
+
+* Add /nodes/detail support
+* Trim trailing slash and version from endpoint
+* Updated from global requirements
+
+0.2.0
+-----
+
+* Export 'client' and 'exc' modules
+* Add {set,get}_boot_device and get_supported_boot_devices
+* Add driver-properties command
+* Add ironic cli support for vendor-passthru
+* Add pagination support to {node, port, chassis}-list
+* Expose auth_ref in ironicclient client object
+* Add bash completion support for ironic cli
+* Remove aliases `arg` and `env` from utils
+* Use suitable assert
+* Add CONTRIBUTING.rst
+* Make a few minor updates to node shell help strings
+* Updated from global requirements
+* Add set_provision_state command
+* Add UTF-8 coding lines to all Python files
+* replace dict.iteritems() with six.iteritems(dict)
+* node-show to show the instance_info field
+* removed py3kcompat module
+* Updated from global requirements
+* Reuse module `cliutils` from common code
+
+0.1.4
+-----
+
+* Updated from global requirements
+* Sync latest code and reuse exceptions from oslo
+* node-get-console incorporate the changes in API
+* Adds documentation for ironicclient API
+* Remove py3kcompat module
+* Add documentation for ironic CLI
+* Updated from global requirements
+* Documentation for contributors
+* Fix docstring for client.get_client()
+* Updated from global requirements
+* node-list to show the maintenance field
+* Add main developer page
+
+0.1.3
+-----
+
+* Sync cliutils from oslo
+* Avoid traceback with insufficient auth credentials
+* Add support for 'driver-show' command
+* Updated from global requirements
+* Add set-console-mode, get-console commands
+* Sort requirement files in alphabetical order
+* Filtering nodes by maintenance mode
+* Remove shebang lines from code
+
+0.1.2
+-----
+
+* Fix the test parameter order
+* Return 'maintenance' from node-show command
+* Fix params order in assertEqual
+* Remove vim header
+* Node power state is not printed after set
+* Return node_uuid from a port-show cmd
+* Fix Iterface misspelling from node-validate cmd
+* Remove tox locale overrides
+* Add node.states() to the client library
+* Fix node-create help requiring chassis uuid
+* Updated from global requirements
+* Remove unused method 'string_to_bool' from utils
+
+0.1.1
+-----
+
+* Reuse Resource from oslo
+* Sync apiclient and strutils from Oslo
+* Run unittest with python 3.3
+* Drop python2.5 suport in ironicclient.common.http
+* Improve node-validate command output
+* Add set_provision_state to the client libs
+* ironic client should display chassis_uuid value
+* Update openstack-common.conf list, sync with oslo (0d8f18b)
+
+0.1.0
+-----
+
+* Rename nodes/<uuid>/state to nodes/<uuid>/states
+* Remove unused oslo-incubator modules
+* Updated from global requirements
+* driver-list command to show the list of conductors
+
+0.0.1
+-----
+
+* Enable rebooting in the client lib and cli
+* Move from inheritance HTTPClient in Ironic client
+* Move six dependency to requirements.txt
+* Let CLI print exception traceback from 'debuginfo'
+* Add missing i18n support
+* Add node-validate to cli
+* Replace chassis_id with chassis_uuid on Nodes
+* Enable created_at/updated_at for port-show/chassis-show
+* Include 'chassis_id' on node-show
+* Enable created_at/updated_at for port-show/chassis-show
+* Remove in-place try/except blocks from shell commands
+* Replace node_id to node_uuid on Ports
+* Support building wheels (PEP-427)
+* Shows 'last_error' property for a node
+* Comply with new hacking release
+* Change id->uuid in ironic cli help messages
+* Updated from global requirements
+* Modifies CLI to show nodes by instance uuid
+* Remove Python 2.4 all() implementation
+* Deal with unicode strings
+* Custom output file on the print_*() functions
+* Add driver-list
+* Fix cmd usage msg for ironic port-create
+* Reorder imports
+* Rename variables called 'fixtures'
+* Comply with new hacking requirements
+* Transform print statement to print function
+* Add node-set-power-state to cli
+* Fixes Auth Token being sent as lambda function
+* Updated from global requirements
+* Sort the dict iterms
+* Replace basestring with six.string_types
+* Use six.iteritems() for dict
+* Import urlutils module from oslo
+* Import httplib from six.moves
+* Transform print statement to print function
+* Import StringIO from six
+* Removes mox from ironicclient
+* Add chassis-node-list
+* Add node-port-list
+* Updated from global requirements
+* Allows multiple deletions
+* Add short command line option
+* Improve help strings
+* Remove duplicated do_node_show
+* Add missing chassis_id arg to node-create
+* Improve error feedback
+* Updated from global requirements
+* Implement *-update commands to resrouces
+* Change service_type to baremetal
+* Split v1/shell.py into different files
+* Implement Node commands
+* Add port-create and port-delete
+* Stop HTTPClient from calling self.auth_token()
+* Add chassis-create and chassis-delete
+* Add port-show and port-list
+* Implement chassis-list + more tests
+* Add tests for chassis
+* Add basic tests
+* Manager._list should always return a list
+* Implement chassis-show
+* Basic project structure
+* remove client suffix from command line client
+* Add initial files
+* Added .gitreview

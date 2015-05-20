@@ -1,0 +1,42 @@
+[designateclient.cli]
+diagnostics-ping = designateclient.cli.diagnostics:PingCommand
+domain-create = designateclient.cli.domains:CreateDomainCommand
+domain-delete = designateclient.cli.domains:DeleteDomainCommand
+domain-get = designateclient.cli.domains:GetDomainCommand
+domain-list = designateclient.cli.domains:ListDomainsCommand
+domain-servers-list = designateclient.cli.domains:ListDomainServersCommand
+domain-update = designateclient.cli.domains:UpdateDomainCommand
+quota-get = designateclient.cli.quotas:GetQuotaCommand
+quota-reset = designateclient.cli.quotas:ResetQuotaCommand
+quota-update = designateclient.cli.quotas:UpdateQuotaCommand
+record-create = designateclient.cli.records:CreateRecordCommand
+record-delete = designateclient.cli.records:DeleteRecordCommand
+record-get = designateclient.cli.records:GetRecordCommand
+record-list = designateclient.cli.records:ListRecordsCommand
+record-update = designateclient.cli.records:UpdateRecordCommand
+report-count-all = designateclient.cli.reports:CountsCommand
+report-count-domains = designateclient.cli.reports:DomainCountCommand
+report-count-records = designateclient.cli.reports:RecordCountCommand
+report-count-tenants = designateclient.cli.reports:TenantCountCommand
+report-tenant-domains = designateclient.cli.reports:TenantCommand
+report-tenants-all = designateclient.cli.reports:TenantsCommand
+server-create = designateclient.cli.servers:CreateServerCommand
+server-delete = designateclient.cli.servers:DeleteServerCommand
+server-get = designateclient.cli.servers:GetServerCommand
+server-list = designateclient.cli.servers:ListServersCommand
+server-update = designateclient.cli.servers:UpdateServerCommand
+sync-all = designateclient.cli.sync:SyncAllCommand
+sync-domain = designateclient.cli.sync:SyncDomainCommand
+sync-record = designateclient.cli.sync:SyncRecordCommand
+touch-domain = designateclient.cli.touch:TouchDomainCommand
+
+[designateclient.v1.controllers]
+diagnostics = designateclient.v1.diagnostics:DiagnosticsController
+domains = designateclient.v1.domains:DomainsController
+quotas = designateclient.v1.quotas:QuotasController
+records = designateclient.v1.records:RecordsController
+reports = designateclient.v1.reports:ReportsController
+servers = designateclient.v1.servers:ServersController
+sync = designateclient.v1.sync:SyncController
+touch = designateclient.v1.touch:TouchController
+

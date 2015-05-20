@@ -1,0 +1,18 @@
+useDynLib("tau",
+          "R_isASCII",
+          "R_isUTF8",
+          "R_fixEncoding",
+          "R_isLocale",
+          "R_translateToLocale",
+          "R_copyTruncate",
+          "R_utf8CountNgram", 
+          "R_removeBlank",
+          "R_copyToNgram",
+          "R_utf8CountString")
+export("remove_stopwords",
+       "textcnt",
+       "is.ascii", "is.utf8", "is.locale", "translate", "fixEncoding",
+       "readBytes", "readChars",
+       "tokenize",
+       "translate_Unicode_latin_ligatures")
+S3method("format","textcnt")

@@ -1,0 +1,19 @@
+[taskflow.engines]
+default = taskflow.engines.action_engine.engine:SerialActionEngine
+parallel = taskflow.engines.action_engine.engine:ParallelActionEngine
+serial = taskflow.engines.action_engine.engine:SerialActionEngine
+worker-based = taskflow.engines.worker_based.engine:WorkerBasedActionEngine
+workers = taskflow.engines.worker_based.engine:WorkerBasedActionEngine
+
+[taskflow.jobboards]
+zookeeper = taskflow.jobs.backends.impl_zookeeper:ZookeeperJobBoard
+
+[taskflow.persistence]
+dir = taskflow.persistence.backends.impl_dir:DirBackend
+file = taskflow.persistence.backends.impl_dir:DirBackend
+memory = taskflow.persistence.backends.impl_memory:MemoryBackend
+mysql = taskflow.persistence.backends.impl_sqlalchemy:SQLAlchemyBackend
+postgresql = taskflow.persistence.backends.impl_sqlalchemy:SQLAlchemyBackend
+sqlite = taskflow.persistence.backends.impl_sqlalchemy:SQLAlchemyBackend
+zookeeper = taskflow.persistence.backends.impl_zookeeper:ZkBackend
+

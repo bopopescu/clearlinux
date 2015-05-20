@@ -1,0 +1,48 @@
+2015-01-12  David Anderson
+     * dwarf_init_finish.c(_dwarf_setup): Move freeresult
+       declaration before statements.
+     * dwarf_util.c: Add comments about va_end().
+2015-01-11  David Anderson
+     * dwarf_init_finish.c(_dwarf_setup): For all returns 
+       in _dwarf_setup() free the sections malloc space.
+2015-01-08  David Anderson
+     * cmplrs/dwarf_addr_finder.h: Fix a comment and remove a trailing
+       whitespace.
+     * dwarf.h: Blank line added accidentally.
+     * dwarf_alloc.c: Removed trailing whitespace.
+     * dwarf_init_finish.c: Remove trailing whitespace. Fix indent.
+     * dwarf_leb.c: Remove trailing whitespace. Fix indent.
+     * dwarf_line.h: Fix macro backslash location, lining things up.
+     * dwarf_util.c: Remove trailing whitespace.
+2015-01-06  David Anderson
+     * 	dwarf_alloc.c, dwarf_base_types.h, dwarf_elf_access.c,
+        dwarf_error.c,dwarf_error.h,dwarf_form.c,dwarf_init_finish.c,
+        dwarf_leb.c,dwarf_query.c,pro_section.c: Fixed indents and
+        removed trailing whitespace.
+2015-01-06  David Anderson
+     * dwarf_frame.c( _dwarf_get_fde_info_for_a_pc_row): Cast
+       the pointer returned from _dwarf_get_alloc(), somehow
+       this cast was omitted.
+     * dwarf_alloc.c(dwarf_dealloc): Ensure a NULL
+       'space' pointer input is not touched before checking
+       if it is set.
+     * dwarf_init_finish.c(_dwarf_setup): For badly formed Elf
+       ensure we do not use stale pointers.
+2015-01-05  David Anderson
+     * dwarf_original_elf_init.c(dwarf_finish): If the Dwarf_Debug is
+       not initialized do not use it.
+2015-01-03  David Anderson
+     * libdwarf2p.1.mm: Somehow dwarf_transform_to_disk_form()
+       was not documented. Now it is.
+     * libdwarf2p.1.pdf: Regenerated, version 1.38.
+2015-01-03  David Anderson
+     * dwarf_allo.c: Comment the allocation table base
+       more carefully.
+     * dwarf_base_types.h: Making DW_DLA defines more
+       readable, more consistent with other instances.
+     * libdwarf.h.in: Adding producer error codes.
+       The producer library has some places error values
+       are misidentified. Main effect: documentation.
+     * dwarf_error.c:  Add the strings for the new error codes.
+2015-01-01  David Anderson
+     *	A new year begins.

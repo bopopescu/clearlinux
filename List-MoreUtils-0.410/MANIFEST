@@ -1,0 +1,33 @@
+Changes
+dhash.h
+inc/Config/AutoConf/LMU.pm
+inc/inc_Capture-Tiny/Capture/Tiny.pm
+inc/inc_Config-AutoConf/Config/AutoConf.pm
+inc/inc_Data-Tumbler/Data/Tumbler.pm
+inc/inc_JSON-PP/JSON/PP.pm
+inc/inc_JSON-PP/JSON/PP/Boolean.pm
+inc/inc_JSON-PP/JSON/PP/Compat5006.pm
+inc/inc_Module-Pluggable/Devel/InnerPackage.pm
+inc/inc_Module-Pluggable/Module/Pluggable.pm
+inc/inc_Module-Pluggable/Module/Pluggable/Object.pm
+inc/inc_Test-WriteVariants/Test/WriteVariants.pm
+inc/inc_Test-WriteVariants/Test/WriteVariants/Context.pm
+inc/latest.pm
+inc/latest/private.pm
+inc/Tumble.pm
+lib/List/MoreUtils.pm
+lib/List/MoreUtils/PP.pm
+lib/List/MoreUtils/XS.pm
+Makefile.PL
+MANIFEST
+MoreUtils.xs
+multicall.h
+ppport.h
+README.md
+t/lib/LMU/Test/ab.pm
+t/lib/LMU/Test/Functions.pm
+t/lib/LMU/Test/Import.pm
+t/lib/LMU/Test/XS.pm
+t/lib/Test/LMU.pm
+META.yml                                 Module YAML meta-data (added by MakeMaker)
+META.json                                Module JSON meta-data (added by MakeMaker)

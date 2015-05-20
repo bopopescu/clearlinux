@@ -1,0 +1,47 @@
+Contributing to fixtures
+========================
+
+Code access
++++++++++++
+
+Branch from the trunk (all patches should be for trunk unless there are
+exceptional circumstances)::
+
+  git clone https://github.com/testing-cabal/fixtures path-to-new-local-repo
+
+Publish your branches whereever you like and submit PR's on github.
+
+Copyright
++++++++++
+
+Fixtures is Copyright (C) 2010-2014 Robert Collins. I'd like to be able to
+offer it up for stdlib inclusion once it has proved itself, so am asking for
+copyright assignment to me - or for your contributions to be under the BSD and
+Apache-2.0 licences that Fixtures is under (which permit inclusion in Python).
+
+Coding standards
+++++++++++++++++
+
+PEP-8 coding style please, though perfection isn't needed. Make sure that 'make
+check' passes before sending in a patch.
+
+Code arrangement
+++++++++++++++++
+
+The ``fixtures`` module should simply import classes and functions from
+more specific modules, rather than becoming large and bloated itself. For
+instance, TestWithFixtures lives in fixtures.testcase, and is imported in
+the fixtures __init__.py.
+
+Releasing
++++++++++
+
+1. Add a version to NEWS.
+
+1. commit, tag.
+
+1. Upload to pypi, signed.
+
+1. Close bugs.
+
+1. Rename the next milestone, release it, and make a new one.

@@ -1,0 +1,14 @@
+TM_1_0_0 {
+  global:
+    tm_set_config_file;
+    tm_create_record;
+    tm_set_payload;
+    tm_send_record;
+  local:
+    *;
+};
+
+TM_2_0_0 {
+  global:
+    tm_free_record;
+} TM_1_0_0;

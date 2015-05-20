@@ -1,0 +1,8 @@
+[Unit]
+Description=Telemetrics Daemon
+
+[Socket]
+ListenStream=@SOCKETDIR@/telem-0
+
+[Install]
+WantedBy=sockets.target

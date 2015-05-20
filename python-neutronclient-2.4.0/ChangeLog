@@ -1,0 +1,575 @@
+CHANGES
+=======
+
+2.4.0
+-----
+
+* Fix one remaining E125 error and remove it from ignore list
+* Add Neutron subnetpool API
+* Revert "Remove unused AlreadyAttachedClient"
+* Allow passing None for subnetpool
+* Add Neutron subnet-create with subnetpool
+* Adding VLAN Transparency support to neutronclient
+* 'neutron port-create' missing help info for --binding:vnic-type
+* Support fwaasrouterinsertion extension
+* Prefer argparse mutual exclusion
+* Add HA router state to l3-agent-list-hosting-router
+* Make secgroup rules more readable in security-group-show
+* Fix E265 block comment should start with '# '
+* Remove author tag
+* Update hacking to 0.10
+* Updated from global requirements
+* Fix failures when calling list operations using Python binding
+* Updates pool session persistence options
+* security-group-rule-list: show all info of rules briefly
+* Show rules in handy format in security-group-list
+* Add commands from extensions to available commands
+* Updating lbaas cli for TLS
+* Copy functional tests from tempest cli
+* Remove unused AlreadyAttachedClient
+* exec permission to port_test_hook.sh
+* Reinstate Max URI length checking to V2_0 Client
+* Add post_test_hook for functional tests
+* First pass at tempest-lib based functional testing
+* Add OS_TEST_PATH to testr
+* Ignore order of query parameters when compared in MyUrlComparator
+* Fixed pool and health monitor create bugs
+* Added client calls for the lbaas v2 agent scheduler
+* Client command extension support
+* Fix lbaas-loadbalancer-create with no --name
+* Honor allow_names in *-update command
+* Updated from global requirements
+* Make some auth error messages more verbose
+
+2.3.11
+------
+
+* Updated from global requirements
+* Add unit tests for agentscheduler related commands
+* Fix for incorrect parameter in user-id error message in shell.py
+* Fix CSV formatting of fixed_ips field in port-list command
+* Implement LBaaS object model v2
+* Fix typo in test_cli20_agentschedulers filename
+* Add ip_version to extra dhcp opts
+* Skip None id when getting security_group_ids
+* Reverse order of tests to avoid incompatibility
+* Utility method for boolean argument
+* Split base function of v2_0.Client into a separate class
+* Updated from global requirements
+* Add parser options for port-update and port-create
+* Add floating-ip-address to floatingip-create
+* Fix KeyError when filtering SG rule listing
+* Updated from global requirements
+* Remove unreachable code from test_cli20 class
+* Parse provider network attributes in net_create
+* Parameter support both id and name
+* Add '--router:external' option to 'net-create'
+* Fix TypeError for six.text_type
+* Add Python 3 classifiers
+* Namespace of arguments is incorrectly used
+* Fix True/False to accept Camel and Lower case
+* Use adapter from keystoneclient
+* Use requests_mock instead of mox
+* Updated from global requirements
+
+2.3.10
+------
+
+* firewall policy update for a rule is not working
+* subnet: allow --enable-dhcp=False/True syntax, again
+* Fix columns setup base on csv formatter
+* Correct the bash completion of CLI
+* Workflow documentation is now in infra-manual
+* Router create distributed accepts lower case
+* Fix issues with Unicode compatibility for Py3
+* Add unit tests for agent related commands
+* Make help for agent-update more verbose
+* Use discovery fixture
+* Cleanup copy and pasted token
+* fix the firewall rule arg split error
+* Updated from global requirements
+* Change Creates to Create in help text
+* Disable name support for lb-healthmonitor-* commands
+* Fix mixed usage of _
+* Fixes neutronclient lb-member-show command
+* neutron port-list -f csv outputs poorly formatted JSON strings
+* Updated from global requirements
+* Don't allow update of ipv6-ra-mode and ipv6-address-mode
+* Updated from global requirements
+* Use graduated oslo libraries
+* Fix E113 hacking check
+* Fix E129 hacking check
+* Updated from global requirements
+* Add InvalidIpForNetworkClient exception
+* Add missing parameters to Client's docstring
+* Leverage neutronclient.openstack.common.importutils import_class
+* Remove extraneous vim editor configuration comments
+* Fix E128 hacking check
+* Don't get keystone session if using noauth
+* Bump hacking to 0.9.x series
+* Change "healthmonitor" to "health monitor" in help info
+* Correct 4xx/5xx response management in SessionClient
+* Change ipsecpolicies to 2 separate words: IPsec policies
+* handles keyboard interrupt
+* Use six.moves cStringIO instead of cStringIO
+* Updated from global requirements
+* Replace httpretty with requests_mock
+
+2.3.9
+-----
+
+
+2.3.8
+-----
+
+* Fix Py3 compatibility issues
+* Narrow down except clause
+* Correct Content-Type/Accept management in HTTPClient/SessionClient
+* Allow to specify policy by name in firewall-update
+* Silence iso8601 debug messages in verbose mode
+* Stop using intersphinx
+* Updated from global requirements
+* Replace utils.dumps with jsonutils.dumps
+* Fix to ensure endpoint_type is used by make_client()
+* Add L3 HA / VRRP support to CLI
+* Improve help strings
+* Isolate tests from HTTP_PROXY, OS_REGION_NAME env vars
+* Leverage openstack.common.jsonutils
+* Work toward Python 3.4 support and testing
+* Clean-up shell run and run_subcommand methods
+
+2.3.7
+-----
+
+* Updated from global requirements
+* Remove unnecessary get_status_code wrapper function
+* Unify doc-strings format
+* Small improve of str2dict function
+* Fix CLI support for DVR, take 2
+* Refactor CreateRouter to use update_dict
+* Repeat add-tenant and remove-tenant option in cli
+* Rename --timeout param to --http-timeout
+* Fix typo in cli help
+* neutronclient shows low-level logs in console screen
+* Print exception when verbose is over DEBUG_LEVEL
+* Adds tty password entry for neutronclient
+* Remove incorrect super() call
+* Avoid modifying default function arguments
+* Fix unit tests to succeed on any PYTHONHASHSEED
+* Provide support for nested objects
+* Add keystone v3 auth support
+* Updated from global requirements
+* Fix listing security group rules
+* Introduce shadow resources for NeutronCommands
+* setup logger name of NeutronCommand automatically
+
+2.3.6
+-----
+
+* Add option for retry number of connection attempts
+* Remove strict checking of encryption type
+* Remove "--disabled" for firewall create rule
+* Improve the method find_resourceid_by_name_or_id
+* Add a new timeout option to set the HTTP Timeout
+* Python 3: compatibility of StringIO() and dict.iterkeys()
+* Revert "Fix CLI support for DVR"
+* Update theme for docs
+* Add a tox job for generating docs
+* Add MacAddressInUseClient exception handling
+* Create new IPv6 attributes for Subnets by client
+* Python 3: use six.iteritems()
+* Fix for CLI message of agent disassociation
+* Fix CLI support for DVR
+* Warn on tiny subnet
+* Some edits for help strings
+* Changed 'json' to 'JSON'
+* Add CLI Support for DVR
+* Add CONTRIBUTING.rst
+* Pass timeout parameter to requests lib call
+* Found a useless comment
+* Suppress outputs in test_cli20_nsx_networkgateway
+* Sync with oslo
+* Changed 'xml' to 'XML'
+* Switch over to mox3
+
+2.3.5
+-----
+
+* Improve help strings
+* Ensure .status_code is defined for all NeutronClientExceptions
+* Silences the output in CLI for connection info
+* debug level logs should not be translated
+* Updated from global requirements
+* Set firewall_rules only after appending all rules
+* Make neutronclient parse keystone v3 endpoints correctly
+* removed usage of '... can be repeated.'
+* added new column binary to the listing of agents
+* Add ability to update certain attributes in a subnet
+* Removed now unnecesary workaround for PyPy
+* Add OverQuotaClient as exception to neutronclient
+* Synced jsonutils from oslo-incubator
+* enable sorting support for agent listing
+* Suppress expected help messages caused by wrong CLI inputs
+* Updated from global requirements
+* Remove httplib2 requirement
+* Updated from global requirements
+* Allow user ID for authentication
+* Use requests module for HTTP/HTTPS
+* Support packet_filter extension in NEC plugin
+* Python3: fix syntax issue in _encode_item()
+* Updated from global requirements
+* Return response status reason on error
+* Improvements in neutron_test sanity tests script
+* Adds support for os-auth-strategy=noauth
+* Show the unknown auth stratey in neutron client
+* Rearrange neutronclient exceptions for more easy use
+* Suppress stdout/stderr in test_shell
+* Work around pypy testing issue
+* Empty file shouldn't contain copyright nor license
+* Updated from global requirements
+* CLI support for NSX gateway devices
+* Use six.moves.urllib.parse to replace urlparse
+* Updated from global requirements
+* New exception when auth_url is not specified
+* Supporting Net-Partition as extension for Nuage plugin
+* Print human friendly string as an error message
+* Python 3: fix a call to ugettext()
+* Enable to select specific network service type
+* Replace assertEqual(None, *) with assertIsNone in tests
+* Adds delete of extra-dhcp-opt to the client
+* Unexpected response in agent-list command
+* Remove unused imports
+* Enable hacking H233 rule
+
+2.3.4
+-----
+
+* Don't reuse 'body' for response data
+* Work around for httplib2 retries on timeout
+* Modify quota-list descripton
+* Extending quota support neutron LBaaS entities
+* Fix net-gateway-create help message
+* Remove vi modelines
+* Support building wheels (PEP-427)
+* Fixed get_auth_info() for pre-authenticated clients
+* Fixed a minor typo in a docstring
+* Add shared parameter for metering labels
+* Rename Nicira NVP to VMware NSX in neutronclient
+* session_persistence: invalid str2dict value: u''
+* update coveragerc file
+* Adding weight column to Neutron lb member list CLI
+* Combine debug and verbose commandline options
+* Mention --fixed-ip subnet_id=<..> in help message
+* Fix description of ListSubnet
+
+2.3.3
+-----
+
+* Make compatible with Cliff (1.5.2
+* Remove an unused imported module
+* Remove a debugging print statement
+* Remove start index 0 in range()
+
+2.3.2
+-----
+
+* Pin Sphinx to <1.2 in test-requirements
+* Add -U to pip install command in tox.ini
+* Misc typo in neutronclient
+* Use assertIn where appropriate
+* Fix neutron port-create --no-security-groups
+* Fix i18n messages in neutronclient
+* Updates .gitignore
+* Convert xrange to range
+* Ignores swap files generated during file editing
+* Handle IpAddressInUse with client exception
+* Fix lb-healthmonitor-update to work with correct object
+* [fwaas] Can now create disabled firewall rules
+* Log reason for connection failed exception
+* Make HACKING.rst DRYer
+* Fix status_code not passed in code
+* Add ability to reference pool by name in lb-pool-stats command
+* Updated from global requirements
+* Fix stable/grizzly gating for Neutron (aka Quantum)
+* Change copyright headers from LLC to Foundation
+* Forcibly clear connection pool after every request
+* Updated from global requirements
+* Adds ExternalIpAddressExhaustedClient exception
+* Fixes the display message for the insert/remove firewall rule CLI
+* Adds IpAddressGenerationFailureClient exception
+* Update tox.ini to use new features
+* Update help string to match API doc
+
+2.3.1
+-----
+
+* Client for metering extension
+* Update cliff version to 1.4.3 in requirements.txt
+* Fix cisco n1kv plugin cli option and help
+* Add provider attribute to lb-pool-create command
+* Allow 'any' option for protocol in the firewall rule
+
+2.3.0
+-----
+
+* The "arg_value" was not getting checked for empty list
+* Use assertEqual instead of assertEquals
+* bp:pxeboot-ports, provide pxboot on ports
+* Move vpn unittest code to neutronclient.tests
+* Add 'distributed' option to router-create command
+* Remove openstack.common.exception usage
+* Makes client always use provided endpoint_url
+* Make _test_update_resource honor format
+* Sync test-requirements with global requirements
+* Added support for running the tests under PyPy with tox
+* Fix H202 hacking check in VPN client
+* neutron router-gateway-set failed for non-admin users
+* Add multi-segment and trunk support to N1KV Neutron client
+* VPN as a Service (VPNaaS) Client API
+* Move tests back to neutronclient package
+* Add credentials and profile support to Neutron client
+* Remove status field from the list of fields of Healthmonitor
+* Updated from global requirements
+* remove useless column in list_columns
+
+2.2.6
+-----
+
+* Add get_attr for EXTED_PLURALS
+
+2.2.5
+-----
+
+* Sync with global requirements
+* Improve help message of loadbalancer commands
+* Don't log the credentials by default
+* FWaaS Client and Cli
+* Add command for listing available service providers
+* Remove repeated initialisation
+* Add commands related to loadbalancer agent scheduling
+* Handle host side SSL certificates validation
+* raise better exception for duplicate match
+* let cliff install the right pyparsing
+* Remove commented out code
+* Allow tenant ID for authentication
+* Add --security-group option to port-update
+* Don't convert httplib2 exceptions to status codes
+* Allow user to specify None value to attributes
+* Renamed quantum to neutron in .gitreview
+
+2.2.4
+-----
+
+* Rename quantumclient to neutronclient
+
+2.2.3
+-----
+
+* python3: Introduce py33 to tox.ini
+* Make --version option print a more detailed client version
+* Fix mocking of HTTPClient.request() method
+* Enables H404 check (multi line docstring) in flake8
+* Support router-interface-add/delete by port_id
+* Allow subnet name in lb-vip-create and lb-pool-create
+* Remove the monkey patching of _ into the builtins
+
+2.2.2
+-----
+
+* update to latest pbr & remove distribute from tox
+* Remove class-based import in the code repo
+* Remove explicit distribute depend
+* Add metavar for --fixed-ip
+* Rename README to README.rst
+
+2.2.2a
+------
+
+* add readme for 2.2.2
+* Rename requires files to standard names
+* Set default columns in ext-list
+* Migrate to pbr
+* Allow the HTTPClient consumer to pass endpoint_type
+* CLI support for disabling SNAT
+* Add update method of security group name and description
+* Make flake8 deps consistent with other projects
+* Avoid error 414 when retrieving subnet cidrs for ListNetworks
+* Improve unit tests for python-quantumclient
+* Fix a comment formatting to make pep8 test pass
+* Enable automatic validation of many HACKING rules
+* Add custom TableFormater for keep same empty list behavior as prettytable 0.6
+* Change variable name of admin_state_down to admin_state
+* Fix xml request doesn't work with unicode
+* Switch to flake8 from pep8
+* Exclude top level 'tests dir' from packages
+* Add public api to get authentication info from client
+* Move tests to project root
+
+2.2.1
+-----
+
+* Add AUTHOR and .testrepository to .gitignore
+* Update --remote-group-id metavar to REMOTE_GROUP
+* Handle auth_token and endpoint_url if passed to the http client constructor
+* Don't query the agent with name
+* remove remainder argument Bug #1160203
+* Update tools/pip-requires for prettytable
+* Improve unit tests for python-quantumclient
+* Add exception & gettextutils to openstack.common
+* Reordering of optional and required args in lbaas commands help
+* add 2.2.0 release note in index.rst file
+* Add a missing command line option: --insecure
+* Improve unit tests for python-quantumclient
+
+2.2.0
+-----
+
+* Fix a description of floatingip-id in (dis
+* Add support for security group quotas
+* Rename source_(group_id/ip_prefix) to remote_(group_id/ip_prefix)
+* Add pagination support for client
+* rename port to port_protocol for lbaas cli
+* Client for agent scheduler extension
+
+2.1.2
+-----
+
+* Update cliff dependency (1.3.1
+* quantumclient.common.serializer module cleanup
+
+2.2.0a1
+-------
+
+* CLI support for network gateway feature
+* Allow known options after unknown ones in list and update command
+* Match other python-*client prettytable dependency
+* Client for agent extension
+* Add nvp queue support to client
+* Add exceptions messages for authentication
+
+3.0.a1
+------
+
+* Add .coveragerc
+* Support XML request format
+* Allow ability to remove security groups from ports
+* Stored the quantum commands list to the variable
+* Remove gettext.install from quantumclient.__init__
+* Migrate from nose to testr
+* The change implements LBaaS CLI commands
+* Delete network with id in sample code using API
+* Remove multiple white spaces
+* Fix quantum client example
+* Exception should raise with status code
+* Display security group name in security-group-rule-list
+* Migrate from unittest to testtools
+* Allow known options defined after position arguments
+* Display subnet cidr information in net-list
+* Make "quantum help" to show a list of subcommands
+* Fix import order nits
+* Add file 'ChangeLog' to MANIFEST.in
+* Add --security-group option to port-create
+* bug 1091028
+* Support dash-style options for security-group commands
+* Add --dns-nameserver, --host-route, --disable-dhcp to subnet-create
+* Fix a wrong substition for '-h' in bash completion
+* Ensures that help alignment is not hard coded
+* Display columns in the order of -c options
+* Add --router and --floatingip to quota-update options
+* Correct the verbose output formatting when creating routers
+* Convenience cmds for l3
+* Fix curl command for PUT and DELETE
+* Fixes setup compatibility issue on Windows
+* Adds securitygroup implementation
+* Add OpenStack trove classifier for PyPI
+* Generate bash_completion string so that we can use bash completion
+* clean the descriptions for quota cli commands
+
+2.1
+---
+
+* fix a minor comment error
+* Add document for using quantum client by python or cli invocation
+* Support shared option in CLI
+* Limit list command for router and floating ip
+* prevent floatingip-show and floatingip-delete from querying by "name"
+* Send all options with CreateFloatingIP
+* router/floating commands support resource reference by name
+* update error message to make clear that we were search for a name
+* *-list command shows only limited fields normally
+* Fix printout of dns name servers and host routes
+* Change '_' to '-' in options
+* initial client + CLI support for routers + floating ips
+* Add nosehtmloutput as a test dependency
+* Add install_requires in setuptools.setup()
+* Fix warning when creating the sdist package
+* Support --no-gateway option
+
+2.0
+---
+
+* add pyparsing to pip-requires
+* add ext list and show commands
+* remove cli.app in quantum client error message
+* enable -h | --help after command to show the command usage
+* deal with -c option when the list result is empty
+* Add quota commands to change quota of a tenant
+* Refreshes keystone token if a token is expired
+* update mailing list, etc in setup.py
+* Add name or id to quantum cli commands. Bug #1030180
+* Allow to retrieve objects by name
+* Remove quantum client codes for API v1.0 Bug #1021546
+* Use -h, --help to show help messages
+* Support allocation pools for subnet
+* Make quantum cli consistent with other cli's practice
+
+0.1.1
+-----
+
+* Add post-tag versioning
+
+0.1.0
+-----
+
+* add --fixed-ip argument to create port
+* add keystone support, new command interface, API v2.0
+* Add initial docs
+* quit and print usage when unsupported version specified
+
+folsom-1
+--------
+
+* Use --debug to enable printing HTTP message(s
+* Add HACKING.rst to generated tarballs
+* Align tox with standards
+* Clean up codebase in accordance with HACKING/PEP8
+* Remove server-specific functionality
+* bug 963155: add some missing test files to the sdist tarball
+* Fix quantum client exception when server returns 500 error
+* Open Folsom
+* Add retry support to the quantum client
+* Remove generation of quantum/vcsversion.py
+* add LICENSE file to sdist tarball
+* Adds client side functions for quantum 'detail' actions
+
+essex-4
+-------
+
+* bp/quantum-client-1.1
+* Bug 921930 remove depedency on webob from python-quantumclient
+* bug 933125 ensure cli.py executes from the shell
+* Enable log output to syslog
+* Add "quantum" package so that __init__.py is included
+* unexecutable lib files should not contain a shebang
+
+essex-3
+-------
+
+* Additional small release needs
+* Initial cut at removing unneeded dependencies
+* Added 501 exceptions to client package
+* move batch_config.py to client library
+* Added README
+* Prepare for Jenkins gating job
+* Split quantumclient out
+* Second round of packaging changes

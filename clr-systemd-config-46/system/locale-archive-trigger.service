@@ -1,0 +1,7 @@
+[Unit]
+Description=Generate locale-archive
+BindsTo=update-triggers.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/localedef -i en_US -c -f UTF-8 en_US.UTF-8

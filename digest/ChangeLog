@@ -1,0 +1,395 @@
+2014-12-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): Version 0.6.8
+
+	* DESCRIPTION (Date): Bumped Date: to current date
+
+2014-12-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/pmurhashAPI.h: Added HOWTO comment to top of file
+
+2014-12-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/pmurhash.c: Protect against _BIG_ENDIAN defined but empty
+
+	* inst/include/pmurhash.h: Consistent four space indentation
+
+2014-12-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Bump Date: and Version:
+
+	* src/init.c: Minor edit and removal of unused headers
+
+2014-12-25  Wush Wu  <wush978@gmail.com>
+
+	* inst/include/pmurhash.h: Export function
+	* src/init.c: Register function for use by other packages
+
+2014-12-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): Version 0.6.7
+
+	* DESCRIPTION (Date): Bumped Date: to current date
+
+2014-12-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* cleanup: Also remove src/symbols.rds
+
+	* src/sha2.c: Apply (slightly edited) patch from
+	https://www.nlnetlabs.nl/bugs-script/attachment.cgi?id=220&action=diff
+	to overcome the strict-aliasing warning
+
+	* src/digest.c: Use inttypes.h macro PRIx64 only on Windows
+
+2014-12-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/xxhash.c: Remove two semicolons to make gcc -pedantic happy
+	* tests/digestTest.Rout.save: Updated reflecting murmurHash test
+	* src/pmurhash.c: Renamed from PMurHash.c for naming consistency
+	* src/pmurhash.h: Renamed from PMurHash.h for naming consistency
+
+2014-12-16  Jim Hester <james.f.hester@gmail.com>
+
+	* src/digest.c: murmurHash implementation
+	* tests/digestTest.R: murmurHash implementation
+	* R/digest.R: murmurHash implementation
+	* src/PMurHash.c: murmurHash implementation
+	* src/PMurHash.h: murmurHash implementation
+
+2014-12-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/xxhash.c: Applied pull request #6 by Jim Hester with updated
+	upstream code and already corrected UBSAN issue identified by CRAN
+
+2014-12-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): Version 0.6.6
+
+	* DESCRIPTION (Date): Bumped Date: to current date
+
+	* src/digest.c: Applied pull request #5 by Jim Hester providing
+	portable integer printing inttypes.h header
+
+2014-12-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): Version 0.6.5
+
+	* DESCRIPTION (Date): Bumped Date: to current date
+
+	* NAMESPACE: Expanded useDynLib() declaring C level symbols, in
+	particular using digest_impl to for the C-level digest
+
+	* R/AES.R: Use R symbols from NAMESPACE declaration in .Call()
+	* R/digest.R: Use R symbol digest_impl to load C level digest
+
+2014-12-07  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Edited Title and Description
+
+	* R/digest.R: Added GPL copyright header, reindented to four spaces
+
+	* src/digest.c: Reindented to four spaces
+
+	* R/AES.R: Reindented to four spaces
+	* R/hmac.R: Reindented to four spaces
+
+2014-12-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/digest.c: Updated GPL copyright header
+
+	* src/xxhash.c:	Removed two spurious ';'
+
+	* man/digest.Rd: Document 'seed' argument in \usage
+
+	* tests/digest.Rout.save: Updated for expanded tests
+
+	* DESCRIPTION: Add Jim Hester to list of Authors
+
+2014-12-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/digest.R: Applied pull request #3 by Jim Hester with support for
+	xxHash (https://code.google.com/p/xxhash/)
+	* src/digest.c: Ditto
+	
+	* src/xxhash.c: xxHash implementation supplied as part of #3
+	* src/xxhash.h: xxHash implementation supplied as part of #3
+
+	* R/digest.R: Applied pull request #4 by Jim Hester with expanded
+	support for xxHash providing xxhash32 and xxhash64
+	* src/digest.c: Ditto
+	* man/digest.Rd: Added documentation for xxHash, corrected typos
+	* src/digest.R: New support for a seed parameter used by xxHash
+	* tests/digestTest.R: Added tests for xxHash
+
+2014-08-15  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/hmac.R: Applied (slightly edited) patch for crc32 computation of
+	hmac kindly supplied by Suchen Jin
+
+2013-12-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): Version 0.6.4
+
+	* src/sha2.h (BYTE_ORDER): Define BYTE_ORDER unless already defined,
+	rely on Rconfig.h which itself goes back to an R compile-time test
+
+2013-02-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): Version 0.6.3
+
+2013-02-06  Hannes Mühleisen  <hannes@cwi.nl>
+
+	* R/hmac.R: Fixed hmac for sha512 hashes
+	* tests/hmacTest.R: Added test cases for hmac with sha512
+	* tests/hmacTest.Rout.save: Updated accordingly
+
+2013-01-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): Version 0.6.2
+
+	* man/AES.Rd: Switch from paste0() to paste() to permit use on
+	R-oldrelease as per email by Uwe Ligges
+
+	* tests/AESTest.R: Idem
+	* tests/AESTest.Rout.save: Updated accordingly
+
+2013-01-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): Version 0.6.1
+
+	* inst/GPL-2: Added as a fixed reference input for regression tests
+	via the scripts in tests/ as the versions installed by R differ
+	across OS and installations
+
+	* tests/digestTest.R: No longer rely on file.path(R.home(),"COPYING")
+	but rather use our own copy of GPL-2; ensure final test does not print
+	* tests/digestTest.Rout.save: Updated accordingly
+
+2013-01-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Authors): Added Duncan Murdoch
+
+2013-01-19  Duncan Murdoch <murdoch.duncan@gmail.com>
+
+	* src/aes.c: Devine's AES implementation added
+	* src/aes.h: header for AES implementation
+	* src/raes.c: interface to it
+	* R/AES.R: Add AES object to do AES encryption
+	* tests/AESTest.R: tests from the standards documents
+	* man/AES.Rd: document AES object
+	* NAMESPACE: export AES constructor and print method
+
+2012-11-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.6.0
+
+	* src/sha2.h: In order to build on Windows:
+	  - Include the newer header file stdint.h
+	  - Enforce standard integer types by defining SHA2_USE_INTTYPES_H
+	  - Define BYTE_ORDER and default to LITTLE_ENDIAN
+
+	* src/digest.c: Use uint8_t from stdint.h for sha256
+
+2012-11-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/digest.c: Allow for extra null character in output[] vector
+
+	* tests/digestTest.Rout.save: Update/Revert a change by Hannes;
+	Naturally we do not get a single set that works for R-release and
+	R-devel. Sigh.
+
+2012-11-24  Hannes Mühleisen  <hannes@cwi.nl>
+
+	* src/digest.c: sha-512 integration
+	* src/sha2.h: Header file for Aaron Gifford's SHA2 implementation
+	* src/sha2.c: Aaron Gifford's sha2 implementation
+	* R/digest.R: enabled new sha-512 algorithm parameter
+	* R/hmac.R: enabled new sha-512 algorithm parameter
+	* man/digest.Rd: documented new sha-512 algorithm parameter
+	* man/hmac.Rd: documented new sha-512 algorithm parameter
+	* tests/digestTest.R: Added sha-512 test cases
+
+2012-03-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.5.2
+
+	* Applied patch by Murray Stokely:
+	  - R/digest.R: Additional test for file accessibility; segfault can
+	    happen if inaccesible file passed down
+	  - tests/digestTest.R: New test which leads to segfault in unpatched
+   	    package, and passes with these changes
+	  - src/digest.c: Simpler use of error() via format string
+
+	* DESCRIPTION: Fixed one typo in extended description
+
+	* tests/digest.Rout.save: Updated to current output; version 0.5.1
+	created the same difference so it is presumably once again something
+	that changed in R's serialization. Oh, and R-devel changes it again.
+
+2011-09-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.5.1
+
+	* tests/digestTest.Rout.save: Updated reference output too
+
+2011-09-18  Bryan Lewis  <blewis@illposed.net>
+
+	* tests/digestTest.R: Added basic raw output md5 and sha1 tests
+
+2011-09-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/digest.c: Applied patch contributed by Bryan Lewis which
+	supports output of unmodified raw binary output if a new function
+	parameter 'raw' (which defaults to FALSE) is set to TRUE
+	* R/digest.R: Support new parameter 'raw'
+	* man/digest.Rd: Document new parameter 'raw'
+
+2011-05-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.5.0
+
+2011-05-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/hmac.R: Switched to camelCase identifiers after discussion with
+ 	  Henrik and Mario
+
+2011-05-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/hmac.R: New hmac() function contributed by Mario Frasca
+	* man/hmac.Rd: Documentation contributed by Mario Frasca
+
+	* tests/hmacTest.R: Added a new regression test file for hmac()
+	* tests/hmacTest.Rout.save: Added new reference output
+
+	* tests/digestTest.Rout.save: Updated reference digest output
+	  for simple R structure to match what R 2.13.0 yields
+
+	* inst/ChangeLog: moved to ChangeLog (in top-level directory)
+
+	* INDEX: removed, as no longer needed
+
+2009-12-03  Henrik Bengtsson  <henrikb@braju.com>
+
+	* Release 0.4.2
+
+	* R/digest.R: Bug fix - digest(object, file=TRUE) where object
+	  is a directory would cause R to crash.  Now it gives an error.
+
+2009-10-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: set SVN properties Date and Id, fix indentation
+
+2009-09-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.4.1
+
+	* src/Makefile.win: Removed as package builds on Windows without it
+	  but not with it being present
+
+	* src/digest.c: Updated Copyright years, set SVN properties Date and Id
+	* R/digest.R: Idem
+	* man/digest.Rd: Idem
+
+2009-09-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.4.0
+
+	* src/sha256.c: Added sha-256 implementation by Christophe Devine
+	  as found (via Google Code Search) in a number of Open Source
+	  projects such as mushclient, aescrypt2, scrypt, and ipanon
+	* src/sha256.h: Idem
+
+	* src/digest.c: Modified to support SHA-256
+	* R/digest.R: Idem
+	* man/digest.Rd: Idem, also added more references
+
+	* src/Makefile.win: Updated for SHA-256, and generally spruced up
+
+2007-09-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.3.1
+
+	* DESCRIPTION: Switched to standardised form 'GPL-2' for License:
+
+	* src/digest.c: Added one explicit (char *) cast
+
+2007-04-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.3.0
+	* R/digest.R: Adopted two more changes suggested by Henrik
+
+2007-03-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/digest.R: Adopted a few changes suggested by Henrik
+
+2007-03-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	- R/digest.R, man/digest.Rd, Applied two more patches by
+	  Simon Urbanek that clean object mangling (for better comparison
+	  across R versions, adds an ascii flag, adds skip="auto" support
+	  to by pass the version header info, and clean the file option
+	  interface. This effectively replaces Henrik's patch relative to
+	  the 0.2.3 release.  Thanks for the patches, Simon!
+	- tests/digestTest.Rout.save: New reference output; one line changed
+
+2007-03-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	- R/digest.R, man/digest.Rd, src/digest.C: Applied two
+	  patches by Simon Urbanek to help improve consistence
+	  of digest output across different R versions by allowing
+	  digest to 'skip' a certain number of bytes; and by adding
+	  support for 'raw' serialization input
+
+2007-01-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	- R/digest.R: Added improvement suggested by Henrik
+
+2006-12-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.2.3
+	- R/digest.R: Added file.expand() around filename
+
+2006-07-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.2.2
+	- R/digest.R: Added patch for R 2.4.0 by Henrik Bengtsson
+	- tests/: Added simple unit tests
+
+2005-11-02  Dirk Eddelbuettel  <deddelbu@lx-chprd97.wfg.com>
+
+	* Release 0.2.1
+	- R/digest.R, src/digest.c, man/digest.Rd: add support for file
+	  mode based on a complete set of patches by Jarek Tuszynski
+
+2005-04-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.2.0
+	- R/digest.R, src/digest.c, man/digest.Rd: add support for crc32
+	  digests based on a complete set of patches by Antoine Lucas
+	- src/{crc32.c,crc32.h,zlib.h,zutil.h,zconf.h}: From zlib
+
+2004-05-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.1.2
+	- R/zzz.R: remove test for R < 1.8.0 and load of serialize package
+	  (as serialize has been removed from CRAN with serialize() in R)
+
+2003-11-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.1.1
+	- DESCRIPTION: added to RCS, $Date$ is now filled
+	- DESCRIPTION: small rewording in Description field
+	- corrected minor packaging error by removing spurious tarball
+
+2003-11-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.1.0
+	- DESCRIPTION: added extended Description
+	- inst/ChangeLog: added
+	- man/digest.Rd: added complete test vectors for md5 and sha-1
+	  in example code, values taken from the examples of the C code
+
+2003-10-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Release 0.0.1
+	- initial version

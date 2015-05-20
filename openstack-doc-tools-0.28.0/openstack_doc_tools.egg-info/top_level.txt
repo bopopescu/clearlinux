@@ -1,0 +1,2 @@
+os_doc_tools
+autogenerate_config_docs

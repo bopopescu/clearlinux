@@ -1,0 +1,10 @@
+[Unit]
+Description=Telemetrics Daemon
+
+[Service]
+ExecStart=@bindir@/telemd
+User=telemetry
+
+[Install]
+Also=telemd.socket telemd.path
+WantedBy=multi-user.target

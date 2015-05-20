@@ -1,0 +1,213 @@
+CHANGES
+=======
+
+1.4.0
+-----
+
+* Add a stopwatch + split for duration(s)
+* Allow providing a logger to save_and_reraise_exception
+* Updated from global requirements
+* Utility API to generate EUI-64 IPv6 address
+
+1.3.0
+-----
+
+* Add a eventlet utils helper module
+* Add microsecond support to iso8601_from_timestamp
+* Updated from global requirements
+* Update Oslo imports to remove namespace package
+* Add TimeFixture
+* Add microsecond support to timeutils.utcnow_ts()
+* Make setup.cfg packages include oslo.utils
+
+1.2.1
+-----
+
+* Return LOCALHOST if no default interface
+* fix link to bug tracker in README
+
+1.2.0
+-----
+
+* Improve performance of strutils.mask_password
+* Move files out of the namespace package
+* Add method is_valid_port in netutils
+* Support non-lowercase uuids in is_uuid_like
+* Add 'secret_uuid' in _SANITIZE_KEYS for strutils
+* Imported Translations from Transifex
+* Workflow documentation is now in infra-manual
+
+1.1.0
+-----
+
+* Improve error reporting in _get_my_ipv4_address()
+* Add get_my_ip()
+* Updated from global requirements
+* Add 'auth_password' in _SANITIZE_KEYS for strutils
+* Updated from global requirements
+* Activate pep8 check that _ is imported
+* Add uuidutils to oslo.utils
+* Add pbr to installation requirements
+* Updated from global requirements
+* Add is_int_like() function
+* Hide auth_token and new_pass
+* Imported Translations from Transifex
+* Add history/changelog to docs
+* Imported Translations from Transifex
+* Support building wheels (PEP-427)
+* Imported Translations from Transifex
+* Improve docstrings for IP verification functions
+* Imported Translations from Transifex
+* Add ip address validation
+* Fix how it appears we need to use mock_anything to avoid 'self' errors
+* Updated from global requirements
+* Move over a reflection module that taskflow uses
+* Make safe_encode func case-insensitive
+* Enable mask_password to handle byte code strings
+* Updated from global requirements
+
+1.0.0
+-----
+
+* Imported Translations from Transifex
+* Add the ability to extract the query params from a urlsplit
+* Work toward Python 3.4 support and testing
+* warn against sorting requirements
+* Remove unused dependency on oslo.config
+* Updated from global requirements
+* Just use int(BOOL) to convert to 1 or 0
+* Re-enable _import* hidden methods in import_utils
+
+0.2.0
+-----
+
+* Make strutils.mask_password more secure
+* New public API for mask_password ported from incubator
+* Imported Translations from Transifex
+
+0.1.1
+-----
+
+* Make return type from urlsplit private
+* Add API docs and clean up other docs
+* Make the i18n integration module private
+* Cleaning up index.rst file
+* export only try_import in __all__
+* Switch to oslo.i18n and remove any dependency on oslo-incubator
+* Move units into oslo.utils
+* Switch to standard python logging
+* Setup for translation
+* Split strutils into 2 different modules
+* Rename network_utils into netutils
+* get pep8 working
+* Get the tox tests working
+* exported from oslo-incubator by graduate.sh
+* Fixed a new pep8 error and a small typo
+* Set pbr 'warnerrors' option for doc build
+* fixed typos found by RETF rules
+* Use moxstubout and mockpatch from oslotest
+* Remove ValueError when accessing sys.modules
+* Enable configuring tcp keepalive
+* Avoid raising index error when no host
+* Remove str() from LOG.* and exceptions
+* Remove import workaround of SplitResult
+* Use oslotest instead of common test module
+* Partial fix of test_strutils.py on Python 3
+* Fix safe_encode(): return bytes on Python 3
+* urlsplit issues with IPv6 addresses in python26
+* save_and_reraise_exception: make logging respect the reraise parameter
+* strutils: Allow safe_{encode,decode} to take bytes as input
+* Fix import order in test_excutils
+* Update oslo log messages with translation domains
+* Implements SI/IEC unit system conversion to bytes
+* Add basic Python 3 tests
+* py3kcompat: remove
+* Deleted duplicated method in cliutils
+* strutils bool_from_string, allow specified default
+* Utilizes assertIsNone and assertIsNotNone
+* Fix spelling errors in comments
+* Use hacking import_exceptions for gettextutils._
+* Correct invalid docstrings
+* Fix a bug in safe_encode where it returns a bytes object in py3
+* Fix typo in parameter documentation (timeutils)
+* Avoid TypeError in is_older_than, is_newer_than
+* Remove vim header
+* Use py3kcompat urlutils functions instead of urlparse
+* Add helper method total_seconds in timeutils.py
+* Do not name variables as builtins
+* Use six.text_type instead of unicode function in tests
+* Fix typos in oslo
+* Adjust import order according to PEP8 imports rule
+* python3: use six.text_types for unicode()
+* Don't shadow str
+* Fix timeutils.set_override_time not defaulting to current wall time
+* Fix misused assertTrue in unit tests
+* Optimize timeutils.utcnow_ts()
+* excutils: replace unicode by six.u
+* excutils: use six.reraise to re-raise
+* Replace using tests.utils part2
+* Bump hacking to 0.7.0
+* Replace using tests.utils with openstack.common.test
+* BaseException.message is deprecated since Python 2.6
+* Enable H302 hacking check
+* Add conditional exception reraise
+* python3: Add python3 compatibility
+* Make AMQP based RPC consumer threads more robust
+* Add network_utils.urlsplit
+* Remove useless logging in networks_utils
+* python3: Fix traceback while running python3
+* Refactors to_bytes
+* Add slugify to strutils
+* Enable hacking H404 test
+* Added common code into fileutils and strutils
+* Enable hacking H402 test
+* Enable hacking H403 test
+* Enable hacking H201 test
+* Add 't', 'y', and `strict` to `bool_from_string`
+* Handle ints passed to `boolean_from_string`
+* Removes leading zeros on integers in test_timeutils
+* Convert unicode strings for python3 portability
+* Do not import openstack.common.log in strutils
+* Improve Python 3.x compatibility
+* Replaces standard logging with common logging
+* Removes unused imports in the tests module
+* Fix Copyright Headers - Rename LLC to Foundation
+* support ISO 8601 micro-second precision
+* Decode / Encode string utils for openstack
+* timeutils: considers that now is soon
+* Replace direct use of testtools BaseTestCase
+* Use testtools as test base class
+* Import timeutils.is_soon from keystoneclient
+* UTC ISO8601 from timestamp
+* Implement importutils.try_import
+* Use basestring instead of str for type check
+* Make time comparison functions accept strings
+* Fix timezone handling in timeutils tests
+* Rename utils.py to strutils.py
+* Provide i18n to those messages without _()
+* Make project pyflakes clean
+* Account for tasks duration in LoopingCall delay
+* Convenience wrapper for datetime.timedelta.total_seconds()
+* Added is_newer_than function
+* Extracted parse_host_port into network_utils
+* Normalize_time() always return naive object
+* Use pep8 v1.3.3
+* Don't trap then re-raise ImportError
+* Fix spelling typos
+* Support for marshalling datetime while preserving microseconds
+* Remove unused imports
+* fix bug lp:1019348,update openstack-common to support pep8 1.3
+* Use strtime() in to_primitive() for datetime objs
+* Improve exception from importutils.import_class()
+* Update common code to support pep 1.3. bug 1014216
+* add import_object_ns function
+* add more realistic unit tests for importutils
+* Fix utcnow_ts to return UTC timestamp
+* Add nova time util functions to timeutils
+* Replace datetime.utcnow with timeutils.utcnow
+* Remove common.exception from common.importutils
+* Add save_and_reraise_exception()
+* Update exception from importutils.import_class()
+* Change behavior in utils.import_object()
+* Create openstack.common.timeutils
+* Initial skeleton project

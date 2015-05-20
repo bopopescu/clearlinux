@@ -1,0 +1,11 @@
+[Unit]
+Description=Telemetrics Systemd Journal Probe
+Requires=telemd.socket
+After=telemd.socket
+
+[Service]
+ExecStart=@bindir@/journalprobe
+User=telemetry
+
+[Install]
+WantedBy=multi-user.target

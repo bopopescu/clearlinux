@@ -1,0 +1,55 @@
+CHANGES
+=======
+
+0.8.0
+-----
+
+* Fix make rst for method not using wsme
+
+0.7.1
+-----
+
+* update announce.rst for 0.7.1 release
+* Fix formatting issue for docstrings without param list
+* fix tags syntax
+
+0.7
+---
+
+* Update announcement for 0.7 release
+* Remove trailing slash from URLs
+
+0.6
+---
+
+* update announcement file for 0.6 release
+* Add support for PATCH and DELETE methods
+* add link to pypi page
+
+0.5
+---
+
+* add announcement file before tagging release
+* Add rest verb as prefix for custom_actions
+
+0.4
+---
+
+* Remove duplication in RESTControllerDirective
+* Handle more pecan REST method
+
+0.3
+---
+
+* Update pbr usage past the world of d2to1
+
+0.2
+---
+
+* Add basic support for POST directives
+
+0.1
+---
+
+* Import extension from ceilometer
+* Initial commit

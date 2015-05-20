@@ -1,0 +1,62 @@
+===========
+Quick links
+===========
+
+* Home page: http://code.google.com/p/pysendfile
+* Download: http://code.google.com/p/pysendfile/downloads/list
+
+=====
+About
+=====
+
+A python interface to sendfile(2) system call.
+
+=======
+Install
+=======
+
+$ sudo setup.py install
+
+...or:
+
+$ easy_install pysendfile
+
+===================
+Supported platforms
+===================
+
+* Linux
+* OSX
+* FreeBSD
+* Dragon Fly BSD
+* SunOS
+* AIX (non properly tested)
+
+Python versions from 2.5 to 3.3 by using a single code base.
+
+=============
+Example usage
+=============
+
+::
+
+    import socket
+    import errno
+    from sendfile import sendfile
+
+    file = open("somefile", "rb")
+    sock = socket.socket()
+    sock.connect(("127.0.0.1", 8021))
+    offset = 0
+
+    while 1:
+        try:
+            sent = sendfile(sock.fileno(), file.fileno(), offset, 4096)
+        except OSError, err:
+            if err.errno == (errno.EAGAIN, errno.EBUSY):  # retry
+                continue
+            raise
+        else:
+            if sent == 0:
+                break  # done
+            offset += sent

@@ -1,0 +1,216 @@
+CHANGES
+=======
+
+0.99.1
+------
+
+* release 0.99.1
+* Add docs for verbose rule
+* Add verbose reporting of request and response
+
+0.99.0
+------
+
+* Begin the 1.0 slide
+* Fix example typos
+* Add an example.rst containing a commented YAML example
+* Ensure defaults update correctly
+* Ensure response handlers are initialized in gabbi-run
+* Update docs to add and accomdate gabbi-run
+* Ensure gabbi-run exit code on failure is non-zero
+* Add a command line to to run yaml-tests from stdin
+* Wrap the http request to trap WSGIAppError and reraise
+* Documentation clarifications
+* Only preprocess in handlers if there are assertions
+* Update docs and rename cleanup to preprocess
+* Attempt to clarify response handler documentation
+* Cover HeadersResponseHandler a bit more
+* Adjust the ResponseHandler to require less of subclasses
+* Improve error message
+* Make response handlers more pluggable
+* Avoid adding the handlers multiple times
+* Change around the response handlers to be classes
+* add missing critical handlers file
+* Add the basics of a response handler extension system
+* Fix typo
+
+0.12.1
+------
+
+* release 0.12.1 fixing lambda bug
+
+0.12.0
+------
+
+* release 0.12.0
+* Allows templating dict in response_json_paths
+
+0.11.0
+------
+
+* release 0.11
+* Error if build_tests has no host or intercept
+* Remove useless usage of lambda
+* Cleanup case module for increased clarity
+
+0.10.0
+------
+
+* Document request_headers template use
+* Allow templating headers
+* docs typo
+
+0.9.0
+-----
+
+* release 0.9.0
+* Document the change to template handling
+* Refactor in an effort to make case less complex
+* Collapose template handling to one controlling method
+* Add support for skipping an entire suite
+
+0.8.0
+-----
+
+* pep8 cleanups and release 0.8.0
+* Enable $RESPONSE handling in response_headers
+* All references to prior response headers in the current test
+* add covered to requirements
+* add travis irc notifications
+* Neither assume a content-type nor blow up when its missing
+* Ignore .eggs
+
+0.7.1
+-----
+
+* Preserve JSON response data even when there is a failure
+
+0.7.0
+-----
+
+* release 0.7.0
+* fix typo
+* Add support for skipping or expecting failure on a test
+* Make the test-limit test more robust
+
+0.6.0
+-----
+
+* Update docs for $RESPONSE changes
+* Handle $RESPONSE templates in the current response
+
+0.5.1
+-----
+
+* release 0.5.1
+* pep8 corrections
+* Add a cover tox target to do coverage
+* Add a limit tox target
+* Correctly handle fixtures when selecting limited tests
+* Provide a more descriptive message on missing header
+* Formatting cleanups
+* Raise an error if a test has no name
+* Remove explicit requirement on testtools
+* Update interception doc
+
+0.5.0
+-----
+
+* Delay wsgi interception until after fixtures
+
+0.4.0
+-----
+
+* Allow a fixture to cause a file to skip all tests
+* Extract SimpleWsgi to its own module
+* README.rst: Nicer formatting for commands
+
+0.3.3
+-----
+
+* Correct test naming
+
+0.3.2
+-----
+
+* release 0.3.2
+* update readme with additional docs link
+* Don't include version and release info in docs
+* Extract loading test data from yaml to own method
+
+0.3.1
+-----
+
+* Release 0.3.1
+* Be more informative when JSONpaths do not match
+
+0.3.0
+-----
+
+* release 0.3.0
+* Make regexpmatch assertion message a bit more clear
+* Allow regexp for response header expected values
+
+0.2.0
+-----
+
+* prep 0.2.0 release
+* Add some documentation for fixtures
+* Note why nest is needed
+* Change fixtures to be context managers
+
+0.1.1
+-----
+
+* Prep 0.1.1 release
+* Update the format information with data's capabilities
+* Constrain the data file being loaded via yaml
+* Correct flake8 ignoring of docs dir
+* Don't bother with docs coverage at this time
+* Update the target host information
+* Update the YAML format docs
+* Point the docs bullet somewhere useful
+* Add docs badge
+* Make a make rule for making the docs
+* Add some initial doc files
+* Initial commit of sphinx infrastructure
+* Automate test and build a bit more
+
+0.1.0
+-----
+
+* Extract classes to their own files
+* Add some docs to GabbiFixture
+* Start fixtures at the suite level not the TestCase
+* Implement declarable fixtures
+* Allow request body to come from data structure or file
+* Update gabbi driver to reflect new test handling
+* Extract live tests a separate test file
+* Add image and link to travis
+* Add support for automated travis tests
+* Add tox to test-requirements
+* Update method ordering to be more correct
+* Allow reference to the prior test response
+* Allow a request to follow redirects
+* Tune up variable and yaml key names
+* Change json response validation to use jsonpath
+* Establish inheritable defaults per yaml file
+* Allow multiple acceptable status codes in response
+* Several content-decoding related bug fixes
+* Provide a $LOCATION, $NETLOC, $SCHEME variables in YAML
+* Add a testing section to README
+* Nest the tests in a test key in the YAML
+* If a URL has a scheme, use it directly
+* Enable actual HTTP request testing
+* reorder classes and top level methods
+* fix some RST
+* More documentation cleanup
+* Add some docstrings and a bit more README
+* Get rid of testresources, too much complexity
+* update readme with warning
+* Latest fighting
+* Produce tests which have dependencies on others tests
+* Read yaml to inspire tests
+* Extract a driver that loads yaml from a directory
+* Initial stab at a metaclass test generator
+* initial commit

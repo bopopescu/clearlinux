@@ -1,0 +1,263 @@
+CHANGES
+=======
+
+1.2.0
+-----
+
+* Updating Django requirements to allow 1.7
+* Fix test error for Django1.7
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Removing python 2.6 support
+* Imported Translations from Transifex
+* Updated parsing of catalog to handle bad format
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Add websso redirect test
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Hash token only for ASN1 and PKIZ tokens
+* Imported Translations from Transifex
+* Add authentication using openID and SAML
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Add token auth plugin
+* Make list_projects a method of auth plugin
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Rename AUTH_PLUGINS option
+* Follow ups to Authentication Plugins
+* Expose keystone client version as a plugin property
+* Create plugin model for DOA authentication
+* Updated from global requirements
+* Imported Translations from Transifex
+* Updated from global requirements
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Updated from global requirements
+* Imported Translations from Transifex
+* Fix H405 docstring issue
+* Updated from global requirements
+* Allow running individual tests via tox
+* Move to hacking 0.10
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Updated from global requirements
+* Imported Translations from Transifex
+
+1.1.9
+-----
+
+* Imported Translations from Transifex
+* Add defaulting of services_region in User class
+* Relocating policy engine from openstack_dashboard
+* Use keystone auth plugins
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Allow an empty region list
+* Attempt to scope only to enabled projects
+* Add call to KS V3 revoke_token on logout
+* add last_activity to session
+* Workflow documentation is now in infra-manual
+* Use standard test loading features
+
+1.1.8
+-----
+
+* Horizon login page contains DOS attack mechanism
+* Domain enabled login screen needs focus on Domain field
+* Make region sticky on Login page
+* Imported Translations from Transifex
+* Make region and project sticky
+* Updated the installation instructions
+* Remove admin role name 'admin' hardcode in User.is_superuser()
+* Imported Translations from Transifex
+* Fix inability to switch region via Switch Region dropdown
+* Updated from global requirements
+* Bump hacking to 0.9.x series
+* Remove compiled message catalogs
+* extract mock setup methods
+
+1.1.7
+-----
+
+* Updated from global requirements
+* Updated from global requirements
+* Set DJANGO_SETTINGS_MODULE envvar in doc/source/conf.py
+* Adding django kwargs to login and logout views
+* Fix Django 1.7 compat
+* Work toward Python 3.4 support and testing
+* Consider old version of token without 'user_domain_name' attr
+* Added url_path_replace and has_in_url_path methods
+* Configurable token hashing algorithm
+* Add user_domain_name in the user object
+* Updated from global requirements
+* Updated from global requirements
+* Updated from global requirements
+* Adding log message for keystone API mismatch
+* Cache the User's Project by Token ID
+* Fix H4xx docstring issues
+* Replace UserManager/TenantManager with None in tests
+* Imported Translations from Transifex
+* Add CONTRIBUTING.rst
+* Imported Translations from Transifex
+* Updated from global requirements
+* Adding back the forms.Login import
+
+1.1.6
+-----
+
+* Hash the token id if it is over a maximum length
+* Restore "redirect to login page after logout" behaviour
+* Minor update to the readme file
+* Add license header to exceptions.py
+* Fix H301 and H304 hacking issues
+* Updated from global requirements
+* Set default auth_url from django settings when auth_url is None
+* Disable H803 check
+* Add the Python 3 classifiers
+* Do not use Exception.message
+* Redirect the user if they're already logged in
+* Fix translation setup
+* Updated from global requirements
+* Use the latest Django 1.4 release to test
+* Adding check for service roles to match users region selection
+* Updated from global requirements
+* Fix whitespace issues found by Pep8 1.5.4+
+* Fix typo of ANS1 to ASN1
+* Updated from global requirements
+* Add tox env to build docs
+* Fix H306 imports not in alphabetical order
+* Fix remaining PEP8 (E***) and PyFlakes (F***) issues
+* Make Hacking E1XX compliant
+
+1.1.5
+-----
+
+* Updated from global requirements
+* Import translations
+* Reverting default keystone API to v2.0
+* Adding Django 1.6 support
+* Updated from global requirements
+* TestResponse: use a default status code
+* Use mox3 rather than mox
+* Use six.moves.urllib.parse instead of urlparse
+* Updated from global requirements
+* Sort project list by name
+* Switch over to oslosphinx
+* moves default keystone API to v3
+
+1.1.4
+-----
+
+* updating version specification
+* Have tox install via setup.py develop
+* Updated from global requirements
+* Support Django 1.4, 1.5 and 1.6
+* Require user to be logged in when switching regions
+* Fixed urls import
+* Fix django.conf.urls.defaults imports
+* Refresh request.user on session updates
+* Pass OPENSTACK_SSL_CACERT setting to keystone
+* Giving focus on username field on log in page
+
+1.1.3
+-----
+
+* Bump version for 1.1.3
+* Import translations from Transifex for Havana RC1
+* Add I18N related configurations
+* Revoking token when switching tenant or loging out
+* Add Apache2 licence header in data_v3.py
+* Make auth backend use OPENSTACK_ENDPOINT_TYPE parameter from settings
+* Missing check, supporting changes in horizon for middleware changes
+* Update message translation files
+* Align with OpenStack project standards
+
+1.1.2
+-----
+
+* Bump version for H3 release
+* Try to scope token for all available projects
+
+1.1.1
+-----
+
+* Bumping version for release
+* Fix issue with V3 Authentication
+* Add tox.ini file and flake8 ignores
+* Add OpenStack .gitreview file
+* Dump version for release w/ v3 auth
+* Add capability for Keystone V3 Authentication
+* Fix testsuite after "Support keystoneclient 0.2.5+"
+* Support keystoneclient 0.2.5+
+
+1.0.11
+------
+
+* Adding missing files from docs to sdist tarball
+
+1.0.10
+------
+
+* Bumping version for PyPI release
+* Adding basic multi-region support
+* Add username on the log for logout and rescope
+* fix typo
+* Add logging on logout and token rescoping
+* Add logging for success/failed login
+* Bump version for release to PyPI
+* setting of SECRET_KEY is required for Django-1.5
+* Bump version for new release to PyPI
+* Fix unit tests after adding insecure flag
+* Allow insecure authentication Pass through the value of OPENSTACK_SSL_NO_VERIFY from settings.py to keystoneclient. This allows connecting to servers with self-signed or otherwise invalid certificates for testing purposes. It extends commit 8759ad4804271d0f86eed514a8007157f44d4ba4
+* Updated User object for Django 1.5 compatibility
+* Fix compatibility with Django < 1.4.3
+* Allowing for more complex combinations of permissions. Will check for logical AND of all top level permissions. Will use logical OR for all first level tuples (check that use has one permissions in the tuple)
+* Bump version for new release
+* Support custom redirect url from the 'switch' view
+* Turn log level down for failure on delete token
+* Fixing tests that broke in transition to python-keystoneclient v0.2
+* Update openstack_auth/views.py
+* missed obvious bug when moving to new thread
+* Fixed l10n bugs and added zh_CN translation
+* Added german translation
+* horizon bug 1079832 Logout does not revoke the tokens created, correcting to keep tuple of endpoints and clients
+* Allow insecure authentication
+
+1.0.6
+-----
+
+* Fixes compatibility with keystoneclient v0.2
+
+1.0.5
+-----
+
+* Improves error handling; fixes failing test
+* Slimming down the session size
+
+1.0.3
+-----
+
+* Use the MD5 hash of PKI-signed tokens
+
+1.0.2
+-----
+
+* Bumping version number for bugfix release with redirect fix
+* Fix redirection in logging form
+* Bumping version number for permission support release
+* Adds permissions support
+* Catch AuthorizationFailure
+* Adding manifest file
+* Fixed typo in readme
+* Added docs to readme
+* Adding a few translation files
+* Adds docs
+* Check for expired tokens during authentication
+* Added note about unit tests
+* Fixed README typo
+* Initial commit

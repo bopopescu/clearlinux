@@ -1,0 +1,30 @@
+\name{hour}
+\alias{hour}
+\alias{hour<-}
+\title{Get/set hours component of a date-time.}
+\usage{
+  hour(x)
+}
+\arguments{
+  \item{x}{a date-time object}
+}
+\value{
+  the hours element of x as a decimal number
+}
+\description{
+  Date-time must be a POSIXct, POSIXlt, Date, Period,
+  chron, yearmon, yearqtr, zoo, zooreg, timeDate, xts, its,
+  ti, jul, timeSeries, and fts objects.
+}
+\examples{
+x <- ymd("2012-03-26")
+hour(x)
+hour(x) <- 1
+hour(x) <- 25
+hour(x) > 2
+}
+\keyword{chron}
+\keyword{manip}
+\keyword{methods}
+\keyword{utilities}
+

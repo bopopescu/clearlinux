@@ -1,0 +1,35 @@
+# Default transient preset configuration
+
+enable remote-fs.target
+enable getty@.service
+enable systemd-timesyncd.service
+enable systemd-networkd.service
+enable systemd-resolved.service
+enable systemd-networkd-wait-online.service
+
+# rootfs should be mounted rw by default some other way
+enable remount.service
+
+# Require a locale-archive file
+enable locale-archive.service
+
+# We want UTF-8 locale by default
+enable clr-locale.service
+
+enable sshd.socket
+enable uuidd.socket
+enable docker.socket
+enable libvirtd.socket
+
+enable clr_debug_daemon.service
+enable clr_debug_fuse.service
+enable clr-power.service
+
+enable ister.service
+
+enable telemd.socket
+enable telemd.path
+
+enable cloud-*.service
+
+disable *

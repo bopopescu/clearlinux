@@ -1,0 +1,246 @@
+CHANGES
+=======
+
+0.4.0
+-----
+
+* Migrated auth.py and related unit tests from tempest
+* Support specifying the tempest git URL
+* Migrate token clients to tempest-lib
+* Always print info logs from the rest client requests
+* Add api docs to the rest client
+* Updated from global requirements
+* Handle missing launchpadlib gracefully
+
+0.3.0
+-----
+
+* Move data_utils functionaly from tempest
+* Summarize expected failures
+* Improve the library's documentation
+
+0.2.1
+-----
+
+* Enable stdout passthrough for subunit-trace
+* Switch to using oslo.log from library
+* Migrate skip_tracker.py from tempest
+
+0.2.0
+-----
+
+* Migrate the skip_because decorator from tempest
+* Move api_version to a class value
+* Separate Forbidden exception from Unauthorized
+* Fix typo: clien => client
+* Make rest_client exception inheritances easy
+* Remove unused exceptions
+* Add RateLimitExceeded test case
+* Fix migrate_from_tempest script to work with multiple files
+* Updated from global requirements
+
+0.1.0
+-----
+
+* Migrate rest_client to tempest-lib from tempest
+* Default the worker number to 0 not NaN
+
+0.0.4
+-----
+
+* Fix subunit-trace on python < 2.7
+* Update base.py to include python-openstackclient
+
+0.0.3
+-----
+
+* bring over fail only functionality from nova
+* Updated from global requirements
+* Fix migration script to use original SHA1 from tempest's commits
+* Workflow documentation is now in infra-manual
+* Add pretty_tox.sh wrapper script to use subunit-trace
+* Switch to elapsed time in subunit-trace summary
+* Drop version string from setup.cfg
+
+0.0.2
+-----
+
+* Fix inheritance order in BaseTestCase
+* Bump version string
+
+0.0.1
+-----
+
+* Don't edit commit history with migrate from tempest tool
+* Remove a duplicate ignore rule of pep8
+* Remove unused method and variable in base.py
+* Setup subunit-trace as an entry point
+* Migrated subunit-trace.py from tempest
+* Ignore cover directory from the git repository
+* Add docs for docstrings in cli to sphinx output
+* Cleanup documentation for cli execute code
+* Add merge_stderr option to all client methods
+* Add the cli_dir argument to nova-mange's execute call
+* Remove admin param from client method definitions
+* Add missing log_format definition
+* Remove versionutils use in cli framework
+* Stop using oslo logging
+* Move cli asserts to test class
+* Update some stale info from cookiecutter
+* Add tool to migrate files from tempest into lib
+* Add a new base cli test class
+* Fix the coverage job in tox
+* Update the requirements files
+* Inital oslo-incubator sync
+* Update hacking ignore list and pep8 clean
+* Clean up and move cli test base
+* Move tempest exceptions to tempest_lib dir
+* Simplify and move tempest test.py to lib dir
+* Initial commit from cookiecutter
+* Remove functionality to load json files
+* Allow dict's as schema definitions
+* Enable E128 ignore E129
+* Change 'ceilometer' tag to 'telemetry' and add tags to cli tests
+* Add min_client_version decorator for CLI tests
+* Add min_client_version decorator for CLI tests
+* Move CommandFailed exception to tempest.exceptions
+* Move CommandFailed exception to tempest.exceptions
+* Fix exception when api_extensions is set to empty
+* Make sure cli CommandFailed prints out stdout and stderr
+* Make sure cli CommandFailed prints out stdout and stderr
+* Add three new CLI tests of sahara
+* Always pass str to shlex.split for py26 compat
+* Remove unnecessary log message
+* Added service "data_processing" to service list
+* Add Ceilometer client for scenarios tests
+* Added swift CLI test cases
+* Enable E251,E265 rules ignore H402
+* make logformat more similar to oslo
+* Enforces the use of Credentials (part2)
+* Add a lacking message format letter 's'
+* Add a response header validation
+* Move exceptions back into one place
+* safe_setup preserve original trace
+* Adds Ironic test_baremetal_basic_ops scenario test
+* Deduplicate negative test calls
+* Add unit tests for cli.output_parser
+* Add a new exception for invalid structure
+* Move to the python-saharaclient
+* don't log cli output on success
+* Add error handling if testscenarios aren't supported
+* Introduce load_tests mechanism for negative tests
+* Support endpoint type in CLI tests
+* change teardown check to LOG.error
+* Rename Savanna to Sahara
+* Fix issue with pep8 gate job
+* Improve readability of test_networks
+* cleanup resources in setUpClass if exception raised
+* Add support for negative tests with admin client
+* Add multiple negative test generator support
+* Implement pluggability for tempest (exceptions)
+* Adds cinder backup functional tests
+* Mildly wound the interlopers
+* Add basic Savanna CLI tests
+* Ensure that bug number is actually a number for skip_because
+* Rename Openstack to OpenStack
+* Define py27 assertFoo methods for py26
+* Negative tests: Add result check for resources
+* Negative test autogeneration framework
+* Add skips to the services decorators
+* Fix services decorator to use object_storage
+* Remove last uses of config without global CONF object
+* Convert cli tests to use global CONF object
+* Enable tenant isolation for the boto tests
+* Fixed up an error message
+* Cleanup exceptions
+* Remove vim headers
+* Create only necessary resources for compute v2 and network tests
+* Make network resource creation in isolation configurable
+* Add a discoverable_apis option for swift
+* Add basic read-only tests for heat cli
+* moving to global lazy loaded config
+* Enable HostsAdminTestXML
+* Add config options for enabled extensions
+* Handle rest client 500 response if non-json body
+* Fixing ImageKilledException raising
+* Add missing CLI Neutron tests
+* Fix default values so they work in a devstack run
+* Preserve the configured log level
+* Early die if on image gets killed
+* RunTimeError on tearDownClass explained
+* Refactor duplicate isolated creds code
+* Adds initial ceilometerclient testing code
+* Changed the exception name
+* Fix skip_because decorator
+* introduces skip_because decorator
+* Replace OpenStack LLC with OpenStack Foundation
+* fix pep8 errors: E231, E128
+* Fixes some typos in tempest
+* Remove wait_for_image_resp_code
+* Add @services decorator
+* Add handling for inherited stress attributes
+* KeyError when tearDownClass called from setUpClass
+* Always log stdout and stderr of CLI commands
+* Create discovery option for stress tests
+* Fixed up a missing space in an error message
+* cli: add messages to assertTrue
+* Fixing the rest of the comment spacing issues
+* per test_method logging
+* setUpClass/tearDownClass full chain
+* Add tenant isolation for scenario tests
+* Rework class inheritance for scenario tests
+* Make CLI timeout tests configurable
+* Switch to using Oslo logging
+* Add environmental variables to test.conf
+* Add Neutron CLI tests to tempest
+* Simplify whitebox/manager
+* Use nose skip exception conditionally
+* Move isolated credential code to BaseTestCase
+* Add large_ops scenario test
+* Add cinder CLI tests to tempest
+* Use the same logger class in all test cases
+* Use os.path.join to form the cli command
+* Use Python 3.x compatible syntax constructs
+* Loosen constraints on Swift status codes
+* Configure logging format flexibly
+* Smoke attribute implies gate attribute
+* add scenario directory
+* A Heat client which does basic stack operations
+* Permits a list of values for the "type=" tests attribute
+* move cli directory into new tree structure
+* make status_timeout a method
+* Declare the config attribute in a simpler way
+* Fix status_timeout incorrectly referencing self
+* Make CLI tests python2.6 compatible
+* Remove smoke.py and clean up base test classes
+* Catching new exception while disassociating a disassociated floating ip
+* Prepare base test class for CLI tests
+* Have all test case to use a single base class
+* T4xx fixes
+* Add an images client
+* Add generic nose/testtools attr decorator
+* Add a volume from snapshot test case
+* clean the unittest2
+* Derivate most of the RestClient's exception from the failureException
+* Use testtools as the base testcase class
+* Fix T401 and T402 errors
+* fix formatting errors to help debugging
+* Empty Body testing according to the RFC2616
+* Add start of the EC2/S3 API testing to tempest
+* Refactor status_timeout() methods in tempest.test
+* Fix ssh.Client retval and deadlock danger LP#1038561
+* Provide more default clients for smoke tests
+* Addition of base Smoke and Whitebox tests
+* Add skip for disabled user test until associated bug is fixed
+* Added an AddImageException to exceptions.py and modified images_client to use this exception rather than BuildErrorException
+* Adds instance_utils library and initial SSH tests
+* Fixes bug 972673-Incorrect named parameters in BuildErrorException in test_volumes_list
+* Addresses lp#940832
+* Addresses lp#942382 - refactor configuration for clarity
+* Fixes LP#920812 - KeyError: 'overLimit' on 413 return
+* Rework exceptions in Tempest
+* RestClient to target specific services in Keystone catalog
+* Added filter tests to list images tests, addresses lp bug 900088
+* General test cleanup
+* PEP8 fixes
+* Changes the namespace from storm to tempest, as well as adding addition tests and improvements * Changed namespace from storm to tempest * Added absolute limits service and server personality file tests * Optimized run time for image metadata tests * Added additional assertions for create server and rebuild server tests * Removed any SSH verification until further decisions are made

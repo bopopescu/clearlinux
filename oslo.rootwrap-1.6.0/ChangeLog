@@ -1,0 +1,122 @@
+CHANGES
+=======
+
+1.6.0
+-----
+
+* Remove env changing support in daemon mode
+* Updated from global requirements
+* Updated from global requirements
+* Add bug link to README
+
+1.5.0
+-----
+
+* Add cross-testing script
+* Updated from global requirements
+* Move files out of the namespace package
+* Activate pep8 check that _ is imported
+* Workflow documentation is now in infra-manual
+
+1.4.0
+-----
+
+* Updated from global requirements
+* Updated from global requirements
+* Correct filters examples in README.rst
+* Updated from global requirements
+* Fix exit of subprocess in case it was terminated by signal
+* Updated from global requirements
+* Support building wheels (PEP-427)
+* Updated from global requirements
+
+1.3.0
+-----
+
+* Clean up title on main doc page
+* Initial cut of documentation for oslo.rootwrap
+* Add a short doc to README on how to use daemon mode
+* Fix the bug tracker URL in CONTRIBUTING.rst
+* warn against sorting requirements
+* Updated from global requirements
+
+1.3.0.0a2
+---------
+
+* Add daemon mode to benchmark
+* Add an option to run rootwrap as a daemon
+* Refactor common parts from cmd to wrapper
+* Add basic benchmark
+* Remove sys.path modification
+* Move test requirement coverage into tox.ini
+* Enabled hacking check H305
+* Continue on failure of leaf filters of chaining filters
+
+1.3.0.0a1
+---------
+
+* Let tests pass on distros where "ip" is in /bin
+* Bump hacking to 0.9.x series
+* Avoid usage of mutables as default args
+* Simplify the flow in RegExpFilter
+* Add ChainingRegExpFilter for prefix utilities
+* Fix Python 3 support, add functional test
+* Fix import grouping
+* Remove unused variable 'command'
+* Run py33 test env before others
+
+1.2.0
+-----
+
+* Avoid matching ip -s netns exec in IpFilter
+* Don't use system pip things in tox
+* Add Python 3 trove classifiers
+* To honor RFC5424 add use_syslog_rfc_format config option
+* Trivial changes from oslo-incubator
+
+1.1.0
+-----
+
+* Discontinue usage of oslo-rootwrap
+* Add missing oslo/__init__.py
+* Fix spelling errors in comments
+
+1.0.0
+-----
+
+* Use oslo-rootwrap in config directory names
+* Ship with etc/oslo.rootwrap instead of etc/oslo
+* Add a complete README.rst
+* Add .gitreview for oslo.rootwrap
+* Add standalone project packaging support files
+* Make Rootwrap python3-compatible
+* Make tests not depend on openstack.common stuff
+* Move files to new locations for oslo-config
+* Skip hidden files while traversion rootwrap filters
+* Fix os.getlogin() problem with no tty
+* Send rootwrap exit error message to stderr
+* rootwrap: improve Python 3 compatibility
+* Replace using tests.utils part2
+* Fixes files with wrong bitmode
+* Remove DnsmasqFilter and DeprecatedDnsmasqFilter
+* Handle empty arglists in Filters
+* Handle empty PATH environment variable
+* Add IpFilter, IPNetnsExecFilter and EnvFilter
+* Handle relative path arguments in Killfilter
+* Enable hacking H404 test
+* Enable hacking H402 test
+* Update KillFilter to stop at '\0' for readlink() function
+* Stylistic improvements from quantum-rootwrap
+* Use print_function __future__ import
+* Revert common logging use in rootwrap
+* Improve Python 3.x compatibility
+* Replaces standard logging with common logging
+* Move bin/ scripts to entrypoints
+* Add PathFilter to rootwrap
+* update OpenStack, LLC to OpenStack Foundation
+* Fix Copyright Headers - Rename LLC to Foundation
+* Replaced direct usage of stubout with BaseTestCase
+* Use testtools as test base class
+* Remove unused etc/openstack-common.conf.test
+* Fix pep8 E125 errors
+* Move rootwrap code to openstack.common

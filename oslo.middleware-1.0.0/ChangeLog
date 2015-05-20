@@ -1,0 +1,106 @@
+CHANGES
+=======
+
+1.0.0
+-----
+
+* Updated from global requirements
+
+0.5.0
+-----
+
+* Update the list of packages in setup.cfg
+* Updated from global requirements
+* Adds missing files
+
+0.4.0
+-----
+
+* Fixes the healthcheck factory method and docs
+* add shortcut to healthcheck middleware
+* Updated from global requirements
+* Move i18n module to a private name
+* Update Oslo imports to remove namespace package
+* Add healthcheck middleware
+* Updated from global requirements
+* Fix bug tracker link in readme
+
+0.3.0
+-----
+
+* Move files out of the namespace package
+* Don't use default value in LimitingReader
+* switch to oslo.context
+* Workflow documentation is now in infra-manual
+
+0.2.0
+-----
+
+* Updated from global requirements
+* Updated from global requirements
+* Flesh out the README
+* Imported Translations from Transifex
+* Updated from global requirements
+* Add pbr to installation requirements
+* Updated from global requirements
+* Updated from global requirements
+* Remove extraneous vim editor configuration comments
+* Imported Translations from Transifex
+* Support building wheels (PEP-427)
+* Fix coverage testing
+* Expose sizelimit option to config generator
+* Imported Translations from Transifex
+* Imported Translations from Transifex
+* Updated from global requirements
+* Imported Translations from Transifex
+* Remove oslo-incubator fixture
+
+0.1.0
+-----
+
+* Updated from global requirements
+* Setup for translation
+* Work toward Python 3.4 support and testing
+* warn against sorting requirements
+* Update docs for first release
+* expose middleware through oslo.middleware
+* add doc generation support
+* drop middleware suffix in class names
+* fix pep8 issues
+* Fixed syntax of the HACKING.rst file
+* Enable hacking check H305
+* Cleaning up index.rst file
+* replace with oslo.i18n
+* remove stray tests
+* initial oslo.middleware checkin
+* exported from oslo-incubator by graduate.sh
+* pep8: fixed multiple violations
+* Use moxstubout and mockpatch from oslotest
+* Improve help strings
+* Use oslotest instead of common test module
+* sizelimit: port to Python 3
+* Don't store the request ID value in middleware as class variable
+* Python 3: enable tests/unit/middleware/test_request_id.py
+* Update oslo log messages with translation domains
+* Small edits on help strings
+* Middleware to catch all error in WSGI pipeline
+* Use hacking import_exceptions for gettextutils._
+* Middlelware to ensure request ID
+* middleware.sizelimit: stop importing wsgi
+* Use six.iteritems to make dict work on Python2/3
+* Trivial: Make vertical white space after license header consistent
+* Remove vim header
+* Remove uuidutils imports in oslo modules
+* Revert "Removes generate_uuid from uuidutils"
+* Removes generate_uuid from uuidutils
+* Replace using tests.utils part1
+* Bump hacking to 0.7.0
+* middleware: code cleanup
+* Enable H302 hacking check
+* Enable hacking H404 test
+* Move wsgi module to deprecated package
+* python3: python3 binary/text data compatbility
+* Use stubout in test_correlation_id
+* Add Middleware for correlation_id
+* Add middleware to limit size of HTTP requests
+* Initial skeleton project

@@ -1,0 +1,341 @@
+CHANGES
+=======
+
+1.0.9
+-----
+
+* Replication V2
+* Add coverage library
+* Fixed issues while using --bypass-url
+* Clean up remaining references to TROVE_URL
+* Correct order of parameters to assertEqual
+* Updated from global requirements
+* Changed documentation for datastore parameter for configuration-create
+* Fix grammatical errors in profiler messages
+* TroveClient API Documentation cleanup
+* Updated from global requirements
+* Show '-' for size when volume support disabled
+* Handle obsolete and unused oslo modules
+* Fixed typo in exception message
+* Pass all kwargs through to adapter
+* default endpoint_type to 'publicURL'
+* Fallback to flavor's str_id when id is None
+* Add profiling support to Trove client
+* Remove RAX-specific auth in troveclient
+* Add instance name as parameter to CLI
+* Associate flavor types with datastore versions
+* Workflow documentation is now in infra-manual
+* Updated from global requirements
+* Fixes client to send 0 for min/max size
+
+1.0.8
+-----
+
+* Adds support for Keystone V3 API
+* Updated from global requirements
+* Reverse fix for 1323866 as it regressed trove CLI
+* Adds support for Keystone V3 API
+* Updated from global requirements
+* Fixed typo in doc/source
+* Fixes trove show output
+* Updated from global requirements
+* Fix universal wheel support
+* Use OpenStack branding for trove client
+* Fix Cluster-Create and Cluster-Show Response
+
+1.0.7
+-----
+
+* Update the README.rst with latest help
+* Use 'replica' instead of 'slave'
+* adding configuration parameters mgmt api
+* Work toward Python 3.4 support and testing
+* Clusters troveclient Implementation
+
+1.0.6
+-----
+
+* Add a drop config-grp command in update instance
+* Updated from global requirements
+* Add new command: detach-replica
+* Add visibility filter to datastore versions
+* Clean up shell display of slave info
+* Updated from global requirements
+* Improve help text for --size option
+* Use JSON instead of json in the parameter descriptions
+* Add CONTRIBUTING.rst
+* Updated from global requirements
+* Add datatore/version name into configuration view
+* Fix shell view for secgroup-* commands
+* Add 'slave_of' option for enabling replication
+* Overwrite HelpFormatter constructur to extend argument column
+* Added optional marker/limit to list command
+* Adding command for copying backups
+* Add datastore filter to backup-list
+* Updates root-enable & root-show help messages
+* Rename resize-flavor subcommand to resize-instance
+* Updated from global requirements
+* Updates README with current trove help output
+* Fixed positional order of arguments
+* Add instance_metadata functionality to the trove python library
+* Fix trove help for show and flavor-show
+* Corrects trove-client output
+* Mark troveclient as being a universal wheel
+* replaced e.message
+* fixed several pep8 issues
+* Fixed trove CLI help inconsistencies
+* Added check for empty attributes in trove CLI
+* Changes configuration_ref to configuration
+* Enabled F821, H306, H402, and H404 flake8 rule
+* Allow users the ability to update the instance name
+* Fix trove help for datastore-version-list and -show
+* Fix trove CLI help UUID references
+* Correct grammar in trove CLI help
+* Fix building of documentation
+* Updated from global requirements
+* Make port-id and net-id keys mutually exclusive
+* Remove Duplicate ClientExceptions and Merge
+* Changed Trove CLI list headers to match Nova CLI
+* Updated from global requirements
+
+1.0.5
+-----
+
+* Correct mis-spelling in trove CLI help
+* Fixing the compat client create call
+* Fix create call for security group rules
+
+1.0.4
+-----
+
+* Fix database-list via CLI for large # of dbs
+* Fix build_sphinx setup target
+* Get rid of XML related trove client bindings
+* Add Python 3 classifiers
+* Remove arguments deprecated after Diablo
+* Improve help strings
+* Fix JSON In Output for Configuration Groups
+* Adding datastore_version column to instances list table
+* Fixes trove create output
+* Remove dependent module py3kcompat
+* Remove vim header
+* Replace assertEqual(None, *) with assertIsNone in tests
+* adds support for configurations management
+* Remove copyright from empty files
+* Fixes troveclient raising undefined exception ConnectionError
+* Add Neutron support
+* Adding support for incremental backups
+* Use Resource() class from common Oslo code
+* Grants DB access to Users in Instance create API
+* Update to the latest code from Oslo
+* Support Extensions to Trove Client
+* Updates common.check_for_exceptions and its calls
+* Datastores improvements
+* Fixed misspellings of common words
+* Adds volume_used to trove show <instance>
+* Datastore on Show Instance Should Not Be a Dict
+* Add type to volume.total for Mgmt Instance Get
+* Correct database-create Name Help Text
+* Tighten flake8 checks in Gating
+* Updates README with new trove help options
+* Fixes trove help command
+* Add -U to pip install command in tox.ini
+* Adding pagination support for backups
+* Changes trove_client.client.HTTPClient to trove_client.HTTPClient
+* Updated from global requirements
+* Ignore fewer PEP8/flake8 rules
+* Updates .gitignore to ignore *.egg*
+* Updates tox.ini to use new features
+* Added a missing import statement
+* Fixed misspellings of common words
+* Removes unused import statements
+* Allow for compatable auths between new and old CLI
+* Allow --json output override printing dict/list
+* Updated from global requirements
+* Fix Pep8 indentation issues only found with Pep8 1.4.6+
+* Support datastore types
+* IP Address Showing as JSON in Show Command
+* Updated the README file with bypass-url
+
+1.0.3
+-----
+
+* user-list Databases Value is JSON vs a String
+* Usage String has Positionals after Optionals
+
+1.0.2
+-----
+
+* Fixing typos that were in the readme
+* Removing unused files with new client
+* Adding py33 gating to the client
+* Use six.iteritems() in for loop
+* Resolve compatability for troveclient/compat
+* Include troveclient/compat/tests in testr
+* Make use of strutils.to_slug in slugify()
+* Replace basestring with six.string_types
+* Transform print statement to print function
+* Replace g.next() with next(g)
+* Import exceptions module from openstack-common
+* Replace urllib.quote with urlutils.quote
+* Import urlutils module from openstack-common
+* Import exceptions module from openstack-common
+* Fixing copyright and license headers
+* Add --bypass-url option to trove client
+* Fix unicode issue
+* Sync up exceptions.py from oslo
+* change mode to octal for os.makedirs()
+* Removed underscores from the end of some variables
+* Fixed minor typos with trove-client help info
+
+1.0.1
+-----
+
+* Fixes README and shell
+* Fixing the backwards verb/noun cli names
+* Removing lxml/httplib2 depends
+* Fixed bug with showing backups
+* Correct handling args.backup in do_create
+* Enable shell to resize and restart
+
+1.0.0
+-----
+
+* Add support for a service type env var
+* Tweak pbr conf
+* Massive refactoring to the troveclient
+* Remove trove as default value for Service Name
+* Removing reddwarf doc references
+* Replace OpenStack LLC with OpenStack Foundation
+* Adds support for admin to create flavors through mgmt API
+* Fixed cli for root enabled
+* Added support for running the tests under PyPy with tox
+* Added optional availability_zone flag for instance
+* PEP8 with tox -epep8 check fails
+* Removed instance reset_password from python-troveclient
+
+0.1.4
+-----
+
+* Sync with global requirements
+* API for Modify User Attributes - username, host, password
+* Fix Description param for Backups
+* Wildcards in User Host
+* Sync requirements with openstack/requirements
+* Start using pyflakes
+* Add License, AUTHORS and ChangeLog to package
+
+0.1.3
+-----
+
+* Rename from reddwarf to trove
+* Migrate to testr
+* Move to flake8/hacking
+* Update to pbr/d2to1
+* Renamed reddwarfclient repo to troveclient
+* Renaming security group URL API
+* Making the 'volume' param optional
+* Making param 'size' optional for non-volume support
+* Adding GET API to backup
+* Renaming backup_id param
+* Stop appending default host if none is provided
+* Adding backup resource to quota command
+* Use a plain dict for Quotas.show method
+* Enhancing the quota feature to remove the hard requirements for quota update
+* Renaming backupRef to backupId
+* Adding client commands for Backup feature
+* Updated TYPE_MAP for security group rules
+* Adds optional host parameter to users
+* adding the mgmt migrate to specific host api call
+* update dictionary with a comma (minor)
+* Client Side Changes for Security Groups Support
+* Refactored client code and test to consume XML
+* Add absolute limits to api call for rd cli
+
+0.1.2.alpha1
+------------
+
+* Create limits api call
+* Fixes data type bug in get-user call
+
+0.1.2.alpha.1
+-------------
+
+* Updating Dbaas initializer default arguments
+* Bumping version number
+* Bumping version to 0.1.1
+* Quota commands for listing and updating quotas
+* Change defaults for Service name + type
+* Changed version to 0.1.0
+* Require flavor on instance-create call in the CLI
+* User modify functions
+* Fix source code URL + Author
+* Use _pretty_list instead of _pretty_print
+* Ignore rdserver.txt
+* Fixing sphinx docs
+* Bumping version number
+* Adds reset task status mgmt instance action
+* Correcting the types of the values in the returned data
+* adding unit tests for common.py client.py management.py users.py instances.py accounts.py
+* fixing delete method name for Paginated class
+* adding unit tests for base.py
+* Adding unit tests for auth.py
+* Adding pep8 coverage for tests directory, and fixing existing code to comply with pep8
+* Started work on adding unit tests - utils.py and xml.py have 100% coverage
+* Ensure create user API uses specified username
+* Complying with http://wiki.openstack.org/ProjectTestingInterface
+* Correctly delete users
+* Handle action responses that contain a response body
+* Add -h/-? and print_usage to run_local.sh
+* Only pep8 violations fix fix pep8 violations
+* Added gitreview file
+* Updaing the client for mgmt api migrate instance call
+* Fixed bug so properties won't load from token file on login
+* Adding a script to run the client in CI easier
+* Update docs/source/usage.rst
+* No longer load the token file on auth login
+* Moves get_client to _get_client and fixes calls to it in mcli
+* add host action for updating all instances
+* Adding stop command
+* Fixed re-authentication logic to actually use the fresher X-Auth-Token
+* Removes the id from reboot since params and require take care of that now
+* adding hardware info call to management client
+* Minor fixes and tweaks
+* Update setup.py
+* Added a ton of CLI options, plus fixed a CI bug
+* Fixes reference to flavor_id that should be flavor instead
+* Fixed volume_size for size
+* Built common CommandsBase so we can share double-dashed options from the parser between command classes
+* Support for root user reset-password action
+* Made the client send and receive XML
+* Adding tox to Python-RDC to make documenting the client very easy
+* Changed client to allow custom Authenticator classes
+* list all accounts with non-deleted instances
+* Added a "pretty_print" option which makes captured output look even better
+* adding mysql stop and instance reboot commands for management client
+* Moving away from novaclient and adding all the missing pieces into reddwarfclient. - Added parameters for the authentication instead of the arguments. - Cleaned out the HttpClient and Authentication pieces
+* Mgmt Storage device details
+* Mgmt Instances
+* Adding hosts to management CLI
+* Adding back accounts to the mgmt cli
+* Import nova exceptions as our own, so they can be used by importing from our client directly
+* Changing the default auth_strategy from "basic" to None
+* Adding rax auth
+* Removing flavor detail/index and just sticking with flavor list which is the default
+* Au revoir instances/detail. Changing the instances list to just use index
+* Small bugfix, now iterates over users.links like dbs and instances
+* Adds pagination limit and marker to instances, databases, and users indices
+* Saving the last response
+* Fixed error where self was passed unnecessarily to super class __init__, messing up other arguments
+* Added the ability to handle "basic auth" authentication
+* root_enabled_history shortened to root_history
+* PEP8 fixes
+* Updated the root history property names
+* Changing Reddwarf client to use its own request function
+* Fixed a 1/N problem with the client
+* Adding Flavors to the client
+* Updated python-reddwarfclient to work with the newer version of Keystone
+* Updated client to work with newer keystone version
+* Added setup.py. * Added the CLI tool from reddwarf to this repo, made it available as a script. * Added a gitignore
+* Initial copy of reddwarfclient from reddwarf project
+* first commit

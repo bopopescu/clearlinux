@@ -1,0 +1,37 @@
+---
+abstract: 'Provide the stuff missing in List::Util'
+author:
+  - 'Tassilo von Parseval <tassilo.von.parseval@rwth-aachen.de>'
+  - 'Adam Kennedy <adamk@cpan.org>'
+  - 'Jens Rehsack <rehsack@cpan.org>'
+build_requires:
+  Test::More: '0.96'
+configure_requires:
+  Carp: '0'
+  ExtUtils::MakeMaker: '0'
+  File::Basename: '0'
+  File::Copy: '0'
+  File::Path: '0'
+  File::Spec: '0'
+  IPC::Cmd: '0'
+  base: '0'
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 7.04, CPAN::Meta::Converter version 2.150001'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: List-MoreUtils
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  Exporter::Tiny: '0.038'
+  XSLoader: '0'
+resources:
+  bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=List-MoreUtils
+  homepage: https://metacpan.org/release/List-MoreUtils
+  license: http://dev.perl.org/licenses/
+  repository: https://github.com/perl5-utils/List-MoreUtils.git
+version: '0.410'

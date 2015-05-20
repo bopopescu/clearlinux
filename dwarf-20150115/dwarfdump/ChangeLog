@@ -1,0 +1,62 @@
+2015-01-15  David Anderson
+     * dwarfdump.c: dump_unique_errors_table() ifdef out
+       of normal compiles, it is unused. Unused local variables
+       removed.
+       Update version string.
+     * esb.c: Moved stdarg.h include just after stdio.h include
+       for positioning consistency.
+     * globals.h: Added stdarg.h include just after stdio.h
+       include as we use va_list a lot and so stdarg.h
+       is required.
+     * print_debugfission.c: Remove two unused local variables.
+     * print_frames.c: Remove trailing whitespace.
+     * tag_attr.c: #include stdarg.h. Add {} to array initializers
+       output to avoid compiler warning.
+     * tag_common.c: Move stdarg.h include to just after
+       stdio.h for positioning consistency.
+       Update version string.
+     * tag_tree.c: Revised include order to start with
+       globals.h and to not duplicate includes of stdio.h etc.
+       Add {} to array initializers
+       output to avoid compiler warning.
+     * testesb.c: Add include of stdarg.h.
+2015-01-12  David Anderson
+     * tag_common.c: Add comments about va_start, va_end.
+     * esb.c: Add comments about va_start, va_end.
+       Add va_end in the selftest code.
+     * common.c: Update version string.
+     * dwarfdump.c: Update version string. Add va_end()
+       and comments about va_end.
+2015-01-08  David Anderson and Carlos Alberto Enciso
+     * Makefile.in: add selftest: rule, which tests esb.c
+     * dwarfdump.c: Add new options -O file=path, -kD -kG -ku kuf.
+       New checking and reporting features intended to give a
+       report on attribute and tag usage.
+       Update version string.
+     * common.c: Update version string.
+     * esb.c, esb.h: Added new interface using stdarg.
+       Added self-test feature.
+     * dwarf_makename.c: new #pragma (not Linux/Unix related).
+     * print_die.c: Implements collecting the new statistics
+       dwarfdump reports.
+     * print_lines.c: New statistics collected.
+     * tag_attr.c: New checks for the tag/attr table correctness.
+     * tag_attr.list: Fixes duplicated entries.
+     * tag_attr.list_ext: Adds APPLE attribute DW_AT_APPLE_optimized
+       that llvm emits.
+     * tag_common.c: bad_line_input() now allows stdarg calls so
+       its easier to emit good error messages.
+     * tag_common.h: bad_line_input() arg list changed a little. Stdarg now.
+     * tag_tree.c: New tag tree checking done. New statistics
+       available.
+     * tag_tree.list:  Adds DW_TAG_unspecified_type,
+       DW_TAG_rvalue_reference_type,
+       DW_TAG_restrict_type.
+     * tag_tree_ext.list: Adds DW_TAG_GNU_template_template_parameter.
+       Fixes duplication of entries.
+2015-01-05  David Anderson
+     * dwarfdump.c:  Don't call dwarf_finish() if
+       the dwarf-init call failed.
+     * common.c,dwarfdump.c: Updated version string.
+2015-01-01  David Anderson
+     *	A new year begins.

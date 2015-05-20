@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg xmlns:cc='http://creativecommons.org/ns#' xmlns:dc='http://purl.org/dc/elements/1.1/' sodipodi:docname='network-server-symbolic.svg' inkscape:export-filename='/home/sam/source-symbolic.png' inkscape:export-xdpi='270' inkscape:export-ydpi='270' height='16' id='svg7384' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:osb='http://www.openswatchbook.org/uri/2009/osb' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' style='enable-background:new' xmlns:svg='http://www.w3.org/2000/svg' version='1.1' inkscape:version='0.48.5 r10040' width='16.000004' xmlns='http://www.w3.org/2000/svg'>
+  <sodipodi:namedview inkscape:bbox-nodes='true' inkscape:bbox-paths='true' bordercolor='#666666' borderlayer='false' borderopacity='1' inkscape:current-layer='layer1' inkscape:cx='-271.6246' inkscape:cy='-191.15211' gridtolerance='10' inkscape:guide-bbox='true' guidetolerance='10' id='namedview88' inkscape:object-nodes='true' inkscape:object-paths='true' objecttolerance='10' pagecolor='#333333' inkscape:pageopacity='1' inkscape:pageshadow='2' showborder='false' showgrid='false' showguides='true' inkscape:showpageshadow='false' inkscape:snap-bbox='true' inkscape:snap-bbox-edge-midpoints='false' inkscape:snap-bbox-midpoints='false' inkscape:snap-center='false' inkscape:snap-global='true' inkscape:snap-grids='true' inkscape:snap-intersection-paths='true' inkscape:snap-midpoints='true' inkscape:snap-nodes='true' inkscape:snap-object-midpoints='true' inkscape:snap-others='true' inkscape:snap-page='false' inkscape:snap-smooth-nodes='true' inkscape:snap-to-guides='true' inkscape:window-height='701' inkscape:window-maximized='0' inkscape:window-width='1362' inkscape:window-x='0' inkscape:window-y='28' inkscape:zoom='1'>
+    <inkscape:grid color='#000000' dotted='false' empcolor='#0800ff' empopacity='0.4627451' empspacing='4' enabled='true' id='grid4866' opacity='0.16470588' originx='-506px' originy='-646px' snapvisiblegridlinesonly='true' spacingx='0.25px' spacingy='0.25px' type='xygrid' visible='true'/>
+  </sodipodi:namedview>
+  <metadata id='metadata90'>
+    <rdf:RDF>
+      <cc:Work rdf:about=''>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource='http://purl.org/dc/dcmitype/StillImage'/>
+        <dc:title>Moka Symbolic Icon Theme</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title id='title8473'>Moka Symbolic Icon Theme</title>
+  <defs id='defs7386'>
+    <linearGradient id='linearGradient5606' osb:paint='solid'>
+      <stop id='stop5608' offset='0' style='stop-color:#000000;stop-opacity:1;'/>
+    </linearGradient>
+    <filter inkscape:collect='always' color-interpolation-filters='sRGB' id='filter7554'>
+      <feBlend inkscape:collect='always' id='feBlend7556' in2='BackgroundImage' mode='darken'/>
+    </filter>
+  </defs>
+  <g inkscape:groupmode='layer' id='layer9' inkscape:label='status' style='display:inline' transform='translate(-747.0002,429)'/>
+  <g inkscape:groupmode='layer' id='layer10' inkscape:label='devices' style='display:inline;filter:url(#filter7554)' transform='translate(-747.0002,429)'/>
+  <g inkscape:groupmode='layer' id='layer1' inkscape:label='places' style='display:inline' transform='translate(-506,-188)'>
+    <path inkscape:connector-curvature='0' d='m 514,188 c -4.41827,0 -8,3.58173 -8,8 0,4.41827 3.58173,8 8,8 4.41827,0 8,-3.58173 8,-8 0,-4.41827 -3.58173,-8 -8,-8 z m -0.57143,2.21429 c 0.0765,-0.008 0.17286,0.005 0.25,0 0.009,0.0366 -0.0557,0.1667 -0.14286,0.35714 -0.55526,1.21298 -0.58676,2.63355 -0.0714,3.39286 0.0933,0.13766 0.17857,0.26868 0.17857,0.28571 0,0.017 -0.10057,0.0357 -0.21429,0.0357 -0.26694,0 -0.51956,-0.1627 -1.03571,-0.57142 -0.22929,-0.18156 -0.52737,-0.33406 -0.64286,-0.35715 -0.18134,-0.0362 -0.22969,-0.0203 -0.46429,0.21429 -0.21828,0.21824 -0.28571,0.33592 -0.28571,0.53571 0,0.75765 0.89952,1.35993 2.57143,1.71429 2.27052,0.48122 2.83023,0.91328 2.89286,2.10714 0.0786,1.49712 -0.7184,2.62602 -2.46429,3.5 -0.20837,0.10429 -0.34114,0.14486 -0.42857,0.17857 -0.0387,-0.003 -0.0685,0.003 -0.10714,0 -0.0149,-0.0463 -0.0357,-0.15367 -0.0357,-0.35714 0,-0.79518 -0.31342,-1.61366 -0.78571,-2.07143 -0.12677,-0.12288 -0.48175,-0.38326 -0.78572,-0.57143 -0.30397,-0.18816 -0.61023,-0.40674 -0.67857,-0.5 -0.11326,-0.15475 -0.12268,-0.24983 -0.0357,-0.53571 0.15859,-0.52214 0.34733,-0.81295 0.71428,-1.14286 0.19238,-0.17296 0.38595,-0.318 0.42857,-0.32143 0.0426,-0.003 -0.24589,-0.09 -0.67857,-0.17857 -0.43266,-0.0887 -1.06557,-0.27442 -1.39285,-0.39286 -0.59837,-0.21651 -1.40626,-0.67104 -1.71429,-1 -0.013,-0.0139 -0.0243,-0.0233 -0.0357,-0.0357 0.4413,-1.75778 1.6797,-3.19847 3.32142,-3.89286 0.34351,-0.14529 0.69762,-0.24497 1.07143,-0.32143 0.18619,-0.038 0.37918,-0.0519 0.57143,-0.0714 z m 5.35714,2.67857 c 0.13423,0.083 0.64104,1.17948 0.78572,1.71428 0.18679,0.69051 0.17327,1.88543 0,2.57143 -0.0659,0.26108 -0.15046,0.50532 -0.17857,0.53572 -0.0281,0.0304 -0.13007,-0.14461 -0.25,-0.35715 -0.11995,-0.2125 -0.50304,-0.66405 -0.82143,-1 -0.91902,-0.96975 -1.06353,-1.47609 -0.67857,-2.25 0.19413,-0.39027 1.03897,-1.2784 1.14285,-1.21428 z' id='path6013' style='fill:#bebebe;fill-opacity:1;stroke:none'/>
+    
+  </g>
+  <g inkscape:groupmode='layer' id='layer14' inkscape:label='mimetypes' style='display:inline' transform='translate(-747.0002,429)'/>
+  <g inkscape:groupmode='layer' id='layer15' inkscape:label='emblems' style='display:inline' transform='translate(-747.0002,429)'/>
+  <g inkscape:groupmode='layer' id='g71291' inkscape:label='emotes' style='display:inline' transform='translate(-747.0002,429)'/>
+  <g inkscape:groupmode='layer' id='layer2' inkscape:label='categories' style='display:inline' transform='translate(-506,-38)'/>
+  <g inkscape:groupmode='layer' id='g6058' inkscape:label='apps' style='display:inline' transform='translate(-506,-38)'/>
+  <g inkscape:groupmode='layer' id='layer12' inkscape:label='actions' style='display:inline' transform='translate(-747.0002,429)'/>
+</svg>

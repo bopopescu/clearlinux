@@ -1,0 +1,15 @@
+AUTHORS
+ChangeLog
+MANIFEST
+MANIFEST.in
+README
+db.c
+db.h
+package.c
+package.h
+setup.py
+sqlitecache.c
+sqlitecachec.py
+xml-parser.c
+xml-parser.h
+yum-metadata-parser.spec

@@ -1,0 +1,8 @@
+include Apache-2.0
+include BSD
+include COPYING
+include GOALS
+include HACKING
+include MANIFEST.in
+include Makefile
+include NEWS
