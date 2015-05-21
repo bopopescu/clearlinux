@@ -1,3 +1,45 @@
 Clear Linux Project for Intel® Architecture
 
 The Clear Linux™ Project for Intel® Architecture is a project that is building a Linux OS distribution for various cloud use cases. The goal of Clear Linux OS, is to showcase the best of Intel Architecture technology, from low level kernel features to more complex items that span across the entire operating system stack.
+
+Our development mailing list is at dev@lists.clearlinux.org. Questions
+like these are best to be addressed there, such that next person can
+look them up.
+
+We aim to cut a release twice a day, and create snapshot archive of
+all source rpms & binary rpms. Then delta updates & images generated
+from snapshot and published.
+
+Under: https://download.clearlinux.org/current/
+
+Are always the most recent source rpms & binary rpms.
+
+Under: https://download.clearlinux.org/releases/
+
+You will find all snapshot archives, and those that were withdrawn
+from update server. Inside there, there are release notes for given
+snapshot + all source & binary rpms.
+
+Under: https://download.clearlinux.org/update/
+
+Is the delta updates and manifests for the updater.
+
+We only use srpms as a way to build packages and generate rpms, from
+which we then assemble images and update server. Directly installig
+rpms or using something like yum is not supported. Thus you will find
+most srpm packaging is generated with only like patches applied here
+and there. But all patches are present in srpms, broken out logically.
+Our swupd_update tool is the updater which gives one a transactional
+update to the next release snapshot. More about it at
+https://clearlinux.org/features/software-update. In general
+"traditional" yum/dfn/zypper don't bring us much benefit, as we are
+stateless (empty /etc by default, reserved for admin modification
+only) and we have no maintainer scriplets at all (we have
+update-triggers.target defined in systemd that runs all the usual
+hooks post-update).
+
+One interesting thing you might like is adding "containers-basic"
+bundle, it already has `rkt' available with a heavily modified stage1,
+that spawns a new Clear Container KVM and launches the workload inside
+it. I am working on making that stage1 highly portable, such that one
+can use it on any host that can run rkt binary.
